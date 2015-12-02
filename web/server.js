@@ -8,11 +8,10 @@ var init = require('./config/init')(),
 
 
 // Init the express application
-var app = require('./config/express');
-
+var app = require('./config/express')();
 
 // Start the app by listening on <port>
-//app.listen(config.port);
+app.listen(config.port);
 
 // Expose app
 exports = module.exports = app;

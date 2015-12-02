@@ -23,15 +23,15 @@ module.exports = function() {
 	var app = express();
 
 	// Globbing model files
-	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
-		require(path.resolve(modelPath));
-	});
+	// config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
+	// 	require(path.resolve(modelPath));
+	// });
 
 	// Setting application local variables
 	app.locals.title = config.app.title;
 	app.locals.description = config.app.description;
 	app.locals.keywords = config.app.keywords;
-	app.locals.facebookAppId = config.facebook.clientID;
+//	app.locals.facebookAppId = config.facebook.clientID;
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
 
@@ -88,7 +88,6 @@ module.exports = function() {
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
-
 	// CookieParser should be above session
 	app.use(cookieParser());
 
