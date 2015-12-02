@@ -1,0 +1,28 @@
+{
+  "name": "codingera",
+  "version": "1.0.0",
+  "description": "the fucking Coding Era",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.coding.net/Muscle/Coding-Era.git",
+    "postinstall": "bower install --config.interactive=false"
+  },
+  "keywords": [
+    "mvvm"
+  ],
+  "author": "Yan",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.4.1"
+    },
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-concat": "^2.2.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-util": "^2.2.14"
+  }
+}
