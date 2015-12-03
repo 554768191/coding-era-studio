@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 //var connect = require('gulp-connect');
 var server = require('gulp-express');
+var runSequence = require('run-sequence');
 /*
 gulp.task('webserver', function () {
     connect.server({
@@ -9,6 +10,15 @@ gulp.task('webserver', function () {
 
 });
 */
+
+gulp.task('env:dev', function () {
+  process.env.NODE_ENV = 'development';
+});
+
+// Set NODE_ENV to 'production'
+gulp.task('env:prod', function () {
+  process.env.NODE_ENV = 'production';
+});
 
 gulp.task('server', function () {
     // Start the server at the beginning of the task
@@ -32,4 +42,7 @@ gulp.task('server', function () {
     gulp.watch(['server.js', 'routes/**/*.js'], [server.run]);
 });
 
-gulp.task('default', ['server']);
+//gulp.task('default', ['server','env:dev']);
+gulp.task('default', function (done) {
+  runSequence('env:dev', 'server', done);
+});
