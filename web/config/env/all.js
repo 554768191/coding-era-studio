@@ -52,7 +52,8 @@ module.exports = {
 				'public/components/angular-animate/angular-animate.js',
 				'public/components/angular-ui-router/release/angular-ui-router.js',
 				'public/components/angular-ui-utils/ui-utils.js',
-				'public/components/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/components/jquery/dist/jquery.js'
 			]
 		},
 		css: [
