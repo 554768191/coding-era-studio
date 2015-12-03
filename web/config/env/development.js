@@ -11,6 +11,6 @@ module.exports = {
 		}
 	},
 	app: {
-		title: 'Coding Era - Development Environment'
+		title: 'Coding Era - 开发模式'
 	}
 };
