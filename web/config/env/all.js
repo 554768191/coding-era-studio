@@ -56,9 +56,8 @@ module.exports = {
 				'public/components/jquery/dist/jquery.js'
 			]
 		},
-		css: [
-			'public/modules/**/css/*.css'
-		],
+		sass:['public/modules/**/scss/*.scss'],
+		css: ['public/modules/**/css/*.css'],
 		js: [
 			'public/modules/config.js',
 			'public/modules/application.js',
@@ -68,6 +67,11 @@ module.exports = {
 		tests: [
 			'public/components/angular-mocks/angular-mocks.js',
 			'public/modules/*/tests/*.js'
-		]
+		],
+		server: {
+			gulpConfig: 'gulpfile.js',
+			allJS: ['server.js', 'config/**/*.js', 'public/modules/*/*.js'],
+			views: 'public/modules/**/*.html'
+		}
 	}
 };
