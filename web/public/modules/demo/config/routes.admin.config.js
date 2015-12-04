@@ -15,4 +15,4 @@ angular.module('demo').config(['$stateProvider',
 
 
         }
-    ])
+    ]);

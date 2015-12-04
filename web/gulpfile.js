@@ -10,6 +10,8 @@ var plugins = gulpLoadPlugins({
         'gulp-angular-templatecache': 'templateCache'
     }
 });
+var browserSync = require('browser-sync').create();
+var reload      = browserSync.reload;
 
 //开发模式
 gulp.task('env:dev', function () {
@@ -21,7 +23,7 @@ gulp.task('env:prod', function () {
   process.env.NODE_ENV = 'production';
 });
 
-//编译sass
+//编译sass & 自动注入到浏览器
 gulp.task('sass', function () {
     return gulp.src(allAssets.assets.sass)
         .pipe(plugins.sass())
@@ -29,7 +31,8 @@ gulp.task('sass', function () {
         .pipe(plugins.rename(function (file) {
             file.dirname = file.dirname.replace(path.sep + 'scss', path.sep + 'css');
         }))
-        .pipe(gulp.dest('./public/modules/'));
+        .pipe(gulp.dest('./public/modules/'))
+        .pipe(reload({stream:true}));
 });
 
 //CSS校验
@@ -82,20 +85,48 @@ gulp.task('server', function () {
     server.run(['server.js']);
 });
 
-// Nodemon task
+//Nodemon task
 gulp.task('nodemon', function () {
+    var called = false;
     return plugins.nodemon({
         script: 'server.js',
         nodeArgs: ['--debug'],
         ext: 'js,html',
         watch: _.union(allAssets.assets.server.views, allAssets.assets.server.allJS, allAssets.assets.server.config)
+    })
+    .on('start', function onStart() {
+        if(!called){cb();}
+        called = true;
+    })
+    .on('restart', function() {
+        setTimeout(function() {
+            console.log('-------- restart --------');
+            reload({stream: false});
+        }, 1000);
     });
 });
 
+//自动刷新浏览器(暂时结合nodemon)
+gulp.task('browser-sync', ['nodemon'], function(){
+    browserSync.init({
+        proxy: 'http://localhost:3000',
+        port: 4000,
+        browser: ['/Applications/Google\ Chrome\ Canary.app/'],
+        notify: true
+    });
+
+    // scss编译后的css将注入到浏览器里实现更新,注意是注入
+    //gulp.watch("app/scss/*.scss", ['sass']);
+    // 整个刷新页面
+    gulp.watch(["public/modules/**/*.html"]).on('change', reload);
+    //gulp.watch(_.union(allAssets.assets.server.views, allAssets.assets.server.allJS)).on('change', reload);
+
+});
+
+
 //齐齐校验
 gulp.task('lint', function (done) {
-    //runSequence( 'sass', ['csslint', 'jshint'], done);
-    runSequence( 'sass', ['csslint'], done);
+    runSequence( 'sass', ['csslint', 'jshint'], done);
 });
 
 
@@ -103,5 +134,6 @@ gulp.task('default', function (done) {
     //参数1:开发模式
     //参数2:校验
     //参数3:开启服务
-    runSequence('env:dev', 'lint',['nodemon','watch'], done);
+    //runSequence('env:dev', 'lint',['nodemon','watch'], done);
+    runSequence('env:dev', 'lint',['browser-sync','watch'], done);
 });
