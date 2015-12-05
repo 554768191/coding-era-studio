@@ -4,6 +4,7 @@
   "description": "the fucking Coding Era",
   "main": "server.js",
   "scripts": {
+    "install": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "glob": "~4.0.5"
   },
   "devDependencies": {
+    "asserts": "^4.0.2",
     "browser-sync": "^2.10.0",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.7.0",
@@ -55,6 +57,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.3",
     "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.6"
+    "gulp-util": "^3.0.6",
+    "wrench": "^1.5.8"
   }
 }
