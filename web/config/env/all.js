@@ -44,7 +44,8 @@ module.exports = {
 		lib: {
 			css: [
 				'public/components/bootstrap/dist/css/bootstrap.css',
-				'public/components/bootstrap/dist/css/bootstrap-theme.css',
+				//'public/components/bootstrap/dist/css/bootstrap-theme.css',
+				'public/components/angular-ui-grid/ui-grid.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -55,7 +56,8 @@ module.exports = {
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/components/angular-translate/angular-translate.js',
 				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js'
+				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js',
+				'public/components/angular-ui-grid/ui-grid.js'
 				//'public/components/jquery/dist/jquery.js'
 			]
 		},

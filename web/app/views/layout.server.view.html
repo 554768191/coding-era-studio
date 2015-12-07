@@ -32,10 +32,9 @@
 </head>
 
 <body class="ng-cloak">
-	<div data-ng-include="'/modules/core/views/header.admin.view.html'" ></div>
-	<div data-ng-include="'/modules/core/views/content.admin.view.html'" ></div>
 
-
+	<!-- content -->
+	{% block content %}{% endblock %}
 
 
 	<!--Embedding The User Object-->

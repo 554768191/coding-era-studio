@@ -11,7 +11,8 @@
 [http://angular-ui.github.io/](http://angular-ui.github.io/)
 ### ui-grid
 [http://ui-grid.info/](http://ui-grid.info/)
-# 初始化项目
+[http://ui-grid.info/docs/#/api](http://ui-grid.info/docs/#/api)
+## 初始化项目
 ## 1.安装NPM
 ```
 此步骤完美省略

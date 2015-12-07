@@ -9,9 +9,9 @@ angular.module('demo').run(['Menus',
 
         var node_demo=Menus.genNodeMenus('完美DEMO','ice-lolly-tasted','demo');
 
+
         parentMenus.setOrder(0);
         parentMenus.addNodeMenus(node_demo);
-
         Menus.addMenus(parentMenus.getMenus());
     }
 ]);
