@@ -3,7 +3,7 @@
  */
 var _ = require('lodash');
 var gulp = require('gulp');
-var allAssets = require('../config/env/all');
+var allAssets = require('../env/all');
 var path = require('path');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync').create();
