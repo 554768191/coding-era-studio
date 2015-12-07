@@ -7,11 +7,9 @@ angular.module('demo').run(['Menus',
         // Menus.addMenus();
         var parentMenus=Menus.genParentMenus('DEMO页面','comment');
 
-        var node_curd=Menus.genNodeMenus('增删改查','cd','curd');
-        var node_demo=Menus.genNodeMenus('UI页面','ice-lolly-tasted','demo');
+        var node_demo=Menus.genNodeMenus('完美DEMO','ice-lolly-tasted','demo');
 
         parentMenus.setOrder(0);
-        parentMenus.addNodeMenus(node_curd);
         parentMenus.addNodeMenus(node_demo);
 
         Menus.addMenus(parentMenus.getMenus());

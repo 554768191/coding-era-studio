@@ -4,8 +4,6 @@
 'use strict';
 angular.module('demo').config(['$stateProvider',
         function($stateProvider) {
-
-           // $translatePartialLoaderProvider.addPart('demo');
             $stateProvider
                 .state('demo', {
                     url: '/demo',

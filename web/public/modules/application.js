@@ -1,7 +1,25 @@
 'use strict';
 
 //Start by defining the main module and adding the module dependencies
-angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+
+//i18n - 国际化配置
+ceApp.run(function ($rootScope, $translate) {
+	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+		$translate.refresh();
+	});
+});
+
+ceApp.config(['$translateProvider','$translatePartialLoaderProvider',
+	function($translateProvider,$translatePartialLoaderProvider) {
+		$translateProvider.useLoader('$translatePartialLoader', {
+			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
+		});
+		$translatePartialLoaderProvider.addPart('core');
+		$translateProvider.preferredLanguage('zn-cn');
+		$translateProvider.useSanitizeValueStrategy('escaped');
+	}]);
+
 
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',

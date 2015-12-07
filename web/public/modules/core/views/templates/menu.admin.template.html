@@ -1,4 +1,4 @@
-<div class="menu  animated  tada" ng-controller="menuCtrl">
+<div class="menu  animated  tada" ng-controller="menuCtrl"  resize>
     <ul class="parent"  >
         <li ng-switch on="item.route!=null" ng-repeat="item in items | orderBy: 'order' " ng-class="{active:item.show}">
             <a class="parent-a" ng-switch-default  ng-click="onShowNode(item)"><span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}</a>

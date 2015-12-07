@@ -4,17 +4,24 @@
 "use strict";
 
 angular.module('core').directive('ceMenu', ['$window','$document',
-    function($window,$document) {
+    function($window) {
         var menu={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/menu.admin.template.html',
             replace:true,
             link: function(scope, ele) {
-                //不应该写死高度
-                //todo 继续研究怎么获取head的高度
+
+                //todo 继续研究怎么获取head的高度,不应该写死高度
                 var headHeight = 45;
-                var height = $window.innerHeight - headHeight;
-                ele.css({height:height+"px"});
+                scope.onResize = function() {
+                    var height = $window.innerHeight - headHeight;
+                    ele.css({height:height+"px"});
+                };
+                scope.onResize();
+                angular.element($window).bind('resize', function() {
+                    scope.onResize();
+
+                });
             }
         };
         return menu;

@@ -2,7 +2,11 @@
 
 *首先看这个*
 [git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
+*部分Remark网址*
 [angular1.48文档](https://code.angularjs.org/1.4.8/docs/guide)
+[angular-bootstarp api](http://angular-ui.github.io/bootstrap/)
+[angular-ui](http://angular-ui.github.io/)
+[ui-grid](http://ui-grid.info/)
 # 初始化项目
 ## 1.安装NPM
 ```

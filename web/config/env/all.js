@@ -53,7 +53,10 @@ module.exports = {
 				'public/components/angular-ui-router/release/angular-ui-router.js',
 				'public/components/angular-ui-utils/ui-utils.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/components/jquery/dist/jquery.js'
+				'public/components/angular-translate/angular-translate.js',
+				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js'
+				//'public/components/jquery/dist/jquery.js'
 			]
 		},
 		sass:['public/modules/**/scss/*.scss'],
