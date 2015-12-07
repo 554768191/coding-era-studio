@@ -2,7 +2,7 @@
 
 *首先看这个*
 [git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
-
+[angular1.48文档](https://code.angularjs.org/1.4.8/docs/guide)
 # 初始化项目
 ## 1.安装NPM
 ```

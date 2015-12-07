@@ -50,7 +50,7 @@ gulp.task('browser-sync', ['nodemon'], function(){
     });
 
     // scss编译后的css将注入到浏览器里实现更新,注意是注入
-    //gulp.watch("app/scss/*.scss", ['sass']);
+    gulp.watch("public/modules/**/scss/*.scss", ['sass']);
     // 整个刷新页面
     gulp.watch(["public/modules/**/*.html"]).on('change', browserSync.reload);
     //gulp.watch(_.union(allAssets.assets.server.views, allAssets.assets.server.allJS)).on('change', browserSync.reload);
