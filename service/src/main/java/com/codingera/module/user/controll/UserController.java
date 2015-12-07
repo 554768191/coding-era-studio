@@ -25,7 +25,7 @@ public class UserController{
 	@RequestMapping
 	@ResponseBody
 	public ActionResult getUser(){
-		User user = userService.getUserByUserName("test");
+		User user = userService.getUserByUserName("yanson");
 		return new ActionResult(ActionResult.RESULT_SUCCESS,user);
 	}
 	
