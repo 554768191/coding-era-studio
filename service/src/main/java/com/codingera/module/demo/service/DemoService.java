@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 public interface DemoService  {
 
 	
-	Demo create(Demo user);
+	Demo create(Demo demo);
 	Demo getById(Long id);
 	void delById(Long id);
 	Page<Demo> findDemoByCriteria(Pageable pr, DemoQueryCriteria criteria);
