@@ -2,7 +2,7 @@
 
 *首先看这个*
 [git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
-## 部分Remark网址
+## Remark部分网址
 ### angular1.48文档
 [https://code.angularjs.org/1.4.8/docs/guide](https://code.angularjs.org/1.4.8/docs/guide)
 ### angular-bootstarp api
@@ -13,6 +13,8 @@
 [http://ui-grid.info/](http://ui-grid.info/)
 #### ui-grid-api
 [http://ui-grid.info/docs/#/api](http://ui-grid.info/docs/#/api)
+### ui-router
+[http://angular-ui.github.io/ui-router/site/#/api/ui.router](http://angular-ui.github.io/ui-router/site/#/api/ui.router)
 
 
 
