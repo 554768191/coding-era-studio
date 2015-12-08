@@ -2,8 +2,8 @@
  * Created by Yan on 15/12/3.
  */
 "use strict";
-angular.module('core').factory('Menus', ['$state',
-    function($state) {
+angular.module('core').factory('Menus', ['$state','$location',
+    function($state,$location) {
         var items=[];
         var service={};
 
@@ -12,7 +12,6 @@ angular.module('core').factory('Menus', ['$state',
         };
 
         service.addMenus=function(_items){
-            console.log(_items);
             items.splice(items.length,0,_items);
         };
 
@@ -24,16 +23,17 @@ angular.module('core').factory('Menus', ['$state',
             var isShow = null;
 
             var setShow = function(flag){
-                if(isShow ==  null){
+                if(isShow ===  null){
                     isShow = flag;
                 }
                 return isShow;
-            }
+            };
             //以前写法,暂不清楚干什么的 注释在2015-11-07
             if(angular.isUndefined(route)){
                 newMenus.show=false;
             }else{
-                if($state.is(route)){
+                var state = $state.get(route);
+                if($location.$$path === state.url){
                     newMenus.show=setShow(true);
                 }else {
                     newMenus.show =setShow(false);
@@ -47,8 +47,9 @@ angular.module('core').factory('Menus', ['$state',
                 if(angular.isUndefined(newMenus.items)){
                     newMenus.items=[];
                 }
-                var node_routeName=genNodeMenus.menu.route;
-                if($state.get(node_routeName)!=null && $state.get(node_routeName).name==node_routeName){
+                var node_routeName = genNodeMenus.menu.route;
+                var node_state = $state.get(node_routeName);
+                if($location.$$path === node_state.url){
                     newMenus.show=setShow(true);
                 }else {
                     newMenus.show = setShow(false);
