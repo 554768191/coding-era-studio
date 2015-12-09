@@ -10,8 +10,24 @@ ceApp.run(function ($rootScope, $translate) {
 	});
 });
 
-ceApp.config(['$translateProvider','$translatePartialLoaderProvider',
-	function($translateProvider,$translatePartialLoaderProvider) {
+//ceApp.all('*', function (req, res, next) {
+//	res.header("Access-Control-Allow-Origin", CeConfig.apiUrl);
+//	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+//	res.header("X-Powered-By", ' 3.2.1');
+//	res.header("Content-Type", "application/json;charset=utf-8");
+//	next();
+//});
+
+ceApp.config(['$httpProvider','$translateProvider','$translatePartialLoaderProvider',
+	function($httpProvider,$translateProvider,$translatePartialLoaderProvider) {
+
+		console.log($httpProvider);
+		$httpProvider.defaults.headers.patch["Access-Control-Allow-Origin"]="*";
+		$httpProvider.defaults.headers.patch["Access-Control-Allow-Headers"]="Origin, X-Requested-With, Content-Type, Accept";
+		$httpProvider.defaults.headers.patch["Access-Control-Allow-Methods"]="PUT,POST,GET,DELETE,OPTIONS";
+		//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		//res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 		$translateProvider.useLoader('$translatePartialLoader', {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});

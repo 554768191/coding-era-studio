@@ -21,3 +21,12 @@ var ApplicationConfiguration = (function() {
 		registerModule: registerModule
 	};
 })();
+
+
+var CeConfig = (function() {
+	var callback = {};
+	callback.apiUrl="http://localhost:8999/api";
+
+	return callback;
+
+})();

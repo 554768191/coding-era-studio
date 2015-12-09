@@ -75,7 +75,7 @@ module.exports = {
 		],
 		server: {
 			gulpConfig: 'gulpfile.js',
-			allJS: ['server.js', 'config/**/*.js', 'public/modules/*/*.js'],
+			allJs: ['server.js', 'config/**/*.js', 'public/modules/*/*.js'],
 			views: 'public/modules/**/*.html'
 		}
 	}
