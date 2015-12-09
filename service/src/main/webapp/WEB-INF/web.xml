@@ -70,7 +70,16 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:META-INF/service/service-context.xml</param-value>
 	</context-param> -->
-	
+
+	<!-- 跨域配置 -->
+	<filter>
+		<filter-name>cors</filter-name>
+		<filter-class>com.codingera.common.security.filter.SimpleCORSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>cors</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
      
      
      <listener>

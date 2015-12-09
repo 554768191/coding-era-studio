@@ -26,12 +26,12 @@ public class DemoController{
 	@RequestMapping
 	@ResponseBody
 	public ActionResult getDemo(){
-		for(int i=0;i<100;i++){
-			Demo demo = new Demo();
-			demo.setName("yan"+(i+1));
-			demo.setRemark("中文测试");
-			demoService.create(demo);
-		}
+//		for(int i=0;i<100;i++){
+//			Demo demo = new Demo();
+//			demo.setName("yan"+(i+1));
+//			demo.setRemark("中文测试");
+//			demoService.create(demo);
+//		}
 
 		PageRequest pr = new PageRequest(0,10);
 		DemoQueryCriteria criteria = new DemoQueryCriteria();
