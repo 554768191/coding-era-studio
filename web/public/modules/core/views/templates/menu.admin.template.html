@@ -1,6 +1,6 @@
 <div class="menu  animated  tada" ng-controller="menuCtrl" >
     <ul class="parent"  >
-        <li ng-switch on="item.route!=null" ng-repeat="item in items | orderBy: 'order' " ng-class="{active:item.show}" ui-sref-active="active">
+        <li ng-switch on="item.route!=null" ng-repeat="item in items | orderBy: 'order' " ng-class="{pactive:item.show}" ui-sref-active="active">
             <a class="parent-a" ng-switch-default  ng-click="onShowNode(item)"><span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}</a>
             <a class="parent-a"  ng-switch-when="true" ui-sref="{{item.route}}"  ><span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}</a>
             <ul class="node" ng-repeat="node in item.items" ng-show="item.show" >

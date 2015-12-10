@@ -22,12 +22,6 @@ ceApp.run(function ($rootScope, $translate) {
 ceApp.config(['$httpProvider','$translateProvider','$translatePartialLoaderProvider',
 	function($httpProvider,$translateProvider,$translatePartialLoaderProvider) {
 
-		console.log($httpProvider);
-		$httpProvider.defaults.headers.patch["Access-Control-Allow-Origin"]="*";
-		$httpProvider.defaults.headers.patch["Access-Control-Allow-Headers"]="Origin, X-Requested-With, Content-Type, Accept";
-		$httpProvider.defaults.headers.patch["Access-Control-Allow-Methods"]="PUT,POST,GET,DELETE,OPTIONS";
-		//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-		//res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 		$translateProvider.useLoader('$translatePartialLoader', {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});
