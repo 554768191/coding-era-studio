@@ -4,7 +4,16 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'codingEra';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils','pascalprecht.translate','ui.grid'];
+	var applicationModuleVendorDependencies = [
+		'ngResource',
+		'ngAnimate',
+		'ui.router',
+		'ui.bootstrap',
+		'ui.utils',
+		'pascalprecht.translate',
+		'ui.grid',
+		'ui.grid.pagination'
+	];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

@@ -10,22 +10,24 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Demo
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Controller
 @RequestMapping("/api/demo")
 public class DemoController{
 
 	@Autowired
-	DemoService demoService;
+	private DemoService demoService;
 	
 
 	@RequestMapping
 	@ResponseBody
-	public ActionResult getDemo(){
+	public ActionResult getDemo(Pageable pr){
 //		for(int i=0;i<100;i++){
 //			Demo demo = new Demo();
 //			demo.setName("yan"+(i+1));
@@ -33,7 +35,8 @@ public class DemoController{
 //			demoService.create(demo);
 //		}
 
-		PageRequest pr = new PageRequest(0,10);
+		System.out.println("test6");
+		//PageRequest pr = new PageRequest(0,10);
 		DemoQueryCriteria criteria = new DemoQueryCriteria();
 		Page<Demo> pages =  demoService.findDemoByCriteria(pr,criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS,pages);

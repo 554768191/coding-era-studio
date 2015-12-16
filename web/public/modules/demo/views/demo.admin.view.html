@@ -2,21 +2,26 @@
 <div class="ce-tool-bar">
     <div class="input-group col-sm-offset-8 col-sm-4">
 
-        <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.SEARCH.TEXT' | translate }}" ng-model="keyWord" />
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-primary" ng-click="onSearch()" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+        <div class="input-group-btn" uib-dropdown>
+            <button type="button" class="btn btn-info" ng-click="onSearch()"  ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-info" uib-dropdown-toggle aria-expanded="false">
                 <span class="caret"></span>
-                <span class="sr-only">{{'SYSTEM.APP.SEARCH.MORE.TEXT'| translate }}</span>
+                <span class="sr-only">{{'SYSTEM.APP.BTN.QUERY.MORE'| translate }}</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a ng-click="addDemo()">{{'DEMO.BTN.ADD' | translate }}</a></li>
+                <li><a ng-click="addDemo()">{{'SYSTEM.APP.BTN.QUERY.ADVANCED' | translate }}</a></li>
             </ul>
         </div>
+
+
+
+
+
     </div>
 </div>
 
 
 <div class="ce-grid">
-    <div class="gridStyle" ui-grid="gridOptions"></div>
+    <div class="gridStyle" ui-grid="gridOptions" ui-grid-pagination></div>
 </div>
