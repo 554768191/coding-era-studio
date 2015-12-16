@@ -1,5 +1,12 @@
 /**
  * Created by Jason on 15/12/5.
+ *
+ * 测试驱动开发
+ * mohca see http://mochajs.org/
+ *
+ * 用法
+ * $ npm install -g mocha
+ * $ mocha tes/test.js
  */
 
 
@@ -7,15 +14,10 @@ var Assert = require('assert');
 var Asserts = require('asserts');
 var path = require('path');
 
-/*describe('path', function() {
-
-    it('path output', function () {
-        console.log(path.join("web", '/app/!**!/!*.module.js'));
-    });
-});*/
-
+//测试写法一
 describe('Array', function() {
     describe('#indexOf()', function () {
+        //断言
         it('should return -1 when the value is not present', function () {
             Assert.equal(-1, [1,2,3].indexOf(5));
             Assert.equal(-1, [1,2,3].indexOf(0));
@@ -23,6 +25,7 @@ describe('Array', function() {
     });
 });
 
+//测试写法二
 /*Asserts({
     foo : function() {
         Assert.equal("something", "something", "optional message");
