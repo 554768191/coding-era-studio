@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Demo
  */
-@SuppressWarnings("SpringJavaAutowiringInspection")
 @Controller
 @RequestMapping("/api/demo")
 public class DemoController{

@@ -1,17 +1,12 @@
 'use strict';
 
-angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','DemoService',
-function ($scope, $uibModal, $log,DemoService){
+angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','DemoService','ceConfig',
+function ($scope, $uibModal, $log,DemoService,ceConfig){
 
     $scope.onSearch = function(e){
         $log.log(123);
-        $log.log(CeConfig);
+       // $log.log(CeConfig);
     };
-
-
-
-
-
 
     var paginationOptions = {
         page: 0,//当前页
@@ -33,6 +28,7 @@ function ($scope, $uibModal, $log,DemoService){
             { name: 'name',displayName:'名称' },
             { name: 'remark',displayName:'备注' }
         ],
+        paginationTemplate:ceConfig.paginationTemplate,
         onRegisterApi: function(gridApi) {
             //分页发生改变
             gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {

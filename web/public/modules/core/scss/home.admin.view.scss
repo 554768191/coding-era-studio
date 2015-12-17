@@ -4,7 +4,7 @@
  *	Explain:		重定义浏览器默认样式
  */
 * { word-wrap: break-word; word-break:break-all;}
-body{ background-color: #F2F2F2}
+body{ background-color: $ce-content-background-color}
 body, input, button, select, textarea { font-size: $ce-font-size; font-family:"微软雅黑","Microsoft Yahei","宋体",Tahoma,'Simsun',Arial,Helvetica,sans-serif; color: #515151; }
 textarea { resize: none; }
 body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
