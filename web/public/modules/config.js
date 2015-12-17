@@ -25,7 +25,3 @@ var ApplicationConfiguration = (function() {
 		registerModule: registerModule
 	};
 })();
-
-
-
-//定义app
