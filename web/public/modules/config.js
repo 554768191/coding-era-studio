@@ -1,8 +1,6 @@
 'use strict';
 
-// Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function() {
-	// Init module configuration options
 	var applicationModuleName = 'codingEra';
 	var applicationModuleVendorDependencies = [
 		'ngResource',
@@ -15,12 +13,9 @@ var ApplicationConfiguration = (function() {
 		'ui.grid.pagination'
 	];
 
-	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
-		// Create angular module
 		angular.module(moduleName, dependencies || []);
 
-		// Add the module to the AngularJS configuration file
 		angular.module(applicationModuleName).requires.push(moduleName);
 	};
 
@@ -39,3 +34,9 @@ var CeConfig = (function() {
 	return callback;
 
 })();
+
+//定义app
+var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+ceApp.constant('ceConfig', {
+	apiUrl: "http://localhost:8999/api"
+});

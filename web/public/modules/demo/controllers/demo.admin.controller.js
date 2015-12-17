@@ -5,7 +5,7 @@ function ($scope, $uibModal, $log,DemoService){
 
     $scope.onSearch = function(e){
         $log.log(123);
-        console.log(CeConfig);
+        $log.log(CeConfig);
     };
 
 
