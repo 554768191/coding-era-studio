@@ -1,5 +1,9 @@
 'use strict';
-
+var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+ceApp.constant('ceConfig', {
+	apiUrl: "http://localhost:8999/api",
+	paginationTemplate:'modules/core/views/templates/pagination.admin.template.html'
+});
 //i18n - 国际化配置
 ceApp.run(function ($rootScope, $translate) {
 	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {

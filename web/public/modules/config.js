@@ -29,7 +29,3 @@ var ApplicationConfiguration = (function() {
 
 
 //定义app
-var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
-ceApp.constant('ceConfig', {
-	apiUrl: "http://localhost:8999/api"
-});
