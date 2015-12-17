@@ -27,13 +27,6 @@ var ApplicationConfiguration = (function() {
 })();
 
 
-var CeConfig = (function() {
-	var callback = {};
-	callback.apiUrl="http://localhost:8999/api";
-
-	return callback;
-
-})();
 
 //定义app
 var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
