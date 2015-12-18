@@ -1,0 +1,27 @@
+@import "env.admin.view";
+@import "env.grid.view";
+//grid分页器样式
+.ce-grid-pagination{
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:$ce-grid-pagination-background;
+  @include ce-border-radius(0 0 2px 2px);
+  .pagination{
+    margin:5px 0;
+  }
+
+  .pager-left{
+    padding-top:10px;
+    .pager-info{
+        padding-top: 2px;
+        display:block;
+        float: left;
+    }
+  }
+
+  .pager-right{
+    text-align: right;
+  }
+}

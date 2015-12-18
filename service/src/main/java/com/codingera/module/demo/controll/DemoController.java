@@ -27,15 +27,7 @@ public class DemoController{
 	@RequestMapping
 	@ResponseBody
 	public ActionResult getDemo(Pageable pr){
-//		for(int i=0;i<100;i++){
-//			Demo demo = new Demo();
-//			demo.setName("yan"+(i+1));
-//			demo.setRemark("中文测试");
-//			demoService.create(demo);
-//		}
 
-		System.out.println("test6");
-		//PageRequest pr = new PageRequest(0,10);
 		DemoQueryCriteria criteria = new DemoQueryCriteria();
 		Page<Demo> pages =  demoService.findDemoByCriteria(pr,criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS,pages);
