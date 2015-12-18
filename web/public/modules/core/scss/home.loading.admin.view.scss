@@ -1,0 +1,122 @@
+@import "home.env.admin.view";
+
+
+
+
+.spinner {
+  margin: 15px auto;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.container1 > div, .container2 > div, .container3 > div {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  position: absolute;
+  @include ce-animation-fill-mode(both);
+  @include ce-animation(bouncedelay 1.2s infinite ease-in-out);
+}
+
+.spinner .spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.container2 {
+  @include ce-transform(rotateZ(45deg));
+}
+
+.container3 {
+  @include ce-transform(rotateZ(90deg))
+}
+
+.circle1 { top: 0; left: 0; }
+.circle2 { top: 0; right: 0; }
+.circle3 { right: 0; bottom: 0; }
+.circle4 { left: 0; bottom: 0; }
+
+.container2 .circle1 {
+  @include ce-animation-delay(-1.1s);
+}
+
+.container3 .circle1 {
+  @include ce-animation-delay(-1.0s);
+}
+
+.container1 .circle2 {
+  @include ce-animation-delay(-0.9s);
+}
+
+.container2 .circle2 {
+  @include ce-animation-delay(-0.8s);
+}
+
+.container3 .circle2 {
+  @include ce-animation-delay(-0.7s);
+}
+
+.container1 .circle3 {
+  @include ce-animation-delay(-0.6s);
+}
+
+.container2 .circle3 {
+  @include ce-animation-delay(-0.5s);
+}
+
+.container3 .circle3 {
+  @include ce-animation-delay(-0.4s);
+}
+
+.container1 .circle4 {
+  @include ce-animation-delay(-0.3s);
+}
+
+.container2 .circle4 {
+  @include ce-animation-delay(-0.2s);
+}
+
+.container3 .circle4 {
+  @include ce-animation-delay(-0.1s);
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    @include ce-animation(scale(0.0));
+  }
+  40% {
+    @include ce-animation(scale(1.0));
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    @include ce-animation(scale(0.0));
+  } 40% {
+      @include ce-animation(scale(1.0));
+    }
+}
+
+
+.ce-loading-div{
+  position: absolute;
+  top:30%;
+  left:50%;
+  width:100px;
+  padding:0 20px;
+  line-height: 30px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background:#000;
+  border-radius: 6px;
+  opacity: 0;
+  color:#fff;
+  z-index: 99999;
+  //display:none;
+  @include ce-transition(2s);
+  @include ce-animation-name(fadeIn);
+  margin-left:-50px;
+}

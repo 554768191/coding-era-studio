@@ -1,0 +1,20 @@
+@import "home.env.admin.view";
+@import "grid.env.view";
+//grid 全局样式
+
+
+.gridStyle {
+  border: 1px solid $ce-border-color;
+  height: 350px;
+  border-radius: 4px;
+  width:100%;
+}
+
+.ce-grid{
+  width:100%;
+}
+
+
+.ui-grid-top-panel{
+
+}

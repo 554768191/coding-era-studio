@@ -1,0 +1,79 @@
+@import "home.env.admin.view";
+
+/*
+ *	Explain:		重定义浏览器默认样式
+ */
+* { word-wrap: break-word; word-break:break-all;}
+html{height:100%;}
+body{ background-color: $ce-content-background-color;height:100%;}
+body, input, button, select, textarea { font-size: $ce-font-size; font-family:"微软雅黑","Microsoft Yahei","宋体",Tahoma,'Simsun',Arial,Helvetica,sans-serif; color: #515151; }
+textarea { resize: none; }
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
+caption, th { text-align: left; font-weight: 400; }
+ul li, .xl li { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 1em; font-weight:normal;}
+em, cite, i { font-style: normal; }
+strong,b{font-weight:normal;}
+a { color:#222222; text-decoration: none !important; }
+a:link {color: #222222;}
+a:visited {color: #222222;}
+a:hover {color: $ce-color;}
+a:active {color: #222222;}
+a img { border: none; }
+a,.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.ngCellText .btn{
+  margin-right:5px;
+}
+
+.pace {
+ // -webkit-pointer-events: none;
+  pointer-events: none;
+  @include ce-user-select(none);
+}
+
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.error-msg {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+//清浮动
+.ce-clear-float{
+  content: "";
+  clear: both;
+  zoom: 1;
+}
+
+
+
+
+
+
+
+/**
+ * public css
+ */
+.ce-tool-bar{
+  //修改bootstarp按钮组浮出页面
+  .open>.dropdown-menu {
+    margin-left: -88px;
+  }
+  margin-bottom:20px;
+}
+

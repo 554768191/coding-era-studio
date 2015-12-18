@@ -1,0 +1,50 @@
+@import "home.env.admin.view";
+
+
+/**
+ * 	头部样式
+ */
+
+.ce-head{
+  $height:$ce-head-height;
+  height:$height;
+  background-color:#fff;
+  border-bottom:$ce-border-color;
+  box-shadow: 15px 15px 10px -15px rgba(0, 0, 0, 0.4);
+  &-content{
+    width:100%;
+    line-height:$height;
+  }
+  &-logo{
+    float:left;
+    width:$ce-menu-width;
+    background-color: $ce-dark-color;
+    a{
+      line-height:$height;
+      margin-left:15px;
+      color:$ce-logo-font-color;
+    }
+    .logo{
+      $size:$ce-logo-size;
+      height: $size;
+      width: $size;
+      display: inline-block;
+      position: relative;
+      margin-right: 4px;
+      top:10px;
+      background-image: url($ce-logo-path);
+      background-size: $size;
+      img{
+        width:$size;
+        height:$size;
+      }
+    }
+  }
+
+  &-navi{
+    float:left;
+    // border-left:1px solid $ce-border-color;
+    height:$height;
+  }
+
+}
