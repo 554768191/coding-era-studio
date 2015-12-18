@@ -24,6 +24,7 @@ function ($scope, $uibModal, $log,DemoService,ceConfig){
         paginationPageSizes: [10, 20, 50],//每页显示多少
         paginationPageSize: 10,//当前显示多少页
         useExternalPagination:true,//不用默认的分页控制器
+        animate:false,
         columnDefs: [//这个不解释了,你懂的
             { name: 'name',displayName:'名称' },
             { name: 'remark',displayName:'备注' }
