@@ -1,0 +1,134 @@
+<div ng-controller="todoCtrl" class="ce-todo">
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" add-task-button>Add task (service)</button>
+            <button type="button" class="btn btn-primary" ng-click="addTask()">Add task (controller)</button>
+            <button type="button" class="btn btn-primary" ng-click="cleanTask()">Clean task (controller)</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!--<div class="form-group has-feedback">-->
+            <!--<div class="input-group">-->
+            <!--<span class="input-group-addon"><a href="#"><span class="glyphicon glyphicon-calendar"></span></a></span>-->
+            <!--<input type="text" class="form-control" id="inputGroupSuccess1"-->
+            <!--popover-placement="bottom" uib-popover-template="dynamicPopover.templateUrl" popover-title="添加描述">-->
+            <!--<span class="input-group-addon"><a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a></span>-->
+            <!--</div>-->
+            <!--</div>&lt;!&ndash;/demo1&ndash;&gt;-->
+
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <span class="btn btn-default" uib-datepicker-popup
+                          ng-model="task.date" is-open="status.opened" ng-click="open()">
+                        <span class="glyphicon glyphicon-calendar" ng-if="!task.date"></span>
+                        {{ task.date | date:'yyyy年MM月dd日' }}
+                    </span>
+                </div><!--/日历-->
+
+                <!--<div class="input-group-btn" uib-dropdown>
+                    <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+                        Action <span class="caret"></span>
+                    </button>
+                    <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+                        <li role="menuitem" ng-click="addTask()"><a href="#">{{'TODO.TASK.ACTION.ADD' | translate}}</a>
+                        </li>
+                        <li role="menuitem"><a href="#">Another action</a></li>
+                        <li role="menuitem"><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem" ng-click="cleanTask()"><a href="#">{{'TODO.TASK.ACTION.CLEAN' | translate}}</a>
+                        </li>
+                    </ul>
+                </div>&lt;!&ndash; /btn-group &ndash;&gt;-->
+                <!--<input type="text" class="form-control" aria-label="..."
+                   placeholder="{{'TODO.TASK.ADD.TXT' | translate}}"
+                   popover-placement="bottom" uib-popover-template="dynamicPopover.templateUrl" popover-title="添加描述">-->
+                <input type="text" class="form-control" aria-label="..."
+                       placeholder="{{'TODO.TASK.ADD.TXT' | translate}}"
+                       ng-keyup="$event.keyCode == 13 && addTask()"
+                       ng-click="showCollapsed()"
+                       ng-model="task.title"><!--/标题-->
+
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="addTask()">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </button>
+                </div>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row --><!--/demo2-->
+
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+        <textarea class="form-control" rows="5" cols="1000" data-ng-model="dynamicPopover.content"></textarea>
+        <div class="row">
+            <div class="col-lg-6 input-lg">
+                <a href="#" popover-placement="bottom" uib-popover="这都不懂?!"><span
+                        class="glyphicon glyphicon-question-sign"></span></a>
+            </div>
+            <div class="col-lg-6 input-lg text-right">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
+            </div>
+        </div>
+    </script><!--/template-->
+
+
+    <div class="panel panel-default" uib-collapse="isCollapsed">
+        <div class="panel-body">
+            <textarea class="form-control" rows="5" cols="1000" data-ng-model="task.content"
+                      placeholder="很多描述..."></textarea>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" popover-placement="bottom" uib-popover="这都不懂?!"><span
+                            class="glyphicon glyphicon-question-sign"></span></a>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
+                </div>
+            </div>
+        </div>
+    </div><!--/mother fuck div-->
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-lg-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item" ng-repeat="task in tasks">
+                    <div class="" style="float: right;">
+                        <span class="thumbnail">
+                            <img src="../img/mini-logo.png"/>
+                        </span>
+                    </div>
+                    <h4 class="list-group-item-heading">
+                        <div class="form-inline">
+                            <div class="checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <textarea class="form-control task-title" ng-bind="task.title"></textarea>
+                        </div>
+                    </h4>
+                    <p class="btn-group-sm list-group-item-text text-danger">
+                        <span class="badge">{{ task.date | date:'yyyy-MM-dd' }}</span>
+                        <span class="btn"><span class="glyphicon glyphicon-eye-open"></span><span>详情</span></span>
+                        <span class="btn"><span class="glyphicon glyphicon-leaf"></span><span>good</span></span>
+                        <span class="btn"><span class="glyphicon glyphicon-picture">go</span></span>
+                        <span class="btn">人员:{{task.members}}</span>
+                        <span class="btn">其他:{{task.content}}</span>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
