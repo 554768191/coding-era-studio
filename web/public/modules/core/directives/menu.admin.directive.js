@@ -3,17 +3,20 @@
  */
 "use strict";
 
-angular.module('core').directive('ceMenu', ['$window','$document',
-    function($window,$document) {
+angular.module('core').directive('ceMenu', ['$window',
+    function($window) {
         var menu={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/menu.admin.template.html',
             replace:true,
+            controller:function($scope, $log,Menus) {
+                $scope.items=Menus.getMenus();
+                $scope.onShowNode=function(item){
+                    item.show=!item.show;
+                };
+            },
             link: function(scope, ele) {
-
-                //todo 继续研究怎么获取head的高度,不应该写死高度
-                var headHeight = 45;
-
+                var headHeight = angular.element(document.querySelector('.ce-head')).height();
                 scope.onResize = function() {
                     var contentHeight = angular.element(document.querySelector('.ce-content')).height();
                     var height = $window.innerHeight - headHeight;
@@ -22,7 +25,6 @@ angular.module('core').directive('ceMenu', ['$window','$document',
                     }else{
                         ele.css({height:height+"px"});
                     }
-
                 };
                 scope.onResize();
                 angular.element($window).bind('resize', function() {

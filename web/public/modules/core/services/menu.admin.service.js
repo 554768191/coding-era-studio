@@ -15,11 +15,7 @@ angular.module('core').factory('Menus', ['$state','$location',
             items.splice(items.length,0,_items);
         };
 
-        service.genParentMenus=function(name,icon,route){
-            var newMenus={};
-            var self = this;
-            newMenus.name=name;
-            newMenus.icon=icon;
+        service.genParentMenus=function(newMenus){
             var isShow = null;
 
             var setShow = function(flag){
@@ -29,16 +25,15 @@ angular.module('core').factory('Menus', ['$state','$location',
                 return isShow;
             };
             //以前写法,暂不清楚干什么的 注释在2015-11-07
-            if(angular.isUndefined(route)){
+            if(angular.isUndefined(newMenus.route)){
                 newMenus.show=false;
             }else{
-                var state = $state.get(route);
+                var state = $state.get(newMenus.route);
                 if($location.$$path === state.url){
                     newMenus.show=setShow(true);
                 }else {
                     newMenus.show =setShow(false);
                 }
-                newMenus.route=route;
             }
 
 
@@ -72,15 +67,30 @@ angular.module('core').factory('Menus', ['$state','$location',
             };
         };
 
-        service.genNodeMenus=function(name,icon,route){
-            var newMenus={};
-            newMenus.name=name;
-            newMenus.icon=icon;
-            newMenus.route=route;
+        service.genNodeMenus=function(newMenus){
             return {
                 menu:newMenus,
                 genNodeMenus:service.genNodeMenus
             };
+        };
+
+        service.getMenusByRoute = function(route){
+            for(var index = 0 ; index<items.length ; index++){
+                var menu = items[index];
+                if(typeof menu.route !== 'undefined'){
+                    if(menu.route === route){
+                        return menu;
+                    }
+                }else if(typeof menu.items !== 'undefined'){
+                    for(var i = 0 ; i< menu.items.length ; i++){
+                        var node_menu = menu.items[i];
+                        if(node_menu.route === route ){
+                            return node_menu;
+                        }
+                    }
+                }
+            }
+            return null;
         };
 
         return service;

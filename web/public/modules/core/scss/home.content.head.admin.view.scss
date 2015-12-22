@@ -1,0 +1,20 @@
+@import "home.env.admin.view";
+
+
+
+/**
+ * 	内容头部标题
+ */
+.ce-content-head{
+  background: $ce-content-head-background;
+  margin:-20px -20px 20px -20px;
+  border-bottom: 1px solid #dee5e7;
+  padding: 20px;
+  h1{
+    font-size:$ce-content-head-font-size;
+  }
+  .subtitle{
+    color:$ce-content-head-subTitle-font-color;
+    font-size:$ce-content-head-subTitle-font-size;
+  }
+}

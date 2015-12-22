@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','DemoService','ceConfig',
-function ($scope, $uibModal, $log,DemoService,ceConfig){
+angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig',
+function ($scope, $uibModal, $log,$translate,DemoService,ceConfig){
 
     $scope.onSearch = function(e){
         $log.log(123);
@@ -20,6 +20,7 @@ function ($scope, $uibModal, $log,DemoService,ceConfig){
     });
 
     $scope.gridOptions = {
+        gridMenuTitleFilter: $translate,
         data:'demoData.data.content',//就是页面的$scope.demoData
         paginationPageSizes: [10, 20, 50],//每页显示多少
         paginationPageSize: 10,//当前显示多少页

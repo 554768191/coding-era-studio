@@ -8,14 +8,13 @@
 .ce-content{
   position: relative;
   .content{
-    padding:20px 20px 20px 260px;
-    // width:~"-webkit-calc(100% - 240px)";
+    padding:20px 20px 20px $ce-menu-width + 20;
     .ce-windows{
       background:#fff;
       min-height:120px;
       border:1px solid $ce-border-color;
       margin-bottom:20px;
-      @include ce-box-shadow();
+      @include ce-global-box-shadow();
     }
     .ce-windows-title{
       background:#fafafa;

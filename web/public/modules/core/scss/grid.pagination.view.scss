@@ -7,7 +7,8 @@
   left:0;
   width:100%;
   background:$ce-grid-pagination-background;
-  @include ce-border-radius(0 0 2px 2px);
+  border-top: 1px solid #ddd;
+  @include ce-border-radius(0 0 4px 4px);
   .pagination{
     margin:5px 0;
   }

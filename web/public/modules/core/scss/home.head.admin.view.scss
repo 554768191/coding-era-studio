@@ -10,7 +10,9 @@
   height:$height;
   background-color:#fff;
   border-bottom:$ce-border-color;
-  box-shadow: 15px 15px 10px -15px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+  @include ce-global-box-shadow();
   &-content{
     width:100%;
     line-height:$height;
@@ -19,9 +21,9 @@
     float:left;
     width:$ce-menu-width;
     background-color: $ce-dark-color;
+    padding-left:65px;
     a{
       line-height:$height;
-      margin-left:15px;
       color:$ce-logo-font-color;
     }
     .logo{
@@ -29,9 +31,9 @@
       height: $size;
       width: $size;
       display: inline-block;
-      position: relative;
-      margin-right: 4px;
-      top:10px;
+      position: absolute;
+      top:8px;
+      left:26px;
       background-image: url($ce-logo-path);
       background-size: $size;
       img{
