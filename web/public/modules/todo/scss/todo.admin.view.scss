@@ -1,0 +1,24 @@
+@import "../../core/scss/home.env.admin.view";
+
+/**
+ * 	菜单样式
+ */
+
+.ce-todo {
+  .task-title {
+    width: 80%;
+    height: 35px;
+    overflow: hidden;
+    word-wrap: break-word;
+    resize: none;
+
+    border: none;
+
+    box-shadow: none;
+    background: #F7F6F2;
+    &:focus{
+      outline: none;
+      outline: 0;
+    }
+  }
+}

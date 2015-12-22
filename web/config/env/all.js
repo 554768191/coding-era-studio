@@ -49,6 +49,7 @@ module.exports = {
 			],
 			js: [
 				'public/components/angular/angular.js',
+				'public/components/angular-i18n/angular-locale_zh-cn.js',
 				'public/components/angular-resource/angular-resource.js',
 				'public/components/angular-animate/angular-animate.js',
 				'public/components/angular-ui-router/release/angular-ui-router.js',

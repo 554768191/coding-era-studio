@@ -22,6 +22,7 @@
   "dependencies": {
     "bootstrap": "~3",
     "angular": "~1.4",
+    "angular-i18n": "~1.4",
     "angular-resource": "~1.4",
     "angular-animate": "~1.4",
     "angular-mocks": "~1.4",
