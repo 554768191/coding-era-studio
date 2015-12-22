@@ -12,19 +12,24 @@
   border-bottom:$ce-border-color;
   position: relative;
   z-index: 1;
-  @include ce-global-box-shadow();
   &-content{
     width:100%;
     line-height:$height;
   }
   &-logo{
-    float:left;
+    position: absolute;
+    left:0;
+    top:0;
     width:$ce-menu-width;
     background-color: $ce-dark-color;
-    padding-left:65px;
     a{
       line-height:$height;
       color:$ce-logo-font-color;
+      display: block;
+      position: relative;
+      width:$ce-menu-width;
+      height:$height;
+      padding-left:65px;
     }
     .logo{
       $size:$ce-logo-size;
@@ -47,6 +52,8 @@
     float:left;
     // border-left:1px solid $ce-border-color;
     height:$height;
+    width:100%;
+    @include ce-global-box-shadow();
   }
 
 }

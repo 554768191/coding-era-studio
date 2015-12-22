@@ -3,8 +3,8 @@
  */
 "use strict";
 
-angular.module('core').directive('ceMenu', ['$window',
-    function($window) {
+angular.module('core').directive('ceMenu', ['$window','Menus',
+    function($window,Menus) {
         var menu={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/menu.admin.template.html',
@@ -32,6 +32,13 @@ angular.module('core').directive('ceMenu', ['$window',
                 });
                 angular.element($window).bind('scroll', function() {
                     scope.onResize();
+                });
+
+                scope.$on('$stateChangeSuccess', function( event, toState, toParams, fromState ) {
+                    event.targetScope.$watch('$viewContentLoaded', function(){
+                        //展开当前菜单
+                        Menus.expandMenuByRoute(toState.name);
+                    });
                 });
             }
         };

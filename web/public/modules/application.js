@@ -2,29 +2,19 @@
 var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
 //i18n - 国际化配置
-ceApp.run(function ($rootScope, $translate,Menus,ContentHead) {
-
+ceApp.run(function ($rootScope, $translate) {
 	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
 		$translate.refresh();
 	});
-	//添加导航标题
-	$rootScope.$on('$stateChangeSuccess',
-			function(event, toState, toParams, fromState, fromParams){
-				//展开菜单
-				Menus.expandMenuByRoute(toState.name);
-
-				//这是内容标题
-				ContentHead.autoRefreshTitle(toState.name);
-
-			});
 }).config(['$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider',
 	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider) {
 		// Setting HTML5 Location Mode
-
 		$locationProvider.hashPrefix('!');
 		$translateProvider.useLoader('$translatePartialLoader', {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});
+		//拦截ajax请求事件
+		$httpProvider.interceptors.push('ceInterceptor');
 		$translatePartialLoaderProvider.addPart('core');
 		$translateProvider.preferredLanguage('zh-cn');
 		$translateProvider.useSanitizeValueStrategy('escaped');
@@ -49,13 +39,14 @@ angular.element(document).ready(function() {
 			(window.location.href.length - window.location.origin.length) === 2) {
 			window.location.href = window.location.origin + '/#!';
 	}
-
 	//Then init the app
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
 
 //项目配置项
 ceApp.constant('ceConfig', {
+	//接口路径
 	apiUrl: "http://localhost:8999/api",
+	//grid翻页器公用模板
 	paginationTemplate:'modules/core/views/templates/pagination.admin.template.html'
 });
