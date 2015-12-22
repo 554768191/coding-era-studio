@@ -6,9 +6,13 @@ angular.module('todo').run(['Menus',
     function (Menus) {
         // Menus.addMenus();
         var parentMenus = Menus.genParentMenus('JASON', 'check');
-        var node_demo = Menus.genNodeMenus('TODO', 'tasks', 'todo');
+        var jason1 = Menus.genNodeMenus('TODO', 'tasks', 'todo');
+        var jason2 = Menus.genNodeMenus('GitHub Search', 'search', 'search');
+        var jason3 = Menus.genNodeMenus('计时器', 'apple', 'timer');
         parentMenus.setOrder(99);
-        parentMenus.addNodeMenus(node_demo);
+        parentMenus.addNodeMenus(jason1);
+        parentMenus.addNodeMenus(jason2);
+        parentMenus.addNodeMenus(jason3);
         Menus.addMenus(parentMenus.getMenus());
     }
 ]);
