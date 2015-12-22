@@ -2,8 +2,8 @@
  * Created by Yan on 15/12/3.
  */
 "use strict";
-angular.module('core').factory('Menus', ['$state','$location',
-    function($state,$location) {
+angular.module('core').factory('Menus', [
+    function() {
         var items=[];
         var service={};
 
@@ -15,39 +15,12 @@ angular.module('core').factory('Menus', ['$state','$location',
             items.splice(items.length,0,_items);
         };
 
+        //生成主菜单(父级菜单)
         service.genParentMenus=function(newMenus){
-            var isShow = null;
-
-            var setShow = function(flag){
-                if(isShow ===  null){
-                    isShow = flag;
-                }
-                return isShow;
-            };
-            //以前写法,暂不清楚干什么的 注释在2015-11-07
-            if(angular.isUndefined(newMenus.route)){
-                newMenus.show=false;
-            }else{
-                var state = $state.get(newMenus.route);
-                if($location.$$path === state.url){
-                    newMenus.show=setShow(true);
-                }else {
-                    newMenus.show =setShow(false);
-                }
-            }
-
-
 
             var _addNodeMenus=function(genNodeMenus){
                 if(angular.isUndefined(newMenus.items)){
                     newMenus.items=[];
-                }
-                var node_routeName = genNodeMenus.menu.route;
-                var node_state = $state.get(node_routeName);
-                if($location.$$path === node_state.url){
-                    newMenus.show=setShow(true);
-                }else {
-                    newMenus.show = setShow(false);
                 }
                 newMenus.items.splice(newMenus.items.length,0,genNodeMenus.menu);
             };
@@ -67,6 +40,7 @@ angular.module('core').factory('Menus', ['$state','$location',
             };
         };
 
+        //生成子菜单
         service.genNodeMenus=function(newMenus){
             return {
                 menu:newMenus,
@@ -74,6 +48,7 @@ angular.module('core').factory('Menus', ['$state','$location',
             };
         };
 
+        //根据route获取当前菜单
         service.getMenusByRoute = function(route){
             for(var index = 0 ; index<items.length ; index++){
                 var menu = items[index];
@@ -91,6 +66,24 @@ angular.module('core').factory('Menus', ['$state','$location',
                 }
             }
             return null;
+        };
+
+        service.expandMenuByRoute = function(route){
+            for(var index = 0 ; index<items.length ; index++){
+                var menu = items[index];
+                if(typeof menu.route !== 'undefined'){
+                    if(menu.route === route){
+                        menu.show = true;
+                    }
+                }else if(typeof menu.items !== 'undefined'){
+                    for(var i = 0 ; i< menu.items.length ; i++){
+                        var node_menu = menu.items[i];
+                        if(node_menu.route === route ){
+                            menu.show = true;
+                        }
+                    }
+                }
+            }
         };
 
         return service;

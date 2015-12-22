@@ -10,6 +10,10 @@ ceApp.run(function ($rootScope, $translate,Menus,ContentHead) {
 	//添加导航标题
 	$rootScope.$on('$stateChangeSuccess',
 			function(event, toState, toParams, fromState, fromParams){
+				//展开菜单
+				Menus.expandMenuByRoute(toState.name);
+
+				//这是内容标题
 				ContentHead.autoRefreshTitle(toState.name);
 
 			});
