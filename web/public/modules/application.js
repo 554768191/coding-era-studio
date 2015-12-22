@@ -22,7 +22,7 @@ ceApp.run(function ($rootScope, $translate,Menus,ContentHead) {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});
 		$translatePartialLoaderProvider.addPart('core');
-		$translateProvider.preferredLanguage('zn-cn');
+		$translateProvider.preferredLanguage('zh-cn');
 		$translateProvider.useSanitizeValueStrategy('escaped');
 	}]);
 
