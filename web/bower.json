@@ -33,7 +33,8 @@
     "angular-translate": "~2.8.1",
     "angular-translate-loader-static-files": "~2.8.1",
     "angular-translate-loader-partial": "~2.8.1",
-    "angular-ui-grid": "~3.0.7"
+    "angular-ui-grid": "~3.0.7",
+    "google-code-prettify": "~1.0.4"
   },
   "resolutions": {
     "angular": "~1.4"

@@ -10,10 +10,10 @@ angular.module('demo').config(['$stateProvider',
                     templateUrl: 'modules/demo/views/demo.admin.view.html',
                     controller:'demoCtrl'
                 })
-                .state('demo2', {
-                    url: '/demo2',
-                    templateUrl: 'modules/demo/views/demo.admin.view.html',
-                    controller:'demoCtrl'
+                .state('widget', {
+                    url: '/widget',
+                    templateUrl: 'modules/demo/views/demo.widget.admin.view.html',
+                    controller:'widgetCtrl'
                 });
 
 

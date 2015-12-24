@@ -45,7 +45,8 @@ module.exports = {
 			css: [
 				'public/components/bootstrap/dist/css/bootstrap.css',
 				//'public/components/bootstrap/dist/css/bootstrap-theme.css',
-				'public/components/angular-ui-grid/ui-grid.css'
+				'public/components/angular-ui-grid/ui-grid.css',
+				'public/components/google-code-prettify/src/prettify.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -58,7 +59,8 @@ module.exports = {
 				'public/components/angular-translate/angular-translate.js',
 				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
 				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js',
-				'public/components/angular-ui-grid/ui-grid.js'
+				'public/components/angular-ui-grid/ui-grid.js',
+				'public/components/google-code-prettify/src/prettify.js'
 				//'public/components/jquery/dist/jquery.js'
 			]
 		},
