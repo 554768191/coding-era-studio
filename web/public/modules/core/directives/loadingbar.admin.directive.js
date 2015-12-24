@@ -31,11 +31,7 @@ angular.module('core')
                 };
 
                 $scope.$watchCollection('urls',function(newValue,oldValue){
-                   if($scope.urls.length === 0){
-                       $scope.show = false;
-                   }else{
-                       $scope.show = true;
-                   }
+                    $scope.show = ($scope.urls.length !== 0);
                 });
             },
             link: function(scope, el, attrs) {

@@ -47,7 +47,7 @@ angular.module('todo').controller('timerCtrl', ['$scope', '$interval', "$timeout
                 } else {
                     $scope.stopFight();
                 }
-            }, 1000);
+            }, 100);
         };
         $scope.stopFight = function () {
             if (angular.isDefined(stop)) {
@@ -67,5 +67,13 @@ angular.module('todo').controller('timerCtrl', ['$scope', '$interval', "$timeout
         });
 
 
+        //TEST data list
+        $scope.testa = "test1";
+        $scope.testb = "test2";
+        $scope.testc = "test3";
+        $scope.testd = "test4";
+        $scope.teste = "test5";
+        $scope.testf = "test6";
+        $scope.testg = "test7";
     }]);
 

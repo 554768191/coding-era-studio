@@ -22,6 +22,11 @@ angular.module('todo').config(['$stateProvider','$translatePartialLoaderProvider
                 url: '/timer',
                 templateUrl: 'modules/todo/views/timer.admin.view.html',
                 controller: 'timerCtrl'
+            })
+            .state('directiveKing', {
+                url: '/directiveKing',
+                templateUrl: 'modules/todo/views/directive.king.admin.view.html',
+                controller: 'directiveKingCtrl'
             });
     }
 ]);
