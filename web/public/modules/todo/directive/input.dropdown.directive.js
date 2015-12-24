@@ -9,8 +9,8 @@
 
 angular.module('todo')
     .controller("inputDropdownCtrl",
-        ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$position', '$rootScope', '$timeout', 'uibDropdownService',
-        function ($scope, element, $attrs, $compile, $parse, $document, $position, $rootScope, $timeout, uibDropdownService) {
+        ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$uibPosition', '$rootScope', '$timeout', 'uibDropdownService',
+        function ($scope, element, $attrs, $compile, $parse, $document, $uibPosition, $rootScope, $timeout, uibDropdownService) {
             var that = this;
 
             //关于scope,官方使用了$new(),你们为什么要这么折磨自己,我不懂!但是相信总有一天我会回来和你们唱这首歌的.
@@ -19,7 +19,8 @@ angular.module('todo')
 
             //isOpen状态转换,此方法被ceInputDropdownToggle指令调用
             this.toggle = function (open) {
-                return scope.isOpen = arguments.length ? !!open : !scope.isOpen;
+                scope.isOpen = (arguments.length ? !!open : !scope.isOpen);
+                return scope.isOpen;
             };
 
             //因为$attrs.isOpen可以是表达式,所以要使用$parse得到boolean值scope.isOpen.
@@ -35,7 +36,7 @@ angular.module('todo')
                         //top: pos.top + 'px',
                         display: value ? 'block' : 'none',
                         //$position.position()可以取得指令元素的位置信息,如{width: 906, height: 34, top: 0, left: 36}
-                        width: $position.position(that.dropdownToggle).width + 'px'
+                        width: $uibPosition.position(that.dropdownToggle).width + 'px'
                     };
                     that.dropdownMenu.css(css);
                 }
@@ -90,6 +91,10 @@ angular.module('todo')
             //下拉包裹的元素对象
             scope.getDropdownElement = function () {
                 return that.dropdownMenu;
+            };
+
+            scope.isKeynavEnabled = function() {
+                return false;
             };
 
         }])

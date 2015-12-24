@@ -3,11 +3,6 @@
 angular.module('todo').controller('todoCtrl', ['$scope', '$uibModal', '$log', 'TodoService', 'TodoCustomService', 'uibDatepickerPopupConfig',
     function ($scope, $uibModal, $log, TodoService, TodoCustomService, uibDatepickerPopupConfig) {
 
-        $scope.inputIsOpen = false;
-        //$scope.inputOpen = function(){
-        //    $scope.inputIsOpen = true;
-        //};
-
         $scope.isCollapsed = true;
         $scope.showCollapsed = function(){
             console.log('Jason test showCollapsed', 1);

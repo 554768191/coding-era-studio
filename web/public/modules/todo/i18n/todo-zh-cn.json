@@ -1,7 +1,7 @@
 {
-  "TODO.TASK.ADD.TXT": "添加一个任务(回车完成添加)",
-  "TODO.TASK.ACTION.ADD": "添加",
-  "TODO.TASK.ACTION.CLEAN": "清空",
+  "TASK.ADD.TXT": "添加一个任务(回车完成添加)",
+  "TASK.ACTION.ADD": "添加",
+  "TASK.ACTION.CLEAN": "清空",
   "DEMO.BTN.ADD": "新增",
   "DEMO.GRID.DELETE.TIPS": "是否删除?"
 }
