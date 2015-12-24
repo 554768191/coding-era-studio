@@ -10,7 +10,8 @@ angular.module('todo').directive("ceSelectOnClick", ['$window',
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
-                element.bind('click', function () {
+
+                var selectText = function () {
                     //获取已经选中的text:$window.getSelection()
                     //文本已经处于选中状态不执行
                     if (!$window.getSelection().toString()) {
@@ -18,11 +19,14 @@ angular.module('todo').directive("ceSelectOnClick", ['$window',
                         // Required for mobile Safari
                         this.setSelectionRange(0, this.value.length);
                     }
-                });
+                };
+
+                element.bind('click', selectText);
 
                 element.on('$destroy', function () {
-                    element.unbind('click');
+                    element.unbind('click', selectText);
                 });
+
             }
         };
     }]);
