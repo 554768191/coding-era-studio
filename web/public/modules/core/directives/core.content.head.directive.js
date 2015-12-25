@@ -7,7 +7,7 @@ angular.module('core').directive('ceContentHead', ['$window','ContentHead',
     function($window,ContentHead) {
         var service={
             restrict:'EA',
-            templateUrl:'modules/core/views/templates/content.head.admin.template.html',
+            templateUrl:'modules/core/views/templates/core.content.head.template.html',
             scope:true,
             controller:function($scope,ContentHead) {
                 $scope.title = ContentHead.getTitle();

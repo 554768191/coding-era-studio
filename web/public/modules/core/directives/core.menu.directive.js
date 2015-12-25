@@ -7,7 +7,7 @@ angular.module('core').directive('ceMenu', ['$window','Menus',
     function($window,Menus) {
         var menu={
             restrict:'EA',
-            templateUrl:'modules/core/views/templates/menu.admin.template.html',
+            templateUrl:'modules/core/views/templates/core.menu.template.html',
             replace:true,
             controller:function($scope, $log,Menus) {
                 $scope.items=Menus.getMenus();

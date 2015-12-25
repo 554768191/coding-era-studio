@@ -7,12 +7,12 @@ angular.module('demo').config(['$stateProvider',
             $stateProvider
                 .state('demo', {
                     url: '/demo',
-                    templateUrl: 'modules/demo/views/demo.admin.view.html',
+                    templateUrl: 'modules/demo/views/demo.view.html',
                     controller:'demoCtrl'
                 })
                 .state('widget', {
                     url: '/widget',
-                    templateUrl: 'modules/demo/views/demo.widget.admin.view.html',
+                    templateUrl: 'modules/demo/views/demo.widget.panel.view.html',
                     controller:'widgetCtrl'
                 });
 

@@ -7,7 +7,7 @@ angular.module('core')
     .directive('ceLoadingBar', ['LoadingBar', function(LoadingBar) {
         return {
             restrict: 'EA',
-            templateUrl:'modules/core/views/templates/loadingbar.admin.template.html',
+            templateUrl:'modules/core/views/templates/core.loadingbar.template.html',
 
             controller:function($scope){
                 $scope.urls = [];

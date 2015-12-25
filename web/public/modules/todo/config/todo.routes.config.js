@@ -10,22 +10,22 @@ angular.module('todo').config(['$stateProvider','$translatePartialLoaderProvider
         $stateProvider
             .state('todo', {
                 url: '/todo',
-                templateUrl: 'modules/todo/views/todo.admin.view.html',
+                templateUrl: 'modules/todo/views/todo.view.html',
                 controller: 'todoCtrl'
             })
             .state('search', {
                 url: '/search',
-                templateUrl: 'modules/todo/views/search.admin.view.html',
+                templateUrl: 'modules/todo/views/todo.search.view.html',
                 controller: 'searchCtrl'
             })
             .state('timer', {
                 url: '/timer',
-                templateUrl: 'modules/todo/views/timer.admin.view.html',
+                templateUrl: 'modules/todo/views/todo.timer.view.html',
                 controller: 'timerCtrl'
             })
             .state('directiveKing', {
                 url: '/directiveKing',
-                templateUrl: 'modules/todo/views/directive.king.admin.view.html',
+                templateUrl: 'modules/todo/views/todo.directive.king.view.html',
                 controller: 'directiveKingCtrl'
             });
     }
