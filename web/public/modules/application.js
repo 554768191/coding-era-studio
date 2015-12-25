@@ -48,5 +48,5 @@ ceApp.constant('ceConfig', {
 	//接口路径
 	apiUrl: "http://localhost:8999/api",
 	//grid翻页器公用模板
-	paginationTemplate:'modules/core/views/templates/pagination.admin.template.html'
+	paginationTemplate:'modules/core/views/templates/core.pagination.template.html'
 });
