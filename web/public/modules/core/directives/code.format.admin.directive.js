@@ -4,18 +4,34 @@
 
 "use strict";
 
-angular.module('core').directive("code",
+angular.module('core').directive("ceCode",
     function() {
         return {
             restrict: "E",
             terminal: !0,
+            replace:true,
             compile: function(e) {
-                var t = e.hasClass("linenum"),
-                    n = /lang-(\S+)/.exec(e[0].className),
-                    r = n && n[1],
-                    a = e.html();
-                console.log(a);
-                e.html(window.prettyPrintOne(a, r, t));
+                var htmlEsc = function(string){
+                    var htmlEscapes = {
+                        '&' : '&amp;',
+                        '<' : '&lt;',
+                        '>' : '&gt;',
+                        '"' : '&quot;',
+                        "'" : '&#x27;',
+                        '/' : '&#x2F;'
+                    };
+
+                    var htmlEscaper = /[&<>"'\/]/g;
+                    return ('' + string).replace(htmlEscaper, function(match) {
+                        return htmlEscapes[match];
+                    });
+                };
+
+
+                var html = htmlEsc(e.html()).trim();
+                var content ='<pre class="ce-code">'+ window.prettyPrintOne(html, 'HTML', true) + '</pre>';
+               // var content = window.prettyPrintOne(html,'html', 1) ;
+                e.html(content);
             }
         };
     });

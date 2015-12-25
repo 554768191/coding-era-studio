@@ -1,4 +1,4 @@
-@import "home.env.admin.view";
+@import "core.env";
 
 /*
  *	Explain:		重定义浏览器默认样式
@@ -75,4 +75,11 @@ a,.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
   }
   margin-bottom:20px;
 }
-
+code{
+  padding:0;
+}
+.ce-code{
+  margin:0;
+  border:0;
+  padding:0;
+}
