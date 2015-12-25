@@ -31,6 +31,12 @@ a,.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
   @include ce-user-select(none);
 }
 
+//去掉bootstrap默认的padding-left/right的15px
+.container-fluid {
+   padding-right: 0;
+   padding-left: 0;
+}
+
 
 .pace-inactive {
   display: none;
