@@ -8,7 +8,7 @@ html{height:100%;}
 body{ background-color: $ce-content-background-color;height:100%;}
 body, input, button, select, textarea { font-size: $ce-font-size; font-family:"微软雅黑","Microsoft Yahei","宋体",Tahoma,'Simsun',Arial,Helvetica,sans-serif; color: #515151; }
 textarea { resize: none; }
-body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
+body, ul, ol, li, dl, dd, p, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
 caption, th { text-align: left; font-weight: 400; }
 ul li, .xl li { list-style: none; }
 em, cite, i { font-style: normal; }
