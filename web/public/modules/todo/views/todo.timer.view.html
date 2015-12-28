@@ -31,14 +31,19 @@
         <div class="panel-heading">
             当前时间指令
         </div>
-        <div class="panel-body">
-            <label class="control-label">日期格式: </label>
-            <input class="form-control" ng-model="format">
-            <code>
-                Current time is: <span my-current-time="format"></span>
-            </code>
+        <div class="panel-body form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">日期格式:</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="format">
+                    <code>
+                        Current time is: <span my-current-time="format"></span>
+                    </code>
+                </div>
+            </div>
         </div>
+
     </div>
 
 </div>
-

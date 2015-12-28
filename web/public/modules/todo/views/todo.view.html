@@ -1,7 +1,7 @@
 <div ng-controller="todoCtrl" class="ce-todo">
 
     <div class="row" style="margin-bottom: 20px;">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <button type="button" class="btn btn-primary" add-task-button>Add task (service)</button>
             <button type="button" class="btn btn-primary" ng-click="addTask()">Add task (controller)</button>
             <button type="button" class="btn btn-primary" ng-click="cleanTask()">Clean task (controller)</button>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
 
             <!--<div class="form-group has-feedback">-->
             <!--<div class="input-group">-->
@@ -23,7 +23,7 @@
             <div class="input-group">
                 <div class="input-group-btn">
                     <span class="btn btn-default" uib-datepicker-popup
-                          ng-model="task.date" is-open="status.opened" ng-click="open()">
+                          ng-model="task.date" is-open="opened['add']" ce-date-toggle="'add'">
                         <span class="glyphicon glyphicon-calendar" ng-if="!task.date"></span>
                         {{ task.date | date:'yyyy年MM月dd日' }}
                     </span>
@@ -45,38 +45,32 @@
                 <!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
 
 
-                <!--<input type="text" class="form-control" aria-label="..."
-                   placeholder="{{'TASK.ADD.TXT' | translate}}"
-                   popover-placement="bottom" uib-popover-template="dynamicPopover.templateUrl" popover-title="添加描述">-->
-                <div ce-input-dropdown is-open="false" auto-close="outsideClick" >
+                <!--<input type="text" class="form-control" aria-label="..." placeholder="{{'TASK.ADD.TXT' | translate}}"-->
+                   <!--popover-placement="bottom" uib-popover-template="dynamicPopover.templateUrl" popover-title="添加描述">-->
+                <div ce-input-dropdown is-open="false" auto-close="outsideClick" class="task-dropdown">
                     <input type="text" class="form-control" aria-label="..."
                            placeholder="{{'TASK.ADD.TXT' | translate}}"
                            ce-input-dropdown-toggle
                            ng-keyup="$event.keyCode == 13 && addTask()"
-                           ng-model="task.title"><!--/标题-->
-                    <div class="panel panel-default" style="position: absolute;z-index: 999;margin-top: 34px;" ce-input-dropdown-view>
-                        <div class="panel-body" style="padding: 0;">
+                           ng-model="task.title"><!--/title dropdown-->
+                    <div class="panel panel-default" ce-input-dropdown-view>
+                        <div class="panel-body">
                             <textarea class="form-control" rows="3" data-ng-model="task.content" placeholder="很多描述..."></textarea>
                         </div>
                         <div class="panel-footer">
                             <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" popover-placement="bottom" uib-popover="这都不懂?!">
-                                    <span class="glyphicon glyphicon-question-sign"></span></a>
-                            </div>
-                            <div class="col-lg-6 text-right">
-                                <!--<a href="#"><span class="glyphicon glyphicon-eye-open"></span></a>-->
-                                <!--<a href="#"><span class="glyphicon glyphicon-leaf"></span></a>-->
-                                <!--<a href="#"><span class="glyphicon glyphicon-picture"></span></a>-->
-                                <div class="m-t-sm">
-                                    <a href="" class="text-muted m-xs"><span class="glyphicon glyphicon-eye-open"></span>2</a>
-                                    <a href="" class="text-muted m-xs"><span class="glyphicon glyphicon-leaf"></span>1</a>
-                                    <a href="" class="text-muted m-xs"><span class="glyphicon glyphicon-picture"></span>fuvk</a>
+                                <div class="col-md-6">
+                                    <a href="" tooltip-placement="bottom" uib-tooltip="这都不懂?!"><span class="glyphicon glyphicon-question-sign"></span></a>
+                                    <a href=""><span class="glyphicon glyphicon-question-sign"></span></a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href=""><span class="glyphicon glyphicon-eye-open"></span></a>
+                                    <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
+                                    <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                    </div><!--/panel div-->
+                    </div><!--/title panel div-->
                 </div><!--/title div-->
 
                 <div class="input-group-btn">
@@ -89,17 +83,17 @@
                 </div>
 
             </div><!-- /input-group -->
-        </div><!-- /.col-lg-12 -->
+        </div><!-- /.col-md-12 -->
     </div><!-- /.row --><!--/demo2-->
 
     <script type="text/ng-template" id="myPopoverTemplate.html">
         <textarea class="form-control" rows="5" cols="1000" data-ng-model="dynamicPopover.content"></textarea>
         <div class="row">
-            <div class="col-lg-6 input-lg">
+            <div class="col-md-6 input-lg">
                 <a href="#" popover-placement="bottom" uib-popover="这都不懂?!"><span
                         class="glyphicon glyphicon-question-sign"></span></a>
             </div>
-            <div class="col-lg-6 input-lg text-right">
+            <div class="col-md-6 input-lg text-right">
                 <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
@@ -108,31 +102,36 @@
     </script><!--/template-->
 
     <div class="row" style="margin-top: 20px;">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="task in tasks">
+                <div class="list-group-item" ng-class="taskClass(task)" ng-repeat="task in tasks">
                     <div class="pull-right">
                         <span class="thumbnail">
-                            <!--<img src="../img/mini-logo.png"/>-->
+                            <img ng-src="../img/mini-logo.png"/>
                         </span>
                     </div>
                     <h4 class="list-group-item-heading">
                         <div class="form-inline">
                             <div class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" ng-click="toggleTaskStatus(task);">
+                                <textarea class="form-control task-title" ng-bind="task.title" data-ng-disabled="task.status" ce-enter="addTask(task, $event)"></textarea>
                             </div>
-                            <textarea class="form-control task-title" ng-bind="task.title"></textarea>
                         </div>
                     </h4>
                     <p class="btn-group-sm list-group-item-text text-danger">
-                        <label class="badge">{{ task.date | date:'yyyy-MM-dd' }}</label>
+                        <!--<input type="text" class="form-control" ng-model="task.date" name="date" bs-datepicker autoclose="true">-->
+                        <!--<label data-ng-model="task.date" bs-datepicker data-autoclose="true" data-trigger="click" ce-bs-datepicker >-->
+                        <label data-ng-model="task.date" uib-datepicker-popup  ce-date-toggle="$index" is-open="opened[$index]">
+                            <label class="badge">{{ task.date | date:'yyyy-MM-dd' }}</label>
+                            <label class="btn" ng-if="!task.date"><span class="glyphicon glyphicon-calendar"></span></label>
+                        </label>
                         <label class="btn"><span class="glyphicon glyphicon-eye-open"></span> 详情</label>
                         <label class="btn"><span class="glyphicon glyphicon-leaf"></span> GO</label>
                         <label class="btn"><span class="glyphicon glyphicon-picture"></span> go</label>
                         <label class="btn">人员:{{task.members}}</label>
                         <label class="btn">其他:{{task.content}}</label>
                     </p>
-                </a>
+                </div>
             </div>
         </div>
     </div><!--/Tasks List-->

@@ -14,13 +14,9 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$uibModal', '$log', 'T
         };
 
         //Date
-        $scope.status = {
-            opened: false
-        };
-        $scope.open = function($event) {
-            $scope.status.opened = !$scope.status.opened;
-        };
-        // TRANSLATION 日期空间国际化临时解决方案
+        //定义数组,控制多个日期控件显示状态
+        $scope.opened = [];
+        //TRANSLATION 日期空间国际化临时解决方案
         uibDatepickerPopupConfig.currentText = '今天';
         uibDatepickerPopupConfig.clearText = '清空';
         uibDatepickerPopupConfig.closeText = '确定';
@@ -35,7 +31,10 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$uibModal', '$log', 'T
         //Task
         $scope.task = TodoCustomService.createTask();
 
-        $scope.addTask = function () {
+        $scope.addTask = function (task, event) {
+            if (event) {
+                event.preventDefault();
+            }
             TodoCustomService.addTask($scope.task);
             $scope.task = TodoCustomService.createTask();
         };
@@ -43,6 +42,12 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$uibModal', '$log', 'T
             //$scope.tasks = [];
             //TodoCustomService.tasks.length = 0;
             $scope.tasks.length = 0;
+        };
+        $scope.taskClass = function(task){
+            return task.status === true ? "task-done" : "";
+        };
+        $scope.toggleTaskStatus = function(task){
+            TodoCustomService.toggleTaskStatus(task);
         };
 
         /**

@@ -16,12 +16,17 @@ angular.module('todo').factory('TodoCustomService', ['$rootScope',
             },
             createTask: function () {
                 var task = {
+                    id:null,
                     title:"",
                     members:"Jason",
                     content:"",
-                    date:null
+                    date:null,
+                    status:false
                 };
                 return task;
+            },
+            toggleTaskStatus: function (task) {
+                task.status = !task.status;
             }
         };
         return service;
