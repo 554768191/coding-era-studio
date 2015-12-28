@@ -15,6 +15,14 @@ ceApp.run(function ($rootScope, $translate) {
 		});
 		//拦截ajax请求事件
 		$httpProvider.interceptors.push('ceInterceptor');
+		//解决post跨域问题
+		console.log($httpProvider.defaults);
+		//$httpProvider.defaults.headers.post['Access-Control-Allow-Headers'] ='x-requested-with';
+		//$httpProvider.defaults.headers.post['Access-Control-Allow-Methods'] ='POST, GET, OPTIONS, DELETE';
+		//$httpProvider.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
+		//$httpProvider.defaults.headers.post['Content-Type'] = 'application/from-data';
+		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
 		$translatePartialLoaderProvider.addPart('core');
 		$translateProvider.preferredLanguage('zh-cn');
 		$translateProvider.useSanitizeValueStrategy('escaped');

@@ -2,7 +2,9 @@
  * Created by Yan on 15/12/3.
  */
 'use strict';
-angular.module('demo').run(['Menus',
+angular.module('demo')
+    .value('path','modules/demo')
+    .run(['Menus',
     function(Menus) {
         //DEMO
         var demoMenu=Menus.genParentMenus({name:'Super Example',icon:'comment'});

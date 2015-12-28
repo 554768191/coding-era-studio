@@ -1,24 +1,65 @@
 'use strict';
 
-angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig',
-function ($scope, $uibModal, $log,$translate,DemoService,ceConfig){
+angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig','path',
+function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path){
 
-    $scope.onSearch = function(e){
-        $log.log(123);
-       // $log.log(CeConfig);
-    };
+    $scope.demoData = {};
 
-    var paginationOptions = {
+    $scope.keyWord = '';
+
+    //分页参数
+    var searchOptions = {
         page: 0,//当前页
         size: 10,//每页大小
         sort: null //排序(没做!!!!)
     };
 
-    $scope.demoData = DemoService.query(paginationOptions,function(res){
-        //暂时只知道..这里才能正确告诉gridOptions多少页
-        $scope.gridOptions.totalItems = res.data.totalPages;
+    $scope.onCreateClick = function(){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: path+'/views/demo.edit.view.html',
+            controller: 'demoEditCtrl',
+            resolve: {
+
+            }
+        });
+
+        //点击确定返回
+        modalInstance.result.then(function (test) {
+            $log.log(test);
+        }, function () {//点击取消按钮返回事件(可以不定义,经过过百万次测试,没问题)
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+
+
+    //搜索
+    $scope.onSearch = function(){
+        $scope.demoData = DemoService.query(searchOptions,function(res){
+            //暂时只知道..这里才能正确告诉gridOptions多少页
+            $scope.gridOptions.totalItems = res.data.totalElements;
+        });
+    };
+    //加载时默认搜索一次
+    $scope.onSearch();
+
+
+    //搜索按钮点击
+    $scope.onSearchClick = function(){
+        searchOptions.page = 0;//默认-1,我们service从0页开始,看看springMvc能不能配置吧
+        $scope.onSearch();
+    };
+
+
+    //监视keyWord值改变
+    $scope.$watch('keyWord',function(){
+        searchOptions.keyWord = $scope.keyWord;
     });
 
+
+
+    //grid配置
     $scope.gridOptions = {
         gridMenuTitleFilter: $translate,
         data:'demoData.data.content',//就是页面的$scope.demoData
@@ -34,10 +75,11 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig){
         onRegisterApi: function(gridApi) {
             //分页发生改变
             gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
-                paginationOptions.page = newPage - 1;//默认-1,我们service从0页开始,看看springMvc能不能配置吧
-                paginationOptions.size = pageSize;
+                searchOptions.page = newPage - 1;//默认-1,我们service从0页开始,看看springMvc能不能配置吧
+                searchOptions.size = pageSize;
                 //重新查询demoData数据
-                $scope.demoData=DemoService.query(paginationOptions);
+                //$scope.demoData=DemoService.query(searchOptions);
+                $scope.onSearch();
             });
         }
     };

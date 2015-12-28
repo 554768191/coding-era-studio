@@ -1,27 +1,26 @@
 
-<div class="ce-tool-bar">
-    <div class="input-group col-sm-offset-8 col-sm-4">
-
-        <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
-        <div class="input-group-btn" uib-dropdown>
-            <button type="button" class="btn btn-info" ng-click="onSearch()"  ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            <button type="button" class="btn btn-info" uib-dropdown-toggle aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">{{'SYSTEM.APP.BTN.QUERY.MORE'| translate }}</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a ng-click="addDemo()">{{'SYSTEM.APP.BTN.QUERY.ADVANCED' | translate }}</a></li>
-            </ul>
+<div class="ce-tool-bar row">
+    <div class="col-sm-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+            <div class="input-group-btn" uib-dropdown>
+                <button type="button" class="btn btn-info" ng-click="onSearchClick()"  ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-info" uib-dropdown-toggle aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">{{'SYSTEM.APP.BTN.QUERY.MORE'| translate }}</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ng-click="addDemo()">{{'SYSTEM.APP.BTN.QUERY.ADVANCED' | translate }}</a></li>
+                </ul>
+            </div>
         </div>
-
-
-
-
-
+    </div>
+    <div class="col-sm-8 text-right">
+        <button type="button" class="btn btn-info" ng-click="onCreateClick()">新增</button>
+        <button type="button" class="btn btn-danger">删除</button>
     </div>
 </div>
 
 
-<div class="ce-grid">
-    <div class="gridStyle" ui-grid="gridOptions" ui-grid-pagination></div>
-</div>
+
+    <div  ui-grid="gridOptions" ui-grid-pagination></div>
