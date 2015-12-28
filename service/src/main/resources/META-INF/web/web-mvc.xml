@@ -48,6 +48,10 @@
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">    
 	    <property name="messageConverters">    
 	        <list>    
+	        	<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter"></bean>
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"></bean>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
 	            <ref bean="mappingJacksonHttpMessageConverter" /><!-- json转换器 -->    
 	        </list>    
 	    </property>

@@ -23,7 +23,8 @@ public class DemoRepositoryImpl implements DemoRepositoryCustom {
 		JpaCriteria s = new JpaCriteria("Demo d");
 		//s.add(CriterionUtils.contains("d.name", criteria.getKeyWord(), true));
 		s.add(new OrCriterion(
-				CriterionUtils.contains("d.name", criteria.getKeyWord(), true)
+				CriterionUtils.contains("d.name", criteria.getKeyWord(), true),
+				CriterionUtils.contains("d.remark", criteria.getKeyWord(), true)
 				)
 		);
 		return JpaQueryUtils.query(em,s, pg);

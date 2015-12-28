@@ -17,7 +17,7 @@ public class DemoServiceImpl implements DemoService {
 	DemoRepository demoRepository;
 	
 	@Override
-	public Demo create(Demo demo) {
+	public Demo save(Demo demo) {
 		
 
 		return demoRepository.save(demo);

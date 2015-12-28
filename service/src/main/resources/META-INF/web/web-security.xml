@@ -12,10 +12,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<http  use-expressions="false" auto-config="false"  entry-point-ref="ceAuthenticationEntryPoint" >
 			<intercept-url pattern="/admin*" access="ROLE_ADMIN,ROLE_USER" />
 			<intercept-url pattern="/*" access="IS_AUTHENTICATED_ANONYMOUSLY"/> 
+			<intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 			<intercept-url pattern="/admin/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/> 
 			<custom-filter position="FORM_LOGIN_FILTER" ref="ajaxLoginFilter"/> 
 			<custom-filter before="LOGOUT_FILTER" ref="customLogoutFilter" /> 
 			<custom-filter  position="REMEMBER_ME_FILTER" ref="rememberMeFilter" />
+			<csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
 		</http>
 		
 		
@@ -93,7 +95,13 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    		
 	    </beans:bean>
 	    
-	    
+	    <beans:bean id="csrfSecurityRequestMatcher" class="com.codingera.common.security.CsrfSecurityRequestMatcher">
+          	<beans:property name="execludeUrls">
+	            <beans:list>
+	                 <beans:value>/api/</beans:value>
+	             </beans:list>
+         	</beans:property>
+    	</beans:bean>
 	    
 		<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />  
 		<authentication-manager alias="authenticationManager">
