@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig','path',
-function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path){
+    'CeUtil',
+function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
 
     $scope.demoData = {};
 
@@ -12,6 +13,21 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path){
         page: 0,//当前页
         size: 10,//每页大小
         sort: null //排序(没做!!!!)
+    };
+
+    //搜索
+    $scope.onSearch = function(){
+        $scope.demoData = DemoService.query(searchOptions,function(res){
+            //暂时只知道..这里才能正确告诉gridOptions多少页
+            $scope.gridOptions.totalItems = res.data.totalElements;
+        });
+    };
+    //加载时默认搜索一次
+    $scope.onSearch();
+
+
+    $scope.onDeletedClick = function(){
+      CeUtil.toast('测试');
     };
 
     $scope.onCreateClick = function(){
@@ -25,8 +41,8 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path){
         });
 
         //点击确定返回
-        modalInstance.result.then(function (test) {
-            $log.log(test);
+        modalInstance.result.then(function () {
+            $scope.onSearch();
         }, function () {//点击取消按钮返回事件(可以不定义,经过过百万次测试,没问题)
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -34,15 +50,7 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path){
 
 
 
-    //搜索
-    $scope.onSearch = function(){
-        $scope.demoData = DemoService.query(searchOptions,function(res){
-            //暂时只知道..这里才能正确告诉gridOptions多少页
-            $scope.gridOptions.totalItems = res.data.totalElements;
-        });
-    };
-    //加载时默认搜索一次
-    $scope.onSearch();
+
 
 
     //搜索按钮点击

@@ -4,15 +4,15 @@
 "use strict";
 
 angular.module('core')
-    .directive('ceLoadingBar', ['LoadingBar', function(LoadingBar) {
+    .directive('ceLoadingBar', ['$rootScope', function($rootScope) {
         return {
             restrict: 'EA',
             templateUrl:'modules/core/views/templates/core.loadingbar.template.html',
-
+            scope:{},
             controller:function($scope){
                 $scope.urls = [];
                 $scope.show = false;
-
+                var time = null;
                 $scope.addUrls = function (url){
                     for(var i=0 ; i < $scope.urls.length ; i++){
                         if($scope.urls[i] === url){
@@ -30,16 +30,29 @@ angular.module('core')
                     }
                 };
 
-                $scope.$watchCollection('urls',function(newValue,oldValue){
-                    $scope.show = ($scope.urls.length !== 0);
+                $scope.$watchCollection('urls',function(){
+                    if($scope.urls.length !== 0){
+                        if(time === null){
+                            time = setTimeout(function(){
+                                $scope.$apply(function(){
+                                    $scope.show = true;
+                                });
+
+                            },250);
+                        }
+                    }else{
+                        clearTimeout(time);
+                        time = null;
+                        $scope.show = false;
+                    }
                 });
             },
             link: function(scope, el, attrs) {
-                scope.$on('startLoading', function(event,url) {
+                $rootScope.$on('startLoading', function(event,url) {
                     scope.addUrls(url);
                 });
 
-                scope.$on('stopLoading', function(event,url) {
+                $rootScope.$on('stopLoading', function(event,url) {
                     scope.removeUrls(url);
                 });
             }
