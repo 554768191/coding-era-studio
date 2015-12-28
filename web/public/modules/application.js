@@ -19,26 +19,36 @@ ceApp.run(function ($rootScope, $translate) {
 		var form_encodes_support = ["post", "put"];
 		angular.forEach(form_encodes_support,
 				function(method) {
-					$httpProvider.defaults.headers[method]["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8"
+					$httpProvider.defaults.headers[method]["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8";
 				});
 		var param = function(obj) {
 			var name, value, fullSubName, subName, subValue, innerObj, i, query = "";
-			for (name in obj) if (value = obj[name], value instanceof Array) for (i = 0; i < value.length; ++i) subValue = value[i],
-					fullSubName = name + "[" + i + "]",
-					innerObj = {},
-					innerObj[fullSubName] = subValue,
+			for (name in obj) if (value = obj[name], value instanceof Array) {
+				for (i = 0; i < value.length; ++i) {
+					subValue = value[i];
+							fullSubName = name + "[" + i + "]";
+							innerObj = {};
+							innerObj[fullSubName] = subValue;
+							query += param(innerObj) + "&";
+				}
+			}
+			else if (value instanceof Object) {
+				for (subName in value) {
+					subValue = value[subName];
+					fullSubName = name + "[" + subName + "]";
+					innerObj = {};
+					innerObj[fullSubName] = subValue;
 					query += param(innerObj) + "&";
-			else if (value instanceof Object) for (subName in value) subValue = value[subName],
-					fullSubName = name + "[" + subName + "]",
-					innerObj = {},
-					innerObj[fullSubName] = subValue,
-					query += param(innerObj) + "&";
-			else void 0 !== value && null !== value && (query += encodeURIComponent(name) + "=" + encodeURIComponent(value) + "&");
-			return query.length ? query.substr(0, query.length - 1) : query
+				}
+			}
+			else if(0 !== value && null !== value){
+				query += encodeURIComponent(name) + "=" + encodeURIComponent(value) + "&";
+			}
+			return query.length ? query.substr(0, query.length - 1) : query;
 		};
 
 		$httpProvider.defaults.transformRequest = [function(data) {
-			return angular.isObject(data) && "[object File]" !== String(data) ? param(data) : data
+			return angular.isObject(data) && "[object File]" !== String(data) ? param(data) : data;
 		}];
 
 		$translatePartialLoaderProvider.addPart('core');

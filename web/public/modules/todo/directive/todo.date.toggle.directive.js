@@ -38,7 +38,6 @@ angular.module('todo')
                         if (!element.hasClass('disabled') && !attrs.disabled) {
                             scope.$apply(function () {
                                 scope.opened[index] = !scope.opened[index];
-                                console.log('Jason test scope.isOpen', scope.opened);
                             });
                         }
                     };
