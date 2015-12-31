@@ -35,7 +35,22 @@
         </property>
 	</bean>
 	
-	
+    <bean id="attachmentManager" class="com.codingera.module.fileUpload.service.FileSystemAttachmentManager">
+		<property name="rootDirectory" value="${staticResourceHostRoot}" />
+		<property name="attachmentPathResolver">
+			<bean class="com.codingera.module.fileUpload.service.DefaultAttachmentPathResolver">
+				<property name="rootPath" value="/attachments/temp" />
+			</bean>
+		</property>
+	</bean>
+	<!-- 用于文件上传  -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"  
+        p:defaultEncoding="UTF-8"  
+        p:maxUploadSize="5400000"  
+        p:uploadTempDir="${staticResourceHostRoot}/temp"  
+     >  
+    </bean>  
+    
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">    
 	    <property name="supportedMediaTypes">    
 	        <list>    
@@ -61,7 +76,7 @@
 		        <bean class="org.springframework.data.repository.support.DomainClassPropertyEditorRegistrar" />
 		      </property>
 		    </bean>
-		  </property>
+		 </property>
 	</bean> 
 	
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">

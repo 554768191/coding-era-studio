@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
-  
+
+
   <properties>
   		<codingera.version>1.0.0</codingera.version>
     	<tomcat-jdbc.version>7.0.53</tomcat-jdbc.version>
@@ -16,8 +16,8 @@
 		<org.aspectj-version>1.6.11</org.aspectj-version>
 		<jetty-version>8.1.0.RC4</jetty-version>
     </properties>
-  
-  
+
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.codingera</groupId>
   <artifactId>codingEra</artifactId>
@@ -26,52 +26,52 @@
   <name>codingEra</name>
   <url>http://www.codingera.com</url>
   <dependencies>
-  
-  
+
+
   	<!-- START spring  -->
-  		<dependency>  
-	        <groupId>org.springframework</groupId>  
-	        <artifactId>spring-context</artifactId> 
-	        <version>${spring.version}</version> 
-	    </dependency> 
-	    <dependency>  
-	        <groupId>org.springframework</groupId>  
-	        <artifactId>spring-context-support</artifactId> 
-	        <version>${spring.version}</version> 
-	    </dependency> 
-    
-    
-    	<dependency>  
-	        <groupId>org.springframework</groupId>  
-	        <artifactId>spring-web</artifactId>  
+  		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-context</artifactId>
 	        <version>${spring.version}</version>
 	    </dependency>
-	    
-	    <dependency>  
-	        <groupId>org.springframework</groupId>  
-	        <artifactId>spring-webmvc</artifactId> 
-	        <version>${spring.version}</version> 
+	    <dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-context-support</artifactId>
+	        <version>${spring.version}</version>
 	    </dependency>
-    
+
+
+    	<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-web</artifactId>
+	        <version>${spring.version}</version>
+	    </dependency>
+
+	    <dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-webmvc</artifactId>
+	        <version>${spring.version}</version>
+	    </dependency>
+
     	<dependency>
 	        <groupId>org.springframework.security</groupId>
 	        <artifactId>spring-security-web</artifactId>
 	        <version>4.0.1.RELEASE</version>
     	</dependency>
-    	
+
     	<dependency>
 	        <groupId>org.springframework.security</groupId>
 	        <artifactId>spring-security-config</artifactId>
 	        <version>4.0.1.RELEASE</version>
     	</dependency>
-    	
+
     	<dependency>
 		  <groupId>org.springframework.data</groupId>
 		  <artifactId>spring-data-jpa</artifactId>
 		  <version>${spring-data-jpa.version}</version>
 		</dependency>
   <!-- END spring  -->
-  
+
   <!-- START spring apo -->
 			<dependency>
 				<groupId>org.aspectj</groupId>
@@ -84,65 +84,65 @@
 				<version>${aspectj.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			
+
 			<dependency>
 			  <groupId>org.apache.geronimo.bundles</groupId>
 			  <artifactId>aspectjweaver</artifactId>
 			  <version>1.6.8_2</version>
 			</dependency>
-	<!-- END    spring apo -->  
-  
-  
+	<!-- END    spring apo -->
+
+
   <!-- START hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
-			<exclusions>  
-                <exclusion>  
-                    <groupId>javax.servlet</groupId>  
-                    <artifactId>servlet-api</artifactId>  
-                </exclusion>  
-            </exclusions>  
+			<exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
-		
+
 		<dependency>
 		  <groupId>org.hibernate</groupId>
 		  <artifactId>hibernate-validator</artifactId>
 		  <version>5.0.3.Final</version>
 		</dependency>
   <!-- END hibernate -->
-  
+
   <!-- START jackson(json) -->
-  		<dependency>  
-            <groupId>com.fasterxml.jackson.core</groupId>  
-            <artifactId>jackson-core</artifactId>  
-            <version>${com.fasterxml.jackson.core.version}</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>com.fasterxml.jackson.core</groupId>  
-            <artifactId>jackson-databind</artifactId>  
-            <version>${com.fasterxml.jackson.core.version}</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>com.fasterxml.jackson.core</groupId>  
-            <artifactId>jackson-annotations</artifactId>  
-            <version>${com.fasterxml.jackson.core.version}</version>  
+  		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${com.fasterxml.jackson.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${com.fasterxml.jackson.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${com.fasterxml.jackson.core.version}</version>
         </dependency>
   <!-- END   jackson(json) -->
-  
+
   <!-- START dataSource -->
   		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1</version>
-		</dependency> 
+		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -150,36 +150,36 @@
 			<version>5.1.24</version>
 		</dependency>
   <!-- END  dataSource -->
-  
-  
-  <!--START Logging --> 
+
+
+  <!--START Logging -->
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>1.2.16</version>
 			</dependency>
-			  
-			<dependency>    
-			    <groupId>org.slf4j</groupId>    
-			    <artifactId>slf4j-api</artifactId>    
-			    <version>1.6.6</version>    
-			</dependency>    
-			<dependency>    
-			    <groupId>org.slf4j</groupId>    
-			    <artifactId>jcl-over-slf4j</artifactId>    
-			    <version>1.6.6</version>    
-			    <scope>runtime</scope>    
-			    </dependency>    
-			<dependency>    
-			    <groupId>org.slf4j</groupId>    
-			    <artifactId>slf4j-log4j12</artifactId>    
-			    <version>1.6.6</version>    
-			    <scope>runtime</scope>    
+
+			<dependency>
+			    <groupId>org.slf4j</groupId>
+			    <artifactId>slf4j-api</artifactId>
+			    <version>1.6.6</version>
 			</dependency>
-			
-		<!--END Logging --> 
-  
-  
+			<dependency>
+			    <groupId>org.slf4j</groupId>
+			    <artifactId>jcl-over-slf4j</artifactId>
+			    <version>1.6.6</version>
+			    <scope>runtime</scope>
+			    </dependency>
+			<dependency>
+			    <groupId>org.slf4j</groupId>
+			    <artifactId>slf4j-log4j12</artifactId>
+			    <version>1.6.6</version>
+			    <scope>runtime</scope>
+			</dependency>
+
+		<!--END Logging -->
+
+
   <!-- START test -->
     <dependency>
       <groupId>junit</groupId>
@@ -188,7 +188,7 @@
       <scope>test</scope>
     </dependency>
   <!-- END test -->
-  
+
   <!-- START jetty -->
   		<dependency>
 		  <groupId>org.eclipse.jetty</groupId>
@@ -208,7 +208,7 @@
 		  <scope>provided</scope>
 		</dependency>
   <!-- END jetyy -->
-    
+
     <!-- START freeMarker -->
 	   <dependency>
 		  <groupId>org.freemarker</groupId>
@@ -216,10 +216,21 @@
 		  <version>2.3.23</version>
 		</dependency>
     <!-- END   freeMarker -->
-   
+    
+    <dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>1.4</version>
+	</dependency>
+    <dependency>
+	    <groupId>commons-fileupload</groupId>
+	    <artifactId>commons-fileupload</artifactId>
+	    <version>1.2.2</version>
+	</dependency>
+
   </dependencies>
-  
-  
+
+
   <dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -236,8 +247,8 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-  
-  
+
+
   <build>
 	<plugins>
 	<!-- enforcer插件, 避免被依赖的依赖引入过期的jar -->
@@ -293,7 +304,7 @@
 	          <downloadSources>true</downloadSources>
 	        </configuration>
 	      </plugin>
-			
+
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-resources-plugin</artifactId>
@@ -301,8 +312,8 @@
 			    <configuration>
 			        <encoding>UTF-8</encoding>
 			    </configuration>
-			</plugin> 
-			
+			</plugin>
+
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -316,7 +327,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>

@@ -45,6 +45,7 @@
 	 <mvc:resources mapping="/other/**" location="/other/" /> 
 	 <mvc:resources mapping="/uploadify/**" location="/uploadify/" /> 
 	 <mvc:resources mapping="/uploads/**" location="/uploads/" /> 
+	 <mvc:resources mapping="/attachments/**" location="/attachments/temp" /> 
 	 <mvc:resources mapping="/tlds/**" location="/uploads/" /> 
      
 

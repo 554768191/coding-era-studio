@@ -38,7 +38,7 @@ public class DemoController{
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
-	public ActionResult editDemo(@RequestBody Demo demo){
+	public ActionResult editDemo(@ModelAttribute Demo demo){
 		demo = demoService.save(demo);
 		return new ActionResult(ActionResult.RESULT_SUCCESS,demo);
 	}
