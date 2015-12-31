@@ -24,6 +24,11 @@ angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector'
         },
         'request' : function(config) {
             var url = config.url;
+            if(!angular.isDefined(url)){
+                //todo 这里最好是弹窗提示,让开发地知道出现问题的原因
+                console.log('找不到要请求的URL');
+                return;
+            }
             if(url.indexOf(ceConfig.apiUrl)>=0){
                 $rootScope.$emit("startLoading",url);
             }

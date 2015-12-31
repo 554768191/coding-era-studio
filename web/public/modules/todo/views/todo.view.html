@@ -55,6 +55,7 @@
                            ng-model="task.title"><!--/title dropdown-->
                     <div class="panel panel-default" ce-input-dropdown-view>
                         <div class="panel-body">
+                            <input type="file" style="display: none" name="tweetImg" ce-file-upload="light_md_upload_setting" class="ng-isolate-scope">
                             <textarea class="form-control" rows="3" data-ng-model="task.content" placeholder="很多描述..."></textarea>
                         </div>
                         <div class="panel-footer">
@@ -106,9 +107,9 @@
             <div class="list-group">
                 <div class="list-group-item" ng-class="taskClass(task)" ng-repeat="task in tasks">
                     <div class="pull-right">
-                        <span class="thumbnail">
-                            <img ng-src="../img/mini-logo.png"/>
-                        </span>
+                        <!--<span class="thumbnail">-->
+                            <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
+                        <!--</span>-->
                     </div>
                     <h4 class="list-group-item-heading">
                         <div class="form-inline">

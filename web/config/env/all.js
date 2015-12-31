@@ -60,7 +60,10 @@ module.exports = {
 				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
 				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js',
 				'public/components/angular-ui-grid/ui-grid.js',
-				'public/components/google-code-prettify/src/prettify.js'
+				'public/components/google-code-prettify/src/prettify.js',
+				//'public/components/angular-strap/dist/angular-strap.js',
+				'public/components/ng-file-upload/ng-file-upload.js',
+				'public/components/angular-strap/dist/angular-strap.tpl.js'
 				//'public/components/jquery/dist/jquery.js'
 			]
 		},

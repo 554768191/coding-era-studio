@@ -5,16 +5,18 @@
 angular.module('todo').run(['Menus',
     function (Menus) {
         // Menus.addMenus();
-        var parentMenus = Menus.genParentMenus({name:'JASON的秘密基地', icon:'check'});
+        var parentMenus = Menus.genParentMenus({name:'JASON的基地', icon:'check'});
         var jason1 = Menus.genNodeMenus({name:'TODO', icon:'tasks', route:'todo'});
         var jason2 = Menus.genNodeMenus({name:'GitHub Search', icon:'search', route:'search'});
         var jason3 = Menus.genNodeMenus({name:'计时器', icon:'time', route:'timer'});
         var jason4 = Menus.genNodeMenus({name:'精要指令', icon:'king', route:'directiveKing'});
+        var jason5 = Menus.genNodeMenus({name:'文件上传', icon:'file', route:'fileUpload'});
         parentMenus.setOrder(99);
         parentMenus.addNodeMenus(jason1);
         parentMenus.addNodeMenus(jason2);
         parentMenus.addNodeMenus(jason3);
         parentMenus.addNodeMenus(jason4);
+        parentMenus.addNodeMenus(jason5);
         Menus.addMenus(parentMenus.getMenus());
     }
 ]).config(['$stateProvider','$translatePartialLoaderProvider',
@@ -42,6 +44,11 @@ angular.module('todo').run(['Menus',
                 url: '/directiveKing',
                 templateUrl: 'modules/todo/views/todo.directive.king.view.html',
                 controller: 'directiveKingCtrl'
+            })
+            .state('fileUpload', {
+                url: '/fileUpload',
+                templateUrl: 'modules/todo/views/todo.fileUpload.view.html',
+                controller: 'fileUploadCtrl'
             });
     }
 ]);

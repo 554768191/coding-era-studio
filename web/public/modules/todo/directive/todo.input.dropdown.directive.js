@@ -42,7 +42,7 @@ angular.module('todo')
 
                 //夺命连环watch,监听scope.isOpen的结果是否有变化.
                 scope.$watch("isOpen", function (value) {
-                    //$position.position()可以取得指令元素的位置信息,如{width: 906, height: 34, top: 0, left: 36}
+                    //$uibPosition.position()可以取得指令元素的位置信息,如{width: 906, height: 34, top: 0, left: 36}
                     var dropdownTogglePosition = $uibPosition.position(that.dropdownToggle);
                     if (that.dropdownMenu && that.dropdownToggle) {
                         var css = {
