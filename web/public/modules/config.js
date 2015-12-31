@@ -10,7 +10,9 @@ var ApplicationConfiguration = (function() {
 		'ui.utils',
 		'pascalprecht.translate',
 		'ui.grid',
-		'ui.grid.pagination'
+		'ui.grid.pagination',
+		'ngFileUpload'
+		//'mgcrea.ngStrap'
 	];
 
 	var registerModule = function(moduleName, dependencies) {
