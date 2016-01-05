@@ -25,6 +25,10 @@
         .preview{
           width: 0;
           height: 0;
+
+          img{
+            max-width: 50%;
+          }
         }
         .active{
           position: absolute;
@@ -56,20 +60,42 @@
     }
   }
 
-  //标题
-  .task-title {
-    height: 30px;
-    overflow: hidden;
-    word-wrap: break-word;
-    resize: none;
-    border: none;
-    box-shadow: none;
-    background: none;
-    &:focus {
-      background-color: white;
-    }
+  //任务列表
+  $ce-group-head-font-size:$ce-font-size + 2;
+  $ce-group-item-font-size:$ce-font-size - 2;
+
+  .list-group-item {
     &:hover {
-      background-color: white;
+      color: #555;
+      background-color: #f5f5f5;
+    }
+    //标题
+    .task-title {
+      height: 30px;
+      overflow: hidden;
+      word-wrap: break-word;
+      resize: none;
+      border: none;
+      box-shadow: none;
+      background: none;
+      font-size: $ce-group-head-font-size;
+      &:focus {
+        background-color: white;
+      }
+      &:hover {
+        background-color: white;
+      }
+    }
+
+    .list-group-item-text{
+      a{
+        margin-right: 15px;
+        color: #a94442;
+        font-size: $ce-group-item-font-size;
+      }
+      .badge{
+        color: white;
+      }
     }
   }
 
@@ -78,17 +104,24 @@
     text-decoration: line-through;
   }
 
-  //任务列表
-  .list-group-item {
-    &:hover {
-      color: #555;
-      background-color: #f5f5f5;
-    }
-
-  }
-  img {
+  .img-circle{
     width: 40px;
     height: 40px;
+  }
+
+  //人员
+  .member-detail{
+    a{
+      min-width: 160px;
+    }
+    img{
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .popover-content{
+    padding: 0;
   }
 
 }

@@ -10,6 +10,9 @@ angular.module('todo').factory('TodoCustomService', ['$rootScope',
                 {title: "The Hobbit", members: "J.R.R Tolkien"}
             ],
             addTask: function (task) {
+                if(angular.isUndefined(task.title) || ""===task.title){
+                    return;
+                }
                 service.tasks.unshift(task);
                 //service.tasks.push(task);
                 //$rootScope.$broadcast('tasks.update');

@@ -21,7 +21,7 @@ angular.module('todo')
     //公用方法定义在这里,指令交互时可以调用
     .controller("inputDropdownCtrl",
         ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$uibPosition', '$rootScope', '$timeout', 'uibDropdownService',
-            function ($scope, element, $attrs, $compile, $parse, $document, $uibPosition, $rootScope, $timeout, uibDropdownService) {
+            function ($scope, element, $attrs, $compile, $parse, $document, $uibPosition, $rootScope, $timeout, uibDropdownService, $popup) {
                 var that = this;
 
                 //关于scope,官方使用了$new(),你们为什么要这么折磨自己,我不懂!但是相信总有一天我会回来和你们唱这首歌的.
@@ -46,29 +46,25 @@ angular.module('todo')
                     var dropdownTogglePosition = $uibPosition.position(that.dropdownToggle);
                     if (that.dropdownMenu && that.dropdownToggle) {
                         var css = {
-                            //top: pos.top + 'px',
-                            position: 'absolute',
-                            zIndex:'999',
-                            marginTop: dropdownTogglePosition.height + 'px',
                             display: value ? 'block' : 'none',
+                            marginTop: dropdownTogglePosition.height + 'px',
                             width: dropdownTogglePosition.width + 'px'
                         };
                         that.dropdownMenu.css(css);
                     }
 
                     //监听isOpen的变化,true时下拉.false时收起.
-                    //写法一:todo 老实人写法,未写完
-                    /*if (value) {
-                     //scope.position = appendToBody ? $position.offset(element) : $position.position(element);
-                     //scope.position.top = scope.position.top + element.prop('offsetHeight');
-
-                     //用timeout可以把代码放到当前digest循环外
-                     $timeout(function () {
-                     $document.bind('click', documentClickBind);
-                     }, 0, false);
-                     } else {
-                     //$document.unbind('click', documentClickBind);
-                     }*/
+                    //写法一:简单写法
+                    //if (value) {
+                    //    //scope.position = appendToBody ? $position.offset(element) : $position.position(element);
+                    //    //scope.position.top = scope.position.top + element.prop('offsetHeight');
+                    //    //用timeout可以把代码放到当前digest循环外
+                    //    $timeout(function () {
+                    //        $document.bind('click', documentClickBind);
+                    //    }, 0, false);
+                    //} else {
+                    //    $document.unbind('click', documentClickBind);
+                    //}
 
                     //写法二:精明地调用uib的service
                     if (value) {
@@ -79,19 +75,15 @@ angular.module('todo')
                 });
 
                 //$document点击事件,负责隐藏下拉
-                /*function documentClickBind(event) {
-                 var popup = $popup[0];
-                 var dpContainsTarget = element[0].contains(event.target);
-                 //The popup node may not be an element node
-                 //In some browsers (IE) only element nodes have the 'contains' function
-                 var popupContainsTarget = popup.contains !== undefined && popup.contains(event.target);
-                 //只有当鼠标点击的target不是输入框或者下拉的内容时,才隐藏下拉
-                 if (scope.isOpen && !(dpContainsTarget || popupContainsTarget)) {
-                 scope.$apply(function() {
-                 scope.isOpen = false;
-                 });
-                 }
-                 }*/
+                function documentClickBind(event) {
+                    var dpContainsTarget =  element.contains(event.target);
+                    //只有当鼠标点击的target不是输入框或者下拉的内容时,才隐藏下拉
+                    if (scope.isOpen && !(dpContainsTarget)) {
+                        scope.$apply(function() {
+                            scope.isOpen = false;
+                        });
+                    }
+                }
 
                 //如下,别问我为什么要写这么多,这是uibDropdownService内部要用到的...
 

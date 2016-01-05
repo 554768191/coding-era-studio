@@ -1,7 +1,13 @@
 'use strict';
 
-angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$log', 'TodoService', 'TodoCustomService', 'uibDatepickerPopupConfig',
-    function ($scope, $sce, $uibModal, $log, TodoService, TodoCustomService, uibDatepickerPopupConfig) {
+angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$log',
+    'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'Upload',
+    function ($scope, $sce, $uibModal, $log,
+              uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
+
+        //$scope.$watch("file", function (val) {
+        //    console.log('Jason fufuufufufuufuufuf file watch', val);
+        //});
 
         //markdown
         window.marked.setOptions({
@@ -40,6 +46,14 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
             }
         };
 
+        $scope.upload = function(files,task){
+            for(var index in files){
+                var file = files[index];
+                console.log('Jason file', file);
+                FileUploadService.upload(file, task);
+            }
+        };
+
         //Date
         //定义数组,控制多个日期控件显示状态
         $scope.opened = [];
@@ -50,9 +64,8 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
 
         //Popover
         $scope.dynamicPopover = {
-            content: 'Hello, World!',
             templateUrl: 'myPopoverTemplate.html',
-            title: 'Title'
+            memberTemplateUrl: 'memberTemplate.html'
         };
 
         //Task
@@ -76,6 +89,9 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
         $scope.toggleTaskStatus = function(task){
             TodoCustomService.toggleTaskStatus(task);
         };
+        $scope.onEditTask = function(task){
+            alert("别紧张,测试而已");
+        };
 
         /**
          * 用于接收$rootScope.$broadcast('tasks.update')传播的数据:
@@ -97,6 +113,18 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
 
         $scope.tasks = TodoCustomService.tasks;
 
+        //任务详情下拉标识
+        $scope.isCollapsed = true;
+        $scope.toggleDetail = function (isCollapsed, task) {
+            console.log('Jason test', isCollapsed);
+            if(angular.isUndefined(task.content)){
+                return;
+            }
+            //isCollapsed = !isCollapsed;
+            if(isCollapsed === false){
+                task.previewedContent =  $sce.trustAsHtml(window.marked(task.content));
+            }
+        };
 
     }]);
 

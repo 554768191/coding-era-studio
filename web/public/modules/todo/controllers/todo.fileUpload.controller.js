@@ -72,7 +72,6 @@ angular.module('todo').controller('fileUploadCtrl', ['$scope', 'Upload', 'uiGrid
 
         // upload on file select or drop
         $scope.upload = function (file) {
-            console.log('Jason test file ehhehehhe', file);
             if (file) {
                 Upload.upload({
                     url: 'http://localhost:8999/api/fileUpload/uploadImage',
