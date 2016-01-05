@@ -56,17 +56,20 @@
                     <div class="panel panel-default" ce-input-dropdown-view>
                         <div class="panel-body">
                             <input type="file" style="display: none" name="tweetImg" ce-file-upload="light_md_upload_setting" class="ng-isolate-scope">
-                            <textarea class="form-control" rows="3" data-ng-model="task.content" placeholder="很多描述..."></textarea>
+                            <textarea class="form-control" data-ng-model="task.content" placeholder="很多描述..." data-auto-height="100" ce-textarea></textarea>
+                            <div class="preview" ng-bind-html="previewedContent" ng-class="{active: previewed,hide : !previewed}" ng-click="togglePreview(task.content);" title="单击继续编辑">
+                            </div>
                         </div>
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="" tooltip-placement="bottom" uib-tooltip="这都不懂?!"><span class="glyphicon glyphicon-question-sign"></span></a>
-                                    <a href=""><span class="glyphicon glyphicon-question-sign"></span></a>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href=""><span class="glyphicon glyphicon-eye-open"></span></a>
-                                    <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
+                                    <a href="#" ng-click="togglePreview(task.content)">
+                                        <span class="glyphicon glyphicon-eye-open" ng-show="!previewed"></span>
+                                        <span class="glyphicon glyphicon-eye-close" ng-show="previewed"></span>
+                                    </a>
                                     <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
                                 </div>
                             </div>

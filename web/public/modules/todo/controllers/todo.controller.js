@@ -1,16 +1,43 @@
 'use strict';
 
-angular.module('todo').controller('todoCtrl', ['$scope', '$uibModal', '$log', 'TodoService', 'TodoCustomService', 'uibDatepickerPopupConfig',
-    function ($scope, $uibModal, $log, TodoService, TodoCustomService, uibDatepickerPopupConfig) {
+angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$log', 'TodoService', 'TodoCustomService', 'uibDatepickerPopupConfig',
+    function ($scope, $sce, $uibModal, $log, TodoService, TodoCustomService, uibDatepickerPopupConfig) {
 
-        $scope.isCollapsed = true;
-        $scope.showCollapsed = function(){
-            console.log('Jason test showCollapsed', 1);
-            $scope.isCollapsed = false;
-        };
-        $scope.hideCollapsed = function(){
-            console.log('Jason test hideCollapsed', 1);
-            $scope.isCollapsed = true;
+        //markdown
+        window.marked.setOptions({
+            renderer: new window.marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false,
+            highlight: function (code) {
+                //todo Jason highlight 无效
+                //return window.hljs.highlightAuto(code).value;
+
+                //google-code-prettify
+                return window.prettyPrintOne(code, 'HTML', true);
+            }
+        });
+
+        //预览
+        $scope.previewed = false;
+        $scope.previewedContent = "";
+        $scope.togglePreview = function(text){
+            $scope.previewed = !$scope.previewed;
+
+            if(angular.isUndefined(text)){
+                $scope.previewedContent = "";
+                return;
+            }
+            if($scope.previewed === true){
+                $scope.previewedContent =  $sce.trustAsHtml(window.marked(text));
+            }else{
+                //这里不能马上清空元素,因为关闭下拉的判断会失效(element.contains(event.target))
+                //$scope.previewedContent = "";
+            }
         };
 
         //Date

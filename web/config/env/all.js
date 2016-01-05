@@ -47,6 +47,7 @@ module.exports = {
 				//'public/components/bootstrap/dist/css/bootstrap-theme.css',
 				'public/components/angular-ui-grid/ui-grid.css',
 				'public/components/google-code-prettify/src/prettify.css'
+
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -61,9 +62,10 @@ module.exports = {
 				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js',
 				'public/components/angular-ui-grid/ui-grid.js',
 				'public/components/google-code-prettify/src/prettify.js',
-				//'public/components/angular-strap/dist/angular-strap.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
-				'public/components/angular-strap/dist/angular-strap.tpl.js'
+				'public/components/marked/marked.min.js'
+				//'public/components/angular-strap/dist/angular-strap.js',
+				//'public/components/angular-strap/dist/angular-strap.tpl.js',
 				//'public/components/jquery/dist/jquery.js'
 			]
 		},

@@ -5,14 +5,43 @@
  */
 
 .ce-todo {
+
+  //标题下拉
   .task-dropdown {
     .panel {
+
+      position: absolute;
+      z-index:999;
+
       .panel-body {
         padding: 0;
+
+        textarea{
+          overflow: hidden;
+          word-wrap: break-word;
+          resize: none;
+        }
+
+        .preview{
+          width: 0;
+          height: 0;
+        }
+        .active{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 999;
+          background-color: white;
+          overflow: auto;
+        }
+
       }
 
       .panel-footer {
+        position: absolute;
+        width: 100%;
         padding: 5px;
+        border: 1px solid #ddd;
         a {
           padding: 0 5px;
           &:focus {
@@ -27,6 +56,7 @@
     }
   }
 
+  //标题
   .task-title {
     height: 30px;
     overflow: hidden;
@@ -43,10 +73,12 @@
     }
   }
 
+  //完成
   .task-done textarea {
     text-decoration: line-through;
   }
 
+  //任务列表
   .list-group-item {
     &:hover {
       color: #555;
@@ -58,4 +90,5 @@
     width: 40px;
     height: 40px;
   }
+
 }
