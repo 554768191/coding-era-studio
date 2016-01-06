@@ -20,8 +20,10 @@
 angular.module('todo')
     //公用方法定义在这里,指令交互时可以调用
     .controller("inputDropdownCtrl",
-        ['$scope', '$element', '$attrs', '$compile', '$parse', '$document', '$uibPosition', '$rootScope', '$timeout', 'uibDropdownService',
-            function ($scope, element, $attrs, $compile, $parse, $document, $uibPosition, $rootScope, $timeout, uibDropdownService, $popup) {
+        ['$scope', '$element', '$attrs', '$compile', '$parse', '$document',
+            '$uibPosition', '$rootScope', '$timeout', 'uibDropdownService',
+            function ($scope, element, $attrs, $compile, $parse, $document,
+                      $uibPosition, $rootScope, $timeout, uibDropdownService) {
                 var that = this;
 
                 //关于scope,官方使用了$new(),你们为什么要这么折磨自己,我不懂!但是相信总有一天我会回来和你们唱这首歌的.

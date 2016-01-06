@@ -3,6 +3,7 @@
     <!--测试写法2-->
     <div class="row">
         <div class="col-md-12">
+            <form role="form" name="form" ng-submit="addTask()">
             <div class="input-group">
                 <div class="input-group-btn">
                     <span class="btn btn-default" uib-datepicker-popup
@@ -27,8 +28,9 @@
                     </ul>
                 </div>--><!-- /btn-group -->
 
-                <div ce-input-dropdown is-open="false" auto-close="outsideClick" class="task-dropdown">
-                    <input required type="text" class="form-control" aria-label="..." placeholder="{{'TASK.ADD.TXT' | translate}}"
+                <div ce-input-dropdown is-open="false" auto-close="outsideClick" class="task-dropdown" ng-class="{'has-error':form.title.$error.minlength}">
+                    <input type="text"  class="form-control" name="title" aria-label="..." placeholder="{{'TASK.ADD.TXT' | translate}}"
+                           ng-minlength="5"
                            ce-input-dropdown-toggle
                            ng-keyup="$event.keyCode == 13 && addTask()"
                            ng-model="task.title" ><!--/title dropdown-->
@@ -60,7 +62,7 @@
                 </div><!--/title div-->
 
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="addTask()">
+                    <button type="submit" class="btn btn-default">
                         <span class="glyphicon glyphicon-arrow-right"></span>
                     </button>
                     <button type="button" class="btn btn-default">
@@ -69,14 +71,16 @@
                 </div>
 
             </div><!-- /input-group -->
+            </form>
         </div><!-- /.col-md-12 -->
     </div><!-- /.row --><!--/demo2-->
 
     <!--任务列表-->
+    <!--TODO 注意,这里的$index在push新数据时会不正确,可以使用'task in tasks track by $index', 但是这样的话新增数据时不能正确地触发ng-enter动画效果,先用$$hashKey替代$index吧-->
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
             <div class="list-group">
-                <div class="list-group-item" ng-class="taskClass(task)" ng-repeat="task in tasks">
+                <div class="list-group-item ce-animate-list" ng-class="taskClass(task)" ng-repeat="task in tasks">
                     <div class="pull-right" popover-placement="bottom" uib-popover-template="dynamicPopover.memberTemplateUrl">
                         <a>
                             <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
@@ -91,7 +95,7 @@
                         </div>
                     </h4><!--/title-->
                     <p class="btn-group-sm list-group-item-text text-danger">
-                        <label data-ng-model="task.date" uib-datepicker-popup  ce-date-toggle="$index" is-open="opened[$index]">
+                        <label data-ng-model="task.date" uib-datepicker-popup  ce-date-toggle="task.$$hashKey" is-open="opened[task.$$hashKey]">
                             <a class="badge">{{ task.date | date:'yyyy-MM-dd' }}</a>
                             <a href="#" ng-show="!task.date"><span class="glyphicon glyphicon-calendar"></span>日期</a>
                         </label>

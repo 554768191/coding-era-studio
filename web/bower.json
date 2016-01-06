@@ -37,7 +37,8 @@
     "google-code-prettify": "~1.0.4",
     "angular-strap": "~2.3.6",
     "ng-file-upload": "~11.0.0",
-    "marked": "~0.3.5"
+    "marked": "~0.3.5",
+    "animate.css": "~3.5.1"
   },
   "resolutions": {
     "angular": "~1.4"

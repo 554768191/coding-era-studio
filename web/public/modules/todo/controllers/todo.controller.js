@@ -75,8 +75,13 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
             if (event) {
                 event.preventDefault();
             }
-            TodoCustomService.addTask($scope.task);
-            $scope.task = TodoCustomService.createTask();
+            if(!$scope.form.$valid){
+                return;
+            }
+            var result = TodoCustomService.addTask($scope.task);
+            if(result){
+                $scope.task = TodoCustomService.createTask();
+            }
         };
         $scope.cleanTask = function () {
             //$scope.tasks = [];
@@ -84,12 +89,15 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
             $scope.tasks.length = 0;
         };
         $scope.taskClass = function(task){
-            return task.status === true ? "task-done" : "";
+            return {
+                "task-done":!!task.status
+            };
         };
         $scope.toggleTaskStatus = function(task){
             TodoCustomService.toggleTaskStatus(task);
         };
         $scope.onEditTask = function(task){
+            console.log('Jason test', task);
             alert("别紧张,测试而已");
         };
 

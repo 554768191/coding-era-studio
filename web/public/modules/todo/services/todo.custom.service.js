@@ -16,6 +16,7 @@ angular.module('todo').factory('TodoCustomService', ['$rootScope',
                 service.tasks.unshift(task);
                 //service.tasks.push(task);
                 //$rootScope.$broadcast('tasks.update');
+                return task;
             },
             createTask: function () {
                 var task = {

@@ -46,8 +46,8 @@ module.exports = {
 				'public/components/bootstrap/dist/css/bootstrap.css',
 				//'public/components/bootstrap/dist/css/bootstrap-theme.css',
 				'public/components/angular-ui-grid/ui-grid.css',
-				'public/components/google-code-prettify/src/prettify.css'
-
+				'public/components/google-code-prettify/src/prettify.css',
+				'public/components/animate.css/animate.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
