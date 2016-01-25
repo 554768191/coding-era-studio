@@ -42,9 +42,8 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
 
         //点击确定返回
         modalInstance.result.then(function () {
+            //保存成功,刷新
             $scope.onSearch();
-        }, function () {//点击取消按钮返回事件(可以不定义,经过过百万次测试,没问题)
-            $log.info('Modal dismissed at: ' + new Date());
         });
     };
 
@@ -79,7 +78,7 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
             { name: 'name',displayName:'名称' },
             { name: 'remark',displayName:'备注' }
         ],
-        paginationTemplate:ceConfig.paginationTemplate,
+        paginationTemplate:CeUtil.getPaginationTemplate(),
         onRegisterApi: function(gridApi) {
             //分页发生改变
             gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {

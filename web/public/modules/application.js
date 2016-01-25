@@ -2,10 +2,11 @@
 var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
 //i18n - 国际化配置
-ceApp.run(function ($rootScope, $translate) {
+ceApp.run(function ($rootScope, $translate,$templateCache) {
 	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
 		$translate.refresh();
 	});
+	$templateCache.put('cePaginationTemplate','modules/core/views/templates/core.pagination.template.html');
 }).config(['$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider',
 	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider) {
 		// Setting HTML5 Location Mode
@@ -83,6 +84,7 @@ angular.element(document).ready(function() {
 ceApp.constant('ceConfig', {
 	//接口路径
 	apiUrl: "http://localhost:8999/api",
-	//grid翻页器公用模板
-	paginationTemplate:'modules/core/views/templates/core.pagination.template.html'
+	//显示分页数(注意不是最大页数),建议输入单数(暂时也只支持单数....)
+	showDisplayPage:5
+
 });

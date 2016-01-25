@@ -21,12 +21,12 @@ public class DemoRepositoryImpl implements DemoRepositoryCustom {
 	@Override
 	public Page<Demo> findDemoByCriteria(Pageable pg, DemoQueryCriteria criteria) {
 		JpaCriteria s = new JpaCriteria("Demo d");
-		//s.add(CriterionUtils.contains("d.name", criteria.getKeyWord(), true));
 		s.add(new OrCriterion(
 				CriterionUtils.contains("d.name", criteria.getKeyWord(), true),
 				CriterionUtils.contains("d.remark", criteria.getKeyWord(), true)
 				)
 		);
+		s.setSortBy("d.id desc");
 		return JpaQueryUtils.query(em,s, pg);
 	}
 

@@ -67,11 +67,11 @@
 
 	
 	<root>
-		<priority value="INFO"/>
+		<priority value="DEBUG"/>
 		<appender-ref ref="STDOUT"/>
-		<appender-ref ref="INFO"/>
+		<!--<appender-ref ref="INFO"/>
 		<appender-ref ref="WARN"/>
-		<appender-ref ref="ERROR"/>  
+		<appender-ref ref="ERROR"/>  --> 
 	</root>
 	
 </log4j:configuration>

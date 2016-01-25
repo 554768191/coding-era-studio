@@ -14,7 +14,7 @@ angular.module('core')
             },
             controller:function($scope){
                 $scope.message = '';
-                $scope.show = true;
+                $scope.style ='';
             },
             link: function(scope, el, attrs) {
                 //菜单宽度

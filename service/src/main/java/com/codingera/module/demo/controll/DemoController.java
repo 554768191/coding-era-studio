@@ -30,8 +30,6 @@ public class DemoController{
 	@RequestMapping
 	@ResponseBody
 	public ActionResult getDemo(Pageable pr,@ModelAttribute DemoQueryCriteria criteria){
-
-		//DemoQueryCriteria criteria = new DemoQueryCriteria();
 		Page<Demo> pages =  demoService.findDemoByCriteria(pr,criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS,pages);
 	}

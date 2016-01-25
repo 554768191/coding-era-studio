@@ -1,7 +1,7 @@
 <!-- 分页工具 -->
-<div class="ce-grid-pagination" ui-grid-pager ng-show="grid.options.enablePaginationControls"><!-- START ce-grid-pagination -->
+<div class="ce-grid-pagination" ce-grid-pager ng-show="grid.options.enablePaginationControls"><!-- START ce-grid-pagination -->
     <div class="pager-left col-md-6"> <!-- START pager-left -->
-        <span class="pager-info" translate="SYSTEM.GRID.PAGER.INFO" translate-values="{showingLow:showingLow,showingHigh:showingHigh,totalItems:grid.options.totalItems}"></span>
+        <span class="pager-info" translate="SYSTEM.GRID.PAGER.INFO" translate-values="{showingLow:showingLow,showingHigh:showingHigh,totalItems:paginationApi.getTotalPages()}"></span>
         <div class="ui-grid-pager-row-count-picker" ng-if="grid.options.paginationPageSizes.length > 1">
             <select ui-grid-one-bind-aria-labelledby-grid="'items-per-page-label'" ng-model="grid.options.paginationPageSize" ng-options="o as o for o in grid.options.paginationPageSizes"></select>
             {{'SYSTEM.GRID.PAGER.INFO.TAIL' | translate}}
@@ -25,17 +25,15 @@
             <!-- END  上一页 -->
 
             <!-- START 分页 -->
-            <li ng-init="pageNum = 5;pageMiddel=2;"
-                ng-show="
-                $index < (((paginationApi.getPage() + pageMiddel)>=paginationApi.getTotalPages())?paginationApi.getTotalPages():( ((paginationApi.getPage() +pageMiddel)<pageNum)?pageNum:paginationApi.getPage() +pageMiddel) )
-                && $index > (((paginationApi.getPage() -pageMiddel*2)>=pageNum -pageMiddel)?pageMiddel:paginationApi.getPage() -pageMiddel*2)"
+            <li ng-init="index = $index + 1;"
+                ng-show="index >= getMinPage() && index <= getMaxPage()"
                 ng-class="{disabled:(paginationApi.getPage() == ($index + 1)) }"
                 ng-repeat="item in (paginationApi.getTotalPages() | numberToArray) track by $index"
                 data-index="{{$index}}"
                 data-page-num="{{pageNum}}"
                 data-page-count="{{(((paginationApi.getPage() +2)>paginationApi.getTotalPages())?paginationApi.getTotalPages():paginationApi.getPage() +2)}}"
             >
-                <a ng-click="paginationApi.seek($index + 1)">{{$index + 1}}</a>
+                <a ng-click="paginationApi.seek($index + 1)">{{index}}</a>
             </li>
             <!-- END   分页 -->
 

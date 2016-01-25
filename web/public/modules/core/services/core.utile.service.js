@@ -4,7 +4,7 @@
 "use strict";
 
 angular.module('core')
-    .factory('CeUtil', ['$rootScope',function($rootScope) {
+    .factory('CeUtil', ['$rootScope','$templateCache','$compile',function($rootScope,$templateCache,$compile) {
         var service = {};
 
 
@@ -15,6 +15,15 @@ angular.module('core')
             //$rootScope.$emit("showToast",message);
             $rootScope.$emit("showToast",message);
 
+        };
+
+        //获取分页模板
+        service.getPaginationTemplate = function(){
+            var paginationScope = $rootScope.$new(true);
+            var paginationTemplate = $templateCache.get('cePaginationTemplate');
+           // $compile(paginationTemplate)(paginationScope);
+            return paginationTemplate;
+           // return $templateCache.get('cePaginationTemplate');
         };
 
     return service;

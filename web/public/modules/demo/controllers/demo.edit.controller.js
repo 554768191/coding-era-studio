@@ -10,6 +10,7 @@ function ($scope, $uibModalInstance, $log,$http,DemoService,CeUtil){
 
     $scope.ok = function () {
         DemoService.save($scope.demo, function() {
+            CeUtil.toast('保存成功');
             $uibModalInstance.close();
         });
     };
@@ -18,8 +19,8 @@ function ($scope, $uibModalInstance, $log,$http,DemoService,CeUtil){
     //窗口点击取消
     $scope.cancel = function(){
         //angular-bootstarp-api默认关闭事件,不要问我为什么
-       // $uibModalInstance.dismiss('cancel');
-        CeUtil.toast('你好,你这是在干嘛呢');
+        $uibModalInstance.dismiss('cancel');
+
     };
 
 
