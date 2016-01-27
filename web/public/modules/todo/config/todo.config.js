@@ -11,12 +11,14 @@ angular.module('todo').run(['Menus',
         var jason3 = Menus.genNodeMenus({name:'计时器', icon:'time', route:'timer'});
         var jason4 = Menus.genNodeMenus({name:'精要指令', icon:'king', route:'directiveKing'});
         var jason5 = Menus.genNodeMenus({name:'文件上传', icon:'file', route:'fileUpload'});
+        var jason6 = Menus.genNodeMenus({name:'用户指引', icon:'file', route:'training'});
         parentMenus.setOrder(99);
         parentMenus.addNodeMenus(jason1);
         parentMenus.addNodeMenus(jason2);
         parentMenus.addNodeMenus(jason3);
         parentMenus.addNodeMenus(jason4);
         parentMenus.addNodeMenus(jason5);
+        parentMenus.addNodeMenus(jason6);
         Menus.addMenus(parentMenus.getMenus());
     }
 ]).config(['$stateProvider','$translatePartialLoaderProvider',
@@ -49,6 +51,11 @@ angular.module('todo').run(['Menus',
                 url: '/fileUpload',
                 templateUrl: 'modules/todo/views/todo.fileUpload.view.html',
                 controller: 'fileUploadCtrl'
+            })
+            .state('training', {
+                url: '/training',
+                templateUrl: 'modules/todo/views/todo.training.view.html',
+                controller: 'trainingCtrl'
             });
     }
 ]);
