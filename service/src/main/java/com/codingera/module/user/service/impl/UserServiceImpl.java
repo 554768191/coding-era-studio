@@ -1,9 +1,17 @@
 package com.codingera.module.user.service.impl;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 
 import com.codingera.module.user.criteria.UserQueryCriteria;
@@ -56,8 +64,33 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User loadUserByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findUserByUsername(username);
+	}
 
+	@Override
+	public User loadCurrentUser() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        final Object principal = authentication.getPrincipal();
+        if (authentication instanceof OAuth2Authentication &&
+                (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {
+            return loadOauthUserJsonDto((OAuth2Authentication) authentication);
+        } else {
+            final User userDetails = (User) principal;
+        	return userDetails;
+        }
+	}
 	
-	
+	 private User loadOauthUserJsonDto(OAuth2Authentication oAuth2Authentication) {
+		 User userJsonDto = new User();
+	        userJsonDto.setUsername(oAuth2Authentication.getName());
+
+	        //final Collection<GrantedAuthority> authorities = oAuth2Authentication.getAuthorities();
+	        //for (GrantedAuthority authority : authorities) {
+	            //userJsonDto.getRoles().add(authority.getAuthority());
+	        //}
+	        return userJsonDto;
+	    }
 
 }

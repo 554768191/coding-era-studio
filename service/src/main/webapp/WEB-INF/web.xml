@@ -7,17 +7,17 @@
     id="WebApp_ID"   
     version="3.0"> 
 
+ 	<!--serviceContextConfigLocation -->  
 	<context-param>
 		<param-name>serviceContextConfigLocation</param-name>
 		<param-value>classpath:META-INF/service/service-context.xml</param-value>
 	</context-param>
-    
+	
+    <!--contextConfigLocation -->  
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:META-INF/web/web-context.xml</param-value>
     </context-param>
-
-	 
     
     <!-- spring mvc -->
     <servlet>
@@ -29,27 +29,23 @@
 	        </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	
 	
-    
+    <!-- springSecurityFilterChain -->
     <filter>
-	<filter-name>springSecurityFilterChain</filter-name>
-	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
-	
 	<filter-mapping>
-	<filter-name>springSecurityFilterChain</filter-name>
-	<url-pattern>/*</url-pattern>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	
-
-
+	<!-- setCharacterEncoding -->
     <filter>  
         <filter-name>setCharacterEncoding</filter-name>  
         <filter-class>  
@@ -81,10 +77,9 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
      
-     
-     <listener>
+	<!-- Spring context listener -->  
+	<listener>
 		<listener-class>com.codingera.common.framework.WebApplicationContextLoader</listener-class>
 	</listener>
-	 
 
 </web-app>
