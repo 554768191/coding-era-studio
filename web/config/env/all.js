@@ -63,7 +63,8 @@ module.exports = {
 				'public/components/angular-ui-grid/ui-grid.js',
 				'public/components/google-code-prettify/src/prettify.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
-				'public/components/marked/marked.min.js'
+				'public/components/marked/marked.min.js',
+				'public/components/lodash/dist/lodash.min.js'
 				//'public/components/angular-strap/dist/angular-strap.js',
 				//'public/components/angular-strap/dist/angular-strap.tpl.js',
 				//'public/components/jquery/dist/jquery.js'

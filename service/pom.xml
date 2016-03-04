@@ -1,99 +1,119 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 
-  <properties>
-  		<codingera.version>1.0.0</codingera.version>
-    	<tomcat-jdbc.version>7.0.53</tomcat-jdbc.version>
-    	<spring.version>4.1.6.RELEASE</spring.version>
-    	<spring-data-jpa.version>1.6.5.RELEASE</spring-data-jpa.version>
-    	<hibernate.version>4.3.5.Final</hibernate.version>
-    	<aspectj.version>1.7.4</aspectj.version>
-    	<slf4j.version>1.7.7</slf4j.version>
+	<properties>
+		<codingera.version>1.0.0</codingera.version>
+		<tomcat-jdbc.version>7.0.53</tomcat-jdbc.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.security.version>4.0.1.RELEASE</spring.security.version>
+		<spring-data-jpa.version>1.6.5.RELEASE</spring-data-jpa.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<aspectj.version>1.7.4</aspectj.version>
+		<slf4j.version>1.7.7</slf4j.version>
 		<logback.version>1.1.2</logback.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<com.fasterxml.jackson.core.version>2.6.0</com.fasterxml.jackson.core.version>
 		<org.aspectj-version>1.6.11</org.aspectj-version>
 		<jetty-version>8.1.0.RC4</jetty-version>
-    </properties>
+	</properties>
 
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.codingera</groupId>
-  <artifactId>codingEra</artifactId>
-  <packaging>war</packaging>
-  <version>${codingera.version}</version>
-  <name>codingEra</name>
-  <url>http://www.codingera.com</url>
-  <dependencies>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.codingera</groupId>
+	<artifactId>codingEra</artifactId>
+	<packaging>war</packaging>
+	<version>${codingera.version}</version>
+	<name>codingEra</name>
+	<url>http://www.codingera.com</url>
+	<dependencies>
 
-
-  	<!-- START spring  -->
-  		<dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-context</artifactId>
-	        <version>${spring.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-context-support</artifactId>
-	        <version>${spring.version}</version>
-	    </dependency>
-
-
-    	<dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-web</artifactId>
-	        <version>${spring.version}</version>
-	    </dependency>
-
-	    <dependency>
-	        <groupId>org.springframework</groupId>
-	        <artifactId>spring-webmvc</artifactId>
-	        <version>${spring.version}</version>
-	    </dependency>
-
-    	<dependency>
-	        <groupId>org.springframework.security</groupId>
-	        <artifactId>spring-security-web</artifactId>
-	        <version>4.0.1.RELEASE</version>
-    	</dependency>
-
-    	<dependency>
-	        <groupId>org.springframework.security</groupId>
-	        <artifactId>spring-security-config</artifactId>
-	        <version>4.0.1.RELEASE</version>
-    	</dependency>
-
-    	<dependency>
-		  <groupId>org.springframework.data</groupId>
-		  <artifactId>spring-data-jpa</artifactId>
-		  <version>${spring-data-jpa.version}</version>
+		<!-- START spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-  <!-- END spring  -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+		</dependency>
+		<!-- END spring -->
+		
+		<!-- BEGIN spring security -->  
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>  
+		    <groupId>org.springframework.security</groupId>  
+		    <artifactId>spring-security-core</artifactId>  
+		    <version>${spring.security.version}</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>org.springframework.security</groupId>  
+		    <artifactId>spring-security-taglibs</artifactId>  
+		    <version>${spring.security.version}</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>org.springframework.security</groupId>  
+		    <artifactId>spring-security-acl</artifactId>  
+		    <version>${spring.security.version}</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>org.springframework.security</groupId>  
+		    <artifactId>spring-security-crypto</artifactId>  
+		    <version>${spring.security.version}</version>  
+		</dependency>  
+		<dependency>  
+		    <groupId>org.springframework.security.oauth</groupId>  
+		    <artifactId>spring-security-oauth2</artifactId>  
+		    <version>1.0.5.RELEASE</version>  
+		</dependency>
+		<!-- END spring security -->  
 
-  <!-- START spring apo -->
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjrt</artifactId>
-				<version>${aspectj.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>${aspectj.version}</version>
-				<scope>runtime</scope>
-			</dependency>
+		<!-- START spring apo -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.bundles</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.8_2</version>
+		</dependency>
+		<!-- END spring apo -->
 
-			<dependency>
-			  <groupId>org.apache.geronimo.bundles</groupId>
-			  <artifactId>aspectjweaver</artifactId>
-			  <version>1.6.8_2</version>
-			</dependency>
-	<!-- END    spring apo -->
-
-
-  <!-- START hibernate -->
+		<!-- START hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -105,40 +125,40 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
 			<exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-            </exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
-		  <groupId>org.hibernate</groupId>
-		  <artifactId>hibernate-validator</artifactId>
-		  <version>5.0.3.Final</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.3.Final</version>
 		</dependency>
-  <!-- END hibernate -->
+		<!-- END hibernate -->
 
-  <!-- START jackson(json) -->
-  		<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${com.fasterxml.jackson.core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${com.fasterxml.jackson.core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${com.fasterxml.jackson.core.version}</version>
-        </dependency>
-  <!-- END   jackson(json) -->
+		<!-- START jackson(json) -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+		<!-- END jackson(json) -->
 
-  <!-- START dataSource -->
-  		<dependency>
+		<!-- START dataSource -->
+		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1</version>
@@ -149,89 +169,91 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.24</version>
 		</dependency>
-  <!-- END  dataSource -->
+		<!-- END dataSource -->
 
 
-  <!--START Logging -->
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.16</version>
-			</dependency>
+		<!--START Logging -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
 
-			<dependency>
-			    <groupId>org.slf4j</groupId>
-			    <artifactId>slf4j-api</artifactId>
-			    <version>1.6.6</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.slf4j</groupId>
-			    <artifactId>jcl-over-slf4j</artifactId>
-			    <version>1.6.6</version>
-			    <scope>runtime</scope>
-			    </dependency>
-			<dependency>
-			    <groupId>org.slf4j</groupId>
-			    <artifactId>slf4j-log4j12</artifactId>
-			    <version>1.6.6</version>
-			    <scope>runtime</scope>
-			</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.6</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!--END Logging -->
 
 
-  <!-- START test -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  <!-- END test -->
+		<!-- START test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- END test -->
 
-  <!-- START jetty -->
-  		<dependency>
-		  <groupId>org.eclipse.jetty</groupId>
-		  <artifactId>jetty-server</artifactId>
-		  <version>${jetty-version}</version>
-		  <scope>provided</scope>
+		<!-- START jetty -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty-version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.eclipse.jetty</groupId>
-		  <artifactId>jetty-webapp</artifactId>
-		  <version>${jetty-version}</version>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty-version}</version>
 		</dependency>
-        <dependency>
-		  <groupId>org.eclipse.jetty</groupId>
-		  <artifactId>jetty-websocket</artifactId>
-		  <version>${jetty-version}</version>
-		  <scope>provided</scope>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-websocket</artifactId>
+			<version>${jetty-version}</version>
+			<scope>provided</scope>
 		</dependency>
-  <!-- END jetyy -->
+		<!-- END jetyy -->
 
-    <!-- START freeMarker -->
-	   <dependency>
-		  <groupId>org.freemarker</groupId>
-		  <artifactId>freemarker</artifactId>
-		  <version>2.3.23</version>
+		<!-- START freeMarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.23</version>
 		</dependency>
-    <!-- END   freeMarker -->
-    
-    <dependency>
-	    <groupId>commons-io</groupId>
-	    <artifactId>commons-io</artifactId>
-	    <version>1.4</version>
-	</dependency>
-    <dependency>
-	    <groupId>commons-fileupload</groupId>
-	    <artifactId>commons-fileupload</artifactId>
-	    <version>1.2.2</version>
-	</dependency>
+		<!-- END freeMarker -->
 
-  </dependencies>
+		<!-- START fileupload -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<!-- END fileupload -->
+
+	</dependencies>
 
 
-  <dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -249,9 +271,9 @@
 	</dependencyManagement>
 
 
-  <build>
-	<plugins>
-	<!-- enforcer插件, 避免被依赖的依赖引入过期的jar -->
+	<build>
+		<plugins>
+			<!-- enforcer插件, 避免被依赖的依赖引入过期的jar -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -288,79 +310,80 @@
 				</executions>
 			</plugin>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-           <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-eclipse-plugin</artifactId>
-	        <configuration>
-	          <downloadSources>true</downloadSources>
-	        </configuration>
-	      </plugin>
-
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-resources-plugin</artifactId>
-			    <version>2.5</version>
-			    <configuration>
-			        <encoding>UTF-8</encoding>
-			    </configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+				</configuration>
 			</plugin>
 
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>install</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>sources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>aspectj-maven-plugin</artifactId>
-                <!-- Have to use version 1.2 since version 1.3 does not appear to work with ITDs -->
-                <version>1.2</version>
-                <dependencies>
-                    <!-- You must use Maven 2.0.9 or above or these are ignored (see MNG-2972) -->
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjrt</artifactId>
-                        <version>${org.aspectj-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjtools</artifactId>
-                        <version>${org.aspectj-version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <outxml>true</outxml>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-			</plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>sources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<!-- Have to use version 1.2 since version 1.3 does not appear to work 
+					with ITDs -->
+				<version>1.2</version>
+				<dependencies>
+					<!-- You must use Maven 2.0.9 or above or these are ignored (see MNG-2972) -->
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjrt</artifactId>
+						<version>${org.aspectj-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjtools</artifactId>
+						<version>${org.aspectj-version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outxml>true</outxml>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

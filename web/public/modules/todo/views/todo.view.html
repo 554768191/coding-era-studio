@@ -36,7 +36,7 @@
                            ng-model="task.title" ><!--/title dropdown-->
                     <div class="panel panel-default" ce-input-dropdown-view>
                         <div class="panel-body" ngf-drop="upload($files, task)" data-ng-model="file" ngf-pattern="'image/*'" >
-                            <textarea class="form-control" data-ng-model="task.content" placeholder="很多描述..."
+                            <textarea class="form-control" data-ng-model="task.content" placeholder="填写描述(支持markdown)"
                                       data-auto-height="100" ce-textarea></textarea>
                             <div class="preview" ng-bind-html="previewedContent" ng-class="{active: previewed,hide : !previewed}" ng-click="togglePreview(task.content);" title="单击继续编辑"></div>
                         </div><!--/panel body-->
@@ -81,7 +81,7 @@
         <div class="col-md-12">
             <div class="list-group">
                 <div class="list-group-item ce-animate-list" ng-class="taskClass(task)" ng-repeat="task in tasks">
-                    <div class="pull-right" popover-placement="bottom" uib-popover-template="dynamicPopover.memberTemplateUrl">
+                    <div class="pull-right" popover-placement="bottom-right" uib-popover-template="dynamicPopover.memberTemplateUrl" ce-popover>
                         <a>
                             <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
                         </a>
@@ -95,9 +95,11 @@
                         </div>
                     </h4><!--/title-->
                     <p class="btn-group-sm list-group-item-text text-danger">
-                        <label data-ng-model="task.date" uib-datepicker-popup  ce-date-toggle="task.$$hashKey" is-open="opened[task.$$hashKey]">
+                        <label style="display: inline-block;" >
+                            <span data-ng-model="task.date" uib-datepicker-popup  ce-date-toggle="task.$$hashKey" is-open="opened[task.$$hashKey]">
                             <a class="badge">{{ task.date | date:'yyyy-MM-dd' }}</a>
                             <a href="#" ng-show="!task.date"><span class="glyphicon glyphicon-calendar"></span>日期</a>
+                            </span>
                         </label>
                         <a href="#" ng-show="task.content" ng-click="isCollapsed = !isCollapsed; toggleDetail(isCollapsed,task)">
                             <span class="glyphicon glyphicon-tasks"></span> 详情
@@ -163,20 +165,22 @@
     </script><!--/template-->
 
     <script type="text/ng-template" id="memberTemplate.html">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+        <div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
 
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-info" ng-click="onSearchClick()">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
-        </div>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-info" ng-click="onSearchClick()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
-        <div class="list-group member-detail">
-            <a class="list-group-item" ng-repeat="item in (3 | numberToArray) track by $index">
-                        <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
-                        <span style="overflow: hidden;">{{task.members}}</span>
-            </a>
+            <div class="list-group member-detail">
+                <a class="list-group-item" ng-repeat="item in (3 | numberToArray) track by $index">
+                            <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
+                            <span style="overflow: hidden;">{{task.members}}</span>
+                </a>
+            </div>
         </div>
     </script><!--/template-->
 

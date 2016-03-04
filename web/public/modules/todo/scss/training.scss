@@ -1,0 +1,49 @@
+@import "../../core/scss/core.env";
+
+/**
+ * 	用户指引
+ */
+
+//.ce-training {
+
+  //.last-step{
+  //  /* background-color: blue;*/
+  //}
+
+  .last-backdrop{
+    background-color: #FFFFFF;
+  }
+
+  //.blog{
+  //  position: absolute;
+  //  left: 300px;
+  //  top: 100px;
+  //}
+
+  //.start-again{
+  //  position: absolute;
+  //  left: 400px;
+  //  top: 100px;
+  //}
+
+  .next-step {
+    .step-progressing {
+      margin: 10px 0;
+      display: inline-block;
+      li {
+        margin-right: 5px;
+        border: 1px solid #fff;
+        background-color: #6E6E6E;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+        &.active {
+          background-color: #0000FF;
+        }
+      }
+    }
+  }
+
+
+//}

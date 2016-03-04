@@ -19,6 +19,10 @@ Main class:com.codingera.common.util.MyServer
 -XX:PermSize=256m 
 -Xms512m -Xmx1024m -Djetty.port=8777 -DconfigurationPath=file:./configuration
 -Dlog4j.configuration=file:./configuration/log4j.xml -Djetty.webdir=./src/main/webapp
+``` 
+
+##3.执行database文件夹下的sql脚本
+```
+ 运行脚本的顺序: oauth.sql(oauth2使用的数据库) -> initial.sql(初始化数据)
 ```
 
->暂时这样吧..其它的慢慢研究
