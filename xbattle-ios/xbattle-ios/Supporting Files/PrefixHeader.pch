@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  skyline
+//
+//  Created by 王贤 on 16/2/20.
+//  Copyright © 2016年 王贤. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import <PureLayout/PureLayout.h>
+#import "XBCommonKit.h"
+
+#define XB_LINE_MAIN_COLOR [UIColor colorWithRed:0.33 green:0.72 blue:0.97 alpha:1]
+#define XB_LINE_DATE_FORMATTER @"yyyy-MM-dd HH:mm:ss"
+
+#endif /* PrefixHeader_pch */
