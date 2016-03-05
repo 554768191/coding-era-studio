@@ -11,7 +11,9 @@
 #import <PureLayout/PureLayout.h>
 #import "XBCommonKit.h"
 
-#define XB_LINE_MAIN_COLOR [UIColor colorWithRed:0.33 green:0.72 blue:0.97 alpha:1]
+
+#define XB_DARK_COLOR [UIColor colorWithRed:0.13 green:0.16 blue:0.22 alpha:1]
+#define XB_HIGHLIGHTED_COLOR [UIColor colorWithRed:0.93 green:0.3 blue:0.35 alpha:1]
 #define XB_LINE_DATE_FORMATTER @"yyyy-MM-dd HH:mm:ss"
 
 #endif /* PrefixHeader_pch */
