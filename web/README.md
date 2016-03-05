@@ -34,9 +34,7 @@ $ npm install
 ```
 $ cd /your/fucking/project
 $ gulp
+//如果执行gulp时sass报错:npm rebuild node-sass
 ```
 
 >暂时这样吧..其它的慢慢研究
-
-hehheehehhehehheh
-he你妹妹
