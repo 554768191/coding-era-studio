@@ -44,3 +44,116 @@ com.codingera.CodingeraBootApplication
 测试驱动开发，你懂得！
 mvn clean install
 ```
+
+##Oauth2
+```
+//请求示例
+1.get token 
+curl -X POST -vu mobile-client:mobile http://localhost:8080/oauth/token -d "password=admin&username=user&grant_type=password&scope=write&client_secret=mobile&client_id=mobile-client" or 
+curl -X post -u mobile-client:mobile http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=mobile\&grant_type\=password\&scope\=write\&username\=user\&password\=admin 
+
+2.refresh token 
+curl -X post -u mobile-client:mobile http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=mobile\&grant_type\=refresh_token\&refresh_token\=a01ea2e2-4af6-4235-9075-c44770ec7bec 
+
+3.request resource 
+curl -X get http://localhost:8080/api/demo\?access_token\=1389178a-db21-43b7-8621-1ef846cb94bb
+or
+curl -H "Authorization: bearer [access_token]" localhost:8080/flights/1
+```
+
+##目录结构
+.
+├── README.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── codingera
+│   │   │           ├── CodingeraBootApplication.java
+│   │   │           ├── ServletInitializer.java
+│   │   │           └── module
+│   │   │               ├── base
+│   │   │               │   ├── controll
+│   │   │               │   │   └── ActionResult.java
+│   │   │               │   └── model
+│   │   │               │       └── IdEntity.java
+│   │   │               ├── demo
+│   │   │               │   ├── controll
+│   │   │               │   │   └── DemoController.java
+│   │   │               │   ├── criteria
+│   │   │               │   │   └── DemoQueryCriteria.java
+│   │   │               │   ├── model
+│   │   │               │   │   └── Demo.java
+│   │   │               │   ├── repository
+│   │   │               │   │   ├── DemoRepository.java
+│   │   │               │   │   ├── custom
+│   │   │               │   │   │   └── DemoRepositoryCustom.java
+│   │   │               │   │   └── impl
+│   │   │               │   │       └── DemoRepositoryImpl.java
+│   │   │               │   └── service
+│   │   │               │       ├── DemoService.java
+│   │   │               │       └── impl
+│   │   │               │           └── DemoServiceImpl.java
+│   │   │               ├── file
+│   │   │               │   ├── controll
+│   │   │               │   │   └── FileUploadController.java
+│   │   │               │   ├── model
+│   │   │               │   │   ├── Attachment.java
+│   │   │               │   │   ├── AttachmentView.java
+│   │   │               │   │   └── ImageAttachment.java
+│   │   │               │   ├── repository
+│   │   │               │   │   ├── AttachmentRepository.java
+│   │   │               │   │   ├── custom
+│   │   │               │   │   │   └── AttachmentRepositoryCustom.java
+│   │   │               │   │   └── impl
+│   │   │               │   └── service
+│   │   │               │       └── impl
+│   │   │               ├── oauth2
+│   │   │               │   ├── OAuth2Configuration.java
+│   │   │               │   └── controll
+│   │   │               │       └── MobileDemoController.java
+│   │   │               ├── security
+│   │   │               │   ├── ApplicationSecurity.java
+│   │   │               │   └── AuthenticationManagerConfiguration.java
+│   │   │               └── user
+│   │   │                   ├── controll
+│   │   │                   │   └── UserController.java
+│   │   │                   ├── criteria
+│   │   │                   │   └── UserQueryCriteria.java
+│   │   │                   ├── model
+│   │   │                   │   ├── User.java
+│   │   │                   │   └── UserRole.java
+│   │   │                   ├── repository
+│   │   │                   │   ├── UserRepository.java
+│   │   │                   │   ├── custom
+│   │   │                   │   │   └── UserRepositoryCustom.java
+│   │   │                   │   └── impl
+│   │   │                   │       └── UserRepositoryImpl.java
+│   │   │                   └── service
+│   │   │                       ├── UserService.java
+│   │   │                       └── impl
+│   │   │                           └── UserServiceImpl.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── message_en_US.properties
+│   │       ├── message_zh_CN.properties
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── codingera
+│                   ├── CodingeraBootApplicationTests.java
+│                   ├── SampleWebSecureCustomApplicationTests.java
+│                   └── demo
+│                       └── DemoRestControllerTest.java
+
+
+#TODO
+1.building_a_hateoas_rest_service
+2.PART 4: INTERNATIONALIZATION IN SPRING BOOT
+3.File Upload
+4.CacheService

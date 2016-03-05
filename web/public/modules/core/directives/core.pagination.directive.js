@@ -116,7 +116,7 @@ angular.module('core')
 
                     $scope.getMinPage = function(){
                         var currentPage = $scope.paginationApi.getPage();
-                        var middelPage = ceConfig.showDisplayPage%2 == 0?ceConfig.showDisplayPage/2:(ceConfig.showDisplayPage+1)/2
+                        var middelPage = ceConfig.showDisplayPage%2 === 0?ceConfig.showDisplayPage/2:(ceConfig.showDisplayPage+1)/2;
                         if(currentPage<middelPage){
                             return 1;
                         }
@@ -130,7 +130,7 @@ angular.module('core')
 
                     $scope.getMaxPage = function(){
                         var currentPage = $scope.paginationApi.getPage();
-                        var middelPage = ceConfig.showDisplayPage%2 == 0?ceConfig.showDisplayPage/2:(ceConfig.showDisplayPage+1)/2
+                        var middelPage = ceConfig.showDisplayPage%2 === 0?ceConfig.showDisplayPage/2:(ceConfig.showDisplayPage+1)/2;
                         if(currentPage<middelPage){
                             return ceConfig.showDisplayPage;
                         }
