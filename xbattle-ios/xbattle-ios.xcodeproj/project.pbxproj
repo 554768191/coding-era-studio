@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C465AA01C8B2682007EE20A /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C465A9F1C8B2682007EE20A /* XBTabBar.m */; };
+		2C465AAB1C8B2693007EE20A /* XBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C465AA71C8B2693007EE20A /* XBNavigationController.m */; };
+		2C465AAC1C8B2693007EE20A /* XBTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C465AAA1C8B2693007EE20A /* XBTabBarViewController.m */; };
+		2C465AAF1C8B31F7007EE20A /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C465AAE1C8B31F7007EE20A /* UIButton+Extension.m */; };
 		2C6FC84B1C8965C600749674 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC8411C8965C600749674 /* AppDelegate.m */; };
 		2C6FC84C1C8965C600749674 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FC8431C8965C600749674 /* Assets.xcassets */; };
 		2C6FC84D1C8965C600749674 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FC8451C8965C600749674 /* LaunchScreen.storyboard */; };
@@ -22,13 +26,24 @@
 		2C6FC8711C896C4200749674 /* XBHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC8701C896C4200749674 /* XBHomeTableViewController.m */; };
 		2C6FC8741C8977C200749674 /* XBDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC8731C8977C200749674 /* XBDiscoverViewController.m */; };
 		2C6FC8761C89781000749674 /* XBDiscoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FC8751C89781000749674 /* XBDiscoverViewController.storyboard */; };
-		2C6FC8791C897B6700749674 /* XBTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC8781C897B6700749674 /* XBTabBarViewController.m */; };
-		2C6FC87C1C8981B200749674 /* XBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC87B1C8981B200749674 /* XBNavigationController.m */; };
-		2C6FC87F1C89837E00749674 /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FC87E1C89837E00749674 /* XBTabBar.m */; };
+		2C7F47B91C89D0BD006E7DFD /* XBBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F47B81C89D0BD006E7DFD /* XBBattleViewController.m */; };
+		2C7F47BB1C89D0CE006E7DFD /* XBBattleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F47BA1C89D0CE006E7DFD /* XBBattleViewController.storyboard */; };
+		2C7F47BE1C89D108006E7DFD /* XBMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F47BD1C89D108006E7DFD /* XBMeTableViewController.m */; };
+		2C7F47C01C89D11D006E7DFD /* XBMeTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F47BF1C89D11D006E7DFD /* XBMeTableViewController.storyboard */; };
+		2C7F47C31C89D152006E7DFD /* XBSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F47C21C89D152006E7DFD /* XBSettingTableViewController.m */; };
+		2C7F47C51C89D161006E7DFD /* XBSettingTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F47C41C89D161006E7DFD /* XBSettingTableViewController.storyboard */; };
 		44FF2A393744D39D87042DF7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A09D1A3AF9349DD6A4CFEAE6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C465A9E1C8B2682007EE20A /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
+		2C465A9F1C8B2682007EE20A /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
+		2C465AA61C8B2693007EE20A /* XBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNavigationController.h; sourceTree = "<group>"; };
+		2C465AA71C8B2693007EE20A /* XBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNavigationController.m; sourceTree = "<group>"; };
+		2C465AA91C8B2693007EE20A /* XBTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBarViewController.h; sourceTree = "<group>"; };
+		2C465AAA1C8B2693007EE20A /* XBTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBarViewController.m; sourceTree = "<group>"; };
+		2C465AAD1C8B31F7007EE20A /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		2C465AAE1C8B31F7007EE20A /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		2C6FC8401C8965C600749674 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C6FC8411C8965C600749674 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2C6FC8431C8965C600749674 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,12 +71,15 @@
 		2C6FC8721C8977C200749674 /* XBDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDiscoverViewController.h; sourceTree = "<group>"; };
 		2C6FC8731C8977C200749674 /* XBDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDiscoverViewController.m; sourceTree = "<group>"; };
 		2C6FC8751C89781000749674 /* XBDiscoverViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = XBDiscoverViewController.storyboard; sourceTree = "<group>"; };
-		2C6FC8771C897B6700749674 /* XBTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBarViewController.h; sourceTree = "<group>"; };
-		2C6FC8781C897B6700749674 /* XBTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBarViewController.m; sourceTree = "<group>"; };
-		2C6FC87A1C8981B200749674 /* XBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNavigationController.h; sourceTree = "<group>"; };
-		2C6FC87B1C8981B200749674 /* XBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBNavigationController.m; sourceTree = "<group>"; };
-		2C6FC87D1C89837E00749674 /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
-		2C6FC87E1C89837E00749674 /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
+		2C7F47B71C89D0BD006E7DFD /* XBBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBBattleViewController.h; sourceTree = "<group>"; };
+		2C7F47B81C89D0BD006E7DFD /* XBBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBBattleViewController.m; sourceTree = "<group>"; };
+		2C7F47BA1C89D0CE006E7DFD /* XBBattleViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = XBBattleViewController.storyboard; sourceTree = "<group>"; };
+		2C7F47BC1C89D108006E7DFD /* XBMeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMeTableViewController.h; sourceTree = "<group>"; };
+		2C7F47BD1C89D108006E7DFD /* XBMeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMeTableViewController.m; sourceTree = "<group>"; };
+		2C7F47BF1C89D11D006E7DFD /* XBMeTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = XBMeTableViewController.storyboard; sourceTree = "<group>"; };
+		2C7F47C11C89D152006E7DFD /* XBSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingTableViewController.h; sourceTree = "<group>"; };
+		2C7F47C21C89D152006E7DFD /* XBSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingTableViewController.m; sourceTree = "<group>"; };
+		2C7F47C41C89D161006E7DFD /* XBSettingTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = XBSettingTableViewController.storyboard; sourceTree = "<group>"; };
 		2CBCF6651C8961F200EAE936 /* xbattle-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xbattle-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		410266D75F0D5084C2CDB5A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		564E7A86FE82508D8561B6C4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,12 +98,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C465A9D1C8B2682007EE20A /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2C465A9E1C8B2682007EE20A /* XBTabBar.h */,
+				2C465A9F1C8B2682007EE20A /* XBTabBar.m */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
+		2C465AA51C8B2693007EE20A /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2C465AA61C8B2693007EE20A /* XBNavigationController.h */,
+				2C465AA71C8B2693007EE20A /* XBNavigationController.m */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		2C465AA81C8B2693007EE20A /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2C465AA91C8B2693007EE20A /* XBTabBarViewController.h */,
+				2C465AAA1C8B2693007EE20A /* XBTabBarViewController.m */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
 		2C6FC8311C8965C600749674 /* app */ = {
 			isa = PBXGroup;
 			children = (
 				2C6FC8321C8965C600749674 /* common */,
-				2C6FC8361C8965C600749674 /* discover */,
 				2C6FC83A1C8965C600749674 /* home */,
+				2C6FC8361C8965C600749674 /* discover */,
+				2C7F47AB1C89D06B006E7DFD /* battle */,
+				2C7F47AF1C89D06B006E7DFD /* me */,
+				2C7F47B31C89D06B006E7DFD /* setting */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -103,10 +151,8 @@
 		2C6FC8331C8965C600749674 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FC8771C897B6700749674 /* XBTabBarViewController.h */,
-				2C6FC8781C897B6700749674 /* XBTabBarViewController.m */,
-				2C6FC87A1C8981B200749674 /* XBNavigationController.h */,
-				2C6FC87B1C8981B200749674 /* XBNavigationController.m */,
+				2C465AA51C8B2693007EE20A /* navigation */,
+				2C465AA81C8B2693007EE20A /* tabBar */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -121,8 +167,7 @@
 		2C6FC8351C8965C600749674 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FC87D1C89837E00749674 /* XBTabBar.h */,
-				2C6FC87E1C89837E00749674 /* XBTabBar.m */,
+				2C465A9D1C8B2682007EE20A /* tabBar */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -212,6 +257,8 @@
 				2C6FC8601C89683800749674 /* UIView+Create.m */,
 				2C6FC8611C89683800749674 /* UIView+Utils.h */,
 				2C6FC8621C89683800749674 /* UIView+Utils.m */,
+				2C465AAD1C8B31F7007EE20A /* UIButton+Extension.h */,
+				2C465AAE1C8B31F7007EE20A /* UIButton+Extension.m */,
 			);
 			path = ext;
 			sourceTree = "<group>";
@@ -242,6 +289,108 @@
 				2C6FC84A1C8965C600749674 /* main.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C7F47AB1C89D06B006E7DFD /* battle */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47AC1C89D06B006E7DFD /* controllers */,
+				2C7F47AD1C89D06B006E7DFD /* models */,
+				2C7F47AE1C89D06B006E7DFD /* views */,
+			);
+			path = battle;
+			sourceTree = "<group>";
+		};
+		2C7F47AC1C89D06B006E7DFD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47B71C89D0BD006E7DFD /* XBBattleViewController.h */,
+				2C7F47B81C89D0BD006E7DFD /* XBBattleViewController.m */,
+				2C7F47BA1C89D0CE006E7DFD /* XBBattleViewController.storyboard */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2C7F47AD1C89D06B006E7DFD /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		2C7F47AE1C89D06B006E7DFD /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		2C7F47AF1C89D06B006E7DFD /* me */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47B01C89D06B006E7DFD /* controllers */,
+				2C7F47B11C89D06B006E7DFD /* models */,
+				2C7F47B21C89D06B006E7DFD /* views */,
+			);
+			path = me;
+			sourceTree = "<group>";
+		};
+		2C7F47B01C89D06B006E7DFD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47BC1C89D108006E7DFD /* XBMeTableViewController.h */,
+				2C7F47BD1C89D108006E7DFD /* XBMeTableViewController.m */,
+				2C7F47BF1C89D11D006E7DFD /* XBMeTableViewController.storyboard */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2C7F47B11C89D06B006E7DFD /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		2C7F47B21C89D06B006E7DFD /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		2C7F47B31C89D06B006E7DFD /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47B41C89D06B006E7DFD /* controllers */,
+				2C7F47B51C89D06B006E7DFD /* models */,
+				2C7F47B61C89D06B006E7DFD /* views */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		2C7F47B41C89D06B006E7DFD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C7F47C11C89D152006E7DFD /* XBSettingTableViewController.h */,
+				2C7F47C21C89D152006E7DFD /* XBSettingTableViewController.m */,
+				2C7F47C41C89D161006E7DFD /* XBSettingTableViewController.storyboard */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2C7F47B51C89D06B006E7DFD /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		2C7F47B61C89D06B006E7DFD /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		2CBCF65C1C8961F100EAE936 = {
@@ -352,9 +501,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7F47C01C89D11D006E7DFD /* XBMeTableViewController.storyboard in Resources */,
 				2C6FC8551C8967E800749674 /* XBHomeTableViewController.storyboard in Resources */,
+				2C7F47BB1C89D0CE006E7DFD /* XBBattleViewController.storyboard in Resources */,
 				2C6FC84C1C8965C600749674 /* Assets.xcassets in Resources */,
 				2C6FC86E1C896B5E00749674 /* Info.plist in Resources */,
+				2C7F47C51C89D161006E7DFD /* XBSettingTableViewController.storyboard in Resources */,
 				2C6FC84D1C8965C600749674 /* LaunchScreen.storyboard in Resources */,
 				2C6FC8761C89781000749674 /* XBDiscoverViewController.storyboard in Resources */,
 			);
@@ -415,19 +567,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6FC8791C897B6700749674 /* XBTabBarViewController.m in Sources */,
 				2C6FC8711C896C4200749674 /* XBHomeTableViewController.m in Sources */,
+				2C465AAB1C8B2693007EE20A /* XBNavigationController.m in Sources */,
+				2C7F47B91C89D0BD006E7DFD /* XBBattleViewController.m in Sources */,
 				2C6FC8631C89683800749674 /* UIBarButtonItem+Extension.m in Sources */,
+				2C465AAF1C8B31F7007EE20A /* UIButton+Extension.m in Sources */,
+				2C465AA01C8B2682007EE20A /* XBTabBar.m in Sources */,
 				2C6FC8661C89683800749674 /* UIWindow+Extension.m in Sources */,
 				2C6FC8741C8977C200749674 /* XBDiscoverViewController.m in Sources */,
+				2C465AAC1C8B2693007EE20A /* XBTabBarViewController.m in Sources */,
 				2C6FC8671C89683800749674 /* UIView+Create.m in Sources */,
 				2C6FC8681C89683800749674 /* UIView+Utils.m in Sources */,
+				2C7F47C31C89D152006E7DFD /* XBSettingTableViewController.m in Sources */,
 				2C6FC8501C8965C600749674 /* main.m in Sources */,
 				2C6FC84B1C8965C600749674 /* AppDelegate.m in Sources */,
-				2C6FC87C1C8981B200749674 /* XBNavigationController.m in Sources */,
-				2C6FC87F1C89837E00749674 /* XBTabBar.m in Sources */,
 				2C6FC8651C89683800749674 /* UIViewController+Create.m in Sources */,
 				2C6FC8641C89683800749674 /* UIStoryboard+Addition.m in Sources */,
+				2C7F47BE1C89D108006E7DFD /* XBMeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
