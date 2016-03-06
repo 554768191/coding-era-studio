@@ -45,6 +45,8 @@ com.codingera.CodingeraBootApplication
 mvn clean install
 ```
 
+#技术点
+
 ##Oauth2
 ```
 //请求示例
@@ -59,6 +61,33 @@ curl -X post -u mobile-client:mobile http://localhost:8080/oauth/token\?client_i
 curl -X get http://localhost:8080/api/demo\?access_token\=1389178a-db21-43b7-8621-1ef846cb94bb
 or
 curl -H "Authorization: bearer [access_token]" localhost:8080/flights/1
+```
+
+##CORS
+```
+目前使用全局配置，参考CorsConfiguration.java
+其他配置方式：
+1.application.properties
+不能细化配置，暂时注释
+2.Filter
+参考FilterRegistrationBean.java，保留做demo
+3.注解
+
+```
+
+##SSL加密
+```
+生成秘钥方式命令：
+$ keytool -genkey -alias codingera -keyalg RSA -keystore src/main/resources/codingera.keystore
+Enter keystore password: password
+Re-enter new password: password
+
+生成文件：
+codingera 公钥；codingera.keystore私钥。
+
+请求：
+curl -k -X get https://localhost:8080/api/demo/page\?access_token\=dcb3c222-70db-472d-95ad-1645bbb39c24
+使用-k，是不对服务器的证书进行检查，这样就不必关心服务器证书的导出问题了。
 ```
 
 ##目录结构

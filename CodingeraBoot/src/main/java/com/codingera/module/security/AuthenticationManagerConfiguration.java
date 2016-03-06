@@ -25,19 +25,19 @@ public class AuthenticationManagerConfiguration extends GlobalAuthenticationConf
 	private DataSource dataSource;
 	@Autowired
 	private UserService userService;
-	
-    @Override
-    public void init(AuthenticationManagerBuilder auth) throws Exception {
-		//用户信息放到内存
-//		auth.inMemoryAuthentication()
-//		.withUser("admin").password("admin").roles("ADMIN", "USER")
-//		.and().withUser("user").password("user").roles("USER");
-		
-		//用户信息存在数据库
-    	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    	auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder);
-//		auth.jdbcAuthentication().dataSource(this.dataSource);
-		
-    }
+
+	@Override
+	public void init(AuthenticationManagerBuilder auth) throws Exception {
+		// 用户信息放到内存
+		// auth.inMemoryAuthentication()
+		// .withUser("admin").password("admin").roles("ADMIN", "USER")
+		// .and().withUser("user").password("user").roles("USER");
+
+		// 用户信息存在数据库
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder);
+		// auth.jdbcAuthentication().dataSource(this.dataSource);
+
+	}
 
 }
