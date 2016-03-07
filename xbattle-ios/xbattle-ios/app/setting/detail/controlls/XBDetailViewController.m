@@ -1,37 +1,29 @@
 //
-//  XBDiscoverViewController.m
+//  XBDetailViewController.m
 //  xbattle-ios
 //
-//  Created by 王贤 on 16/3/4.
+//  Created by 王贤 on 16/3/6.
 //  Copyright © 2016年 王贤. All rights reserved.
 //
 
-#import "XBDiscoverViewController.h"
 #import "XBDetailViewController.h"
 
-@interface XBDiscoverViewController ()
+@interface XBDetailViewController ()
 
 @end
 
-@implementation XBDiscoverViewController
-- (IBAction)test:(id)sender {
-}
+@implementation XBDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"哈哈哈";
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)testClick:(UIButton *)sender {
-    
-    XBDetailViewController *testCtrl = [XBDetailViewController create];
-   // testCtrl.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:testCtrl animated:YES];
-    
 }
 
 /*

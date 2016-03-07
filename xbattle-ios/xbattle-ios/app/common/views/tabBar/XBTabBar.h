@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XBTabBar;
+
+@protocol XBTabBarDelegate <NSObject>
+
+- (void)XBTabbar:(XBTabBar *) tabBar clickButton:(UIButton *) button;
+
+@end
 
 @interface XBTabBar : UITabBar
+
+@property (nonatomic,weak) id<XBTabBarDelegate> xbTabbardelegate;
 
 @end

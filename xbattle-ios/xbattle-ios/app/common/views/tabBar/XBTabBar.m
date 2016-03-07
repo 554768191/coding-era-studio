@@ -7,6 +7,7 @@
 //
 
 #import "XBTabBar.h"
+#import "XBTabBarButton.h"
 
 @interface XBTabBar()
 
@@ -19,18 +20,18 @@
 - (NSArray *)btnArray{
     if(_btnArray == nil){
         //首页Btn
-        UIButton *homeBtn = [self createButtonWithTitle:@"首页" normalImage:@"tab_home_unsel" seltedImage:@"tab_home_sel"];
+        XBTabBarButton *homeBtn = [XBTabBarButton createButtonWithTitle:@"推荐" normalImage:@"tab_home_unsel" seltedImage:@"tab_home_sel"];
         //发现btn
-        UIButton *discoverBtn = [self createButtonWithTitle:@"发现" normalImage:@"tab_discover_unsel" seltedImage:@"tab_discover_sel"];
+        XBTabBarButton *discoverBtn = [XBTabBarButton createButtonWithTitle:@"发现" normalImage:@"tab_discover_unsel" seltedImage:@"tab_discover_sel"];
         //挑战btn
-        UIButton *battleBtn = [self createButtonWithTitle:nil normalImage:@"tab_battle" seltedImage:nil];
+        XBTabBarButton *battleBtn = [XBTabBarButton createButtonWithTitle:nil normalImage:@"tab_battle" seltedImage:nil];
         battleBtn.backgroundColor = XB_HIGHLIGHTED_COLOR;
         
         //我btn
-        UIButton *meBtn = [self createButtonWithTitle:@"我" normalImage:@"tab_me_unsel" seltedImage:@"tab_me_sel"];
+        XBTabBarButton *meBtn = [XBTabBarButton createButtonWithTitle:@"我" normalImage:@"tab_me_unsel" seltedImage:@"tab_me_sel"];
         
         //设置btn
-        UIButton *settingBtn = [self createButtonWithTitle:@"设置" normalImage:@"tab_setting_unsel" seltedImage:@"tab_setting_sel"];
+        XBTabBarButton *settingBtn = [XBTabBarButton createButtonWithTitle:@"设置" normalImage:@"tab_setting_unsel" seltedImage:@"tab_setting_sel"];
         
         _btnArray = @[homeBtn,discoverBtn,battleBtn,meBtn,settingBtn];
     }
@@ -58,32 +59,28 @@
 - (void) setTabBarButton{
     
     for (int i = 0; i < self.btnArray.count ; i++){
-        [self addSubview:self.btnArray[i]];
+        XBTabBarButton *btn = self.btnArray[i];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        if(i == 0){
+            [self onButtonClick:btn];
+        }
+        [self addSubview:btn];
     }
-    
-    
     
 }
 
-#pragma mark - 创建按钮
-- (UIButton *) createButtonWithTitle:(NSString *) title normalImage:(NSString *) normalImage seltedImage:(NSString *) seltedImage{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:title forState:UIControlStateNormal];
-    if (normalImage != nil){
-        UIImage *normalImg = [UIImage imageNamed:normalImage];
-        [btn setImage:normalImg forState:UIControlStateNormal];
+
+- (void) onButtonClick:(UIButton *) currentButton{
+    
+    if( [self.xbTabbardelegate respondsToSelector:@selector(XBTabbar:clickButton:)] ){
+        [self.xbTabbardelegate XBTabbar:self clickButton:currentButton];
     }
     
-    if(seltedImage != nil){
-        UIImage *seltedImg = [UIImage imageNamed:seltedImage];
-        [btn setImage:seltedImg forState:UIControlStateSelected];
+    for (UIButton *btn in self.btnArray){
+        btn.selected = NO;
     }
-    btn.titleLabel.font = [UIFont systemFontOfSize: 12.0];
-    [btn setTitleColor:XB_HIGHLIGHTED_COLOR forState:UIControlStateSelected];
-    UIColor *normalColor = [UIColor colorWithRed:0.66 green:0.68 blue:0.69 alpha:1];
-    [btn setTitleColor:normalColor forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor colorWithRed:0.13 green:0.16 blue:0.22 alpha:1]];
-    return btn;
+    currentButton.selected = YES;
 }
 
 - (void)layoutSubviews{

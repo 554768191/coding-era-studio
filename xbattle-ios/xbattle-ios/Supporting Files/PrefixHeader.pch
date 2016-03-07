@@ -15,5 +15,6 @@
 #define XB_DARK_COLOR [UIColor colorWithRed:0.13 green:0.16 blue:0.22 alpha:1]
 #define XB_HIGHLIGHTED_COLOR [UIColor colorWithRed:0.93 green:0.3 blue:0.35 alpha:1]
 #define XB_LINE_DATE_FORMATTER @"yyyy-MM-dd HH:mm:ss"
-
+#define XB_DeviceWidth ([UIScreen mainScreen].bounds.size.width)
+#define XB_DeviceHeight ([UIScreen mainScreen].bounds.size.height-20)
 #endif /* PrefixHeader_pch */

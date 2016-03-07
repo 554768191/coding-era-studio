@@ -7,7 +7,7 @@
 //
 
 #import "XBTabBarViewController.h"
-#import "XBHomeTableViewController.h"
+#import "XBHomeCollectionViewController.h"
 #import "XBDiscoverViewController.h"
 #import "XBNavigationController.h"
 #import "XBBattleViewController.h"
@@ -15,7 +15,7 @@
 #import "XBSettingTableViewController.h"
 #import "XBTabBar.h"
 
-@interface XBTabBarViewController ()
+@interface XBTabBarViewController ()<XBTabBarDelegate>
 
 @end
 
@@ -27,42 +27,51 @@
     //设置自定义tabbar
     [self setTabBar];
     
-    //这是tabbar上的按钮
-   // [self setTabBarButton];
+    
+    [self setTabBarChildView];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    for(UIView *view in self.tabBar.subviews){
+        if(![view isKindOfClass:[XBTabBar class]]){
+            [view removeFromSuperview];
+        }
+    }
 }
 
 - (void)setTabBar{
     XBTabBar *tabBar = [[XBTabBar alloc]init];
-    tabBar.frame = self.tabBar.frame;
-    
+    tabBar.frame = self.tabBar.bounds;
+    tabBar.xbTabbardelegate = self;
     //self.tabBar = tabBar;
-    [self.view addSubview:tabBar];
+    [self.tabBar addSubview:tabBar];
+    
     
     //删除?
-    [self.tabBar removeFromSuperview];
+    //[self.tabBar removeFromSuperview];
+}
+
+- (void)XBTabbar:(XBTabBar *)tabBar clickButton:(UIButton *)button{
+    self.selectedIndex = button.tag;
 }
 
 
 #pragma mark - 设置tabBarButton
-- (void) setTabBarButton{
+- (void) setTabBarChildView{
 
-//    UITabBar *tabar = self.tabBar;
-//    
-//    [tabar setTintColor:[UIColor colorWithRed:0.93 green:0.3 blue:0.35 alpha:1]];
-//    // 两个同时设置，去除黑线
-//    tabar.backgroundColor = [UIColor colorWithRed:0.13 green:0.16 blue:0.22 alpha:1];
-//    tabar.backgroundImage = [UIImage new];
-//    tabar.shadowImage = [UIImage new];
     
     //首页
-    XBHomeTableViewController *homeViewCtrl = [XBHomeTableViewController create];
+    XBHomeCollectionViewController *homeViewCtrl = [XBHomeCollectionViewController create];
     XBNavigationController *homeNavigationCtrl = [[XBNavigationController alloc]initWithRootViewController:homeViewCtrl];
+    homeViewCtrl.title=@"推荐";
     [self addChildViewController:homeNavigationCtrl];
     
     //发现
     XBDiscoverViewController *discoverViewCtrl = [XBDiscoverViewController create];
     XBNavigationController *discoverNavigationCtrl = [[XBNavigationController alloc]initWithRootViewController:discoverViewCtrl];
+    discoverViewCtrl.title = @"发现";
     [self addChildViewController:discoverNavigationCtrl];
     
     
@@ -74,12 +83,14 @@
     //我
     XBMeTableViewController *meViewCtrl = [XBMeTableViewController create];
     XBNavigationController *meNavigationCtrl = [[XBNavigationController alloc]initWithRootViewController:meViewCtrl];
+    meViewCtrl.title = @"我";
     [self addChildViewController:meNavigationCtrl];
     
     
     //设置
     XBSettingTableViewController *settingViewCtrl = [XBSettingTableViewController create];
     XBNavigationController *settingNavigationCtrl = [[XBNavigationController alloc]initWithRootViewController:settingViewCtrl];
+    settingViewCtrl.title = @"设置";
     [self addChildViewController:settingNavigationCtrl];
     
     
