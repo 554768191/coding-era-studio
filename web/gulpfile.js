@@ -24,6 +24,6 @@ gulp.task('default', function (done) {
     //参数1:开发模式
     //参数2:校验
     //参数3:开启服务
-    runSequence('env:dev', 'lint',['nodemon','watch'], done);
-    //runSequence('env:dev', 'lint',['browser-sync','watch'], done);
+    //runSequence('env:dev', 'lint',['nodemon','watch'], done);
+    runSequence('env:dev', 'lint',['browser-sync','watch'], done);
 });
