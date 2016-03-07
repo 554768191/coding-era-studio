@@ -1,0 +1,145 @@
+<div ng-controller="dynamicCtrl" class="ce-dynamic">
+
+    <!--测试写法2-->
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form" name="form" ng-submit="addTask()">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <span class="btn btn-default" uib-datepicker-popup
+                          ng-model="task.date" is-open="opened['add']" ce-date-toggle="'add'">
+                        <span class="glyphicon glyphicon-calendar" ng-if="!task.date"></span>
+                        {{ task.date | date:'yyyy年MM月dd日' }}
+                    </span>
+                </div><!--/日历-->
+
+                <div ce-input-dropdown is-open="false" auto-close="outsideClick" class="task-dropdown" ng-class="{'has-error':form.title.$error.minlength}">
+                    <input type="text"  class="form-control" name="title" aria-label="..." placeholder="{{'TASK.ADD.TXT' | translate}}"
+                           ng-minlength="5"
+                           ce-input-dropdown-toggle
+                           ng-keyup="$event.keyCode == 13 && addTask()"
+                           ng-model="task.title" ><!--/title dropdown-->
+                    <div class="panel panel-default" ce-input-dropdown-view>
+                        <div class="panel-body" ngf-drop="upload($files, task)" data-ng-model="file" ngf-pattern="'image/*'" >
+                            <textarea class="form-control" data-ng-model="task.content" placeholder="填写描述(支持markdown)"
+                                      data-auto-height="100" ce-textarea></textarea>
+                            <div class="preview" ng-bind-html="previewedContent" ng-class="{active: previewed,hide : !previewed}" ng-click="togglePreview(task.content);" title="单击继续编辑"></div>
+                        </div><!--/panel body-->
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="" tooltip-placement="bottom" uib-tooltip="这都不懂?!"><span class="glyphicon glyphicon-question-sign"></span></a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="#" ng-click="togglePreview(task.content)">
+                                        <span class="glyphicon glyphicon-eye-open" ng-show="!previewed"></span>
+                                        <span class="glyphicon glyphicon-eye-close" ng-show="previewed"></span>
+                                    </a>
+                                    <a href="#" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                       ngf-resize="{width: 100, height: 100}">
+                                        <span class="glyphicon glyphicon-picture"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!--/panel footer-->
+                    </div><!--/title panel div-->
+                </div><!--/title div-->
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </button>
+                </div>
+
+            </div><!-- /input-group -->
+            </form>
+        </div><!-- /.col-md-12 -->
+    </div><!-- /.row --><!--/demo2-->
+
+    <!--任务列表-->
+    <!--TODO 注意,这里的$index在push新数据时会不正确,可以使用'task in tasks track by $index', 但是这样的话新增数据时不能正确地触发ng-enter动画效果,先用$$hashKey替代$index吧-->
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <div class="list-group">
+                <div class="list-group-item ce-animate-list" ng-class="taskClass(task)" ng-repeat="task in tasks">
+                    <div class="pull-right" popover-placement="bottom-right" uib-popover-template="dynamicPopover.memberTemplateUrl" ce-popover>
+                        <a>
+                            <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
+                        </a>
+                    </div><!--/members-->
+                    <h4 class="list-group-item-heading">
+                        <div class="form-inline">
+                            <div class="checkbox">
+                                <input type="checkbox" ng-click="toggleTaskStatus(task)">
+                                <textarea class="form-control task-title" ng-bind="task.title" data-ng-disabled="task.status" ce-enter="addTask(task, $event)"></textarea>
+                            </div>
+                        </div>
+                    </h4><!--/title-->
+                    <p class="btn-group-sm list-group-item-text text-danger">
+                        <label style="display: inline-block;" >
+                            <span data-ng-model="task.date" uib-datepicker-popup is-open="a = !a">
+                            <a class="badge">{{ task.date | date:'yyyy-MM-dd' }}</a>
+                            <a href="#" ng-show="!task.date"><span class="glyphicon glyphicon-calendar"></span>日期</a>
+                            </span>
+                        </label>
+                        <a href="#" ng-show="task.content" ng-click="isCollapsed = !isCollapsed; toggleDetail(isCollapsed,task)">
+                            <span class="glyphicon glyphicon-tasks"></span> 详情
+                        </a>
+                        <a href="#" ng-show="!task.content"><span class="glyphicon glyphicon-tasks"></span> 没有详情</a>
+                        <a href="#"><span class="glyphicon glyphicon-list-alt"></span> 评论</a>
+                        <a href="#"><span class="glyphicon glyphicon-tag"></span> 标签</a>
+                        <a href="#" ng-click="onEditTask(task)"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+                        <a href="#"><span class="glyphicon glyphicon-user"></span>人员:{{task.members}}</a>
+                    </p><!--/actions-->
+                    <!--用div包住动画才能流畅-->
+                    <div uib-collapse="isCollapsed">
+                        <pre ng-bind-html="task.previewedContent">
+                        </pre>
+                    </div><!--/detail preview-->
+                </div>
+            </div><!--/Item-->
+        </div>
+    </div><!--/Tasks List-->
+
+
+    <!--模板-->
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+        <textarea class="form-control" rows="5" cols="1000" data-ng-model="task.title"></textarea>
+        <div class="row">
+            <div class="col-md-6 input-lg">
+                <a href="#" popover-placement="bottom" uib-popover="这都不懂?!"><span class="glyphicon glyphicon-question-sign"></span></a>
+            </div>
+            <div class="col-md-6 input-lg text-right">
+                <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-leaf"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-picture"></span></a>
+            </div>
+        </div>
+    </script><!--/template-->
+
+    <script type="text/ng-template" id="memberTemplate.html">
+        <div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-info" ng-click="onSearchClick()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="list-group member-detail">
+                <a class="list-group-item" ng-repeat="item in (3 | numberToArray) track by $index">
+                            <img src="modules/todo/images/yan.jpg" alt="..." class="img-circle">
+                            <span style="overflow: hidden;">{{task.members}}</span>
+                </a>
+            </div>
+        </div>
+    </script><!--/template-->
+
+</div>
+
