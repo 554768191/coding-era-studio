@@ -58,6 +58,10 @@
     color:$ce-highlight-color;
   }
 
+  .navbar-nav > li > a:focus{
+    color:$ce-highlight-color;
+  }
+
   //brandhover颜色
   .navbar-brand:hover{
     color:$ce-highlight-color;

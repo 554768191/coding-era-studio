@@ -7,7 +7,7 @@ var homeController = (function(){
     var service = {};
     //初始化头部组
     service.initSectionHeader = function () {
-        var windowHeight =  window.innerHeight;
+        var windowHeight =  window.innerHeight - 70;
         var sectionHeadObj = $('.section-header');
         sectionHeadObj.height(windowHeight);
         window.onResize = function(){
