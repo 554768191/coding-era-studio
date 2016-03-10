@@ -1,0 +1,100 @@
+{% extends '../../layout/view/comment.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-blue'} only %}
+<!-- END   navi -->
+
+<div class="dynamic-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="dynamic-header-title">
+                    <h1>最新动态</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="dynamic-header-subtitle">
+                    Coding Era 最新动态
+                </div>
+            </div>
+        </div>
+    </div><!-- container -->
+
+    <div class="icon">
+        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+
+    </div>
+</div><!-- about-header -->
+
+<div class="container dynamic-content">
+    <div class="dynamic-line">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-8">
+                <div class="dynamic-card"><!-- dynamic-card -->
+                    <div class="point"></div>
+                    <div class="triangle-left-border"></div>
+                    <div class="triangle-left"></div>
+                    <div class="card-detail">
+                        <div class="top">
+                            <div class="avatar"><img src="/static/image/jason.jpeg" /></div>
+                            <div class="name">Jason</div>
+                            <div class="time">今天 13:52</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="content">
+                                后台优化代码,提升系统性能
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+                <div class="dynamic-card"><!-- dynamic-card -->
+                    <div class="point"></div>
+                    <div class="triangle-left-border"></div>
+                    <div class="triangle-left"></div>
+                    <div class="card-detail">
+                        <div class="top">
+                            <div class="avatar"><img src="/static/image/yan.jpg" /></div>
+                            <div class="name">Yan</div>
+                            <div class="time">今天 13:52</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="content">
+                                更新版本,添加Swig模板框架,提高代码可读性
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+               <div class="dynamic-card"><!-- dynamic-card -->
+                   <div class="point"></div>
+                   <div class="triangle-left-border"></div>
+                   <div class="triangle-left"></div>
+                   <div class="card-detail">
+                       <div class="top">
+                           <div class="avatar"><img src="/static/image/logo_64X64.png" /></div>
+                           <div class="name">Coding Era</div>
+                           <div class="time">今天 11:52</div>
+                       </div>
+                       <div class="bottom">
+                           <div class="content">
+                               Coding Era今天上线啦!!!
+                           </div>
+                       </div>
+                   </div>
+               </div><!-- dynamic-card -->
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

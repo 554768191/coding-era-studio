@@ -17,8 +17,8 @@
   left: 15px;
 }
 
-//控制导航栏透明
-.ce-navbar{
+//控制导航栏透明(黑色透明)
+.ce-navbar-dark{
   background:rgba(0, 0, 0, 0.5);
   border:0;
   //导航栏文字颜色
@@ -46,6 +46,112 @@
   //小屏幕下,展开按钮边框颜色
   .navbar-collapse{
     border-color: #000;
+  }
+
+  //小屏幕下,展开按钮高亮颜色
+  .navbar-toggle:focus {
+    background:$ce-highlight-color;
+  }
+
+  //文字hover颜色
+  .navbar-nav > li > a:hover{
+    color:$ce-highlight-color;
+  }
+
+  .navbar-nav > li > a:focus{
+    color:$ce-highlight-color;
+  }
+
+  //brandhover颜色
+  .navbar-brand:hover{
+    color:$ce-highlight-color;
+  }
+
+}
+
+
+//控制导航栏(绿色导航 关于使用)
+.ce-navbar-green{
+  background: #00A700;
+  border:0;
+  //导航栏文字颜色
+  .navbar-brand{
+    color:#fff;
+  }
+
+  .navbar-toggle {
+    border-color: #fff;
+  }
+
+  //导航条文字颜色
+  .navbar-nav > li > a{
+    color:#fff;
+  }
+  //小屏幕下,展开按钮默认颜色
+  .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  //小屏幕下,展开按钮hover高亮颜色
+  .navbar-toggle:hover{
+    background:$ce-highlight-color;
+  }
+
+  //小屏幕下,展开按钮边框颜色
+  .navbar-collapse{
+    border-color: #059405;
+  }
+
+  //小屏幕下,展开按钮高亮颜色
+  .navbar-toggle:focus {
+    background:$ce-highlight-color;
+  }
+
+  //文字hover颜色
+  .navbar-nav > li > a:hover{
+    color:$ce-highlight-color;
+  }
+
+  .navbar-nav > li > a:focus{
+    color:$ce-highlight-color;
+  }
+
+  //brandhover颜色
+  .navbar-brand:hover{
+    color:$ce-highlight-color;
+  }
+
+}
+
+
+//蓝色导航
+.ce-navbar-blue{
+  background: #36A9FF;
+  border:0;
+  //导航栏文字颜色
+  .navbar-brand{
+    color:#fff;
+  }
+
+  .navbar-toggle {
+    border-color: #fff;
+  }
+
+  //导航条文字颜色
+  .navbar-nav > li > a{
+    color:#fff;
+  }
+  //小屏幕下,展开按钮默认颜色
+  .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  //小屏幕下,展开按钮hover高亮颜色
+  .navbar-toggle:hover{
+    background:$ce-highlight-color;
+  }
+
+  //小屏幕下,展开按钮边框颜色
+  .navbar-collapse{
+    border-color: #1488de;
   }
 
   //小屏幕下,展开按钮高亮颜色

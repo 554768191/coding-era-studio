@@ -1,0 +1,63 @@
+{% extends '../../layout/view/comment.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-green'} only %}
+<!-- END   navi -->
+
+<div class="about-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="about-header-title">
+                    <h1>关于我们</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="about-header-subtitle">
+                    关于Coding Era - 编码时代工作室
+                </div>
+            </div>
+        </div>
+    </div><!-- container -->
+    <div class="icon">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+
+    </div>
+</div><!-- about-header -->
+
+<div class="container about-content">
+    <div class="row">
+        <div class="col-xs-12">
+                <h3>编码时代工作室</h3>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <p>
+                Coding Era 的诞生,在于我们(Yan,Jason)正在上班的时候,天天做着重复的事情,总是在抱怨为什么这么简单的东西,为什么要重复写?
+                由于架构师使用的框架,技术都没有文档正确引导我们,而每位同事都懒得去研究架构师或者某位同事封装过,组装过
+                的插件/工具类,有时还因为点点不同而自己写一个插件/工具,不停的车轮式开发,使项目越来越臃肿,越来越觉得烦躁.
+                <br>
+                <br> 在这种情况下我们决定要做出改变,创建完美工具库,拥有自己项目框架,建立健全的文档库,Coding Era 就此诞生了!
+                (...佶闪你来吧我语文不好)
+            </p>
+        </div>
+
+
+        <div class="col-xs-12">
+            <h3>网站创始人</h3>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <h5>Yan(这里到时弄成卡片)</h5>
+            <p>
+                一位充满想象力,热衷于新潮技术的开发者,经常会专研一些新技术,框架,研究到深夜,热爱健身,编码...
+            </p>
+            <h5>Jason(这里到时弄成卡片)</h5>
+            <p>
+                一位充满想象力,热衷于新潮技术的开发者,经常会专研一些新技术,框架,研究到深夜,热爱健身,编码...
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

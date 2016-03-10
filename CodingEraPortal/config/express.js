@@ -6,6 +6,8 @@
 var express = require('express');
 var consolidate = require('consolidate');
 var homeRoute = require('../public/routes/home/home.routes');
+var aboutRoute = require('../public/routes/about/about.routes');
+var dynamicRoute = require('../public/routes/dynamic/dynamic.routes');
 var compression = require('compression');
 var config = require('./config');
 var path = require('path');
@@ -39,7 +41,10 @@ module.exports = function() {
 
     //首页路由
     app.use('/', homeRoute);
-
+    //关于我
+    app.use('/about',aboutRoute);
+    //动态
+    app.use('/dynamic',dynamicRoute);
 
     return app;
 };
