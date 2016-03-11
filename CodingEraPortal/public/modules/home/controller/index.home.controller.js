@@ -11,7 +11,9 @@ var homeController = (function(){
         var sectionHeadObj = $('.section-header');
         sectionHeadObj.height(windowHeight);
         window.onResize = function(){
-            sectionHeadObj.height(windowHeight);
+
+            var windowHeight2 =  window.innerHeight - 70;
+            sectionHeadObj.height(windowHeight2);
         };
     };
 

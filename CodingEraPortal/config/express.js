@@ -8,6 +8,8 @@ var consolidate = require('consolidate');
 var homeRoute = require('../public/routes/home/home.routes');
 var aboutRoute = require('../public/routes/about/about.routes');
 var dynamicRoute = require('../public/routes/dynamic/dynamic.routes');
+var contactRoute = require('../public/routes/contact/contact.routes');
+var caseRoute = require('../public/routes/case/case.routes');
 var compression = require('compression');
 var config = require('./config');
 var path = require('path');
@@ -45,6 +47,10 @@ module.exports = function() {
     app.use('/about',aboutRoute);
     //动态
     app.use('/dynamic',dynamicRoute);
+    //联系我们
+    app.use('/contact',contactRoute);
 
+    //作品(案例)
+    app.use('/case',caseRoute);
     return app;
 };

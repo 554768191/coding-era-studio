@@ -1,0 +1,136 @@
+@import "../../comment/scss/comment.env";
+
+$contact-color:#FF6F32;
+.contact-header{
+  background:$contact-color;
+  height:250px;
+  padding-top:80px;
+  position: relative;
+  overflow: hidden;
+  .icon{
+    position: absolute;
+    color: #fff;
+    right: 200px;
+    bottom: -100px;
+    font-size: 300px;
+    line-height: 45px;
+    opacity: 0.15;
+
+  }
+}
+
+//大标题
+.contact-header-title{
+  color:#fff;
+
+  h1{
+    font-size:400%;
+  }
+}
+//副标题
+.contact-header-subtitle{
+  color:#e6fce6;
+
+}
+
+.contact-content{
+  padding-top:50px;
+  padding-bottom:100px;
+  .contact-card{
+    background: #fafafa;
+    border:1px solid #eeeeee;
+    border-radius: 2px;
+    margin-bottom:50px;
+    .contact-padding{
+      padding:20px;
+    }
+    .top{
+      position: relative;
+      $avatar-size:50px;
+      .avatar{
+        width: $avatar-size;
+        height:$avatar-size;
+        img{
+          width: $avatar-size;
+          height: $avatar-size;
+          border-radius: 100%;
+        }
+      }
+      .name{
+        position: absolute;
+        left:60px;
+        height:25px;
+        top:0;
+      }
+      .stateMessage{
+        position: absolute;
+        left:60px;
+        height:25px;
+        top:25px;
+        font-size: 90%;
+        color:#888;
+      }
+
+    }
+
+    .center{
+      margin-top:20px;
+      border-top:1px solid #eee;
+      padding-top:20px;
+      .detail{
+        background: #fff;
+        border-radius: 2px;
+        padding:20px;
+      }
+    }
+
+    .bottom{
+      margin-top:20px;
+      .tag{
+
+        .tags{
+          ul{
+            padding:0;
+          }
+          li{
+            float:left;
+            min-width: 50px;
+            height:20px;
+            line-height: 20px;
+            list-style: none;
+            background: $contact-color;
+            text-align: center;
+            color:#fff;
+            margin-left:5px;
+            padding:0 10px;
+            border-radius: 2px;
+            margin-bottom:5px;
+          }
+        }
+      }
+
+    }
+
+    .contact{
+      border-top:1px solid #eee;
+      height:40px;
+      display: -moz-box;
+      display: -webkit-box;
+      display: box;
+
+      .contacts{
+        height:30px;
+        line-height: 30px;
+        margin-top:5px;
+        border-right:1px solid #eee;
+        text-align: center;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        &:last-child{
+          border-right: 0;
+        }
+      }
+    }
+  }
+}

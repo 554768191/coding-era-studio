@@ -1,0 +1,133 @@
+@import "../../comment/scss/comment.env";
+
+$case-color:#EC4C58;
+.case-header{
+  background:$case-color;
+  height:250px;
+  padding-top:80px;
+  position: relative;
+  overflow: hidden;
+  .icon{
+    position: absolute;
+    color: #fff;
+    right: 200px;
+    bottom: -100px;
+    font-size: 300px;
+    line-height: 45px;
+    opacity: 0.15;
+
+  }
+}
+
+//大标题
+.case-header-title{
+  color:#fff;
+
+  h1{
+    font-size:400%;
+  }
+}
+//副标题
+.case-header-subtitle{
+  color:#e6fce6;
+
+}
+
+.case-content{
+  padding-top:50px;
+  padding-bottom:100px;
+  .case-card{
+    background: #fafafa;
+    border:1px solid #eeeeee;
+    border-radius: 2px;
+    margin-bottom:50px;
+    .case-padding{
+      padding:10px 20px;
+      .top{
+        .title{
+          h2{
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            width:100%;
+          }
+
+        }
+        .subtitle{
+          color:#888;
+          padding:5px 0 10px 0;
+        }
+      }
+      .content{
+        .pic{
+          width:100%;
+          max-height:200px;
+          border-radius:2px;
+          overflow: hidden;
+          img{
+            width:100%;
+            border-radius:2px;
+          }
+        }
+        .summary{
+          padding:10px 0;
+        }
+
+      }
+    }
+    .bottom{
+      border-top:1px solid #eee;
+      height:40px;
+      display: -moz-box;
+      display: -webkit-box;
+      display: box;
+
+      .bottom-card{
+        height:30px;
+        line-height: 30px;
+        margin-top:5px;
+        border-right:1px solid #eee;
+        text-align: center;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        &:last-child{
+          border-right: 0;
+        }
+      }
+
+    }
+
+  }
+
+  .case-page{
+    text-align: center;
+  }
+}
+
+
+.case-tags{
+  background: #fafafa;
+  border:1px solid #eeeeee;
+  border-radius: 2px;
+  padding:10px 20px 20px 20px;
+  .tags{
+    ul{
+      padding:0;
+    }
+    li{
+      float:left;
+      min-width: 50px;
+      height:30px;
+      line-height: 20px;
+      list-style: none;
+      background: $case-color;
+      text-align: center;
+      color:#fff;
+      margin-left:5px;
+      padding:5px 10px;
+      border-radius: 2px;
+      margin-bottom:5px;
+    }
+  }
+}
