@@ -5,26 +5,11 @@
 {% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-green'} only %}
 <!-- END   navi -->
 
-<div class="about-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="about-header-title">
-                    <h1>关于我们</h1>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="about-header-subtitle">
-                    关于Coding Era - 编码时代工作室
-                </div>
-            </div>
-        </div>
-    </div><!-- container -->
-    <div class="icon">
-        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+<!-- START jumbotron -->
+{%set jumbotron ={title:'关于我们',subtitle:'关于Coding Era - 编码时代工作室',icon:'glyphicon-info-sign',category:'about'} %}
+{% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
 
-    </div>
-</div><!-- about-header -->
 
 <div class="container about-content">
     <div class="row">

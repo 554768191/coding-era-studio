@@ -1,0 +1,78 @@
+{% extends '../../layout/view/comment.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-red'} only %}
+<!-- END   navi -->
+
+
+<!-- START jumbotron -->
+{%set jumbotron = {title:'作品展示',subtitle:'我们做过的作品',icon:'glyphicon-th-large',category:'case'} %}
+{% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+
+<div class="container case-content">
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <ol class="breadcrumb">
+                <li><a href="/case">作品</a></li>
+                <li class="active">作品明细</li>
+            </ol>
+
+            <div class="case-detail">
+                <div class="case-detail-padding">
+                    <div class="page-header detail-title">
+                        <h2>IU互联网酒店-微信公众号</h2>
+                        <div class="detail-subtitle">
+                            发布日期:2015-03-12 标签:java,微信,公众号
+                        </div>
+                    </div>
+
+                    <div class="detail-content">
+                        <p>
+                            <h5>IU酒店</h5>
+                            U酒店  是铂涛集团推出的互联网概念酒店。酒店内的住宿体验有微信互动系统，手机、平板、电视多屏互动系统，个性定制服务。植入消费者有需求的互联网基因，打造符合现代年轻人需求的消费者定制互联网酒店。
+                            <img src="/static/image/pic.jpg">
+                            <h5>酒店简介</h5>
+                            IU酒店是铂涛集团旗下酒店品牌之一，于2015年2月推出。
+                            IU酒店是“互联网+”概念在酒店行业的成功探索和应用，既迎合了现代人追求个性的心理诉求，更顺应了生活科技化、社交分享化的时代要求。IU酒店的模式为酒店行业和旅游服务行业提供了向互联网转型的范例。
+                            <h5>微信发布会</h5>
+                            铂涛集团于2015年2月10日举行了一场微信新品发布会，发布互联网酒店——IU酒店。这场发布会依托微信平台，通过图片、视频、文字等方式，结合“720°重力感应全景看房”的线上体验，为大家展示了一个符合现代年轻人需求的互联网酒店。
+                            <h5>酒店设施</h5>
+                            IU酒店定位为互联网概念的轻精品酒店，注重硬件设施的升级，比如酒店卫生间内的大型热带雨淋、力士二合一洗发沐浴露、一次性吸水面巾、静音快干电吹风、加厚地板拖鞋、大尺寸封盖茶杯、一键电话、棉封包浴巾等。
+                        </p>
+                    </div>
+                </div>
+                <div class="detail-bottom">
+                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 hidden-xs" >
+            <div class="case-tags">
+                <h4>标签</h4>
+                <div class="tags">
+                    <ul>
+                        <li>Java</li>
+                        <li>Jquery</li>
+                        <li>Nodejs</li>
+                        <li>object-c</li>
+                        <li>web</li>
+                        <li>ios</li>
+                    </ul>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock %}

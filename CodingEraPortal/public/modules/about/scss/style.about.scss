@@ -1,37 +1,8 @@
 @import "../../comment/scss/comment.env";
 
 $about-color:#00A700;
-.about-header{
-  background:$about-color;
-  height:250px;
-  padding-top:80px;
-  position: relative;
-  overflow: hidden;
-  .icon{
-    position: absolute;
-    color: #fff;
-    right: 200px;
-    bottom: -100px;
-    font-size: 300px;
-    line-height: 45px;
-    opacity: 0.15;
-
-  }
-}
-
-//大标题
-.about-header-title{
-  color:#fff;
-
-  h1{
-    font-size:400%;
-  }
-}
-//副标题
-.about-header-subtitle{
-  color:#e6fce6;
-
-}
+//设置巨幕颜色
+@include setJumbotronColor($about-color,'about');
 
 .about-content{
   padding-top:50px;

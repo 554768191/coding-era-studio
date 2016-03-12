@@ -5,26 +5,10 @@
 {% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-red'} only %}
 <!-- END   navi -->
 
-<div class="case-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="case-header-title">
-                    <h1>项目展示</h1>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="case-header-subtitle">
-                    我们开发过项目,经验
-                </div>
-            </div>
-        </div>
-    </div><!-- container -->
-    <div class="icon">
-        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-
-    </div>
-</div><!-- case-header -->
+<!-- START jumbotron -->
+{%set jumbotron = {title:'作品展示',subtitle:'我们做过的作品',icon:'glyphicon-th-large',category:'case'} %}
+{% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
 
 <div class="container case-content">
     <div class="row">
@@ -32,7 +16,7 @@
                 <div class="case-card"> <!-- case-card -->
                     <div class="case-padding">
                         <div class="top">
-                            <div class="title"><h2>IU互联网酒店-微信公众号</h2></div>
+                            <div class="title"><a href="/case/detail"><h2>IU互联网酒店-微信公众号</h2></a></div>
                             <div class="subtitle">微信,java,jms</div>
                         </div>
                         <div class="content">

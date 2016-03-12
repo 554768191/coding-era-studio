@@ -1,37 +1,9 @@
 @import "../../comment/scss/comment.env";
 
 $case-color:#EC4C58;
-.case-header{
-  background:$case-color;
-  height:250px;
-  padding-top:80px;
-  position: relative;
-  overflow: hidden;
-  .icon{
-    position: absolute;
-    color: #fff;
-    right: 200px;
-    bottom: -100px;
-    font-size: 300px;
-    line-height: 45px;
-    opacity: 0.15;
+//设置巨幕颜色
+@include setJumbotronColor($case-color,'case');
 
-  }
-}
-
-//大标题
-.case-header-title{
-  color:#fff;
-
-  h1{
-    font-size:400%;
-  }
-}
-//副标题
-.case-header-subtitle{
-  color:#e6fce6;
-
-}
 
 .case-content{
   padding-top:50px;
@@ -45,6 +17,12 @@ $case-color:#EC4C58;
       padding:10px 20px;
       .top{
         .title{
+          a{
+            text-decoration: none;
+            &:hover{
+              color:$case-color;
+            }
+          }
           h2{
             overflow:hidden;
             text-overflow:ellipsis;
@@ -64,6 +42,7 @@ $case-color:#EC4C58;
           max-height:200px;
           border-radius:2px;
           overflow: hidden;
+          cursor: pointer;
           img{
             width:100%;
             border-radius:2px;
@@ -92,6 +71,7 @@ $case-color:#EC4C58;
         -moz-box-flex: 1;
         -ms-box-flex: 1;
         box-flex: 1;
+        cursor: pointer;
         &:last-child{
           border-right: 0;
         }
@@ -130,5 +110,53 @@ $case-color:#EC4C58;
       border-radius: 2px;
       margin-bottom:5px;
     }
+  }
+}
+
+
+//明细
+.case-detail{
+  @include cardStyle();
+  &-padding{
+    padding:0 20px 20px 20px;
+    .detail-subtitle{
+      color:#888;
+    }
+
+    .detail-content{
+      h1,h2,h3,h4,h5,h6{
+        color: $case-color;
+      }
+      img{
+        width:100%;
+        margin:10px 0;
+        border-radius:2px;
+      }
+    }
+  }
+
+  .detail-bottom{
+    border-top:1px solid #eee;
+    height:40px;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+
+    .bottom-card{
+      height:30px;
+      line-height: 30px;
+      margin-top:5px;
+      border-right:1px solid #eee;
+      text-align: center;
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      -ms-box-flex: 1;
+      box-flex: 1;
+      cursor: pointer;
+      &:last-child{
+        border-right: 0;
+      }
+    }
+
   }
 }

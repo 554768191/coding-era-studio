@@ -17,6 +17,8 @@
   left: 15px;
 }
 
+
+
 @mixin gen-navi-color($color,$fontColor){
   background:$color;
   border:0;
@@ -95,6 +97,41 @@
 //红色导航
 .ce-navbar-red{
   @include gen-navi-color(#EC4C58,#fff);
+}
+
+
+
+//巨幕
+.jumbotron-header{
+  height:250px;
+  padding-top:80px;
+  position: relative;
+  overflow: hidden;
+  .icon{
+    position: absolute;
+    color: #fff;
+    right: 200px;
+    bottom: -100px;
+    font-size: 300px;
+    line-height: 45px;
+    opacity: 0.15;
+
+  }
+}
+
+//大标题
+.jumbotron-header-title{
+  color:#fff;
+
+  h1{
+    font-size:400%;
+  }
+}
+//副标题
+.jumbotron-header-subtitle{
+  color:#fff;
+  opacity: 0.8;
+
 }
 
 

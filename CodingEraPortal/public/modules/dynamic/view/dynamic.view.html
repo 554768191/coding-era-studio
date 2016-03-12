@@ -5,27 +5,11 @@
 {% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-blue'} only %}
 <!-- END   navi -->
 
-<div class="dynamic-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="dynamic-header-title">
-                    <h1>最新动态</h1>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="dynamic-header-subtitle">
-                    Coding Era 最新动态
-                </div>
-            </div>
-        </div>
-    </div><!-- container -->
+<!-- START jumbotron -->
+{%set jumbotron ={title:'最新动态',subtitle:'Coding Era 最新动态',icon:'glyphicon-globe',category:'dynamic'} %}
+{% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
 
-    <div class="icon">
-        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-
-    </div>
-</div><!-- about-header -->
 
 <div class="container dynamic-content">
     <div class="dynamic-line">

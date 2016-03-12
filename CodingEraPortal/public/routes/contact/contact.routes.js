@@ -6,4 +6,6 @@ router.get('/', function(req, res, next) {
     res.render('contact/view/contact');
 });
 
+
+
 module.exports = router;

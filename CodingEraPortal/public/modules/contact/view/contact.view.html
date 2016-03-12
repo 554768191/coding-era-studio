@@ -5,26 +5,11 @@
 {% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-orange'} only %}
 <!-- END   navi -->
 
-<div class="contact-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="contact-header-title">
-                    <h1>联系我们</h1>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="contact-header-subtitle">
-                    定制项目,交流,都可以找我们
-                </div>
-            </div>
-        </div>
-    </div><!-- container -->
-    <div class="icon">
-        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+<!-- START jumbotron -->
+{%set jumbotron = {title:'联系我们',subtitle:'定制项目,交流,都可以找我们',icon:'glyphicon-envelope',category:'contact'} %}
+{% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
 
-    </div>
-</div><!-- about-header -->
 
 <div class="container contact-content">
     <div class="row">

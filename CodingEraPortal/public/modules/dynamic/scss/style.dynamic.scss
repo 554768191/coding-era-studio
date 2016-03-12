@@ -1,37 +1,8 @@
 @import "../../comment/scss/comment.env";
 
 $dynamic-color:#36A9FF;
-.dynamic-header{
-  background:$dynamic-color;
-  height:250px;
-  padding-top:80px;
-  position: relative;
-  overflow: hidden;
-  .icon{
-    position: absolute;
-    color: #fff;
-    right: 200px;
-    bottom: -100px;
-    font-size: 300px;
-    line-height: 45px;
-    opacity: 0.15;
+@include setJumbotronColor($dynamic-color,'dynamic');
 
-  }
-}
-
-//大标题
-.dynamic-header-title{
-  color:#fff;
-
-  h1{
-    font-size:400%;
-  }
-}
-//副标题
-.dynamic-header-subtitle{
-  color:#e6f2fb;
-
-}
 
 .dynamic-content{
   $line-color:#4DB3FF;
