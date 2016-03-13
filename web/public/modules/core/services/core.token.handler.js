@@ -7,11 +7,10 @@
  */
 "use strict";
 
-angular.module('core').factory('TokenHandler', [
-    function () {
+angular.module('core').factory('TokenHandler', ["Authentication",
+    function (Authentication) {
         var tokenHandler = {};
-        //var token = "none";
-        var token = "9bbd9f28-d146-4b38-993e-b12685873835";
+        var token = Authentication.user.accessToken || "none";
 
         tokenHandler.set = function (newToken) {
             token = newToken;

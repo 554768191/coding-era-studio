@@ -14,6 +14,7 @@ angular.module('demo').factory('DemoService', ['$resource', '$log', 'ceConfig', 
             }
         });
 
+        //加上参数access_token
         service = TokenHandler.wrapActions( service, ["query", "update", "save"] );
 
         return service;

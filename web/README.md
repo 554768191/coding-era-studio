@@ -21,7 +21,15 @@
 ## 初始化项目
 ## 1.安装NPM
 ```
-此步骤完美省略
+Mac
+nodejs版本管理器
+>brew install -g nvm
+>nvm ls-remote
+>nvm install [nodejs version]
+切换npm下载源
+>brew install -g nrm
+>nrm list
+>nrm use taobao
 ```
 
 ## 2.安装NPM所需的包
