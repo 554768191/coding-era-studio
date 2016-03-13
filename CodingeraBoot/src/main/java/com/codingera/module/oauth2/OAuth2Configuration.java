@@ -4,8 +4,10 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -13,44 +15,38 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
+import com.codingera.module.user.service.UserService;
+
 /**
- * 1.get token
- * curl -X POST -vu mobile-client:123456 http://localhost:8080/oauth/token -d "password=admin&username=user&grant_type=password&scope=write&client_secret=123456&client_id=mobile-client" 
- * or
- * curl -X post -u mobile-client:123456 http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=123456\&grant_type\=password\&scope\=write\&username\=user\&password\=admin
- * 
- * 2.refresh token
- * curl -X post -u mobile-client:123456 http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=mobile\&grant_type\=refresh_token\&refresh_token\=a01ea2e2-4af6-4235-9075-c44770ec7bec
- * or
- * curl -H "Authorization: bearer [access_token]" localhost:8080/flights/1
- * 
- * 3.request resource
- * curl -X get  http://localhost:8080/api/demo\?access_token\=1389178a-db21-43b7-8621-1ef846cb94bb
- * 
- * 4.others
- * 多个scope使用+号
- * scope\=read+write
  * 
  * @author Jason
  *
  */
 @Configuration
-@EnableResourceServer
 @EnableAuthorizationServer
+@EnableResourceServer
 class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
 	String applicationName = "mobile";
 
 	@Autowired
 	private DataSource dataSource;
+	@Autowired
+	private UserService userService;
 	
 	// This is required for password grants, which we specify below as one of the
 	// {@literal authorizedGrantTypes()}.
 	@Autowired
-	AuthenticationManagerBuilder authenticationManager;
-
+	AuthenticationManagerBuilder authenticationManagerBuilder;
+	
+	// 配置ApplicationSecurityConfiguration后启用这个居然报错
+//	@Autowired
+//    private AuthenticationManager authenticationManager;
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		
@@ -62,9 +58,12 @@ class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		endpoints.authenticationManager(new AuthenticationManager() {
 			@Override
 			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-				return authenticationManager.getOrBuild().authenticate(authentication);
+				return authenticationManagerBuilder.getOrBuild().authenticate(authentication);
 			}
 		}).tokenStore(tokenStore);
+//		endpoints.userDetailsService(userService).tokenStore(tokenStore);
+//		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore);
+		
 	}
 
 	@Override
@@ -78,6 +77,13 @@ class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		//从数据库读取资源信息
 		clients.jdbc(dataSource);
 	}
+
+//	@Override
+//	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//		// TODO Auto-generated method stub
+//		super.configure(security);
+//		security.allowFormAuthenticationForClients();
+//	}
 
 	
 }

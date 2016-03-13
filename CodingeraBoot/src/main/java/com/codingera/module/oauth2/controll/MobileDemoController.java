@@ -59,6 +59,9 @@ scope
 	curl -u "admin" -X post  http://localhost:8999/admin/ajaxLoginProcess\?username\=admin\&password\=admin
 	成功返回
  	{"result":"success","data":{"id":3,"username":"admin","password":"21232f297a57a5a743894a0e4a801fc3","accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true,"avatar":null,"sex":null,"intro":null,"lastLoginTime":null,"authorities":[{"authority":"ROLE_ADMIN"},{"authority":"ROLE_UNITY"},{"authority":"ROLE_MOBILE"}]}}% 
+POST
+	curl -X POST -H "Content-Type:application/json" -d '{  "email" : "test@test.com",  "name" : "Ruici" }' http://localhost:8080/users
+	
 *************************************************/
 
 /**

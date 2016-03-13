@@ -1,3 +1,4 @@
+package com.codingera.module.oauth2;
 ///*
 // * Copyright 2012-2015 the original author or authors.
 // *
@@ -19,8 +20,12 @@
 //import javax.sql.DataSource;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties;
 //import org.springframework.context.annotation.Configuration;
+//import org.springframework.core.annotation.Order;
+//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 //import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
@@ -28,6 +33,9 @@
 //
 //@Configuration
 //@EnableResourceServer
+////@EnableWebSecurity
+////@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Order(8) 
 //public class OAuth2ResourceConfiguration extends ResourceServerConfigurerAdapter {
 //
 //	@Autowired
@@ -35,13 +43,22 @@
 //	
 //	@Override
 //	public void configure(HttpSecurity http) throws Exception {
-//		http.antMatcher("/m/**").authorizeRequests().anyRequest().authenticated();
+//		
+////		http.antMatcher("/**").authorizeRequests()
+////		.antMatchers("/api/**").hasRole("USER")
+//		http
+//		.formLogin().loginPage("/login").permitAll()
+//		.and()
+//			.requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+//		.and()
+//			.authorizeRequests().anyRequest().authenticated()
+//		.and().csrf().disable();
 //	}
 //
 //	@Override
 //	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 //		JdbcTokenStore tokenStore = new JdbcTokenStore(dataSource);
-//		resources.resourceId("mobile-resource").tokenStore(tokenStore);
+//		resources.resourceId("api-resource").tokenStore(tokenStore);
 //	}
 //
 //	

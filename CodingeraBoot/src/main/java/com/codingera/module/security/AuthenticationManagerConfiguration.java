@@ -19,7 +19,7 @@ import com.codingera.module.user.service.UserService;
  *
  */
 @Configuration
-public class AuthenticationManagerConfiguration extends GlobalAuthenticationConfigurerAdapter {
+class AuthenticationManagerConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
@@ -29,9 +29,9 @@ public class AuthenticationManagerConfiguration extends GlobalAuthenticationConf
 	@Override
 	public void init(AuthenticationManagerBuilder auth) throws Exception {
 		// 用户信息放到内存
-		// auth.inMemoryAuthentication()
-		// .withUser("admin").password("admin").roles("ADMIN", "USER")
-		// .and().withUser("user").password("user").roles("USER");
+//		 auth.inMemoryAuthentication()
+//		 .withUser("admin").password("admin").roles("ADMIN", "USER")
+//		 .and().withUser("user").password("user").roles("USER");
 
 		// 用户信息存在数据库
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
