@@ -10,36 +10,41 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Order(-10)//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@Order(-10)
+// @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-    private AuthenticationManager authenticationManager;
-	
+	private AuthenticationManager authenticationManager;
+	@Autowired
+	private CustomLogoutSuccessHandler customLogoutSuccessHandler;
+
 	@Override
 	public void init(WebSecurity web) throws Exception {
 		super.init(web);
-		web.ignoring().antMatchers("/","/api/open/**");
+		web.ignoring().antMatchers("/", "/api/open/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
-		http
-		.formLogin()
-			//.loginPage("/login")
+
+		http.formLogin()
+				// .loginPage("/login")
 			.permitAll()
 		.and()
-			.logout().logoutUrl("/logout").deleteCookies("remember-me").logoutSuccessUrl("/").permitAll()
+//			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+//			 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutUrl("/logout").deleteCookies("remember-me").logoutSuccessUrl("/").permitAll()
+			.logout().logoutUrl("/oauth/logout").logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
 		.and()
-			.requestMatchers().antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access")
+			.requestMatchers()
+			.antMatchers("/", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
 		.and()
-			.authorizeRequests()
-			.anyRequest().authenticated()
+			.authorizeRequests().anyRequest().authenticated()
 		.and()
 			.csrf().disable();
 	}
@@ -47,10 +52,10 @@ class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// What？！在这里配置用户信息无效。
-//		auth.inMemoryAuthentication()
-//		 .withUser("admin").password("admin").roles("ADMIN", "USER")
-//		 .and().withUser("user").password("user").roles("USER");
-		
+		// auth.inMemoryAuthentication()
+		// .withUser("admin").password("admin").roles("ADMIN", "USER")
+		// .and().withUser("user").password("user").roles("USER");
+
 		auth.parentAuthenticationManager(authenticationManager);
 	}
 

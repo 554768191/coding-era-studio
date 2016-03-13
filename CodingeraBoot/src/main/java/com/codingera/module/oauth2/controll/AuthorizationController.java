@@ -1,10 +1,10 @@
 package com.codingera.module.oauth2.controll;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.codingera.module.oauth2.model.Credentials;
 import com.codingera.module.user.model.User;
@@ -15,7 +15,7 @@ import com.codingera.module.user.service.UserService;
  *      href="http://projects.spring.io/spring-security-oauth/docs/oauth2.html">Spring
  *      Security OAuth</a> and navigate to "Customizing the UI"
  */
-@Controller
+@RestController
 public class AuthorizationController {
 
 	@Autowired
@@ -32,7 +32,6 @@ public class AuthorizationController {
 	 * @return
 	 */
 	@RequestMapping("/api/me")
-	@ResponseBody
 	public User userInfo() {
 		return userService.loadCurrentUser();
 	}

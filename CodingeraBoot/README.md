@@ -71,13 +71,17 @@ mvn clean install
 
 2.refresh token
 	curl -X post -u mobile-client:123456 http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=mobile\&grant_type\=refresh_token\&refresh_token\=a01ea2e2-4af6-4235-9075-c44770ec7bec
-	or
-	curl -H "Authorization: bearer [access_token]" localhost:8080/flights/1
 
 3.request resource
 	curl -X get  http://localhost:8080/api/demo\?access_token\=1389178a-db21-43b7-8621-1ef846cb94bb
-
-4.others
+	or
+	curl -H "Authorization: bearer [access_token]" localhost:8080/api/demo/1
+	
+4.logout
+	this request will remove access_token, redirected to http://your.com:
+	curl -H "Authorization: bearer [access_token]" localhost:8080/oauth/logout?next=http://your.com
+		
+5.others
 	多个scope使用+号
 	scope\=read+write
 
