@@ -1,23 +1,13 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-<!-- START lc-head -->
+
+<!-- START ce-head -->
 <div class="ce-head">
-	<div class="ce-head-content"><!-- START ce-head-content -->
-		<div class="ce-head-logo">
-			<a href="/admin">
-				<div class="logo">
-					<!-- <img src="/img/mini-logo.png" /> -->
-				</div>
-				<span translate="SYSTEM.APP.NAME"></span>
-			</a>
-		</div>
-		<div class="ce-head-navi">
-			<div></div>
-		</div>
-	</div><!-- END   ce-head-content -->
-</div>
-<!-- END   ce-head -->
+	<div data-ng-include="'/modules/core/views/core.header.view.html'">
+	</div>
+</div><!-- END ce-head -->
+
 <!-- START ce-content -->
 <div class="ce-content container-fluid">
 	<ce-menu></ce-menu><!-- 菜单 -->
@@ -27,9 +17,10 @@
 		<ce-content-head></ce-content-head>
 		<div  ui-view  class="content-view"></div>
 	</div>
-</div>
-<!-- END   ce-content -->
-<! -- START ce-loading-bar -->
-<ce-loading-bar></ce-loading-bar>
+</div><!-- END ce-content -->
+
+<!-- START ce-loading-bar -->
+<ce-loading-bar>
+</ce-loading-bar><!-- END ce-loading-bar -->
 
 {% endblock %}

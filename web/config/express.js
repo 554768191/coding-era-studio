@@ -16,6 +16,7 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
+	passport = require('passport'),
 	path = require('path');
 
 module.exports = function() {
@@ -100,8 +101,9 @@ module.exports = function() {
 		name: config.sessionName
 	}));
 
-
-
+	// use passport session
+	app.use(passport.initialize());
+	app.use(passport.session());
 
 	// connect flash for flash messages
 	app.use(flash());

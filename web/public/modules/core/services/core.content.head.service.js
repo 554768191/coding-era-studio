@@ -10,8 +10,10 @@ angular.module('core').factory('ContentHead', ['$log','Menus',
         var service={};
         service.autoRefreshTitle = function(stateName){
             var currentMenu = Menus.getMenusByRoute(stateName);
-            titles[0] = currentMenu.name;
-            subTitles[0] = currentMenu.subTitle;
+            if(currentMenu){
+                titles[0] = currentMenu.name;
+                subTitles[0] = currentMenu.subTitle;
+            }
         };
 
         //设置当前内容标题

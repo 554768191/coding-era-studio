@@ -1,0 +1,26 @@
+<!-- START ce-head -->
+<!--<div class="ce-head">-->
+    <!-- START ce-head-content -->
+    <div class="ce-head-content" ng-controller="HeaderController">
+        <div class="ce-head-logo">
+            <a href="/">
+                <div class="logo"></div>
+                <span translate="SYSTEM.APP.NAME"></span>
+            </a>
+        </div>
+        <div class="ce-head-navi">
+            <div data-ng-hide="authentication.user">
+                <a href="/auth/provider" class="undecorated-link">
+                    登录
+                </a>
+            </div>
+            <div data-ng-show="authentication.user">
+                你好,{{authentication.user.username}}!
+
+                <a href="/auth/signout" class="undecorated-link">
+                    退出
+                </a>
+            </div>
+        </div>
+    </div><!-- END ce-head-content -->
+<!--</div>&lt;!&ndash; END ce-head &ndash;&gt;-->

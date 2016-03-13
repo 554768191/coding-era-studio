@@ -11,7 +11,7 @@ angular.module('core').factory('TokenHandler', [
     function () {
         var tokenHandler = {};
         //var token = "none";
-        var token = "8c2dde7b-859f-41f7-bdf1-949e08adc910";
+        var token = "9bbd9f28-d146-4b38-993e-b12685873835";
 
         tokenHandler.set = function (newToken) {
             token = newToken;
