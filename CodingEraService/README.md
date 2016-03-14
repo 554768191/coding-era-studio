@@ -136,6 +136,14 @@ curl -k -X get https://localhost:8080/api/demo/page\?access_token\=dcb3c222-70db
 
 ##目录结构
 
+##生产启动
+cd /usr/CodingEra/service
+nohup java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties > logs/production.log 2> logs/production.err &
+
+ps -ef|grep java
+kill [pid]
+cd /usr/CodingEra/service/
+java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties
 
 #TODO
 1.building_a_hateoas_rest_service

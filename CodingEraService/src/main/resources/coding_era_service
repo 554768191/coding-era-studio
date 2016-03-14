@@ -1,0 +1,48 @@
+#!/bin/sh
+SERVICE_NAME=coding_era_service
+HOME=/usr/CodingEra/service
+PATH_TO_JAR=$HOME/CodingEraService-0.0.1-SNAPSHOT.jar
+PID_PATH_NAME=/tmp/coding_era_service.pid
+LOG=$HOME/logs/production.log
+ERROR_LOG=$HOME/logs/production.err
+CONFIG=$HOME/application.properties
+case $1 in
+    start)
+        echo "Starting $SERVICE_NAME ..."
+        if [ ! -f $PID_PATH_NAME ]; then
+            cd $HOME
+            nohup java -jar $PATH_TO_JAR --spring.config.location=application.properties > $LOG 2> $ERROR_LOG &
+                        echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is already running ..."
+        fi
+    ;;
+    stop)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stoping ..."
+            kill $PID;
+            echo "$SERVICE_NAME stopped ..."
+            rm $PID_PATH_NAME
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    restart)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stopping ...";
+            kill $PID;
+            echo "$SERVICE_NAME stopped ...";
+            rm $PID_PATH_NAME
+            echo "$SERVICE_NAME starting ..."
+            cd $HOME
+            nohup java -jar $PATH_TO_JAR --spring.config.location=application.properties > $LOG 2> $ERROR_LOG &
+                        echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+esac
