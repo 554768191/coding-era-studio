@@ -75,8 +75,8 @@ web_server_redirect_uri,authorities, access_token_validity,
 refresh_token_validity, additional_information, create_time, archived, trusted)
 values
 ('unity-client','unity-resource', 'unity', 'read,write','authorization_code,refresh_token,implicit',null,'ROLE_CLIENT',null,null,null, now(), 0, 0),
-('mobile-client','mobile-resource', 'mobile', 'read,write','password,refresh_token',null,'ROLE_CLIENT',null,null,null, now(), 0, 0),
-('api-client','api-resource', 'api', 'read,write','password,refresh_token',null,'ROLE_CLIENT',null,null,null, now(), 0, 0);
+('mobile-client','mobile-resource', 'mobile', 'read,write','client_credentials,password,refresh_token',null,'ROLE_CLIENT',null,null,null, now(), 0, 0),
+('api-client','api-resource', 'api', 'read,write','authorization_code,client_credentials,password,refresh_token',null,'ROLE_CLIENT',null,null,null, now(), 0, 0);
 
 -- initial user test data
 --INSERT INTO `ce_user` 
