@@ -1,11 +1,13 @@
 #Coding Era编码时代
 
 ##0.环境要求
+###0.1 git教程
+[git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
 ```
 mac os x
 Apache Maven 3.0
 Java version 1.7
-[git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
+
 ```
 
 ##1.部署项目
@@ -26,12 +28,15 @@ mvn eclipse:eclipse
 
 ##2.跑起来比公司简单
 ```
-//修改配置文件：端口，数据库配置等等，[可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)
+//修改配置文件：端口，数据库配置等等
 /CodingeraBoot/src/main/resources/application.properties
 
 //把启动的配置的Main class改成下面这个就好，另外想加配置直接写在main方法里即可
 com.codingera.CodingeraBootApplication
 ``` 
+### 2.1 可以参考官方配置大全链接
+[可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)
+
 
 ##3.每次启动都执行*.sql脚本
 ```
