@@ -1,0 +1,92 @@
+@import "core.env";
+@import "grid.env";
+//grid 全局样式
+
+
+.ui-grid {
+  border: 1px solid $ce-border-color;
+  height: 350px;
+  border-radius: 4px;
+  width:100%;
+}
+
+.ui-grid {
+  *,button{
+    &:focus,&:active{
+      outline: none !important;
+      outline: 0 !important;
+    }
+
+  }
+}
+
+
+
+.ui-grid-render-container{
+  @include ce-border-radius(2px 2px 0 0);
+}
+.ui-grid-header{
+  border-bottom:1px solid #EAEFF0;
+}
+.ui-grid-header-cell{
+  border-right: $ce-grid-head-border-width solid $ce-grid-head-border-color;
+}
+
+.ui-grid-render-container-body .ui-grid-viewport{
+  overflow-x: auto !important;
+}
+
+.ui-grid-top-panel{
+  background:$ce-grid-head-background;
+  @include ce-border-radius(4px 4px 0 0);
+}
+
+.ui-grid-cell-contents{
+  padding:5px 16px;
+}
+
+.ui-grid-cell{
+  border-right:$ce-grid-cell-border-width solid $ce-grid-cell-border-color;
+}
+
+.ui-grid-header-cell .ui-grid-cell-contents{
+  padding:8px 16px;
+}
+
+.ui-grid-column-menu-button{
+  top:6px;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell {
+  background-color: $ce-grid-cell-even-background-color;
+}
+
+.ui-grid-cell{
+  margin-top:-1px;
+  border-bottom:$ce-grid-cell-border-bottom-width solid $ce-grid-cell-border-bottom-color;
+}
+
+//menu样式
+.ui-grid-menu .ui-grid-menu-inner{
+  background: $ce-grid-menu-background;
+  @include ce-box-shadow((0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 6px -16px rgba(0, 0, 0, 0.2)));
+}
+.ui-grid-menu .ui-grid-menu-inner ul li:not(:last-child) > button{
+  border:$ce-grid-menu-border-width;
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul li button.ui-grid-menu-item-active{
+  background: $ce-grid-menu-highlighted-background;
+  @include ce-box-shadow(none);
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul li button:hover, .ui-grid-menu .ui-grid-menu-inner ul li button:focus{
+  background: $ce-grid-menu-highlighted-background;
+  @include ce-box-shadow(none);
+}
+
+
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-add,
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove{
+  @include ce-transition(none);
+}

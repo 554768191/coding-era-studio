@@ -1,0 +1,49 @@
+<div ng-controller="timerCtrl" id="timer">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            console
+        </div>
+        <div class="panel-body">
+            <button class="btn btn-default" ng-click="execute()">开始计时</button>
+            <button class="btn btn-default" ng-click="cancelTimer()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            fight
+        </div>
+        <div class="panel-body">
+            <div>
+                Blood 1 : <font color='red'>{{blood_1}}</font>
+                Blood 2 : <font color='red'>{{blood_2}}</font>
+            </div>
+            <div>
+                <button type="button" class="btn btn-default" data-ng-click="fight()">Fight</button>
+                <button type="button" class="btn btn-default" data-ng-click="stopFight()">StopFight</button>
+                <button type="button" class="btn btn-default" data-ng-click="resetFight()">resetFight</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            当前时间指令
+        </div>
+        <div class="panel-body form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">日期格式:</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" ng-model="format">
+                    <code>
+                        Current time is: <span my-current-time="format"></span>
+                    </code>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

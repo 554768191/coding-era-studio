@@ -1,0 +1,59 @@
+@import "core.env";
+
+
+
+
+
+.ce-alert-div{
+  position: absolute;
+  top:-200px;
+  //top:200px;
+  left:50%;
+  padding:10px 30px;
+  line-height: 30px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background:rgba(0,0,0,0.8);
+  border-radius: 6px;
+  opacity: 0;
+  //opacity:1;
+  color:#fff;
+  z-index: 99999;
+  font-size:18px;
+  display:inline-block;
+  &.error{
+    background:rgba(255,0,0,0.8);
+  }
+
+  &.ng-hide-add{
+    @include ce-animation(0.3s hide);
+
+  }
+  &.ng-hide-remove{
+    @include ce-animation(0.2s show);
+
+  }
+  &.ng-hide-remove-active{
+    @include ce-animation(0.2s show);
+  }
+
+  @keyframes hide {
+    0% {
+      @include ce-transform(translate3d(0,0,0));
+    }
+    100% {
+      @include ce-transform(translate3d(0,-200px,0));
+    }
+  }
+
+  @-webkit-keyframes hide {
+    from {
+      @include ce-transform(translate3d(0,0,0));
+      opacity: 1;
+    }
+    to {
+      @include ce-transform(translate3d(0,-200px,0));
+      opacity: 0;
+    }
+  }
+
+}

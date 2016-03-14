@@ -1,0 +1,47 @@
+{
+  "name": "codingera",
+  "description": "the fucking Coding Era",
+  "main": "gulpfile.js",
+  "authors": [
+    "Yan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "mvvm"
+  ],
+  "moduleType": [],
+  "homepage": "http://www.codingera.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3",
+    "angular": "~1.4",
+    "angular-i18n": "~1.4",
+    "angular-resource": "~1.4",
+    "angular-animate": "~1.4",
+    "angular-mocks": "~1.4",
+    "angular-bootstrap": "~1.1.0",
+    "angular-ui-utils": "bower",
+    "angular-ui-router": "~0.2",
+    "angular-messages": "~1.4",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-translate-loader-partial": "~2.8.1",
+    "angular-ui-grid": "~3.0.7",
+    "google-code-prettify": "~1.0.4",
+    "angular-strap": "~2.3.6",
+    "ng-file-upload": "~11.0.0",
+    "marked": "~0.3.5",
+    "animate.css": "~3.5.1",
+    "lodash": "~4.0.0"
+  },
+  "resolutions": {
+    "angular": "~1.4"
+  }
+}
