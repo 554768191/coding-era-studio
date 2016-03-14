@@ -38,10 +38,25 @@ com.codingera.CodingeraBootApplication
 [可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)
 
 
-##3.每次启动都执行*.sql脚本
+##3.sql脚本
 ```
+配置文件设置spring.datasource.initialize=true：
+启动服务自动执行sql脚本。
 //把create table语句放到这里
 /CodingeraBoot/src/main/resources/schema.sql
+//把insert语句放到这里
+/CodingeraBoot/src/main/resources/data.sql
+
+hibernate的ddl-auto机制：
+注意，spring.jpa.hibernate.ddl-auto默认为create-drop。
+如果spring.datasource.initialize=true，当使用内存数据库时，
+会执行schema.sql把表删除再create造成数据丢失哦，保留数据要如下设置：
+spring.jpa.hibernate.ddl-auto=update。
+如果spring.jpa.hibernate.ddl-auto=none或者空
+此时启动服务将不执行schema.sql，但照样执行data.sql。
+
+关闭启动服务自动执行sql脚本
+spring.datasource.initialize=false
 ```
 
 ##4.test
