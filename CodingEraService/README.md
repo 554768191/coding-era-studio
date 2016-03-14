@@ -4,6 +4,35 @@
 ###0.1 git教程
 [git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
 ```
+1改提交说明：
+$ git reset --soft HEAD^
+工作区和暂存区不改变，但是引用向前回退一次。当对最新的提交说明或者提交的更改不满意时，撤销最新的提交以便重新提交。
+	
+2改提交文件内容：	
+$ git reset --mixed HEAD^
+工作区不改变，但是暂存区会回退到上一次提交之前，引用也会回退一次。
+
+3慎用！！！工作区所有未commit改动永久丢失！！！
+$ git reset --hard HEAD^
+彻底撤销最近的提交。引用回退到前一次，而且工作区和暂存区都会回退到上一次提交的状态。自上一次以来的提交全部丢失。
+
+4慎用！！！工作区相应的文件未commit改动永久丢失。
+$ git checkout -- filename
+用暂存区中filename文件来覆盖工作区中的filename文件。相当于取消自上次执行git add filename以来（如果执行过）的本地修改。
+
+5慎用！！！工作区相应的文件未pull改动永久丢失。
+$ git checkout branch -- filename
+维持HEAD的指向不变。用branch所指向的提交中filename替换暂存区和工作区中相应的文件。注意会将暂存区和工作区中的filename文件直接覆盖。
+
+6查看操作记录
+git relog
+
+7查看提交记录
+git log
+
+```
+###0.2 开发环境
+```
 mac os x
 Apache Maven 3.0
 Java version 1.7
