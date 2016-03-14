@@ -27,7 +27,7 @@ nodejs版本管理器
 >nvm ls-remote
 >nvm install [nodejs version]
 切换npm下载源
->brew install -g nrm
+>npm install -g nrm
 >nrm list
 >nrm use taobao
 ```

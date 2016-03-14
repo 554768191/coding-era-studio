@@ -73,7 +73,7 @@ public class User extends IdEntity implements UserDetails,Comparable<User> {
 
 
 	@Override
-	@Column(name="password",length=32)
+	@Column(name="password",length=100)
 	public String getPassword() {
 		return password;
 	}
