@@ -1,6 +1,5 @@
 /**
- * 
- */
+
 --
 -- init data
 --
@@ -32,3 +31,5 @@ VALUES
     (1, 'ROLE_ADMIN', 3),
     (2, 'ROLE_USER', 3),
     (4, 'ROLE_MOBILE', 3);
+    
+ */

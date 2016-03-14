@@ -50,10 +50,10 @@ com.codingera.CodingeraBootApplication
 hibernate的ddl-auto机制：
 注意，spring.jpa.hibernate.ddl-auto默认为create-drop。
 如果spring.datasource.initialize=true，当使用内存数据库时，
-会执行schema.sql把表删除再create造成数据丢失哦，保留数据要如下设置：
-spring.jpa.hibernate.ddl-auto=update。
-如果spring.jpa.hibernate.ddl-auto=none或者空
+会执行schema.sql把表删除再create造成数据丢失哦.
+保留数据可以设置spring.jpa.hibernate.ddl-auto=none或者空
 此时启动服务将不执行schema.sql，但照样执行data.sql。
+或者注释schema.sql，设置spring.jpa.hibernate.ddl-auto=update。
 
 关闭启动服务自动执行sql脚本
 spring.datasource.initialize=false
