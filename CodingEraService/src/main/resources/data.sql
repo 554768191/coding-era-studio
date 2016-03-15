@@ -1,6 +1,5 @@
 /**
- * 
- */
+
 --
 -- init data
 --
@@ -25,6 +24,7 @@
 -- VALUES
 --     (3, 10000000, 10000000, NULL, 10000000, 10000000, NULL, '$2a$10$Xm39I7RZMegatwaetQ0dsO5Ggj8z.DGDO86iG9Tj3HoxeLQX99P4m', NULL, 'admin');
     
+<<<<<<< HEAD
 -- -- initial role test data
 -- INSERT INTO `ce_user_role` 
 --     (`id`, `role`, `user_id`)
@@ -32,3 +32,14 @@
 --     (1, 'ROLE_ADMIN', 3),
 --     (2, 'ROLE_USER', 3),
 --     (4, 'ROLE_MOBILE', 3);
+=======
+-- initial role test data
+INSERT INTO `ce_user_role` 
+    (`id`, `role`, `user_id`)
+VALUES
+    (1, 'ROLE_ADMIN', 3),
+    (2, 'ROLE_USER', 3),
+    (4, 'ROLE_MOBILE', 3);
+    
+ */
+>>>>>>> 61b2c4338b0d6e900ee4b276a3d30e98c887d1dc

@@ -1,5 +1,5 @@
 /**
- */
+
 --
 --  Oauth sql  -- MYSQL
 --
@@ -56,4 +56,4 @@ create index client_id_index on oauth_access_token (client_id);
 create index refresh_token_index on oauth_access_token (refresh_token);
 create index code_index on oauth_code (code);
 
-
+ */
