@@ -5,12 +5,15 @@
 angular.module('demo').factory('DemoService', ['$resource', '$log', 'ceConfig', 'TokenHandler',
     function($resource,$log,ceConfig,TokenHandler) {
 
-        var service = $resource(ceConfig.apiUrl+'/demo/page', {
+        var service = $resource(ceConfig.apiUrl+'/demo/:demoId', {
             demoId: '@_id'
         }, {
             query: {
                 method: "GET",
                 isArray: false
+            },
+            save: {
+                method: "POST"
             }
         });
 

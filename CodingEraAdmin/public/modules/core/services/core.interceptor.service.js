@@ -3,8 +3,8 @@
  */
 "use strict";
 
-angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector','LoadingBar','ceConfig',
-    function($rootScope,$q, $injector,LoadingBar,ceConfig) {
+angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector','LoadingBar','ceConfig', 'Authentication',
+    function($rootScope,$q, $injector,LoadingBar,ceConfig,Authentication) {
     var httpInterceptor = {
         'responseError' : function(response) {
             //GeekUtil.closeLoading();
@@ -32,6 +32,10 @@ angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector'
             if(url.indexOf(ceConfig.apiUrl)>=0){
                 $rootScope.$emit("startLoading",url);
             }
+
+            //TODO 加上token认证头,请求失败!不知原因
+            config.headers.Authorization = ' bearer ' + Authentication.user.accessToken;
+
             return config;
         },
         'requestError' : function(config){

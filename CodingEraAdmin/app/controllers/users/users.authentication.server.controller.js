@@ -8,6 +8,7 @@
  */
 var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller'),
+	config = require('../../../config/config'),
 	passport = require('passport');
 var http = require('http');
 var querystring = require('querystring');
@@ -82,18 +83,19 @@ exports.signout = function(req, res) {
 	return function(req, res) {
 		//todo 退出涉及到清除token,和浏览器重定向,这里还要优化
 		var user = req.user;
+		var url = config.codingera.logoutURL;
 		if(user){
 			//var contents = querystring.stringify({
 			//	next : '123'
 			//});
 			var body = '';
-			var req1 = http.request('http://localhost:8080/oauth/logout?next=http://localhost:3000', function(res1) {
+			var req1 = http.request(url, function(res1) {
 				console.log("响应：" + res1.statusCode);
 				res1.on('data',function(d){
 					body += d;
 				}).on('end', function(){
 					req.logout();
-					res.redirect('http://localhost:8080/oauth/logout?next=http://localhost:3000');
+					res.redirect(url);
 				});
 			}).on('error', function(e) {
 				console.log("错误：" + e.message);
@@ -182,7 +184,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 					//});
 				} else {
 					var err = null;
-					return done(err, user, "/#!/todo");
+					return done(err, user, "/#!/demo");
 				}
 			//}
 		//});
@@ -254,7 +256,7 @@ exports.findOrCreate = function(url, token, done) {
 			done(JSON.parse(result));
 		});
 	}).on('error', function(e) {
-		console.log("错误：" + e.message);
+		console.log("findOrCreate 错误：" + e.message);
 	});
 	req.setHeader("Authorization", ' bearer ' + token);
 	req.end();  //不能漏掉，结束请求，否则服务器将不会收到信息。
