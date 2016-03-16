@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig','path',
-    'CeUtil',
-function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
+    'ceUtil',
+function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,ceUtil){
 
     $scope.demoData = {};
 
@@ -27,7 +27,7 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
 
 
     $scope.onDeletedClick = function(){
-      CeUtil.toast('测试');
+        ceUtil.toast('测试');
     };
 
     $scope.onCreateClick = function(){
@@ -78,7 +78,7 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,CeUtil){
             { name: 'name',displayName:'名称' },
             { name: 'remark',displayName:'备注' }
         ],
-        paginationTemplate:CeUtil.getPaginationTemplate(),
+        paginationTemplate:ceUtil.getPaginationTemplate(),
         onRegisterApi: function(gridApi) {
             //分页发生改变
             gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {

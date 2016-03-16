@@ -4,7 +4,7 @@
 "use strict";
 
 angular.module('core')
-    .factory('CeUtil', ['$rootScope','$templateCache','$compile',function($rootScope,$templateCache,$compile) {
+    .factory('ceUtil', ['$rootScope','$templateCache','$compile',function($rootScope,$templateCache,$compile) {
         var service = {};
 
 

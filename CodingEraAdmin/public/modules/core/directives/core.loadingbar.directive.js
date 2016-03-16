@@ -12,48 +12,21 @@ angular.module('core')
             controller:function($scope){
                 $scope.urls = [];
                 $scope.show = false;
-                var time = null;
-                $scope.addUrls = function (url){
-                    for(var i=0 ; i < $scope.urls.length ; i++){
-                        if($scope.urls[i] === url){
-                            return;
-                        }
-                    }
-                    $scope.urls.splice($scope.urls.length,0,url);
+                $scope.showLoading = function (){
+                    $scope.show = true;
                 };
 
-                $scope.removeUrls = function (url){
-                    for(var i=0 ; i < $scope.urls.length ; i++) {
-                        if ($scope.urls[i] === url) {
-                            $scope.urls.splice(i, 1);
-                        }
-                    }
+                $scope.hideLoading = function (){
+                    $scope.show = false;
                 };
-
-                $scope.$watchCollection('urls',function(){
-                    if($scope.urls.length !== 0){
-                        if(time === null){
-                            time = setTimeout(function(){
-                                $scope.$apply(function(){
-                                    $scope.show = true;
-                                });
-
-                            },250);
-                        }
-                    }else{
-                        clearTimeout(time);
-                        time = null;
-                        $scope.show = false;
-                    }
-                });
             },
             link: function(scope, el, attrs) {
                 $rootScope.$on('startLoading', function(event,url) {
-                    scope.addUrls(url);
+                    scope.showLoading();
                 });
 
                 $rootScope.$on('stopLoading', function(event,url) {
-                    scope.removeUrls(url);
+                    scope.hideLoading();
                 });
             }
         };

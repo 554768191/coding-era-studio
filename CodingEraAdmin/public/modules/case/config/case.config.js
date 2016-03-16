@@ -33,7 +33,8 @@ angular.module('case')
             })
             .state('case/list', {
                 url: '/case/list',
-                templateUrl: 'modules/case/views/case.list.view.html'
+                templateUrl: 'modules/case/views/case.list.view.html',
+                controller:'caseListCtrl'
             });
 
 

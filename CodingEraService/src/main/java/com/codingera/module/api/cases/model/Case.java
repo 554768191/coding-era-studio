@@ -1,6 +1,8 @@
 package com.codingera.module.api.cases.model;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -23,6 +25,8 @@ public class Case extends IdEntity {
 	private String title;
 
     private String content;
+    
+    private Date createTime;
 
 
     @Column(name="TITLE",length = 50)
@@ -42,4 +46,14 @@ public class Case extends IdEntity {
     public void setContent(String content) {
         this.content = content;
     }
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+    
+    
 }

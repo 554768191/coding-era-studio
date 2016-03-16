@@ -3,14 +3,14 @@
 /*
 Demo 编辑页面
  */
-angular.module('demo').controller('demoEditCtrl',['$scope','$uibModalInstance','$log','$http','DemoService','CeUtil',
-function ($scope, $uibModalInstance, $log,$http,DemoService,CeUtil){
+angular.module('demo').controller('demoEditCtrl',['$scope','$uibModalInstance','$log','$http','DemoService','ceUtil',
+function ($scope, $uibModalInstance, $log,$http,DemoService,ceUtil){
 
     $scope.demo = {};
 
     $scope.ok = function () {
         DemoService.save({}, $scope.demo, function() {
-            CeUtil.toast('保存成功');
+            ceUtil.toast('保存成功');
             $uibModalInstance.close();
         });
     };

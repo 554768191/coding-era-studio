@@ -15,7 +15,7 @@ ceApp.run(function ($rootScope, $translate,$templateCache) {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});
 		//拦截ajax请求事件
-		$httpProvider.interceptors.push('ceInterceptor');
+		//$httpProvider.interceptors.push('ceInterceptor');
 		//解决post,put跨域问题
 		var form_encodes_support = ["post", "put"];
 		angular.forEach(form_encodes_support,

@@ -4,7 +4,7 @@
 "use strict";
 
 angular.module('core')
-    .directive('ceToast', ['$rootScope','$timeout','$uibPosition','CeUtil', function($rootScope,$timeout,$uibPosition,CeUtil) {
+    .directive('ceToast', ['$rootScope','$timeout','$uibPosition','ceUtil', function($rootScope,$timeout,$uibPosition,ceUtil) {
         return {
             restrict: 'EA',
             templateUrl:'modules/core/views/templates/core.toast.template.html',
@@ -31,7 +31,7 @@ angular.module('core')
                     el.css('opacity','1.0');
                     setTimeout(function(){
                         $rootScope.$emit('hideToast');
-                    },2000);
+                    },3000);
                 });
 
                 $rootScope.$on('hideToast', function(event) {
