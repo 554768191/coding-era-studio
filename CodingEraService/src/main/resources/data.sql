@@ -42,4 +42,3 @@ VALUES
     (4, 'ROLE_MOBILE', 3);
     
  */
->>>>>>> 61b2c4338b0d6e900ee4b276a3d30e98c887d1dc

@@ -1,0 +1,12 @@
+2016-03-14 22:17:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ""CE_USER"" 
+                                                                                                                                                   
+         
+                                                                                                                                             ; [*]"; expected "., (, DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO `ce_user` 
+--     (`id`, `account_non_expired`, `account_non_locked`, `avatar`, `credentials_non_expired`, `enabled`, `intro`, `password`, `sex`, `user_name`)
+-- VALUES
+--     (3, 10000000, 10000000, NULL, 10000000, 10000000, NULL, '$2a$10$Xm39I7RZMegatwaetQ0dsO5Ggj8z.DGDO86iG9Tj3HoxeLQX99P4m', NULL, 'admin'); [42001-190]
+2016-03-15 20:16:05 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "[*]>>>>>>> 61B2C4338B0D6E900EE4B276A3D30E98C887D1DC "; SQL statement:
+>>>>>>> 61b2c4338b0d6e900ee4b276a3d30e98c887d1dc [42000-190]

@@ -4,3 +4,5 @@ target/
 .project
 .classpath
 configuration/coding_era_db.mv.db
+configuration/coding_era_db.trace.db
+

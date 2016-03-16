@@ -1,4 +1,4 @@
-package com.codingera.module.demo.model;
+package com.codingera.module.api.demo.model;
 
 
 import javax.persistence.Column;

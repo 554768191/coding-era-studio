@@ -1,4 +1,4 @@
-package com.codingera.module.demo.controll;
+package com.codingera.module.api.cases.controll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codingera.module.api.cases.model.Case;
+import com.codingera.module.api.demo.criteria.DemoQueryCriteria;
+import com.codingera.module.api.demo.model.Demo;
+import com.codingera.module.api.demo.model.DemoResource;
+import com.codingera.module.api.demo.repository.DemoRepository;
+import com.codingera.module.api.demo.service.DemoService;
 import com.codingera.module.base.controll.ActionResult;
-import com.codingera.module.demo.criteria.DemoQueryCriteria;
-import com.codingera.module.demo.model.Demo;
-import com.codingera.module.demo.model.DemoResource;
-import com.codingera.module.demo.repository.DemoRepository;
-import com.codingera.module.demo.service.DemoService;
 
 /**
  * Demo
  */
 @RestController
-// @Controller need @ResponseBody
-@RequestMapping("/api/demo")
-public class DemoController {
+@RequestMapping("/api/case")
+public class CaseController {
 
 	@Autowired
 	private DemoService demoService;
@@ -50,9 +50,9 @@ public class DemoController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public ActionResult saveDemo(@ModelAttribute Demo demo) {
-		demo = demoService.save(demo);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, demo);
+	public ActionResult saveDemo(@ModelAttribute Case ceCase) {
+		//demo = demoService.save(demo);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
 	}
 
 	@RequestMapping(value = "/{demoId}", method = RequestMethod.GET)

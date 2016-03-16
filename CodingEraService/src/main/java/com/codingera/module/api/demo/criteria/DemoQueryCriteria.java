@@ -1,4 +1,4 @@
-package com.codingera.module.demo.criteria;
+package com.codingera.module.api.demo.criteria;
 
 public class DemoQueryCriteria {
 

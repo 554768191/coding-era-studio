@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.codingera.module.api.demo.criteria.DemoQueryCriteria;
+import com.codingera.module.api.demo.model.Demo;
+import com.codingera.module.api.demo.service.DemoService;
 import com.codingera.module.base.controll.ActionResult;
-import com.codingera.module.demo.criteria.DemoQueryCriteria;
-import com.codingera.module.demo.model.Demo;
-import com.codingera.module.demo.service.DemoService;
 import com.codingera.module.file.model.AttachmentView;
 
 /**
