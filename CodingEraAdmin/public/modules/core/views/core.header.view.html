@@ -5,9 +5,11 @@
         <div class="ce-head-logo">
             <a href="/">
                 <div class="logo"></div>
-                <span translate="SYSTEM.APP.NAME"></span>
             </a>
+            <div class="brand-name" translate="SYSTEM.APP.NAME"></div>
+            <div class="user-info">你好,{{authentication.user.username}}!</div>
         </div>
+        <!--
         <div class="ce-head-navi">
             <div data-ng-hide="authentication.user">
                 <a href="/auth/provider" class="undecorated-link">
@@ -22,5 +24,6 @@
                 </a>
             </div>
         </div>
+        -->
     </div><!-- END ce-head-content -->
 <!--</div>&lt;!&ndash; END ce-head &ndash;&gt;-->

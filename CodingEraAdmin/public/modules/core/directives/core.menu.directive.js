@@ -19,7 +19,7 @@ angular.module('core').directive('ceMenu', ['$window','Menus',
                 var headHeight = angular.element(document.querySelector('.ce-head')).height();
                 scope.onResize = function() {
                     var contentHeight = angular.element(document.querySelector('.ce-content')).height();
-                    var height = $window.innerHeight - headHeight;
+                    var height = $window.innerHeight;
                     if(contentHeight > height){
                         ele.css({height:contentHeight+"px"});
                     }else{

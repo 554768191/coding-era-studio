@@ -4,7 +4,14 @@
 /**
  * 	头部样式
  */
-
+.ce-head-container{
+  position: absolute;
+  top:0;
+  left:0;
+  height:$ce-head-height ;
+  width:$ce-menu-width;
+  z-index: 2;
+}
 .ce-head{
   $height:$ce-head-height;
   height:$height;
@@ -31,20 +38,43 @@
       height:$height;
       padding-left:65px;
     }
+    $logo-margin:($ce-head-height - $ce-logo-size) * 0.5;
     .logo{
+
       $size:$ce-logo-size;
       height: $size;
       width: $size;
       display: inline-block;
       position: absolute;
-      top:8px;
-      left:26px;
+      top:$logo-margin;
+      left:$logo-margin-left;
       background-image: url($ce-logo-path);
       background-size: $size;
       img{
         width:$size;
         height:$size;
       }
+    }
+    $text-margin-left:5px;
+    $text-height:$ce-logo-size * 0.5;
+    .brand-name{
+      color:$ce-logo-font-color;
+      height:$text-height;
+      position: absolute;
+      left:$ce-logo-size + $logo-margin-left +$text-margin-left;
+      line-height: $text-height;
+      top:$logo-margin;
+      font-size:120%;
+    }
+    .user-info{
+      color:$ce-logo-font-color;
+      height:$text-height;
+      position: absolute;
+      left:$ce-logo-size + $logo-margin-left+$text-margin-left;
+      line-height: $text-height;
+      top:$logo-margin + $text-height;
+      font-size:90%;
+      color:#B4B6BD;;
     }
   }
 
@@ -59,5 +89,7 @@
       text-align: right;
     }
   }
+
+
 
 }
