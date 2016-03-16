@@ -24,6 +24,16 @@ module.exports = {
 		clientID: 'api-client',
 		clientSecret: 'api',
 		callbackURL: "http://localhost:3000/auth/provider/callback",
-		userInfoUri:"http://localhost:8080/api/me"
+		userInfoURL:"http://localhost:8080/api/me",
+		logoutURL:"http://localhost:8080/oauth/logout?next=http://localhost:3000"
+
+		//authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
+		//tokenURL: 'http://www.codingera.com:8080/oauth/token',
+		//clientID: 'api-client',
+		//clientSecret: 'api',
+		//callbackURL: "http://localhost:3000/auth/provider/callback",
+		//userInfoURL:"http://www.codingera.com:8080/api/me",
+		//logoutURL:"http://www.codingera.com:8080/auth/logout?next=http://localhost:3000"
+
 	}
 };

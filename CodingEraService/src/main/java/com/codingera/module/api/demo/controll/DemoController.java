@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,30 +34,27 @@ public class DemoController {
 	@Autowired
 	private DemoRepository demoRepository;
 
-	@RequestMapping
-	@ResponseBody
-	public ActionResult getDemo(Long id) {
-		Demo demo = demoService.getById(id);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, demo);
+	@RequestMapping(value = "/{demoId}", method = RequestMethod.GET)
+	public ActionResult readDemo(@PathVariable Long demoId) {
+		return new ActionResult(ActionResult.RESULT_SUCCESS, new DemoResource(this.demoRepository.findOne(demoId)));
 	}
 
-	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET)
 	public ActionResult findDemos(Pageable pr, @ModelAttribute DemoQueryCriteria criteria) {
 		Page<Demo> pages = demoService.findDemoByCriteria(pr, criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
 
+	/**
+	 * save
+	 * 
+	 * @param demo : request in body use @RequestBody, if request in parameters use @ModelAttribute/none
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	public ActionResult saveDemo(@ModelAttribute Demo demo) {
+	public ActionResult saveDemo(Demo demo) {
 		demo = demoService.save(demo);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, demo);
-	}
-
-	@RequestMapping(value = "/{demoId}", method = RequestMethod.GET)
-	public ActionResult readDemo(@PathVariable Long demoId) {
-		return new ActionResult(ActionResult.RESULT_SUCCESS, new DemoResource(this.demoRepository.findOne(demoId)));
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

@@ -84,6 +84,7 @@ angular.element(document).ready(function() {
 ceApp.constant('ceConfig', {
 	//接口路径
 	apiUrl: "http://localhost:8080/api",
+	//apiUrl: "http://www.codingera.com:8080/api",
 	//显示分页数(注意不是最大页数),建议输入单数(暂时也只支持单数....)
 	showDisplayPage:5
 

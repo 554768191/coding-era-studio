@@ -34,19 +34,19 @@ class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.formLogin()
-				// .loginPage("/login")
+//			.loginPage("/login")
 			.permitAll()
 		.and()
-//			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-//			 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutUrl("/logout").deleteCookies("remember-me").logoutSuccessUrl("/").permitAll()
-			.logout().logoutUrl("/oauth/logout").logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
+			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/oauth/logout"))
+//			.logoutUrl("/oauth/logout")
+			.logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
 		.and()
 			.requestMatchers()
 			.antMatchers("/", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
 		.and()
-			.authorizeRequests().anyRequest().authenticated()
-		.and()
-			.csrf().disable();
+			.authorizeRequests().anyRequest().authenticated();
+//		.and()
+//			.csrf().disable();
 	}
 
 	@Override

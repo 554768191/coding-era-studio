@@ -1,7 +1,6 @@
 package com.codingera.module.security;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -19,17 +18,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@Controller
 public class CorsConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/api/**")
+		registry.addMapping("/**")
+		//.addMapping("/api/**")
 		.allowedOrigins("*")
-		.allowedMethods("GET", "POST", "PUT", "DELETE")
-		.allowedHeaders("header1", "header2", "header3")
-		.exposedHeaders("header1", "header2")
-		.allowCredentials(false).maxAge(3600);
+		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+		.allowedHeaders("Authorization", "Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers")
+//		.exposedHeaders("Authorization", "Accept")
+		.allowCredentials(true).maxAge(3600);
 	}
 
 

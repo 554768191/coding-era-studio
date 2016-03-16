@@ -9,7 +9,7 @@ function ($scope, $uibModalInstance, $log,$http,DemoService,CeUtil){
     $scope.demo = {};
 
     $scope.ok = function () {
-        DemoService.save($scope.demo, function() {
+        DemoService.save({}, $scope.demo, function() {
             CeUtil.toast('保存成功');
             $uibModalInstance.close();
         });
@@ -24,9 +24,5 @@ function ($scope, $uibModalInstance, $log,$http,DemoService,CeUtil){
     };
 
 
-
-
-
-           
 }]);
 

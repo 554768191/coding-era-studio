@@ -27,7 +27,7 @@ module.exports = function() {
         function (req, accessToken, refreshToken, profile, done) {
 
             //todo 后台不知如何返回user profile,暂时再查一次
-            users.findOrCreate(config.codingera.userInfoUri, accessToken, function(user) {
+            users.findOrCreate(config.codingera.userInfoURL, accessToken, function(user) {
 
                 user["accessToken"] = accessToken;
                 console.log("findOrCreate user", user);

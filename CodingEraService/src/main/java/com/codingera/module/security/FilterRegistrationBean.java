@@ -19,7 +19,7 @@
 //@Configuration
 //public class FilterRegistrationBean implements Filter {
 //
-//	@Value("${tagit.origin:http://localhost:8080}")
+//	@Value("${tagit.origin:http://localhost:3000}")
 //	public String origin;
 //
 //	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
