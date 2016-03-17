@@ -7,8 +7,9 @@
  */
 .ce-content{
   position: relative;
+
   .content{
-    padding:20px 20px 20px $ce-menu-width + 20;
+    padding-left:$ce-menu-width;
     .ce-windows{
       background:#fff;
       min-height:120px;

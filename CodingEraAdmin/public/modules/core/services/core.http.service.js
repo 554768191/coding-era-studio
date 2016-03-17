@@ -61,12 +61,13 @@ angular.module('core')
         ceAjaxService.get = function(options){
             var self = this;
             var selfService = customService(self);
-            angular.extend(options, {method:'get'});
-            options.params = {};
-            angular.extend(options.params,options.data);
-            angular.extend(options.params,{access_token: token});
-            angular.extend(options,{data:{}});
-            commentService(selfService,options);
+            var getOptions = {
+                'url':options.url,
+                'method':'get',
+                'params':options.data
+            };
+            angular.extend(getOptions.params, {access_token: token});
+            commentService(selfService,getOptions);
             return selfService;
         };
 

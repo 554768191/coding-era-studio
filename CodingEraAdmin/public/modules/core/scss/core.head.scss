@@ -9,7 +9,7 @@
   top:0;
   left:0;
   height:$ce-head-height ;
-  width:$ce-menu-width;
+  width:100%;
   z-index: 2;
 }
 .ce-head{
@@ -27,16 +27,15 @@
     position: absolute;
     left:0;
     top:0;
-    width:$ce-menu-width;
+    width:100%;
     background-color: $ce-dark-color;
     a{
       line-height:$height;
       color:$ce-logo-font-color;
       display: block;
       position: relative;
-      width:$ce-menu-width;
+      width:$ce-logo-size;
       height:$height;
-      padding-left:65px;
     }
     $logo-margin:($ce-head-height - $ce-logo-size) * 0.5;
     .logo{
@@ -47,7 +46,6 @@
       display: inline-block;
       position: absolute;
       top:$logo-margin;
-      left:$logo-margin-left;
       background-image: url($ce-logo-path);
       background-size: $size;
       img{
@@ -55,21 +53,20 @@
         height:$size;
       }
     }
-    $text-margin-left:5px;
     $text-height:$ce-logo-size * 0.5;
     .brand-name{
       color:$ce-logo-font-color;
       height:$text-height;
       position: absolute;
-      left:$ce-logo-size + $logo-margin-left +$text-margin-left;
+      left:$ce-logo-size + $logo-margin-left ;
       line-height: $text-height;
       top:$logo-margin;
-      font-size:120%;
+      font-size:110%;
     }
     .user-info{
       height:$text-height;
       position: absolute;
-      left:$ce-logo-size + $logo-margin-left+$text-margin-left;
+      left:$ce-logo-size + $logo-margin-left;
       line-height: $text-height;
       top:$logo-margin + $text-height;
       font-size:90%;

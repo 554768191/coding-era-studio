@@ -7,12 +7,12 @@
  */
 .ce-content-head{
   background: $ce-content-head-background;
-  margin:-20px -20px 20px -20px;
   border-bottom: 1px solid #dee5e7;
   height:$ce-head-height;
   padding-top: ($ce-head-height - $ce-logo-size) * 0.5;
   padding-left:($ce-head-height - $ce-logo-size) * 0.5 +5;
   $text-height:$ce-logo-size * 0.5;
+  margin-bottom:20px;
   .ce-content-title{
     height: $text-height;
     line-height: $text-height;
