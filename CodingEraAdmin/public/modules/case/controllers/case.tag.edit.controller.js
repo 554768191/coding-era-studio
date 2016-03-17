@@ -1,12 +1,13 @@
 'use strict';
 
 /*
- Demo 编辑页面
+ Tag 编辑页面
  */
-angular.module('case').controller('tagEditCtrl', ['$scope', '$uibModalInstance', '$log', 'TagService', 'ceUtil',
-    function ($scope, $uibModalInstance, $log, TagService, ceUtil) {
+angular.module('case').controller('tagEditCtrl', [
+    '$scope', '$uibModalInstance', '$log', 'TagService', 'ceUtil', 'tag',
+    function ($scope, $uibModalInstance, $log, TagService, ceUtil, tag) {
 
-        $scope.tag = {};
+        $scope.tag = tag || {};
 
         $scope.ok = function () {
             TagService.save($scope.tag).success(function(res){
@@ -18,7 +19,7 @@ angular.module('case').controller('tagEditCtrl', ['$scope', '$uibModalInstance',
 
         //窗口点击取消
         $scope.cancel = function () {
-            //angular-bootstarp-api默认关闭事件,不要问我为什么
+            //angular-bootstarp-api默认关闭事件
             $uibModalInstance.dismiss('cancel');
         };
 

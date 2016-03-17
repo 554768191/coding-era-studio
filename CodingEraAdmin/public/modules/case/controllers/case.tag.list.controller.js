@@ -1,12 +1,33 @@
 'use strict';
 
-angular.module('case').controller('tagListCtrl', ['$scope', '$log', '$translate', '$uibModal', 'path', 'TagService',
-    'ceUtil',
+angular.module('case').controller('tagListCtrl', [
+    '$scope', '$log', '$translate', '$uibModal', 'path', 'TagService', 'ceUtil',
     function ($scope, $log, $translate, $uibModal, path, TagService, ceUtil) {
 
-        $scope.onDeletedClick = function () {
-            console.log(path);
+        $scope.onEditClick = function (data) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'modules/case/views/case.tag.edit.view.html',
+                controller: 'tagEditCtrl',
+                resolve: {
+                    tag:function(){
+                        return data;
+                    }
+                }
+            });
+            //点击确定返回
+            modalInstance.result.then(function () {
+                //保存成功,刷新
+                $scope.onSearch();
+            });
+        };
+
+        $scope.onDeletedClick = function (data) {
             ceUtil.toast('测试');
+            TagService.deleteTag(data).success(function (res) {
+                console.log(res);
+                $scope.onSearch();
+            });
         };
 
         $scope.onCreateClick = function () {
@@ -14,7 +35,11 @@ angular.module('case').controller('tagListCtrl', ['$scope', '$log', '$translate'
                 animation: true,
                 templateUrl: 'modules/case/views/case.tag.edit.view.html',
                 controller: 'tagEditCtrl',
-                resolve: {}
+                resolve: {
+                    tag:function(){
+                        return {};
+                    }
+                }
             });
 
             //点击确定返回
@@ -52,7 +77,16 @@ angular.module('case').controller('tagListCtrl', ['$scope', '$log', '$translate'
             animate: false,
             columnDefs: [
                 {name: 'name', displayName: '标签名称'},
-                {name: 'type', displayName: '类型'}
+                {name: 'type', displayName: '类型'},
+                {
+                    name: 'ShowScope',
+                    displayName: 'Actions',
+                    cellTemplate: '<div class="btn-group-xs">' +
+                    '<button class="btn btn-info" ng-click="grid.appScope.onEditClick(row.entity)">编辑</button>' +
+                    '<button class="btn btn-danger" ng-click="grid.appScope.onDeletedClick(row.entity)">删除</button>' +
+                    '</div>'
+
+                }
             ],
             paginationTemplate: ceUtil.getPaginationTemplate(),
             onRegisterApi: function (gridApi) {

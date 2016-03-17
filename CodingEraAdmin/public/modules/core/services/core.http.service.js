@@ -50,13 +50,7 @@ angular.module('core')
             });
         };
 
-        ceAjaxService.delete = function(options){
-            var self = this;
-            var selfService = customService(self);
-            angular.extend(options.data, {method:'DELETE'});
-            commentService(selfService,options);
-            return selfService;
-        };
+
 
         ceAjaxService.get = function(options){
             var self = this;
@@ -80,7 +74,18 @@ angular.module('core')
             return selfService;
         };
 
-
+        ceAjaxService.delete = function(options){
+            var self = this;
+            var selfService = customService(self);
+            var getOptions = {
+                'url':options.url,
+                'method':'delete',
+                'params':options.data
+            };
+            angular.extend(getOptions.params, {access_token: token});
+            commentService(selfService,getOptions);
+            return selfService;
+        };
 
 
     return ceAjaxService;

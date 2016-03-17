@@ -7,12 +7,16 @@ angular.module('case').factory('TagService', [ '$log','ceAjax',
 
         var service ={};
 
+        service.getTags = function(parameters){
+            return ceAjax.get({url:'/tag',data:parameters});
+        };
+
         service.save = function(parameters){
             return ceAjax.post({url:'/tag', data:parameters});
         };
 
-        service.getTags = function(parameters){
-            return ceAjax.get({url:'/tag',data:parameters});
+        service.deleteTag = function(parameters){
+            return ceAjax.delete({url:'/tag',data:parameters});
         };
 
         return service;
