@@ -1,4 +1,4 @@
-package com.codingera.module.oauth2;
+package com.codingera.module.security;
 
 import javax.sql.DataSource;
 

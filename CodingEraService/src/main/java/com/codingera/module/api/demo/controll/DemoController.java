@@ -48,7 +48,7 @@ public class DemoController {
 	/**
 	 * save
 	 * 
-	 * @param demo : request in body use @RequestBody, if request in parameters use @ModelAttribute/none
+	 * @param demo : form data use @RequestBody,  query string parameters use @ModelAttribute/none
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)

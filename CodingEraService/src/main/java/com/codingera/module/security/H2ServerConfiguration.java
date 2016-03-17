@@ -9,6 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+/**
+ * H2 server
+ * 
+ * @author JasonWoo
+ *
+ */
 @Configuration
 //@Profile("dev") // Only activate this in the "dev" profile
 public class H2ServerConfiguration {
