@@ -37,7 +37,7 @@ public class CaseController {
 	 * @param criteria
 	 * @return
 	 */
-	@RequestMapping(value="/list",method = RequestMethod.POST)
+	@RequestMapping(value="/list",method = RequestMethod.GET)
 	@ResponseBody
 	public ActionResult findCases(Pageable pr, @ModelAttribute CaseQueryCriteria criteria) {
 		Page<Case> pages = CaseService.findCaseByCriteria(pr, criteria);
