@@ -6,10 +6,13 @@
 <div class="ce-head-container container-fluid">
 	<div class="row">
 		<div class="col-sm-2">
-			<div class="ce-head">
+			<div class="ce-head row">
 				<div data-ng-include="'/modules/core/views/core.header.view.html'">
 				</div>
 			</div>
+		</div>
+		<div class="col-sm-10">
+			<ce-content-head></ce-content-head>
 		</div>
 	</div>
 </div>
@@ -24,7 +27,8 @@
 		<div class="col-sm-10">
 			<div class="row">
 					<div ce-ui-butterbar></div>
-					<ce-content-head></ce-content-head>
+
+
 					<div  ui-view  class="content-view container-fluid"></div>
 			</div>
 

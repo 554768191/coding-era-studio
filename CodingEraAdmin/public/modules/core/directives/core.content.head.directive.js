@@ -3,13 +3,14 @@
  */
 "use strict";
 
-angular.module('core').directive('ceContentHead', ['$window','ContentHead',
-    function($window,ContentHead) {
+angular.module('core').directive('ceContentHead', ['$window','ContentHead','Authentication',
+    function($window,ContentHead,Authentication) {
         var service={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/core.content.head.template.html',
             scope:true,
             controller:function($scope,ContentHead) {
+                $scope.authentication = Authentication;
                 $scope.title = ContentHead.getTitle();
                 $scope.subTitle = ContentHead.getSubTitle();
             },

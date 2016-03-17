@@ -6,13 +6,13 @@
  * 	内容头部标题
  */
 .ce-content-head{
+  position: relative;
   background: $ce-content-head-background;
   border-bottom: 1px solid #dee5e7;
   height:$ce-head-height;
   padding-top: ($ce-head-height - $ce-logo-size) * 0.5;
   padding-left:($ce-head-height - $ce-logo-size) * 0.5 +5;
   $text-height:$ce-logo-size * 0.5;
-  margin-bottom:20px;
   .ce-content-title{
     height: $text-height;
     line-height: $text-height;
@@ -28,5 +28,35 @@
     line-height: $text-height;
     color:$ce-content-head-subTitle-font-color;
     font-size:90%;
+  }
+
+  .ce-userInfo{
+    position: absolute;
+    height:$ce-head-height;
+    right:0;
+    top:0;
+    .userInfo-container{
+      position: relative;
+      $avatarSize:$ce-head-height - 20;
+      .userInfo-name{
+        height:$ce-head-height;
+        padding-right:$avatarSize + 20;
+        line-height: $ce-head-height;
+      }
+
+      .userInfo-avatar{
+        position: absolute;
+        right:10px;
+        top:($ce-head-height - $avatarSize) * 0.5;
+        width:$avatarSize;
+        height:$avatarSize;
+        img{
+          width:$avatarSize;
+          height:$avatarSize;
+          border-radius: 100%;
+        }
+      }
+    }
+
   }
 }

@@ -16,7 +16,6 @@
       background-color: $ce-dark-color;
       $hover-color: #32374B;
       z-index: 1;
-      padding-top:$ce-head-height;
       @include ce-user-select(none);
       ul.parent li {
         display: block;

@@ -23,7 +23,7 @@ angular.module('core').directive('ceMenu', ['$window','Menus',
                     if(contentHeight > height){
                         ele.css({height:contentHeight+"px"});
                     }else{
-                        ele.css({height:height+"px"});
+                        ele.css({height:height - headHeight+"px"});
                     }
                 };
                 scope.onResize();

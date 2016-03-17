@@ -11,7 +11,6 @@ angular.module('core').directive('ceLeftbar', ['$window',
 
                 scope.onResize = function() {
                     var headHeight = angular.element(document.querySelector('.ce-menu')).height();
-                    var height = $window.innerHeight - headHeight - 20;
                     ele.css({height:headHeight+"px"});
 
                 };
@@ -19,9 +18,9 @@ angular.module('core').directive('ceLeftbar', ['$window',
                 angular.element($window).bind('resize', function() {
                     scope.onResize();
                 });
-                //angular.element($window).bind('scroll', function() {
-                //    scope.onResize();
-                //});
+                angular.element($window).bind('scroll', function() {
+                    scope.onResize();
+                });
             }
         };
 
