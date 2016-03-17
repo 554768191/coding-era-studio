@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('case').controller('caseListCtrl',['$scope','$log','$translate','$state','CasePublishService',
+angular.module('case').controller('caseManageCtrl',['$scope','$log','$translate','$state','CasePublishService',
     'ceUtil',
 function ($scope, $log,$translate,$state,CasePublishService,ceUtil){
 
+    $state.go('caseManage.list');
+
     //点击发布按钮
     $scope.onShowPublishViewClick = function (){
-       $state.go('caseList.publish');
+       $state.go('caseManage.publish');
     };
 
     $scope.caseData = {};

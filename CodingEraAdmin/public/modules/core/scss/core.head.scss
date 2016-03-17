@@ -31,57 +31,28 @@
       color:$ce-logo-font-color;
       display: block;
       position: relative;
-      width:$ce-logo-size;
+      width:100%;
       height:$height;
-    }
-    $logo-margin:($ce-head-height - $ce-logo-size) * 0.5;
-    .logo{
-
-      $size:$ce-logo-size;
-      height: $size;
-      width: $size;
-      display: inline-block;
-      position: absolute;
-      top:$logo-margin;
-      background-image: url($ce-logo-path);
-      background-size: $size;
+      padding-left:20px;
       img{
-        width:$size;
-        height:$size;
+        width:$ce-logo-size;
+        height:$ce-logo-size;
+        vertical-align: middle;
+        margin-top:-8px;
+      }
+      .brand-name{
+        color:$ce-logo-font-color;
+        font-size:130%;
+        margin-left:5px;
+        margin-top:5px;
+        font-weight: 600;
       }
     }
-    $text-height:$ce-logo-size * 0.5;
-    .brand-name{
-      color:$ce-logo-font-color;
-      height:$text-height;
-      position: absolute;
-      left:$ce-logo-size + $logo-margin-left ;
-      line-height: $text-height;
-      top:$logo-margin;
-      font-size:110%;
-    }
-    .brand-info{
-      height:$text-height;
-      position: absolute;
-      left:$ce-logo-size + $logo-margin-left;
-      line-height: $text-height;
-      top:$logo-margin + $text-height;
-      font-size:90%;
-      color:#B4B6BD;;
-    }
+
+
   }
 
-  &-navi{
-    float:left;
-    // border-left:1px solid $ce-border-color;
-    height:$height;
-    width:100%;
-    @include ce-global-box-shadow();
-    div{
-      padding-right: 20px;
-      text-align: right;
-    }
-  }
+
 
 
 

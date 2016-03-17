@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-3">
+        <div class="ce-leftbar">
+            <button class="btn btn-default ce-leftbar-btn" ng-click="onShowPublishViewClick()" >发布作品</button>
+
+            <div class="line"></div>
+
+            <a class="ce-leftbar-menu" ui-sref-active="active" ui-sref="caseManage.list"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>所有作品</a>
+            <a class="ce-leftbar-menu"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>草稿</a>
+            <a class="ce-leftbar-menu"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>回收站</a>
+
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div ui-view="" ></div>
+    </div>
+</div>
+
+
