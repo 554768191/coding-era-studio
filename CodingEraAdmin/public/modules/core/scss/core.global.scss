@@ -10,10 +10,8 @@ body{ background-color: $ce-content-background-color;height:100%;}
 body, input, button, select, textarea { font-size: $ce-font-size; font-family:"微软雅黑","Microsoft Yahei","宋体",Tahoma,'Simsun',Arial,Helvetica,sans-serif; color: #515151; }
 textarea { resize: none; }
 body, ul, ol, li, dl, dd, p, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
-caption, th { text-align: left; font-weight: 400; }
+caption, th { text-align: left; }
 ul li, .xl li { list-style: none; }
-em, cite, i { font-style: normal; }
-strong,b{font-weight:normal;}
 a { color:#222222; text-decoration: none !important; }
 a:link {color: #222222;}
 a:visited {color: #222222;}

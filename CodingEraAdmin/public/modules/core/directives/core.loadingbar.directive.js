@@ -26,7 +26,7 @@ angular.module('core')
                 });
 
                 $rootScope.$on('stopLoading', function(event,url) {
-                    scope.hideLoading();
+                   // scope.hideLoading();
                 });
             }
         };

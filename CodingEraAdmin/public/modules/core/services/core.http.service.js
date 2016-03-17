@@ -31,7 +31,7 @@ angular.module('core')
 
         //post,get等共同调用
         var commentService = function (selfService,options){
-            angular.extend(options.data,{access_token: token});
+
             angular.extend(options,{url:ceConfig.apiUrl+options.url});
             $rootScope.$emit("startLoading");
             $http(options).success(function(res){
@@ -62,6 +62,10 @@ angular.module('core')
             var self = this;
             var selfService = customService(self);
             angular.extend(options, {method:'get'});
+            options.params = {};
+            angular.extend(options.params,options.data);
+            angular.extend(options.params,{access_token: token});
+            angular.extend(options,{data:{}});
             commentService(selfService,options);
             return selfService;
         };
@@ -70,6 +74,7 @@ angular.module('core')
             var self = this;
             var selfService = customService(self);
             angular.extend(options, {method:'post'});
+            angular.extend(options.data,{access_token: token});
             commentService(selfService,options);
             return selfService;
         };

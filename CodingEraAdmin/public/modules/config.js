@@ -12,7 +12,6 @@ var ApplicationConfiguration = (function() {
 		'ui.grid',
 		'ui.grid.pagination',
 		'ngFileUpload'
-		//'mgcrea.ngStrap'
 	];
 
 	var registerModule = function(moduleName, dependencies) {

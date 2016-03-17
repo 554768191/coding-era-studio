@@ -12,7 +12,7 @@ angular.module('case').factory('CasePublishService', [ '$log','ceAjax',
         };
 
         service.getCases = function(parameters){
-            return ceAjax.post({url:'/case/list',data:parameters});
+            return ceAjax.get({url:'/case/list',data:parameters});
         };
 
         return service;
