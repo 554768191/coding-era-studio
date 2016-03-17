@@ -3,13 +3,13 @@
 /*
  Demo 编辑页面
  */
-angular.module('demo').controller('demoEditCtrl', ['$scope', '$uibModalInstance', '$log', '$http', 'DemoService', 'ceUtil',
-    function ($scope, $uibModalInstance, $log, $http, DemoService, ceUtil) {
+angular.module('case').controller('tagEditCtrl', ['$scope', '$uibModalInstance', '$log', 'TagService', 'ceUtil',
+    function ($scope, $uibModalInstance, $log, TagService, ceUtil) {
 
-        $scope.demo = {};
+        $scope.tag = {};
 
         $scope.ok = function () {
-            DemoService.save({}, $scope.demo, function () {
+            TagService.save($scope.tag).success(function(res){
                 ceUtil.toast('保存成功');
                 $uibModalInstance.close();
             });
@@ -20,7 +20,6 @@ angular.module('demo').controller('demoEditCtrl', ['$scope', '$uibModalInstance'
         $scope.cancel = function () {
             //angular-bootstarp-api默认关闭事件,不要问我为什么
             $uibModalInstance.dismiss('cancel');
-
         };
 
 

@@ -47,11 +47,6 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,ceUtil){
         });
     };
 
-
-
-
-
-
     //搜索按钮点击
     $scope.onSearchClick = function(){
         searchOptions.page = 0;//默认-1,我们service从0页开始,看看springMvc能不能配置吧

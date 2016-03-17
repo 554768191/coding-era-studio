@@ -3,13 +3,14 @@
  */
 "use strict";
 
-angular.module('core').directive('ceMenu', ['$window','Menus',
-    function($window,Menus) {
+angular.module('core').directive('ceMenu', ['$window','Menus', 'Authentication',
+    function($window, Menus, Authentication) {
         var menu={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/core.menu.template.html',
             replace:true,
-            controller:function($scope, $log,Menus) {
+            controller:function($scope, $log, Menus, Authentication) {
+                $scope.authentication=Authentication;
                 $scope.items=Menus.getMenus();
                 $scope.onShowNode=function(item){
                     item.show=!item.show;

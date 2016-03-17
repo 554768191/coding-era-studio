@@ -7,6 +7,32 @@ angular.module('core').factory('Menus', [
         var items=[];
         var service={};
 
+        // Define a set of default roles
+        this.defaultRoles = ['*'];
+
+        // A private function for rendering decision
+        service.shouldRender = function(user) {
+            //console.log('Jason test shouldRender', this);
+            var roles = this.roles || "*";
+            if (user) {
+                if (!!~(roles.indexOf('*'))) {
+                    return true;
+                } else {
+                    var roleList = roles.split(",");
+                    for (var userRoleIndex in user.authorities) {
+                        for (var roleIndex in roleList) {
+                            if ("ROLE_"+roleList[roleIndex] === user.authorities[userRoleIndex].authority) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            } else {
+                return this.isPublic || false;
+            }
+            return false;
+        };
+
         service.getMenus=function(){
             return items;
         };
@@ -18,10 +44,19 @@ angular.module('core').factory('Menus', [
         //生成主菜单(父级菜单)
         service.genParentMenus=function(newMenus){
 
+            //父
+            newMenus.shouldRender = service.shouldRender;
+
+
             var _addNodeMenus=function(genNodeMenus){
                 if(angular.isUndefined(newMenus.items)){
                     newMenus.items=[];
                 }
+
+                //子
+                genNodeMenus.menu.shouldRender = service.shouldRender;
+                genNodeMenus.menu.isPublic = (genNodeMenus.menu.isPublic === null || typeof genNodeMenus.menu.isPublic === 'undefined') ? genNodeMenus.menu.isPublic :  newMenus.isPublic;
+
                 newMenus.items.splice(newMenus.items.length,0,genNodeMenus.menu);
             };
             var _getMenus=function(){
