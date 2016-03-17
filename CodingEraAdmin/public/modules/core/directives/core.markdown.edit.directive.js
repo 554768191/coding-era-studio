@@ -28,7 +28,7 @@ angular.module('core')
         return function(input){
             if(!input||typeof input!=='string') return '';
             return $sce.trustAsHtml(marked(input));
-        }
+        };
     }])
     .directive('ceMarkdown',
     function() {
