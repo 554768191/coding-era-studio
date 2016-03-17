@@ -44,4 +44,9 @@ public class TagServiceImpl implements TagService {
 		return tagRepository.findTagByCriteria(criteria);
 	}
 
+	@Override
+	public void deleleTag(Tag tag) {
+		tagRepository.delete(tag);
+	}
+
 }

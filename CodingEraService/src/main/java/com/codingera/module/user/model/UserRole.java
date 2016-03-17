@@ -22,7 +22,8 @@ public class UserRole extends IdEntity {
 
 	public static enum Role {
 		ROLE_ADMIN, ROLE_USER, ROLE_GUEST, 
-		ROLE_UNITY, ROLE_MOBILE
+		ROLE_UNITY, ROLE_MOBILE,
+		ROLE_JASON
 	}
 
 	private User user;

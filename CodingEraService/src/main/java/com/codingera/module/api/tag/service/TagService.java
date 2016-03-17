@@ -19,4 +19,6 @@ public interface TagService {
 	public Page<Tag> findTagByCriteria(Pageable pr, TagQueryCriteria criteria);
 
 	public List<Tag> findTagByCriteria(TagQueryCriteria criteria);
+
+	public void deleleTag(Tag tag);
 }

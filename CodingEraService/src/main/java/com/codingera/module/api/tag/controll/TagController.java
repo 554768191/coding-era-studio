@@ -57,5 +57,11 @@ public class TagController {
 		return new ActionResult(ActionResult.RESULT_SUCCESS, tag);
 	}
 	
+	@RequestMapping(method = RequestMethod.DELETE)
+	public ActionResult deleteTag(Tag tag) {
+		tagService.deleleTag(tag);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, null);
+	}
+	
 	
 }
