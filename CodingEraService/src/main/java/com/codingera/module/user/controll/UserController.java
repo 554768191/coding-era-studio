@@ -10,7 +10,6 @@ import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 
 /**
- * 能力项题库管理
  * 
  * @author Jason
  *

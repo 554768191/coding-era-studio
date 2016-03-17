@@ -26,9 +26,13 @@ public class Tag extends IdEntity {
 		super();
 		this.name = name;
 	}
-
+	
+	// 名字
 	private String name;
+	// 类型
 	private String type;
+	// 热门
+	private Integer hot;
 
 
     @Column(name="NAME",length = 50)
@@ -47,6 +51,15 @@ public class Tag extends IdEntity {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	@Column(name="HOT")
+	public Integer getHot() {
+		return hot;
+	}
+
+	public void setHot(Integer hot) {
+		this.hot = hot;
 	}
 
    
