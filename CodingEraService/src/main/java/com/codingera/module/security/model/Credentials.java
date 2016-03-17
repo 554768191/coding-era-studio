@@ -1,4 +1,4 @@
-package com.codingera.module.oauth2.model;
+package com.codingera.module.security.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

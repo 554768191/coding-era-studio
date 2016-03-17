@@ -1,4 +1,4 @@
-package com.codingera.module.oauth2;
+package com.codingera.module.security;
 ///*
 // * Copyright 2012-2015 the original author or authors.
 // *

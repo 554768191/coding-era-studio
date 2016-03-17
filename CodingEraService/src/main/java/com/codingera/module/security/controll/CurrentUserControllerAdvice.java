@@ -1,4 +1,4 @@
-package com.codingera.module.user.controll;
+package com.codingera.module.security.controll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.codingera.module.user.model.User;
 
+/**
+ * 
+ * 获取当前登录用户
+ * 
+ * @author JasonWoo
+ *
+ */
 @ControllerAdvice
 public class CurrentUserControllerAdvice {
 

@@ -1,12 +1,11 @@
-package com.codingera.module.oauth2.controll;
+package com.codingera.module.security.controll;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codingera.module.oauth2.model.Credentials;
+import com.codingera.module.security.model.Credentials;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 
