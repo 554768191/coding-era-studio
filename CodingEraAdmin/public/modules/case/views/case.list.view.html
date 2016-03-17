@@ -1,1 +1,24 @@
-list
+
+<div class="case-list">
+
+    <div class="case-preview" ng-repeat="item in caseData.content">
+        <div class="title" ng-bind="item.title"></div>
+        <div class="subtitle">发表于 {{item.createTime  | date:'yyyy-MM-dd'}}</div>
+        <div class="case-toolbar">
+            <a class="toolbar-btn">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </a>
+            <a class="toolbar-btn del">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="pager">
+            <li class="previous"><a href="#"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 上一页</a></li>
+            <li class="next"><a href="#">下一页 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+        </ul>
+    </nav>
+
+</div>
