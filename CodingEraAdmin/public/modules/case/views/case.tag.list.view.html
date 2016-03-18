@@ -2,9 +2,11 @@
 <div class="ce-tool-bar row">
     <div class="col-sm-4">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+            <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="searchOptions.keyWord" />
             <div class="input-group-btn" uib-dropdown>
-                <button type="button" class="btn btn-info" ng-click="onSearch()"  ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-info" ng-click="onSearch()"  >
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
                 <button type="button" class="btn btn-info" uib-dropdown-toggle aria-expanded="false">
                     <span class="caret"></span>
                     <span class="sr-only">{{'SYSTEM.APP.BTN.QUERY.MORE'| translate }}</span>
@@ -17,10 +19,11 @@
     </div>
     <div class="col-sm-8 text-right">
         <button type="button" class="btn btn-info" ng-click="onCreateClick()">新增</button>
+        <button type="button" class="btn btn-info" ng-click="onEditClick()">编辑</button>
         <button type="button" class="btn btn-danger" ng-click="onDeletedClick()">删除</button>
     </div>
 </div>
 
 
 
-<div  ui-grid="gridOptions" ui-grid-pagination></div>
+<div  ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ></div>
