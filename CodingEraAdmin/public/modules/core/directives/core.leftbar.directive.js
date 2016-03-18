@@ -3,24 +3,17 @@
  */
 "use strict";
 
-angular.module('core').directive('ceLeftbar', ['$window',
-    function($window) {
+angular.module('core').directive('ceLeftbar', ['$window','$rootScope',
+    function($window,$rootScope) {
         var leftbar={
             restrict:'C',
             link: function(scope, ele) {
-
-                scope.onResize = function() {
-                    var headHeight = angular.element(document.querySelector('.ce-menu')).height();
-                    ele.css({height:headHeight+"px"});
-
-                };
-                scope.onResize();
-                angular.element($window).bind('resize', function() {
-                    scope.onResize();
+                var contentView = angular.element(document.querySelector('.ce-content-view'));
+                $rootScope.contentView = contentView[0];
+                $rootScope.$watch('contentView.scrollHeight',function(abc,efg){
+                    ele.css({height:abc + 'px'});
                 });
-                angular.element($window).bind('scroll', function() {
-                    scope.onResize();
-                });
+                
             }
         };
 

@@ -15,9 +15,9 @@
     </div>
 
     <nav>
-        <ul class="pager">
-            <li class="previous"><a href="#"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 上一页</a></li>
-            <li class="next"><a href="#">下一页 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+        <ul class="pager" ng-if="!caseData.first||!caseData.last">
+            <li class="previous" ng-if="!caseData.first"><a ng-click="previousPage()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 上一页</a></li>
+            <li class="next" ng-if="!caseData.last" ><a ng-click="nextPage()">下一页 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
         </ul>
     </nav>
 

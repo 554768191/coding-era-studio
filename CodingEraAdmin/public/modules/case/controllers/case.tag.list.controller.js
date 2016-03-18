@@ -9,8 +9,8 @@ angular.module('case').controller('tagListCtrl', [
 
         $scope.onEditClick = function (data) {
             var tag = data;
-            if(data == null){
-                if($scope.isSelected == false){
+            if(data === null){
+                if($scope.isSelected === false){
                     ceUtil.toast('请选中一行数据');
                     return;
                 }
@@ -35,8 +35,8 @@ angular.module('case').controller('tagListCtrl', [
 
         $scope.onDeletedClick = function (data) {
             var tag = data;
-            if(data == null){
-                if($scope.isSelected == false){
+            if(data === null){
+                if($scope.isSelected === false){
                     ceUtil.toast('请选中一行数据');
                     return;
                 }

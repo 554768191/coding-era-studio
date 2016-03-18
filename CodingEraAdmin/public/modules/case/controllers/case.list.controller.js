@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('case').controller('caseListCtrl',['$scope','$log','$translate','$state','CasePublishService',
+angular.module('case').controller('caseListCtrl',['$scope','$log','$translate','$state','CaseService',
     'ceUtil',
-function ($scope, $log,$translate,$state,CasePublishService,ceUtil){
+function ($scope, $log,$translate,$state,CaseService,ceUtil){
 
 
 
@@ -17,7 +17,7 @@ function ($scope, $log,$translate,$state,CasePublishService,ceUtil){
 
     //搜索
     $scope.onSearch = function(){
-         CasePublishService.getCases(searchOptions).success(function(res){
+        CaseService.getCases(searchOptions).success(function(res){
              $scope.caseData = res.data;
         });
     };
@@ -25,7 +25,25 @@ function ($scope, $log,$translate,$state,CasePublishService,ceUtil){
 
 
     $scope.onDeleteClick = function(id){
-        $log.log(id);
+        ceUtil.confirmMessage('确认删除?').success(function(){
+            CaseService.deleteCase({id:id}).success(function(){
+                ceUtil.toast('删除成功');
+                $scope.onSearch();
+            });
+        });
+    };
+
+    //上一页
+    $scope.previousPage = function(){
+        searchOptions.page -= 1;
+        $scope.onSearch();
+    };
+
+    //下一页
+    $scope.nextPage = function(){
+        searchOptions.page += 1;
+        $scope.onSearch();
+
     };
 
            

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('case').controller('casePublishCtrl',['$scope','$log','$state','CasePublishService', 'ceUtil',
-function ($scope, $log,$state,CasePublishService,ceUtil){
+angular.module('case').controller('casePublishCtrl',['$scope','$log','$state','CaseService', 'ceUtil',
+function ($scope, $log,$state,CaseService,ceUtil){
 
     $scope.case = {};
 
@@ -17,7 +17,7 @@ function ($scope, $log,$state,CasePublishService,ceUtil){
 
     $scope.onPublishClick = function(){
 
-        CasePublishService.saveCase($scope.case).success(function(res){
+        CaseService.saveCase($scope.case).success(function(res){
             ceUtil.toast('发布成功');
             $state.go('caseManage.list');
         });
