@@ -13,6 +13,7 @@ import com.codingera.module.jpa.CriterionUtils;
 import com.codingera.module.jpa.JpaCriteria;
 import com.codingera.module.jpa.JpaQueryUtils;
 import com.codingera.module.jpa.OrCriterion;
+import com.codingera.module.jpa.SimpleCriterion;
 
 public class CaseRepositoryImpl implements CaseRepositoryCustom {
 
@@ -24,6 +25,7 @@ public class CaseRepositoryImpl implements CaseRepositoryCustom {
 	public Page<Case> findCaseByCriteria(Pageable pg, CaseQueryCriteria criteria) {
 		JpaCriteria s = new JpaCriteria("Case c");
 		s.add(new OrCriterion(CriterionUtils.contains("c.title", criteria.getKeyWord(), true)));
+		s.add(CriterionUtils.equals("c.deleted", criteria.isDeleted(), false));
 		s.setSortBy("c.createTime desc");
 		return JpaQueryUtils.query(em, s, pg);
 	}

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,13 @@ public class CaseController {
 	public ActionResult saveDemo(@ModelAttribute Case ceCase) {
 		CaseService.save(ceCase);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE)
+	@ResponseBody
+	public ActionResult deleteDemo(@RequestParam Long id) {
+		CaseService.deleteById(id);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, null);
 	}
 	
 	/**

@@ -29,11 +29,12 @@ public class Case extends IdEntity {
     private Date createTime;
 
 
+    private boolean deleted;
+    
     @Column(name="TITLE",length = 50)
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -53,6 +54,14 @@ public class Case extends IdEntity {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
     
     

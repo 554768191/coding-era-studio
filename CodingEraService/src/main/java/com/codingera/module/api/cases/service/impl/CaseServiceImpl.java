@@ -30,6 +30,13 @@ public class CaseServiceImpl implements CaseService {
 		return caseRepository.findCaseByCriteria(pr, criteria);
 	}
 
+	@Override
+	public void deleteById(Long id) {
+		Case ceCase = caseRepository.findOne(id);
+		ceCase.setDeleted(true);
+		caseRepository.save(ceCase);
+	}
+
 
 
 

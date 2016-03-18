@@ -8,6 +8,7 @@ import com.codingera.module.api.cases.model.Case;
 
 public interface CaseService {
 
+	void deleteById(Long id);
 	
 	Case save(Case ceCase) ;
 	
