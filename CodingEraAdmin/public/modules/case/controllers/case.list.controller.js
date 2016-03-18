@@ -24,6 +24,10 @@ function ($scope, $log,$translate,$state,CasePublishService,ceUtil){
     $scope.onSearch();
 
 
+    $scope.onDeleteClick = function(id){
+        $log.log(id);
+    };
+
            
 }]);
 

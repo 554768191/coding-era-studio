@@ -16,7 +16,7 @@
 
             <ul class="node" ng-repeat="node in item.items" ng-show="item.show" >
                 <li>
-                    <a ui-sref="{{node.route}}" ui-sref-active="active" >
+                    <a ui-sref="{{node.route}}" ui-sref-active="active" ui-sref-opts="{reload:true}">
                         <span class="glyphicon glyphicon-{{node.icon}}" aria-hidden="true"></span> {{node.name}}
                     </a>
                 </li>

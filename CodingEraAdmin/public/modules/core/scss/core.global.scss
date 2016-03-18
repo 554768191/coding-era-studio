@@ -13,10 +13,10 @@ body, ul, ol, li, dl, dd, p, form, fieldset, .pr, .pc { margin: 0; padding: 0; }
 caption, th { text-align: left; }
 ul li, .xl li { list-style: none; }
 a { color:#222222; text-decoration: none !important; }
-a:link {color: #222222;}
-a:visited {color: #222222;}
-a:hover {color: $ce-color;}
-a:active {color: #222222;}
+//a:link {color: #222222;}
+//a:visited {color: #222222;}
+//a:hover {color: $ce-color;}
+//a:active {color: #222222;}
 a img { border: none; }
 a,.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 .ngCellText .btn{
