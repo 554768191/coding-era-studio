@@ -11,7 +11,10 @@ angular.module('core').directive('ceLeftbar', ['$window','$rootScope',
                 //监控leftbar高度变化
                 $rootScope.$watch(function(){
                     var contentView = angular.element(document.querySelector('.ce-rightContent'));
-                    return contentView.height();
+                    if(contentView.length>0){
+                        return contentView.height();
+                    }
+                    return null;
                 },function(newHeight){
                     //15 = leftbar.marginTop = -15
                     //20 = leftbar.paddingTop = 20;

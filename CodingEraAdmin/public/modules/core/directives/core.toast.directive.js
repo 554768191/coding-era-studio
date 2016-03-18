@@ -19,13 +19,6 @@ angular.module('core')
             link: function(scope, el, attrs) {
                 //菜单宽度
 
-                scope.$watch(function(){
-                    return el[0].clientWidth;
-                }, function(value) {
-                    //基于屏幕居中(如果基于内容居中,会非常别扭)
-                    el.css('margin-left',value / 2 * -1  + 'px');
-                });
-
                 $rootScope.$on('showToast', function(event,message) {
                     scope.message = message;
                     el.css('opacity','1.0');

@@ -46,8 +46,9 @@ angular.module('core')
                     }
                 }
             }).error(function(){
-                ceUtil.toast('token过期,或者网络连接异常');//暂时这么写着
                 $rootScope.$emit("stopLoading");
+                ceUtil.toast('token过期,或者网络连接异常');//暂时这么写着
+
             });
         };
 
