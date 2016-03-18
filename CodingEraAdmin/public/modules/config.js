@@ -11,6 +11,7 @@ var ApplicationConfiguration = (function() {
 		'pascalprecht.translate',
 		'ui.grid',
 		'ui.grid.pagination',
+		'ui.grid.selection',
 		'ngFileUpload'
 	];
 

@@ -42,12 +42,12 @@ angular.module('case')
                 controller:'casePublishCtrl'
             })
             .state('tagEdit', {
-                url: '/case/tag/edit',
+                url: '/tag/edit',
                 templateUrl: 'modules/case/views/case.tag.edit.view.html',
                 controller:'tagEditCtrl'
             })
             .state('tagList', {
-                url: '/case/tag/list',
+                url: '/tag/list',
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
                 controller:'tagListCtrl'
             });
