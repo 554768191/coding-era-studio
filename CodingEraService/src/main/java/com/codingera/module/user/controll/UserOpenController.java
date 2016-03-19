@@ -29,18 +29,7 @@ public class UserOpenController {
 	 * @return
 	 */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ActionResult getUser(@RequestBody User user) {
-		user = userService.create(user);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
-	}
-	
-	/**
-	 * 修改信息
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public ActionResult updateUser(@RequestBody User user) {
+	public ActionResult getUser(User user) {
 		user = userService.create(user);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
 	}

@@ -27,7 +27,7 @@ public class TagRepositoryImpl implements TagRepositoryCustom {
 		JpaCriteria s = new JpaCriteria("Tag d");
 		s.add(new OrCriterion(
 				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
-				CriterionUtils.contains("d.remark", criteria.getKeyWord(), true)));
+				CriterionUtils.contains("d.type", criteria.getKeyWord(), true)));
 		s.setSortBy("d.id desc");
 		return JpaQueryUtils.query(em, s, pg);
 	}
