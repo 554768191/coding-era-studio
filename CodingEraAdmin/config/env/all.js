@@ -47,7 +47,8 @@ module.exports = {
 				'public/components/angular-ui-grid/ui-grid.css',
 				'public/components/google-code-prettify/src/prettify.css',
 				'public/components/animate.css/animate.css',
-				'public/components/bootstrap-wysiwyg/index.css'
+				'public/components/bootstrap-wysiwyg/index.css',
+				'public/components/codemirror/lib/codemirror.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -64,6 +65,7 @@ module.exports = {
 				'public/components/google-code-prettify/src/prettify.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
 				'public/components/marked/lib/marked.js',
+				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js'
 			]
 		},
