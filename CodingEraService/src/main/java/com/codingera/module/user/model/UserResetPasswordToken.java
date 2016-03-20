@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.codingera.module.base.model.IdEntity;
 
@@ -19,6 +20,11 @@ public class UserResetPasswordToken extends IdEntity {
 	private String token;
 	private Date expires;
 	private String username;
+
+	@Transient
+	private String newPassword;
+	@Transient
+	private String verifyPassword;
 
 	public String getToken() {
 		return token;
@@ -42,6 +48,22 @@ public class UserResetPasswordToken extends IdEntity {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public String getVerifyPassword() {
+		return verifyPassword;
+	}
+
+	public void setVerifyPassword(String verifyPassword) {
+		this.verifyPassword = verifyPassword;
 	}
 
 }

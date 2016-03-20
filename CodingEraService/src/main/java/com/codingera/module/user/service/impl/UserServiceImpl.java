@@ -1,10 +1,12 @@
 package com.codingera.module.user.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.ValidationException;
 
+import org.assertj.core.util.DateUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -190,7 +192,35 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserResetPasswordToken getUserResetPasswordToken(String token) {
-		return userResetPasswordTokenRepository.getUserResetPasswordTokenByToken(token);
+		UserResetPasswordToken storeToken = userResetPasswordTokenRepository.getUserResetPasswordTokenByToken(token);
+		if(storeToken != null){
+			// 有效期校验
+			Date expiresDate =  storeToken.getExpires();
+			if(expiresDate == null){
+				return null;
+			}
+			Date now = DateUtil.now();
+			long result = expiresDate.getTime() - now.getTime();
+			if(result < 0){
+				return null;
+			}
+		}
+		return storeToken;
+	}
+
+	@Override
+	public User resetPassword(UserResetPasswordToken resetToken) {
+		if(resetToken.getNewPassword() == null || resetToken.getVerifyPassword() == null){
+			throw new ValidationException("密码为空");	
+		}
+		if(!resetToken.getNewPassword().equals(resetToken.getVerifyPassword())){
+			throw new ValidationException("密码不一致");
+		}
+		UserResetPasswordToken storeToken = getUserResetPasswordToken(resetToken.getToken());
+		if(storeToken != null){
+			return this.getUserByUserName(storeToken.getUsername());
+		}
+		return null;
 	}
 
 }
