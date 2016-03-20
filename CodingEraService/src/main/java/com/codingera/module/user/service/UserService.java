@@ -4,8 +4,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.codingera.module.api.tag.criteria.TagQueryCriteria;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
+import com.codingera.module.user.model.UserResetPasswordToken;
 
 public interface UserService extends UserDetailsService {
 
@@ -17,9 +19,14 @@ public interface UserService extends UserDetailsService {
 
 	public void delById(Long id);
 
-	public Page<User> findUserByCriteria(Pageable pr, UserQueryCriteria criteria);
+	public Page<User> findUsersByCriteria(Pageable pr, UserQueryCriteria criteria);
 
 	public User loadCurrentUser();
 
 	public User updateUser(User user);
+
+	public UserResetPasswordToken saveUserResetPasswordToken(UserResetPasswordToken token);
+
+	public UserResetPasswordToken getUserResetPasswordToken(String token);
+
 }

@@ -7,8 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import com.codingera.module.base.model.IdEntity;
 
 @Entity
@@ -28,12 +26,11 @@ public class Case extends IdEntity {
 
     private String content;
     
-    
     private Date createTime;
 
 
-    private boolean deleted;
-    
+    private Boolean deleted;
+
     @Column(name="TITLE",length = 50)
     public String getTitle() {
         return title;
@@ -59,13 +56,12 @@ public class Case extends IdEntity {
 		this.createTime = createTime;
 	}
 
-	public boolean isDeleted() {
+	public Boolean getDeleted() {
 		return deleted;
 	}
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-    
-    
+
 }

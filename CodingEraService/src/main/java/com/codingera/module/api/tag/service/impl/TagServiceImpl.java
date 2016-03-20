@@ -35,12 +35,12 @@ public class TagServiceImpl implements TagService {
 	}
 
 	@Override
-	public Page<Tag> findTagByCriteria(Pageable pr, TagQueryCriteria criteria) {
+	public Page<Tag> findTagsByCriteria(Pageable pr, TagQueryCriteria criteria) {
 		return tagRepository.findTagByCriteria(pr, criteria);
 	}
 
 	@Override
-	public List<Tag> findTagByCriteria(TagQueryCriteria criteria) {
+	public List<Tag> findTagsByCriteria(TagQueryCriteria criteria) {
 		return tagRepository.findTagByCriteria(criteria);
 	}
 

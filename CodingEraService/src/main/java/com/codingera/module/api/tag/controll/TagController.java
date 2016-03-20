@@ -36,14 +36,14 @@ public class TagController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ActionResult findTags(Pageable pr, @ModelAttribute TagQueryCriteria criteria) {
-		Page<Tag> pages = tagService.findTagByCriteria(pr, criteria);
+		Page<Tag> pages = tagService.findTagsByCriteria(pr, criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ActionResult findTags(@ModelAttribute TagQueryCriteria criteria) {
 		List<TagResource> tagResourceList = new ArrayList<TagResource>();
-		List<Tag> tagList = (List<Tag>) tagService.findTagByCriteria(criteria);
+		List<Tag> tagList = (List<Tag>) tagService.findTagsByCriteria(criteria);
 		for (Tag tag : tagList) {
 			TagResource tagResource = new TagResource(tag);
 			tagResourceList.add(tagResource);

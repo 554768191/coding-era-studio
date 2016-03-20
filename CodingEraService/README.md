@@ -67,6 +67,9 @@ mvn eclipse:eclipse
 
 //把启动的配置的Main class改成下面这个就好，另外想加配置直接写在main方法里即可
 com.codingera.CodingeraBootApplication
+
+//启动配置program argument
+--spring.config.location=file:./configuration/application.properties
 ``` 
 ### 2.1 可以参考官方配置大全链接
 [可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)

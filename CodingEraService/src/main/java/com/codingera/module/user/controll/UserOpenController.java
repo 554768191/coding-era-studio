@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codingera.module.base.controll.ActionResult;
 import com.codingera.module.user.model.User;
+import com.codingera.module.user.model.UserResetPasswordToken;
 import com.codingera.module.user.service.UserService;
+import com.codingera.module.user.view.UserView;
 
 /**
  * 公开API
@@ -35,6 +38,22 @@ public class UserOpenController {
 	}
 	
 	/**
+	 * query user
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	@RequestMapping
+	public ActionResult getUser(@RequestParam String userName) {
+		UserView view = null;
+		User user = userService.getUserByUserName(userName);
+		if(user != null){
+			view = new UserView(user);
+		}
+		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
+	}
+	
+	/**
 	 * 忘记密码
 	 * 
 	 * @return
@@ -49,5 +68,16 @@ public class UserOpenController {
 		user = userService.create(user);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
 	}
+	@RequestMapping(value = "/password", params="action=saveToken", method = RequestMethod.POST)
+	public ActionResult saveUserResetPasswordToken(UserResetPasswordToken token) {
+		token = userService.saveUserResetPasswordToken(token);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, token);
+	}
+	@RequestMapping(value = "/password", params="action=getToken", method = RequestMethod.GET)
+	public ActionResult getToken(String token) {
+		UserResetPasswordToken result = userService.getUserResetPasswordToken(token);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
+	}
+
 
 }
