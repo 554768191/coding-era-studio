@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('case').controller('caseListCtrl',['$scope','$log','$translate','$state','CaseService',
+angular.module('case').controller('caseListCtrl',['$scope','$log','$translate','$state','$stateParams','CaseService',
     'ceUtil',
-function ($scope, $log,$translate,$state,CaseService,ceUtil){
-
+function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
 
 
     $scope.caseData = {};
@@ -12,7 +11,8 @@ function ($scope, $log,$translate,$state,CaseService,ceUtil){
     var searchOptions = {
         page: 0,//当前页
         size: 10,//每页大小
-        sort: null //排序(没做!!!!)
+        sort: null, //排序(没做!!!!)
+        status:$stateParams.status
     };
 
     //搜索
@@ -25,7 +25,6 @@ function ($scope, $log,$translate,$state,CaseService,ceUtil){
 
     //编辑记录
     $scope.onEditClick = function(id){
-        console.log(id);
         $state.go('caseManage.publish',{caseId:id});
     };
 

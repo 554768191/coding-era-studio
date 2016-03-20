@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import com.codingera.module.base.model.IdEntity;
@@ -19,7 +21,12 @@ public class Case extends IdEntity {
 	 */
 	private static final long serialVersionUID = 2167007833436749963L;
 
-
+	public enum Status{
+		 PUBLISHED,//已发布
+		 SKETCH,//草稿
+		 DELETED//删除
+		 
+	}
 	
 
 	private String title;
@@ -29,7 +36,8 @@ public class Case extends IdEntity {
     private Date createTime;
 
 
-    private Boolean deleted;
+    
+    private Status status;
 
     @Column(name="TITLE",length = 50)
     public String getTitle() {
@@ -56,12 +64,15 @@ public class Case extends IdEntity {
 		this.createTime = createTime;
 	}
 
-	public Boolean getDeleted() {
-		return deleted;
-	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
+	@Enumerated(EnumType.STRING)
+	public Status getStatus() {
+		return status;
 	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	
 
 }

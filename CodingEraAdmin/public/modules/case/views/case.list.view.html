@@ -1,6 +1,8 @@
 
 <div class="case-list">
 
+    <div class="case-data-empty" ng-if="caseData.totalElements == 0">目前没有数据 >_< </div>
+
     <div class="case-preview" ng-repeat="item in caseData.content">
         <div class="title" ng-bind="item.title"></div>
         <div class="subtitle">发表于 {{item.createTime  | date:'yyyy-MM-dd'}}</div>

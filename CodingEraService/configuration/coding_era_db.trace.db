@@ -962,3 +962,15 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/Yan/Y
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:342)
 	... 114 more
+2016-03-21 00:00:20 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP CE_CASE[*] "; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+drop ce_case [42001-190]
+2016-03-21 00:20:45 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "CE_CASE" not found; SQL statement:
+select count(*) as col_0_0_ from ce_case case0_ where case0_.status=? [42102-190]
+2016-03-21 00:20:49 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "CE_CASE" not found; SQL statement:
+select count(*) as col_0_0_ from ce_case case0_ where case0_.status=? [42102-190]
+2016-03-21 00:20:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "CE_CASE" not found; SQL statement:
+select count(*) as col_0_0_ from ce_case case0_ where case0_.status=? [42102-190]

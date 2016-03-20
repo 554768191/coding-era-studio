@@ -1,10 +1,12 @@
 package com.codingera.module.api.cases.criteria;
 
+import com.codingera.module.api.cases.model.Case.Status;
+
 public class CaseQueryCriteria {
 
 	private String keyWord;
 	
-	private boolean deleted;
+	private Status status = Status.PUBLISHED;
 
 	public String getKeyWord() {
 		return keyWord;
@@ -14,13 +16,15 @@ public class CaseQueryCriteria {
 		this.keyWord = keyWord;
 	}
 
-	public boolean isDeleted() {
-		return deleted;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
+
+	
 	
 	
 	

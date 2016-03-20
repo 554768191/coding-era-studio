@@ -32,7 +32,7 @@ angular.module('case')
                 controller:'caseManageCtrl'
             })
             .state('caseManage.list', {
-                url: '/list',
+                url: '/list?:status',
                 templateUrl: 'modules/case/views/case.list.view.html',
                 controller:'caseListCtrl'
             })

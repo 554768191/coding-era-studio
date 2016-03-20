@@ -26,9 +26,8 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
 
     });
 
-    $scope.onPublishClick = function(){
-        //console.log('时间戳',$scope.case.createTime);
-        //$scope.case.createTime = "2016-10-10 10:10:10";
+    $scope.onPublishClick = function(status){
+        $scope.case.status = status;
         CaseService.saveCase($scope.case).success(function(res){
             ceUtil.toast('发布成功');
             $state.go('caseManage.list');

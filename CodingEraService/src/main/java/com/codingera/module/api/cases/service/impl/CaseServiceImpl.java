@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.codingera.module.api.cases.criteria.CaseQueryCriteria;
 import com.codingera.module.api.cases.model.Case;
+import com.codingera.module.api.cases.model.Case.Status;
 import com.codingera.module.api.cases.repository.CaseRepository;
 import com.codingera.module.api.cases.service.CaseService;
 
@@ -21,7 +22,13 @@ public class CaseServiceImpl implements CaseService {
 	
 	@Override
 	public Case save(Case ceCase) {
-		ceCase.setCreateTime(new Date());
+		if(ceCase.getCreateTime() == null){
+			ceCase.setCreateTime(new Date());
+		}
+		if(ceCase.getStatus() == null){
+			//如果为空,默认草稿
+			ceCase.setStatus(Case.Status.SKETCH);
+		}
 		return caseRepository.save(ceCase);
 	}
 
@@ -33,7 +40,7 @@ public class CaseServiceImpl implements CaseService {
 	@Override
 	public void deleteById(Long id) {
 		Case ceCase = caseRepository.findOne(id);
-		ceCase.setDeleted(true);
+		ceCase.setStatus(Status.DELETED);
 		caseRepository.save(ceCase);
 	}
 

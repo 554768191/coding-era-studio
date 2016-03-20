@@ -2,8 +2,6 @@
 
 
 
-
-
 .ce-markdown-container{
   .markdown-toolbar{
     margin:5px 0;
@@ -15,8 +13,7 @@
     height:300px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    @include ce-box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075));
     padding:10px;
   }
   .ce-preview{
@@ -26,8 +23,7 @@
     padding:10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    @include ce-box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075));
     ol{
       padding-left: 20px;
     }

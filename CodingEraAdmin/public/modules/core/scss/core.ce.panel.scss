@@ -1,19 +1,15 @@
 @import "core.env";
 
 
-
-/**
- * 	内容里-左边工具栏
- */
 $border-color:#DEE5E7;
-.ce-leftbar{
+.ce-panel-left{
   margin-top:-15px;
-  border-right:1px solid $border-color;
+  //border-right:1px solid $border-color;
   padding-top:20px;
-  padding-right:15px;
+  // padding-right:15px;
   margin-right: -15px;
   height:100%;
-  background: #F4F5F7;
+
   .line{
     height:1px;
     border-top:1px solid $border-color;
@@ -21,12 +17,12 @@ $border-color:#DEE5E7;
     margin-bottom:30px;
   }
 
-  .ce-leftbar-btn{
+  .ce-panel-left-btn{
     width:100%;
   }
 
 
-  .ce-leftbar-menu{
+  .ce-panel-left-menu{
     margin-bottom:5px;
 
     .glyphicon{
@@ -52,6 +48,28 @@ $border-color:#DEE5E7;
     width:100%;
     padding-left:20px;
   }
+}
+.ce-panel{
+ // position: relative;
+  height:100%
+}
+.ce-panel-line{
+  border-left:1px solid $border-color;
+  width:1px !important;
+  padding:0 !important;
+ // height: 100%;
+  position: absolute;
+  left: -webkit-calc(25% + 10px);
+  bottom:0px;
+  top:0px;
+  z-index: 2;
+
+
+}
+.ce-panel-right{
+  padding-left:15px;
+  padding-bottom:15px;
+
 }
 
 
