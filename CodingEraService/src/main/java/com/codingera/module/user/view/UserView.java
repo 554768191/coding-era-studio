@@ -2,8 +2,12 @@ package com.codingera.module.user.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserRole;
 
 public class UserView implements Serializable {
@@ -11,6 +15,9 @@ public class UserView implements Serializable {
 	private static final long serialVersionUID = -192550188817193798L;
 
 	private String username;
+	private String displayName;
+	private String email;
+	private String phone;
 
 	private String avatar;
 
@@ -19,6 +26,23 @@ public class UserView implements Serializable {
 	private String intro;
 
 	private List<UserRole> roles = new ArrayList<UserRole>();
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public UserView() {
+		super();
+	}
+
+	public UserView(User user) {
+		super();
+		this.displayName = user.getDisplayName();
+		this.username = user.getUsername();
+		this.email = user.getEmail();
+		this.phone = user.getPhone();
+		this.sex = user.getSex();
+		this.avatar = user.getAvatar();
+		this.roles = user.getRoles();
+		this.authorities = user.getAuthorities();
+	}
 
 	public String getUsername() {
 		return username;
@@ -58,6 +82,38 @@ public class UserView implements Serializable {
 
 	public void setRoles(List<UserRole> roles) {
 		this.roles = roles;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
 }

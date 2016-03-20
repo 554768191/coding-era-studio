@@ -20,4 +20,6 @@ public interface UserService extends UserDetailsService {
 	public Page<User> findUserByCriteria(Pageable pr, UserQueryCriteria criteria);
 
 	public User loadCurrentUser();
+
+	public User updateUser(User user);
 }

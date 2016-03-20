@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codingera.module.security.model.Credentials;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
+import com.codingera.module.user.view.UserView;
 
 /**
  * @see <a
@@ -31,8 +32,10 @@ public class AuthorizationController {
 	 * @return
 	 */
 	@RequestMapping("/api/me")
-	public User userInfo() {
-		return userService.loadCurrentUser();
+	public UserView userInfo() {
+		User current = userService.loadCurrentUser();
+		UserView view = new UserView(current);
+		return view;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
+import org.codehaus.jackson.map.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserRole;
 import com.codingera.module.user.repository.UserRepository;
 import com.codingera.module.user.service.UserService;
+import com.codingera.module.user.view.UserView;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
@@ -30,11 +32,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User create(User user) {
 		
-//		User existUserName = this.getUserByUserName(user.getUsername());
-//		if(existUserName != null){
-//			throw new ValidationException("user name already exist :" + user.getUsername());
-//		}
-//		
+		User existUserName = this.getUserByUserName(user.getUsername());
+		if(existUserName != null){
+			throw new ValidationException("user name already exist :" + user.getUsername());
+		}
+		
 		//生成密码
 		//以前使用的是md5，Md5PasswordEncoder 和 ShaPasswordEncoder，现在推荐用bcrpt。
 		//bcrypt算法与md5/sha算法有一个很大的区别，Bcrpt中的salt可以是随机的。每次生成的hash值都是不同的，这样暴力猜解起来或许要更困难一些。
@@ -45,19 +47,19 @@ public class UserServiceImpl implements UserService {
     	String hashedPassword = passwordEncoder.encode(password);
     	user.setPassword(hashedPassword);
     	
-//    	//默认角色
-//		List<UserRole> userRoles=new ArrayList<UserRole>();
-//		UserRole userRole=new UserRole();
-//		userRole.setUser(user);
-//		userRole.setRole(UserRole.Role.ROLE_USER);
-//		userRoles.add(userRole);
-//		user.setRoles(userRoles);
+//    	默认角色
+		List<UserRole> userRoles=new ArrayList<UserRole>();
+		UserRole userRole=new UserRole();
+		userRole.setUser(user);
+		userRole.setRole(UserRole.Role.ROLE_USER);
+		userRoles.add(userRole);
+		user.setRoles(userRoles);
 		
 		user.setAccountNonLocked(true);//锁住用户
 		user.setAccountNonExpired(true);//过期
 		user.setEnabled(true);//可用
 		user.setCredentialsNonExpired(true);//凭证过期
-		
+		user.setDisplayName(user.getUsername());
 		return userRepository.save(user);
 	}
 
@@ -88,15 +90,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loadCurrentUser() {
+		User current;
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         final Object principal = authentication.getPrincipal();
         if (authentication instanceof OAuth2Authentication &&
                 (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {
-            return loadOauthUserJsonDto((OAuth2Authentication) authentication);
+        	current = loadOauthUserJsonDto((OAuth2Authentication) authentication);
         } else {
             final User userDetails = (User) principal;
-        	return userDetails;
+            current = userDetails;
         }
+        return current;
 	}
 	
 	private User loadOauthUserJsonDto(OAuth2Authentication oAuth2Authentication) {
@@ -109,5 +113,62 @@ public class UserServiceImpl implements UserService {
         //}
         return userJsonDto;
     }
+
+	/**
+	 * TODO Jason 用户角色判断写法没有优化
+	 * 
+	 * @param role
+	 * @return
+	 */
+	private boolean hasRole(UserRole.Role role){
+		User currentUser = this.loadCurrentUser();
+		List<UserRole> hasRoles = currentUser.getRoles();
+		for (UserRole userRole : hasRoles) {
+			if(role.equals(userRole.getRole())){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public User updateUser(User user) {
+		User account = this.getUserByUserName(user.getUsername());
+		if(account == null){
+			throw new ValidationException("user info is null :" + user.getUsername());
+		}
+		User currentUser = this.loadCurrentUser();
+		if(!account.getId().equals(currentUser.getId())){
+			boolean isAdmin = hasRole(UserRole.Role.ROLE_ADMIN);
+			if(isAdmin == false){
+				throw new ValidationException("you have no right to update user info !" );
+			}
+		}
+		boolean isDirty = false;
+		if (user.getEmail() != null) {
+			account.setEmail(user.getEmail());
+			isDirty = true;
+		}
+		if (user.getPhone() != null) {
+			account.setPhone(user.getPhone());
+			isDirty = true;
+		}
+		if (user.getDisplayName() != null) {
+			account.setDisplayName(user.getDisplayName());
+			isDirty = true;
+		}
+		if (user.getSex() != null) {
+			account.setSex(user.getSex());
+			isDirty = true;
+		}
+		if (user.getAvatar() != null) {
+			account.setAvatar(user.getAvatar());
+			isDirty = true;
+		}
+		if(isDirty == false){
+			throw new ValidationException("No change to save");
+		}
+		return userRepository.save(account);
+	}
 
 }
