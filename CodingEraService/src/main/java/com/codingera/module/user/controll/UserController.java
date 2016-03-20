@@ -12,6 +12,7 @@ import com.codingera.module.base.controll.ActionResult;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
+import com.codingera.module.user.view.UserView;
 
 /**
  * 
@@ -39,7 +40,8 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ActionResult updateUser(User user) {
 		user = userService.updateUser (user);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
+		UserView view = new UserView(user);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
 	}
 
 }

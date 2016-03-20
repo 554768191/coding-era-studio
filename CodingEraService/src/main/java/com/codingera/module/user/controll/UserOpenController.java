@@ -63,22 +63,34 @@ public class UserOpenController {
 		user = userService.create(user);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
 	}
-	@RequestMapping(value = "/password", params="action=reset", method = RequestMethod.POST)
-	public ActionResult resetPassword(@RequestBody User user) {
-		user = userService.create(user);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
-	}
 	@RequestMapping(value = "/password", params="action=saveToken", method = RequestMethod.POST)
-	public ActionResult saveUserResetPasswordToken(UserResetPasswordToken token) {
-		User user = userService.saveUserResetPasswordToken(token);
-		UserView view = new UserView(user);
+	public ActionResult saveUserResetPasswordToken(UserResetPasswordToken resetToken) {
+		UserView view = null;
+		User user = userService.saveUserResetPasswordToken(resetToken);
+		if(user != null){
+			view = new UserView(user);
+		}
 		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
 	}
-	@RequestMapping(value = "/password", params="action=getToken", method = RequestMethod.GET)
-	public ActionResult getToken(String token) {
-		UserResetPasswordToken result = userService.getUserResetPasswordToken(token);
+	@RequestMapping(value = "/password", params="action=validateToken", method = RequestMethod.GET)
+	public ActionResult getToken(@RequestParam String resetToken) {
+		UserResetPasswordToken result = userService.getUserResetPasswordToken(resetToken);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
 	}
-
+	/**
+	 * 重设密码
+	 * 
+	 * @param resetToken
+	 * @return
+	 */
+	@RequestMapping(value = "/password", params="action=reset", method = RequestMethod.POST)
+	public ActionResult resetPassword(UserResetPasswordToken resetToken) {
+		UserView view = null;
+		User user = userService.resetPassword(resetToken);
+		if(user != null){
+			view = new UserView(user);
+		}
+		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
+	}
 
 }
