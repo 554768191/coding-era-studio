@@ -98,18 +98,22 @@ exports.forgot = function (req, res, next) {
  * Reset password GET from email token
  */
 exports.validateResetToken = function (req, res) {
-    //User.findOne({
-    //    resetPasswordToken: req.params.token,
-    //    resetPasswordExpires: {
-    //        $gt: Date.now()
-    //    }
-    //}, function (err, user) {
-    //    if (!user) {
-    //        return res.redirect('/#!/password/reset/invalid');
-    //    }
-
+    var contents = querystring.stringify({
+        resetToken : req.params.token
+    });
+    var url = config.codingera.apiURL + '/open/user/password?action=validateToken' + '&' +  contents;
+    console.log('caca', url);
+    request.get(url, function (err, result) {
+        if(err){
+            return res.status(400).send({
+                message: err
+            });
+        }
+        if (!result.data) {
+            return res.redirect('/#!/password/reset/invalid');
+        }
         res.redirect('/#!/password/reset/' + req.params.token);
-    //});
+    });
 };
 
 /**
