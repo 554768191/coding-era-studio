@@ -60,7 +60,7 @@ angular.module('core')
             var getOptions = {
                 'url':options.url,
                 'method':'get',
-                'params':options.data
+                'params':options.data || {}
             };
             angular.extend(getOptions.params, {access_token: token});
             commentService(selfService,getOptions);

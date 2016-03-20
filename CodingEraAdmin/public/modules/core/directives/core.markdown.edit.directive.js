@@ -195,19 +195,20 @@ angular.module('core')
 
                 return function postlink($scope, el, attrs, ngModel) {
                     $scope.toolbar = ceMarkdownConfig.toolbar;
+
                     ngModel.$render = function () {
                         $scope.text = ngModel.$viewValue || '';
+                        codemirror.setValue($scope.text);
                     };
 
 
-                    codemirror.on('change',function(instance){
+
+                    var codemirrorOnChange = function(instance){
                         $scope.text=instance.getValue();
                         ngModel.$setViewValue(instance.getValue());
-                        var phase=$scope.$root.$$phase;
-                        if(phase!=='$apply'&&phase!=='digest'){
-                            $scope.$apply();
-                        }
-                    });
+                    };
+
+                    codemirror.on('change',codemirrorOnChange);
 
 
                     $scope.callAction = function (actionName) {
@@ -218,6 +219,7 @@ angular.module('core')
                         else if(actionName === 'preview'){
                             $scope.preview=!$scope.preview;
                         }
+                        //全屏暂时没做
                         else if(actionName ==='fullscreen'){
                             var els=el[0];
                             var rfs=els.requestFullScreen|| els.webkitRequestFullScreen|| els.mozRequestFullScreen;

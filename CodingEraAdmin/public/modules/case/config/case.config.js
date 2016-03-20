@@ -37,7 +37,7 @@ angular.module('case')
                 controller:'caseListCtrl'
             })
             .state('caseManage.publish', {
-                url: '/publish',
+                url: '/publish?:caseId',
                 templateUrl: 'modules/case/views/case.publish.view.html',
                 controller:'casePublishCtrl'
             })

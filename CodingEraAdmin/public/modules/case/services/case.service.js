@@ -7,6 +7,10 @@ angular.module('case').factory('CaseService', [ '$log','ceAjax',
 
         var service ={};
 
+        service.getCaseById = function(id){
+            return ceAjax.get({url:'/case/'+id});
+        };
+
         service.saveCase = function(parameters){
             return ceAjax.post({url:'/case', data:parameters});
         };

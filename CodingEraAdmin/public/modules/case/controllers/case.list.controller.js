@@ -23,7 +23,13 @@ function ($scope, $log,$translate,$state,CaseService,ceUtil){
     };
     $scope.onSearch();
 
+    //编辑记录
+    $scope.onEditClick = function(id){
+        console.log(id);
+        $state.go('caseManage.publish',{caseId:id});
+    };
 
+    //删除记录
     $scope.onDeleteClick = function(id){
         ceUtil.confirmMessage('确认删除?').success(function(){
             CaseService.deleteCase({id:id}).success(function(){

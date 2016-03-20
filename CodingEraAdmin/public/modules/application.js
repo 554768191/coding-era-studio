@@ -17,6 +17,7 @@ ceApp.run(function ($rootScope, $translate,$templateCache) {
 		//拦截ajax请求事件
 		//$httpProvider.interceptors.push('ceInterceptor');
 		//解决post,put跨域问题
+
 		var form_encodes_support = ["post", "put"];
 		angular.forEach(form_encodes_support,
 				function(method) {

@@ -5,7 +5,7 @@
         <div class="title" ng-bind="item.title"></div>
         <div class="subtitle">发表于 {{item.createTime  | date:'yyyy-MM-dd'}}</div>
         <div class="case-toolbar">
-            <a class="toolbar-btn" >
+            <a class="toolbar-btn" ng-click="onEditClick(item.id)" >
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </a>
             <a class="toolbar-btn del" ng-click="onDeleteClick(item.id)">
