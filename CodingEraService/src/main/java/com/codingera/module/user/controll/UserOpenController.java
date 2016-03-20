@@ -70,8 +70,9 @@ public class UserOpenController {
 	}
 	@RequestMapping(value = "/password", params="action=saveToken", method = RequestMethod.POST)
 	public ActionResult saveUserResetPasswordToken(UserResetPasswordToken token) {
-		token = userService.saveUserResetPasswordToken(token);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, token);
+		User user = userService.saveUserResetPasswordToken(token);
+		UserView view = new UserView(user);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
 	}
 	@RequestMapping(value = "/password", params="action=getToken", method = RequestMethod.GET)
 	public ActionResult getToken(String token) {

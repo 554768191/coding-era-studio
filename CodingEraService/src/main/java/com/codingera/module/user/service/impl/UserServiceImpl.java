@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -175,8 +176,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserResetPasswordToken saveUserResetPasswordToken(UserResetPasswordToken token) {
-		return userResetPasswordTokenRepository.save(token);
+	public User saveUserResetPasswordToken(UserResetPasswordToken token) {
+		User account = this.getUserByUserName(token.getUsername());
+		if (account == null) {
+			throw new ValidationException("用户名不存在 :" + token.getUsername());
+		}
+		UserResetPasswordToken storeToken = this.userResetPasswordTokenRepository.getUserResetPasswordTokenByUsername(token.getUsername());
+		BeanUtils.copyProperties(token, storeToken, "id");
+		
+		userResetPasswordTokenRepository.save(storeToken);
+		return account;
 	}
 
 	@Override

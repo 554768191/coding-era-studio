@@ -25,7 +25,7 @@ public interface UserService extends UserDetailsService {
 
 	public User updateUser(User user);
 
-	public UserResetPasswordToken saveUserResetPasswordToken(UserResetPasswordToken token);
+	public User saveUserResetPasswordToken(UserResetPasswordToken token);
 
 	public UserResetPasswordToken getUserResetPasswordToken(String token);
 

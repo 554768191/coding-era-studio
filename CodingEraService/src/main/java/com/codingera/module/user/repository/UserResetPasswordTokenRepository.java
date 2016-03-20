@@ -8,5 +8,7 @@ import com.codingera.module.user.model.UserResetPasswordToken;
 public interface UserResetPasswordTokenRepository extends PagingAndSortingRepository<UserResetPasswordToken, Long>, JpaSpecificationExecutor<UserResetPasswordToken> {
 
 	UserResetPasswordToken getUserResetPasswordTokenByToken(String token);
+
+	UserResetPasswordToken getUserResetPasswordTokenByUsername(String username);
 	
 }
