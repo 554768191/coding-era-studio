@@ -37,6 +37,11 @@ public class CaseServiceImpl implements CaseService {
 		caseRepository.save(ceCase);
 	}
 
+	@Override
+	public Case getById(Long id) {
+		return caseRepository.findOne(id);
+	}
+
 
 
 

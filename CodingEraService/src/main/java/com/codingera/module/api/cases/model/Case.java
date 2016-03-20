@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import com.codingera.module.base.model.IdEntity;
 
 @Entity
@@ -25,6 +27,7 @@ public class Case extends IdEntity {
 	private String title;
 
     private String content;
+    
     
     private Date createTime;
 
