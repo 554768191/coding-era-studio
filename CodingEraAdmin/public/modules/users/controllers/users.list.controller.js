@@ -1,28 +1,28 @@
 'use strict';
 
-angular.module('case').controller('tagListCtrl', [
-    '$scope', '$log', '$translate', '$uibModal', 'path', 'TagService', 'ceUtil',
-    function ($scope, $log, $translate, $uibModal, path, TagService, ceUtil) {
+angular.module('users').controller('usersListCtrl', [
+    '$scope', '$log', '$translate', '$uibModal', '$location', 'path', 'UserService', 'ceUtil',
+    function ($scope, $log, $translate, $uibModal, $location, path, UserService, ceUtil) {
 
         $scope.selectedData = null;
         $scope.isSelected = false;
 
         $scope.onEditClick = function (data) {
-            var tag = data;
-            if(!tag){
+            var user = data;
+            if(!user){
                 if($scope.isSelected === false){
                     ceUtil.toast('请选中一行数据');
                     return;
                 }
-                tag = $scope.selectedData;
+                user = $scope.selectedData;
             }
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: 'modules/case/views/case.tag.edit.view.html',
-                controller: 'tagEditCtrl',
+                templateUrl: 'modules/users/views/case.user.edit.view.html',
+                controller: 'userEditCtrl',
                 resolve: {
-                    tag: function () {
-                        return tag;
+                    user: function () {
+                        return user;
                     }
                 }
             });
@@ -34,40 +34,26 @@ angular.module('case').controller('tagListCtrl', [
         };
 
         $scope.onDeletedClick = function (data) {
-            var tag = data;
-            if(!tag){
+            var user = data;
+            if(!user){
                 if($scope.isSelected === false){
                     ceUtil.toast('请选中一行数据');
                     return;
                 }
-                tag = $scope.selectedData;
+                user = $scope.selectedData;
             }
 
-            TagService.deleteTag(tag).success(function () {
+            UserService.deleteUser(user).success(function () {
                 $scope.onSearch();
             });
         };
 
         $scope.onCreateClick = function () {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'modules/case/views/case.tag.edit.view.html',
-                controller: 'tagEditCtrl',
-                resolve: {
-                    tag: function () {
-                        return {};
-                    }
-                }
-            });
-            //点击确定返回
-            modalInstance.result.then(function () {
-                //保存成功,刷新
-                $scope.onSearch();
-            });
+            $location.path('/user/signup');
         };
 
         //Grid data
-        $scope.tagData = {};
+        $scope.userData = {};
 
         //分页参数
         $scope.searchOptions = {
@@ -88,22 +74,26 @@ angular.module('case').controller('tagListCtrl', [
             multiSelect: false,
 
             gridMenuTitleFilter: $translate,
-            data: 'tagData.data.content',//就是页面的$scope.tagData
+            data: 'userData.data.content',//就是页面的$scope.userData
             paginationPageSizes: [10, 20, 50],//每页显示多少
             paginationPageSize: 10,//当前显示多少页
             useExternalPagination: true,//不用默认的分页控制器
             rowHeight:40,
             animate: false,
             columnDefs: [
-                {name: 'name', displayName: '标签名称', allowCellFocus: true},
-                {name: 'type', displayName: '类型'},
-                {name: 'hot', displayName: '热度'},
+                {name: 'displayName', displayName: '昵称', allowCellFocus: true},
+                {name: 'username', displayName: '登录名'},
+                {name: 'sex', displayName: '性别'},
+                {name: 'type1', displayName: '头像'},
+                {name: 'email', displayName: '邮箱'},
+                {name: 'phone', displayName: '手机'},
+                {name: 'enable', displayName: '状态'},
                 {
                     name: 'ShowScope',
                     displayName: 'Actions',
                     cellTemplate: '<div class="btn-group-sm">' +
-                    '<button class="btn btn-info" ng-click="grid.appScope.onEditClick(row.entity)">编辑</button>' +
-                    '<button class="btn btn-danger" ng-click="grid.appScope.onDeletedClick(row.entity)">删除</button>' +
+                    '<button class="btn btn-info" ng-click="grid.appScope.onDeletedClick(row.entity)">角色</button>' +
+                    '<button class="btn btn-danger" ng-click="grid.appScope.onDeletedClick(row.entity)">禁用</button>' +
                     '</div>'
                 }
             ],
@@ -120,7 +110,7 @@ angular.module('case').controller('tagListCtrl', [
                 gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                     $scope.searchOptions.page = newPage - 1;//默认-1,我们service从0页开始,看看springMvc能不能配置吧
                     $scope.searchOptions.size = pageSize;
-                    //重新查询tagData数据
+                    //重新查询userData数据
                     $scope.onSearch();
                 });
             }
@@ -128,8 +118,8 @@ angular.module('case').controller('tagListCtrl', [
 
         //搜索
         $scope.onSearch = function () {
-            TagService.getTags($scope.searchOptions).success(function (res) {
-                $scope.tagData = res;
+            UserService.getUsers($scope.searchOptions).success(function (res) {
+                $scope.userData = res;
                 $scope.gridOptions.totalItems = res.data.totalElements;
             });
         };

@@ -4,6 +4,7 @@
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2').Strategy,
     config = require('../config'),
+    request = require('../../app/controllers/request.server.controller.js');
     users = require('../../app/controllers/users.server.controller');
 
 module.exports = function() {
@@ -27,10 +28,14 @@ module.exports = function() {
         function (req, accessToken, refreshToken, profile, done) {
 
             //todo 后台不知如何返回user profile,暂时再查一次
-            users.findOrCreate(config.codingera.userInfoURL, accessToken, function(user) {
+            request.getWithToken(config.codingera.userInfoURL, accessToken, function(error, user) {
 
+                if (error) {
+                    return done(new Error(error.error_description));
+                }
+
+                // Set token
                 user["accessToken"] = accessToken;
-                console.log("findOrCreate user", user);
 
                 // Set the provider data and include tokens
                 var providerData = profile._json || {};

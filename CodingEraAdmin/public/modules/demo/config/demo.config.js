@@ -9,7 +9,7 @@ angular.module('demo')
         //DEMO
         var demoMenu=Menus.genParentMenus({name:'Super Example',icon:'comment'});
         var node_demo=Menus.genNodeMenus({name:'Base Example',subTitle:'这是一个副标题(不配置就不出现)',icon:'ice-lolly-tasted',route:'demo'});
-        demoMenu.setOrder(0);
+        demoMenu.setOrder(98);
         demoMenu.addNodeMenus(node_demo);
         Menus.addMenus(demoMenu.getMenus());
 

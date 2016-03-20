@@ -12,68 +12,66 @@ var _ = require('lodash'),
 	passport = require('passport');
 var http = require('http');
 var querystring = require('querystring');
+var request = require('../request.server.controller.js');
+var that = this;
 
 /**
  * Signup
  */
 exports.signup = function(req, res) {
 	//TODO 用户注册功能待开发
-	//// For security measurement we remove the roles from the req.body object
-	//delete req.body.roles;
-    //
-	//// Init Variables
-	//var user = new User(req.body);
-	//var message = null;
-    //
-	//// Add missing user fields
-	//user.provider = 'local';
-	//user.displayName = user.firstName + ' ' + user.lastName;
-    //
-	//// Then save the user
-	//user.save(function(err) {
-	//	if (err) {
-	//		return res.status(400).send({
-	//			message: errorHandler.getErrorMessage(err)
-	//		});
-	//	} else {
-	//		// Remove sensitive data before login
-	//		user.password = undefined;
-	//		user.salt = undefined;
-    //
-	//		req.login(user, function(err) {
-	//			if (err) {
-	//				res.status(400).send(err);
-	//			} else {
-	//				res.json(user);
-	//			}
-	//		});
-	//	}
-	//});
+	// For security measurement we remove the roles from the req.body object
+	delete req.body.roles;
+
+	// Init Variables
+	var user = new User(req.body);
+	var message = null;
+
+	// Add missing user fields
+	user.provider = 'local';
+	user.displayName = user.firstName + ' ' + user.lastName;
+
+	// Then save the user
+	user.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			// Remove sensitive data before login
+			user.password = undefined;
+			user.salt = undefined;
+
+			req.login(user, function(err) {
+				if (err) {
+					res.status(400).send(err);
+				} else {
+					res.json(user);
+				}
+			});
+		}
+	});
 };
 
 /**
- * Signin after passport authentication
+ * Signin
  */
 exports.signin = function(req, res, next) {
-	//本地登录功能,暂时没用,我们用的是oauth
-	console.log('signin route', req);
-	//passport.authenticate('local', function(err, user, info) {
-	//	if (err || !user) {
-	//		res.status(400).send(info);
-	//	} else {
-	//		// Remove sensitive data before login
-	//		user.password = undefined;
-	//		user.salt = undefined;
-    //
-	//		req.login(user, function(err) {
-	//			if (err) {
-	//				res.status(400).send(err);
-	//			} else {
-	//				res.json(user);
-	//			}
-	//		});
-	//	}
-	//})(req, res, next);
+	if (!user) {
+		res.status(400).send(info);
+	} else {
+		// Remove sensitive data before login
+		user.password = undefined;
+		user.salt = undefined;
+
+		req.login(user, function(err) {
+			if (err) {
+				res.status(400).send(err);
+			} else {
+				res.json(user);
+			}
+		});
+	}
 };
 
 /**
@@ -245,19 +243,40 @@ exports.removeOAuthProvider = function(req, res, next) {
 	//}
 };
 
-exports.findOrCreate = function(url, token, done) {
-	//todo Jason 获取当前登录用户信息,这里是否要加用户身份校验?
-	var result = "";
-	var req = http.request(url, function(res) {
-		console.log("响应：" + res.statusCode);
-		res.on('data',function(data){
-			result += data;
-		}).on('end', function(){
-			done(JSON.parse(result));
+/**
+ * Update user details
+ */
+exports.update = function(req, res) {
+	var user = req.user;
+	if (user) {
+		// Merge existing user
+		user = _.extend(user, req.body);
+		delete user.authorities;
+		delete user.roles;
+		var url = config.codingera.apiURL + '/user';
+		var token = user.accessToken;
+		request.postWithToken(url, user, token, function (error, response) {
+			if(error){
+				res.status(400).send(error);
+			}
+			req.login(response.data, function(err) {
+				if (err) {
+					res.status(400).send(err);
+				} else {
+					res.json(response.data);
+				}
+			});
 		});
-	}).on('error', function(e) {
-		console.log("findOrCreate 错误：" + e.message);
-	});
-	req.setHeader("Authorization", ' bearer ' + token);
-	req.end();  //不能漏掉，结束请求，否则服务器将不会收到信息。
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
+/**
+ * Send User
+ */
+exports.me = function(req, res) {
+	res.json(req.user || null);
 };

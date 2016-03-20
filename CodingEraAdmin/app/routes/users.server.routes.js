@@ -11,14 +11,14 @@ module.exports = function(app) {
 
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
-	//app.route('/users').put(users.update);
+	app.route('/users').put(users.update);
 	//app.route('/users/accounts').delete(users.removeOAuthProvider);
     //
-	//// Setting up the users password api
-	//app.route('/users/password').post(users.changePassword);
-	//app.route('/auth/forgot').post(users.forgot);
-	//app.route('/auth/reset/:token').get(users.validateResetToken);
-	//app.route('/auth/reset/:token').post(users.reset);
+	// Setting up the users password api
+	app.route('/users/password').post(users.changePassword);
+	app.route('/auth/forgot').post(users.forgot);
+	app.route('/auth/reset/:token').get(users.validateResetToken);
+	app.route('/auth/reset/:token').post(users.reset);
 
 	// Setting up the users authentication api
 	app.route('/auth/signup').post(users.signup);
@@ -30,9 +30,9 @@ module.exports = function(app) {
 	app.route('/auth/github/callback').get(users.oauthCallback('github'));
 
 	// Finish by binding the user middleware
-	app.param('userId', users.userByID);
+	//app.param('userId', users.userByID);
 
-	//Coding Era SSO Login
+	// CodingEra SSO Login
 	// Redirect the user to the OAuth 2.0 provider for authentication.  When
 	// complete, the provider will redirect the user back to the application at
 	//     /auth/provider/callback

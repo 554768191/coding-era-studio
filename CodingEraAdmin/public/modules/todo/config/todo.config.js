@@ -20,8 +20,6 @@ angular.module('todo').run(['Menus',
         parentMenus.addNodeMenus(jason5);
         parentMenus.addNodeMenus(jason6);
         Menus.addMenus(parentMenus.getMenus());
-
-        console.log('Jason test parentMenus', parentMenus.getMenus());
     }
 ]).config(['$stateProvider','$translatePartialLoaderProvider',
     function ($stateProvider,$translatePartialLoaderProvider) {

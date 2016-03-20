@@ -19,6 +19,7 @@ module.exports = {
 		callbackURL: '/auth/github/callback'
 	},
 	codingera: {
+		apiURL: 'http://localhost:8080/api',
 		authorizationURL: 'http://localhost:8080/oauth/authorize',
 		tokenURL: 'http://localhost:8080/oauth/token',
 		clientID: 'api-client',
@@ -27,6 +28,7 @@ module.exports = {
 		userInfoURL:"http://localhost:8080/api/me",
 		logoutURL:"http://localhost:8080/oauth/logout?next=http://localhost:3000"
 
+		//apiURL: 'http://www.codingera.com:8080',
 		//authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
 		//tokenURL: 'http://www.codingera.com:8080/oauth/token',
 		//clientID: 'api-client',
@@ -34,6 +36,18 @@ module.exports = {
 		//callbackURL: "http://localhost:3000/auth/provider/callback",
 		//userInfoURL:"http://www.codingera.com:8080/api/me",
 		//logoutURL:"http://www.codingera.com:8080/auth/logout?next=http://localhost:3000"
-
+	},
+	mailer: {
+		from: process.env.MAILER_FROM || '1132075350@qq.com',
+		options: {
+			host: "smtp.qq.com", // 主机
+			secureConnection: true, // 使用 SSL
+			port: 465, // SMTP 端口
+			//service: process.env.MAILER_SERVICE_PROVIDER || 'MAILER_SERVICE_PROVIDER',
+			auth: {
+				user: process.env.MAILER_EMAIL_ID || '1132075350@qq.com',
+				pass: process.env.MAILER_PASSWORD || 'bhfyixrydoodgfee'
+			}
+		}
 	}
 };

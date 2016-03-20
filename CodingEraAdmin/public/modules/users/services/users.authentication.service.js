@@ -6,5 +6,6 @@ angular.module('users').factory('Authentication', ['$window', function($window) 
 	var auth = {
 		user: user
 	};
+	console.log("login user", auth);
 	return auth;
 }]);
