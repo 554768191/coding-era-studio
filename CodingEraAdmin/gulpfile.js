@@ -28,5 +28,5 @@ gulp.task('default', function (done) {
     //runSequence('env:dev', 'css','scripts', ['nodemon','watch'], done);
 
     // browser-sync
-    runSequence('env:dev', done);
+    runSequence('dev', done);
 });
