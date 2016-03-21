@@ -47,4 +47,7 @@ $ gulp
 //如果执行gulp时sass报错:npm rebuild node-sass
 ```
 
+## 4.生产
+NODE_ENV=production node server.js
+
 >暂时这样吧..其它的慢慢研究

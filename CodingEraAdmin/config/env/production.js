@@ -65,7 +65,7 @@ module.exports = {
 		tokenURL: 'http://www.codingera.com:8080/oauth/token',
 		clientID: 'api-client',
 		clientSecret: 'api',
-		callbackURL: "http://localhost:3000/auth/provider/callback",
+		callbackURL: "http://www.codingera.com:3000/auth/provider/callback",
 		userInfoURL:"http://www.codingera.com:8080/api/me",
 		logoutURL:"http://www.codingera.com:8080/auth/logout?next=www.codingera.com:3000"
 	},
