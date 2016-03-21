@@ -25,8 +25,8 @@ wrench.readdirSyncRecursive('./config/gulp').filter(function(file) {
 gulp.task('default', function (done) {
 
     // nodemon
-    runSequence('env:dev', 'css','scripts', ['nodemon','watch'], done);
+    //runSequence('dev', 'css','scripts', ['nodemon','watch'], done);
 
     // browser-sync
-    //runSequence('env:prod', 'css', 'scripts', ['browser-sync','watch'], done);
+    runSequence('dev', done);
 });
