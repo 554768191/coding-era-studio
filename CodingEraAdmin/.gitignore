@@ -3,3 +3,5 @@
 node_modules/
 public/components/
 public/modules/*/css/
+access.log
+public/dist/
