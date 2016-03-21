@@ -22,8 +22,8 @@ angular.module('core')
                         return;
                     }
 
-                    for (var i = 0; i < files.length; i++) {
-                        var file = files[i];
+                   // for (var i = 0; i < files.length; i++) {
+                        var file = files[0];
                         console.log(file);
                         var name = file.name;
                         //$rootScope.$emit("startLoading");
@@ -44,7 +44,7 @@ angular.module('core')
                             // 数据保存失败
                             console.log(err);
                         });
-                    }
+                   // }
                 };
 
                 document.addEventListener("dragenter", function(e){
