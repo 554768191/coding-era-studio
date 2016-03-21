@@ -39,13 +39,22 @@ module.exports = {
 				'public/components/lodash/dist/lodash.min.js'
 			]
 		},
-		sass:['public/modules/**/scss/*.scss'],
-		css: ['public/modules/**/css/*.css'],
+		css: [
+			//'public/dist/css/**/css/*.css'
+			'public/dist/css/all.min.css'
+		],
 		js: [
-			'public/modules/config.js',
-			'public/modules/application.js',
-			'public/modules/*/*.js',
-			'public/modules/*/*[!tests]*/*.js'
+			'public/dist/js/all.js'
+
+			//'public/dist/js/config.min.js',
+			//'public/dist/js/application.min.js',
+			//'public/dist/js/*/*.js',
+			//'public/dist/js/*/*[!tests]*/*.js'
+
+			//'public/modules/config.js',
+			//'public/modules/application.js',
+			//'public/modules/*/*.js',
+			//'public/modules/*/*[!tests]*/*.js'
 		],
 		tests: [
 			'public/components/angular-mocks/angular-mocks.js',

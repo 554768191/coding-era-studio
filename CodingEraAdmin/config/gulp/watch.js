@@ -5,7 +5,7 @@ var _ = require('lodash');
 var gulp = require('gulp');
 var allAssets = _.extend(
     require('../env/all'),
-    require('../env/' + process.env.NODE_ENV) || {}
+    require('../env/development')
 );
 var path = require('path');
 var $ = require('gulp-load-plugins')();

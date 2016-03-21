@@ -5,9 +5,10 @@ var _ = require('lodash');
 var gulp = require('gulp');
 var server = require('gulp-express');
 var runSequence = require('run-sequence');
+var del = require('del');
 var allAssets = _.extend(
     require('../env/all'),
-    require('../env/' + process.env.NODE_ENV) || {}
+    require('../env/development')
 );
 var path = require('path');
 var $ = require('gulp-load-plugins')();
@@ -15,6 +16,7 @@ var browserSync = require('browser-sync');
 
 //编译sass & 自动注入到浏览器
 gulp.task('sass', function () {
+    del([_.replace(allAssets.assets.css, '.css', '')]);// 清空旧文件
     return gulp.src(allAssets.assets.sass)
         .pipe($.sass())
         // .pipe(plugins.autoprefixer())
@@ -37,7 +39,17 @@ gulp.task('csslint', function (done) {
         }));
 });
 
-//齐齐校验
-gulp.task('lint', function (done) {
-    runSequence( 'sass', ['csslint', 'jshint'], done);
+//CSS build
+gulp.task('css-min', function (done) {
+    del(['public/dist/css']);// 清空旧文件
+    return gulp.src(allAssets.assets.css)
+        .pipe($.concat('all.css'))
+        .pipe($.cssmin())
+        .pipe($.rename({suffix: '.min'}))
+        .pipe(gulp.dest('public/dist/css')); //压缩后的路径
+});
+
+//编译 校验
+gulp.task('css', function (done) {
+    runSequence('sass', ['csslint', 'css-min'], done);
 });

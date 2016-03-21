@@ -17,6 +17,8 @@
 [http://angular-ui.github.io/ui-router/site/#/api/ui.router](http://angular-ui.github.io/ui-router/site/#/api/ui.router)
 ### angular-translate(国际化API)
 [https://angular-translate.github.io/docs/#/api/pascalprecht.translate.filter:translate](https://angular-translate.github.io/docs/#/api/pascalprecht.translate.filter:translate)
+### lodash
+[https://lodash.com/docs#replace](https://lodash.com/docs#replace)
 
 ## 初始化项目
 ## 1.安装NPM

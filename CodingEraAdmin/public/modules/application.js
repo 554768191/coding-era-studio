@@ -2,12 +2,16 @@
 var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
 //i18n - 国际化配置
-ceApp.run(function ($rootScope, $translate,$templateCache) {
-	$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-		$translate.refresh();
-	});
-	$templateCache.put('cePaginationTemplate','modules/core/views/templates/core.pagination.template.html');
-}).config(['$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider',
+ceApp.run([
+	'$rootScope', '$translate','$templateCache',
+	function ($rootScope, $translate,$templateCache) {
+		$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+			$translate.refresh();
+		});
+		$templateCache.put('cePaginationTemplate','modules/core/views/templates/core.pagination.template.html');
+	}
+]).config([
+	'$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider',
 	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider) {
 		// Setting HTML5 Location Mode
 		$locationProvider.hashPrefix('!');
@@ -59,7 +63,8 @@ ceApp.run(function ($rootScope, $translate,$templateCache) {
 	}]);
 
 
-angular.module('ui.grid.i18n').config(['i18nConstants',
+angular.module('ui.grid.i18n').config([
+	'i18nConstants',
 	function(i18nConstants){
 		//设置grid默认为中文
 		i18nConstants.DEFAULT_LANG='zh-cn';

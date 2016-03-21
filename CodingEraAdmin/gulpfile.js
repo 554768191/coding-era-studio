@@ -23,13 +23,10 @@ wrench.readdirSyncRecursive('./config/gulp').filter(function(file) {
 });
 
 gulp.task('default', function (done) {
-    //参数1:开发模式
-    //参数2:校验
-    //参数3:开启服务
-    //runSequence('env:dev', 'lint',['nodemon','watch'], done);
 
-    //开发
-    runSequence('env:dev', 'lint',['browser-sync','watch'], done);
-    //生产
-    //runSequence('env:prod', 'lint', 'scripts', ['browser-sync','watch'], done);
+    // nodemon
+    //runSequence('env:dev', 'css','scripts', ['nodemon','watch'], done);
+
+    // browser-sync
+    runSequence('env:prod', 'css', 'scripts', ['browser-sync','watch'], done);
 });
