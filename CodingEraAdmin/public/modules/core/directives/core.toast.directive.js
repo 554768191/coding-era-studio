@@ -22,6 +22,7 @@ angular.module('core')
                 $rootScope.$on('showToast', function(event,message) {
                     scope.message = message;
                     el.css('opacity','1.0');
+                    scope.$apply();
                     setTimeout(function(){
                         $rootScope.$emit('hideToast');
                     },3000);

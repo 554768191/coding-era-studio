@@ -27,6 +27,7 @@ angular.module('core')
         };
 
 
+        //模态消息对话框(确认,取消)
         service.confirmMessage = function(message){
             var self = this;
             var selfService ={};
@@ -55,6 +56,18 @@ angular.module('core')
 
 
             return selfService;
+        };
+
+        service.loadingStatus = false;
+
+        service.loading = function(){
+
+            service.loadingStatus = !service.loadingStatus;
+            if(service.loadingStatus){
+                $rootScope.$emit("startLoading");
+            }else{
+                $rootScope.$emit("stopLoading");
+            }
         };
 
 

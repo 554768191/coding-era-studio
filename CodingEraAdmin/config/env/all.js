@@ -39,5 +39,9 @@ module.exports = {
 		options: {
 			stream: 'access.log'
 		}
+	},
+	leanCloud:{
+		appId:'QwrPehu4AweWvBcs2ft4hkMz-gzGzoHsz',
+		appKey:'IIhpKr7e2sBSLSBYGmNIKNGg'
 	}
 };

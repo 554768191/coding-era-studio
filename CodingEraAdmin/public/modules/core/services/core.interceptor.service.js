@@ -3,7 +3,7 @@
  */
 "use strict";
 
-angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector','LoadingBar','ceConfig', 'Authentication',
+angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector','ceConfig', 'Authentication',
     function($rootScope,$q, $injector,LoadingBar,ceConfig,Authentication) {
     var httpInterceptor = {
         'responseError' : function(response) {

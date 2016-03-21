@@ -1,0 +1,29 @@
+@import "core.env";
+
+
+.ce-h5-upload-container{
+
+  cursor: pointer;
+
+  .ce-h5-upload{
+    min-height:150px;
+    width:100%;
+    text-align: center;
+    //line-height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    @include ce-box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+    overflow: hidden;
+    display:table;
+    .ce-h5-upload-tips{
+      display:table-cell;
+      vertical-align:middle;
+    }
+
+    img{
+      width:100%;
+    }
+  }
+}
+
+
