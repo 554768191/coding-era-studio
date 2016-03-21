@@ -1,13 +1,13 @@
 <div class="row ce-panel">
     <div class="col-sm-3 " >
         <div class="ce-panel-left">
-            <button class="btn btn-default ce-panel-left-btn" ng-click="onShowPublishViewClick()" >发布作品</button>
+            <button class="btn btn-default ce-panel-left-btn"  ui-sref="caseManage.publish({caseId:null})" >发布作品</button>
 
             <div class="line"></div>
 
-            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'PUBLISHED'})"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>已发布</a>
-            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'SKETCH'})"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>草稿</a>
-            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'DELETED'})"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>回收站</a>
+            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'PUBLISHED'})" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>已发布</a>
+            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'SKETCH'})" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>草稿</a>
+            <a class="ce-panel-left-menu" ui-sref-active="active" ui-sref="caseManage.list({status:'DELETED'})" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>回收站</a>
 
         </div>
 

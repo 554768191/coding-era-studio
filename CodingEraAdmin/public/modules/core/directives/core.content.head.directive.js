@@ -19,7 +19,13 @@ angular.module('core').directive('ceContentHead', ['$window','ContentHead','Auth
                 scope.$on('$stateChangeSuccess', function( event, toState, toParams, fromState ) {
                     event.targetScope.$watch('$viewContentLoaded', function(){
                         //展示内容标题
-                        ContentHead.autoRefreshTitle(toState.name);
+                        var stateName = toState.name;
+                        //2016-03-21嵌套菜单问题修正
+                        var stateNameSplice = stateName.split('.');
+                        if(stateNameSplice.length>1){
+                            stateName = stateNameSplice[0];
+                        }
+                        ContentHead.autoRefreshTitle(stateName);
                     });
                 });
             }

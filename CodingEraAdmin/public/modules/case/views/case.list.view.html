@@ -6,7 +6,7 @@
     <div class="case-preview" ng-repeat="item in caseData.content">
         <div class="title" ng-bind="item.title"></div>
         <div class="subtitle">发表于 {{item.createTime  | date:'yyyy-MM-dd'}}</div>
-        <div class="case-toolbar" ng-if="item.case != 'DELETED' ">
+        <div class="case-toolbar" ng-if="item.status != 'DELETED' ">
             <a class="toolbar-btn" ng-click="onEditClick(item.id)" >
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </a>

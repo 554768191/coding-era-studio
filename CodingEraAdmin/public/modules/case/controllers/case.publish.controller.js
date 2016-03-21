@@ -30,7 +30,7 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
         $scope.case.status = status;
         CaseService.saveCase($scope.case).success(function(res){
             ceUtil.toast('发布成功');
-            $state.go('caseManage.list');
+            $state.go('caseManage.list',{status:status});
         });
     };
 
