@@ -4,7 +4,10 @@
 var _ = require('lodash');
 var gulp = require('gulp');
 var server = require('gulp-express');
-var allAssets = require('../env/all');
+var allAssets = _.extend(
+    require('../env/all'),
+    require('../env/' + process.env.NODE_ENV) || {}
+);
 var path = require('path');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var $ = gulpLoadPlugins({
