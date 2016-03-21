@@ -1,4 +1,4 @@
-package com.codingera.module.api.tag.repository.impl;
+package com.codingera.module.api.comment.repository.impl;
 
 import java.util.List;
 
@@ -8,23 +8,23 @@ import javax.persistence.PersistenceContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.codingera.module.api.tag.criteria.TagQueryCriteria;
-import com.codingera.module.api.tag.model.Tag;
-import com.codingera.module.api.tag.repository.custom.TagRepositoryCustom;
+import com.codingera.module.api.comment.criteria.CommentQueryCriteria;
+import com.codingera.module.api.comment.model.Comment;
+import com.codingera.module.api.comment.repository.custom.CommentRepositoryCustom;
 import com.codingera.module.jpa.CriterionUtils;
 import com.codingera.module.jpa.JpaCriteria;
 import com.codingera.module.jpa.JpaQueryUtils;
 import com.codingera.module.jpa.OrCriterion;
 import com.codingera.module.jpa.QueryResult;
 
-public class TagRepositoryImpl implements TagRepositoryCustom {
+public class CommentRepositoryImpl implements CommentRepositoryCustom {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	public Page<Tag> findTagsByCriteria(Pageable pg, TagQueryCriteria criteria) {
-		JpaCriteria s = new JpaCriteria("Tag d");
+	public Page<Comment> findCommentsByCriteria(Pageable pg, CommentQueryCriteria criteria) {
+		JpaCriteria s = new JpaCriteria("Comment d");
 		s.add(new OrCriterion(
 				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
 				CriterionUtils.contains("d.type", criteria.getKeyWord(), true)));
@@ -33,9 +33,9 @@ public class TagRepositoryImpl implements TagRepositoryCustom {
 	}
 
 	@Override
-	public List<Tag> findTagsByCriteria(TagQueryCriteria criteria) {
+	public List<Comment> findCommentsByCriteria(CommentQueryCriteria criteria) {
 		
-		JpaCriteria jpaCriteria = new JpaCriteria("Tag d");
+		JpaCriteria jpaCriteria = new JpaCriteria("Comment d");
 //		jpaCriteria.add(new OrCriterion(
 //				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
 //				CriterionUtils.contains("d.remark", criteria.getKeyWord(), true)));

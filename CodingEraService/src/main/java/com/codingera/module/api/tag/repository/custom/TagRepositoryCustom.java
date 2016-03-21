@@ -10,8 +10,8 @@ import com.codingera.module.api.tag.model.Tag;
 
 public interface TagRepositoryCustom {
 
-	public Page<Tag> findTagByCriteria(Pageable pg, TagQueryCriteria criteria);
+	public Page<Tag> findTagsByCriteria(Pageable pg, TagQueryCriteria criteria);
 
-	public List<Tag> findTagByCriteria(TagQueryCriteria criteria);
+	public List<Tag> findTagsByCriteria(TagQueryCriteria criteria);
 	
 }
