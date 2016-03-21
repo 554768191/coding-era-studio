@@ -9,25 +9,27 @@
  *
  */
 "use strict";
-angular.module('todo').directive("ceTextarea", function () {
-    return {
-        //require:'ngModel',
-        link: function (scope, element, attrs, ngModelController) {
-            //todo 暂时使用这种方法吧,改成div仿textarea会好点
-            var min = angular.isDefined(attrs.autoHeight) ? attrs.autoHeight : element[0].scrollHeight;
-            element.height(Number(min));
+angular.module('todo').directive("ceTextarea", [
+    function () {
+        return {
+            //require:'ngModel',
+            link: function (scope, element, attrs, ngModelController) {
+                //todo 暂时使用这种方法吧,改成div仿textarea会好点
+                var min = angular.isDefined(attrs.autoHeight) ? attrs.autoHeight : element[0].scrollHeight;
+                element.height(Number(min));
 
-            //var borderWidth = element.outerHeight - element.innerHeight;
-            var inputFn = function () {
-                //element.height(borderWidth + Math.max(element[0].scrollHeight, min));
-                element.height(Math.max(element[0].scrollHeight, min));
-            };
-            element.bind("input", inputFn);
-            element.on('$destroy', function () {
-                element.unbind("input", inputFn);
-            });
+                //var borderWidth = element.outerHeight - element.innerHeight;
+                var inputFn = function () {
+                    //element.height(borderWidth + Math.max(element[0].scrollHeight, min));
+                    element.height(Math.max(element[0].scrollHeight, min));
+                };
+                element.bind("input", inputFn);
+                element.on('$destroy', function () {
+                    element.unbind("input", inputFn);
+                });
 
 
-        }
-    };
-});
+            }
+        };
+    }
+]);

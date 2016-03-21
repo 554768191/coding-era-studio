@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$log',
+angular.module('todo').controller('todoCtrl', [
+    '$scope', '$sce', '$uibModal', '$log',
     'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'Upload',
     function ($scope, $sce, $uibModal, $log,
               uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
 
         //$scope.$watch("file", function (val) {
-        //    console.log('Jason fufuufufufuufuufuf file watch', val);
+        //    console.log('Jason file watch', val);
         //});
 
         //markdown
@@ -31,23 +32,23 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
         //预览
         $scope.previewed = false;
         $scope.previewedContent = "";
-        $scope.togglePreview = function(text){
+        $scope.togglePreview = function (text) {
             $scope.previewed = !$scope.previewed;
 
-            if(angular.isUndefined(text)){
+            if (angular.isUndefined(text)) {
                 $scope.previewedContent = "";
                 return;
             }
-            if($scope.previewed === true){
-                $scope.previewedContent =  $sce.trustAsHtml(window.marked(text));
-            }else{
+            if ($scope.previewed === true) {
+                $scope.previewedContent = $sce.trustAsHtml(window.marked(text));
+            } else {
                 //这里不能马上清空元素,因为关闭下拉的判断会失效(element.contains(event.target))
                 //$scope.previewedContent = "";
             }
         };
 
-        $scope.upload = function(files,task){
-            for(var index in files){
+        $scope.upload = function (files, task) {
+            for (var index in files) {
                 var file = files[index];
                 console.log('Jason file', file);
                 FileUploadService.upload(file, task);
@@ -75,11 +76,11 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
             if (event) {
                 event.preventDefault();
             }
-            if(!$scope.form.$valid){
+            if (!$scope.form.$valid) {
                 return;
             }
             var result = TodoCustomService.addTask($scope.task);
-            if(result){
+            if (result) {
                 $scope.task = TodoCustomService.createTask();
             }
         };
@@ -88,15 +89,15 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
             //TodoCustomService.tasks.length = 0;
             $scope.tasks.length = 0;
         };
-        $scope.taskClass = function(task){
+        $scope.taskClass = function (task) {
             return {
-                "task-done":!!task.status
+                "task-done": !!task.status
             };
         };
-        $scope.toggleTaskStatus = function(task){
+        $scope.toggleTaskStatus = function (task) {
             TodoCustomService.toggleTaskStatus(task);
         };
-        $scope.onEditTask = function(task){
+        $scope.onEditTask = function (task) {
             console.log('Jason test', task);
             alert("别紧张,测试而已");
         };
@@ -114,7 +115,7 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
         $scope.$on('tasks.update', function (event) {
             //$scope.tasks = TodoCustomService.tasks;
             //$scope.$apply();
-            $scope.$apply(function(){
+            $scope.$apply(function () {
                 $scope.tasks = TodoCustomService.tasks;
             });
         });
@@ -125,12 +126,12 @@ angular.module('todo').controller('todoCtrl', ['$scope', '$sce', '$uibModal', '$
         $scope.isCollapsed = true;
         $scope.toggleDetail = function (isCollapsed, task) {
             console.log('Jason test', isCollapsed);
-            if(angular.isUndefined(task.content)){
+            if (angular.isUndefined(task.content)) {
                 return;
             }
             //isCollapsed = !isCollapsed;
-            if(isCollapsed === false){
-                task.previewedContent =  $sce.trustAsHtml(window.marked(task.content));
+            if (isCollapsed === false) {
+                task.previewedContent = $sce.trustAsHtml(window.marked(task.content));
             }
         };
 

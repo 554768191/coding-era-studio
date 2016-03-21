@@ -4,20 +4,20 @@
 
 "use strict";
 
-angular.module('core')
-    .config(function(){
+angular.module('core').config([
+        function(){
 
-        String.prototype.startWith=function(str,doTrim){
-            var s=(typeof doTrim!=='undefined'&&!!doTrim)?this.trim():this;
-            return (typeof str==='string') && s.length>=str.length && s.substr(0,str.length)===str;
-        };
-        String.prototype.endWith=function(str,doTrim){
-            var s=(typeof doTrim!=='undefined'&&!!doTrim)?this.trim():this;
-            return (typeof str==='string') && s.length>=str.length && s.substr(s.length-str.length)===str;
-        };
+            String.prototype.startWith=function(str,doTrim){
+                var s=(typeof doTrim!=='undefined'&&!!doTrim)?this.trim():this;
+                return (typeof str==='string') && s.length>=str.length && s.substr(0,str.length)===str;
+            };
+            String.prototype.endWith=function(str,doTrim){
+                var s=(typeof doTrim!=='undefined'&&!!doTrim)?this.trim():this;
+                return (typeof str==='string') && s.length>=str.length && s.substr(s.length-str.length)===str;
+            };
 
-    })
-    .constant('ceMarkdownConfig',{
+        }
+    ]).constant('ceMarkdownConfig',{
         toolbar:[
             {group:[
                 {action:'bold',icon:'glyphicon-bold',tip:'加粗(Ctrl+B)'},

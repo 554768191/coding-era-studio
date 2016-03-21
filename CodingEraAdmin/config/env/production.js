@@ -15,14 +15,14 @@ module.exports = {
 			css: [
 				'public/components/bootstrap/dist/css/bootstrap.min.css',
 				'public/components/angular-ui-grid/ui-grid.min.css',
-				'public/components/google-code-prettify/src/prettify.min.css',
+				'public/components/google-code-prettify/bin/prettify.min.css',
 				'public/components/animate.css/animate.min.css',
 				'public/components/bootstrap-wysiwyg/index.min.css',
-				'public/components/codemirror/lib/codemirror.min.css'
+				'public/components/codemirror/lib/codemirror.css'
 			],
 			js: [
 				'public/components/angular/angular.min.js',
-				'public/components/angular-i18n/angular-locale_zh-cn.min.js',
+				'public/components/angular-i18n/angular-locale_zh-cn.js',
 				'public/components/angular-resource/angular-resource.min.js',
 				'public/components/angular-animate/angular-animate.min.js',
 				'public/components/angular-ui-router/release/angular-ui-router.min.js',
@@ -32,30 +32,15 @@ module.exports = {
 				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
 				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
 				'public/components/angular-ui-grid/ui-grid.min.js',
-				'public/components/google-code-prettify/src/prettify.min.js',
+				'public/components/google-code-prettify/bin/prettify.min.js',
 				'public/components/ng-file-upload/ng-file-upload.min.js',
-				'public/components/marked/lib/marked.min.js',
-				'public/components/codemirror/lib/codemirror.min.js',
+				'public/components/marked/marked.min.js',
+				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js'
 			]
 		},
-		css: [
-			//'public/dist/css/**/css/*.css'
-			'public/dist/css/all.min.css'
-		],
-		js: [
-			'public/dist/js/all.js'
-
-			//'public/dist/js/config.min.js',
-			//'public/dist/js/application.min.js',
-			//'public/dist/js/*/*.js',
-			//'public/dist/js/*/*[!tests]*/*.js'
-
-			//'public/modules/config.js',
-			//'public/modules/application.js',
-			//'public/modules/*/*.js',
-			//'public/modules/*/*[!tests]*/*.js'
-		],
+		css: ['public/dist/css/all.min.css'],
+		js: ['public/dist/js/all.js'],
 		tests: [
 			'public/components/angular-mocks/angular-mocks.js',
 			'public/modules/*/tests/*.js'

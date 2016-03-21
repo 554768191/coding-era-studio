@@ -4,7 +4,8 @@
 "use strict";
 
 angular.module('core')
-    .directive('ceGridPager', ['uiGridPaginationService', 'uiGridConstants', 'gridUtil', 'i18nService','ceConfig',
+    .directive('ceGridPager', [
+        'uiGridPaginationService', 'uiGridConstants', 'gridUtil', 'i18nService','ceConfig',
         function (uiGridPaginationService, uiGridConstants, gridUtil, i18nService,ceConfig) {
             return {
                 priority: -200,

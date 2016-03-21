@@ -4,13 +4,13 @@
 
 "use strict";
 
-angular.module('core').directive("ceCode",
+angular.module('core').directive("ceCode",[
     function() {
         return {
             restrict: "E",
             terminal: !0,
             replace:true,
-            compile: function(e) {
+            compile: function(event) {
                 var htmlEsc = function(string){
                     var htmlEscapes = {
                         '&' : '&amp;',
@@ -28,10 +28,11 @@ angular.module('core').directive("ceCode",
                 };
 
 
-                var html = htmlEsc(e.html()).trim();
+                var html = htmlEsc(event.html()).trim();
                 var content ='<pre class="ce-code">'+ window.prettyPrintOne(html, 'HTML', true) + '</pre>';
-               // var content = window.prettyPrintOne(html,'html', 1) ;
-                e.html(content);
+                // var content = window.prettyPrintOne(html,'html', 1) ;
+                event.html(content);
             }
         };
-    });
+    }
+]);
