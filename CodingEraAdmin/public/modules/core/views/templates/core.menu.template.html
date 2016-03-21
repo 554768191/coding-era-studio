@@ -4,7 +4,7 @@
             ng-repeat="item in items | orderBy: 'order' "
             ng-class="{pactive:item.show}"
             data-ng-if="item.shouldRender(authentication.user);"
-            ui-sref-active="active">
+            >
 
             <a class="parent-a" ng-switch-default  ng-click="onShowNode(item)">
                 <span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}
@@ -14,8 +14,8 @@
                 <span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}
             </a>
 
-            <ul class="node" ng-repeat="node in item.items" ng-show="item.show" >
-                <li>
+            <ul class="node"  ng-show="item.show">
+                <li ng-repeat="node in item.items"  >
                     <a ui-sref="{{node.route}}" ui-sref-active="active" ui-sref-opts="{reload:true}">
                         <span class="glyphicon glyphicon-{{node.icon}}" aria-hidden="true"></span> {{node.name}}
                     </a>

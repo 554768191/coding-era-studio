@@ -3,8 +3,8 @@
  */
 "use strict";
 
-angular.module('core').directive('ceMenu', ['$window','Menus', 'Authentication',
-    function($window, Menus, Authentication) {
+angular.module('core').directive('ceMenu', ['$window','$state','Menus', 'Authentication',
+    function($window,$state, Menus, Authentication) {
         var menu={
             restrict:'EA',
             templateUrl:'modules/core/views/templates/core.menu.template.html',
@@ -38,7 +38,13 @@ angular.module('core').directive('ceMenu', ['$window','Menus', 'Authentication',
                 scope.$on('$stateChangeSuccess', function( event, toState, toParams, fromState ) {
                     event.targetScope.$watch('$viewContentLoaded', function(){
                         //展开当前菜单
-                        Menus.expandMenuByRoute(toState.name);
+                        var stateName = toState.name;
+                        //2016-03-21嵌套菜单问题修正
+                        var stateNameSplice = stateName.split('.');
+                        if(stateNameSplice.length>1){
+                            stateName = stateNameSplice[0];
+                        }
+                        Menus.expandMenuByRoute(stateName);
                     });
                 });
             }
