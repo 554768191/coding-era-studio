@@ -25,7 +25,7 @@ $ git reset --hard HEAD^
 $ git checkout -- filename
 用暂存区中filename文件来覆盖工作区中的filename文件。相当于取消自上次执行git add filename以来（如果执行过）的本地修改。
 
-5慎用！！！工作区相应的文件未pull改动永久丢失。
+5慎用！！！工作区相应的文件未push改动永久丢失。
 $ git checkout branch -- filename
 维持HEAD的指向不变。用branch所指向的提交中filename替换暂存区和工作区中相应的文件。注意会将暂存区和工作区中的filename文件直接覆盖。
 

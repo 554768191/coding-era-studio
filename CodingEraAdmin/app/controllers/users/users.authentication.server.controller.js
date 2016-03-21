@@ -259,11 +259,11 @@ exports.update = function(req, res) {
 			if(error){
 				res.status(400).send(error);
 			}
-			req.login(response.data, function(err) {
+			req.login(user, function(err) {
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json(response.data);
+					res.json(user);
 				}
 			});
 		});
