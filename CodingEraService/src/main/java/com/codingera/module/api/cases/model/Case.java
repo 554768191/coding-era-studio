@@ -3,10 +3,13 @@ package com.codingera.module.api.cases.model;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.codingera.module.base.model.IdEntity;
@@ -33,6 +36,8 @@ public class Case extends IdEntity {
 
     private String content;
     
+    private String bannnerUrl;
+    
     private Date createTime;
 
 
@@ -47,12 +52,22 @@ public class Case extends IdEntity {
         this.title = title;
     }
 
-    @Column(name="CONTENT",length = 200)
+    @Lob
+    @Basic(fetch = FetchType.LAZY) 
+    @Column(name="CONTENT")
     public String getContent() {
         return content;
     }
+    
+    
 
-    public void setContent(String content) {
+    public String getBannnerUrl() {
+		return bannnerUrl;
+	}
+	public void setBannnerUrl(String bannnerUrl) {
+		this.bannnerUrl = bannnerUrl;
+	}
+	public void setContent(String content) {
         this.content = content;
     }
 
@@ -72,6 +87,8 @@ public class Case extends IdEntity {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+	
 	
 	
 
