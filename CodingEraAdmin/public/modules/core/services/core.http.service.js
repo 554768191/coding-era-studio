@@ -33,9 +33,9 @@ angular.module('core')
         var commentService = function (selfService,options){
 
             angular.extend(options,{url:ceConfig.apiUrl+options.url});
-            $rootScope.$emit("startLoading");
+            ceUtil.loading();
             $http(options).success(function(res){
-                $rootScope.$emit("stopLoading");
+                ceUtil.loading();
                 if(res.result==='success'){
                     selfService.successCallback(res);
                 }else{
@@ -46,7 +46,7 @@ angular.module('core')
                     }
                 }
             }).error(function(res){
-                $rootScope.$emit("stopLoading");
+                ceUtil.loading();
 
                 console.log("gay yan",  res);
 

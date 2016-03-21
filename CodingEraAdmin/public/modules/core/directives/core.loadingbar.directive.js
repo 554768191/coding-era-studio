@@ -8,25 +8,15 @@ angular.module('core')
         return {
             restrict: 'EA',
             templateUrl:'modules/core/views/templates/core.loadingbar.template.html',
-            scope:{},
-            controller:function($scope){
-                $scope.urls = [];
-                $scope.show = false;
-                $scope.showLoading = function (){
-                    $scope.show = true;
-                };
-
-                $scope.hideLoading = function (){
-                    $scope.show = false;
-                };
-            },
             link: function(scope, el, attrs) {
-                $rootScope.$on('startLoading', function(event,url) {
-                    scope.showLoading();
+                $rootScope.$on('startLoading', function() {
+                    scope.show=true;
+                    scope.$apply();
                 });
 
-                $rootScope.$on('stopLoading', function(event,url) {
-                    scope.hideLoading();
+                $rootScope.$on('stopLoading', function() {
+                    scope.show=false;
+                    scope.$apply();
                 });
             }
         };
