@@ -3,13 +3,17 @@
  */
 
 var gulp = require('gulp');
+var runSequence = require('run-sequence');
 
 //开发模式
-gulp.task('env:dev', function () {
+gulp.task('dev', function (done) {
     process.env.NODE_ENV = 'development';
+
+    runSequence('css', 'scripts', ['browser-sync','watch'], done);
 });
 
 //生产模式
-gulp.task('env:prod', function () {
+gulp.task('prod', function (done) {
     process.env.NODE_ENV = 'production';
+    runSequence('css', 'scripts', ['browser-sync','watch'], done);
 });
