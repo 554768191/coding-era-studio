@@ -9,11 +9,11 @@ angular.module('core').directive('ceContentHead', ['$window','ContentHead','Auth
             restrict:'EA',
             templateUrl:'modules/core/views/templates/core.content.head.template.html',
             scope:true,
-            controller:function($scope,ContentHead) {
+            controller:['$scope','ContentHead',function($scope,ContentHead) {
                 $scope.authentication = Authentication;
                 $scope.title = ContentHead.getTitle();
                 $scope.subTitle = ContentHead.getSubTitle();
-            },
+            }],
             link: function(scope, el, attrs) {
                 //加载成功后...
                 scope.$on('$stateChangeSuccess', function( event, toState, toParams, fromState ) {

@@ -9,13 +9,13 @@ angular.module('core').directive('ceMenu', ['$window','$state','Menus', 'Authent
             restrict:'EA',
             templateUrl:'modules/core/views/templates/core.menu.template.html',
             replace:true,
-            controller:function($scope, $log, Menus, Authentication) {
+            controller:['$scope', '$log', 'Menus', 'Authentication',function($scope, $log, Menus, Authentication) {
                 $scope.authentication=Authentication;
                 $scope.items=Menus.getMenus();
                 $scope.onShowNode=function(item){
                     item.show=!item.show;
                 };
-            },
+            }],
             link: function(scope, ele) {
                 var headHeight = angular.element(document.querySelector('.ce-head')).height();
                 scope.onResize = function() {

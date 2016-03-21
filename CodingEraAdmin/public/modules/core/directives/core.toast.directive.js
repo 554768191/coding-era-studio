@@ -9,20 +9,17 @@ angular.module('core')
             restrict: 'EA',
             templateUrl:'modules/core/views/templates/core.toast.template.html',
             replace:true,
-            scope:{
-                show:'@'
-            },
-            controller:function($scope){
-                $scope.message = '';
-                $scope.style ='';
-            },
+            scope:true,
             link: function(scope, el, attrs) {
                 //菜单宽度
 
                 $rootScope.$on('showToast', function(event,message) {
                     scope.message = message;
                     el.css('opacity','1.0');
-                    scope.$apply();
+                    $timeout(function(){
+                        scope.$apply();
+                    });
+
                     setTimeout(function(){
                         $rootScope.$emit('hideToast');
                     },3000);
