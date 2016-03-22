@@ -16,7 +16,7 @@ angular.module('core')
 
                 $scope.showImage = false;
                 var fileUploadObj = angular.element(document.querySelector('.ce-h5-upload'));
-                var fileBtn = angular.element(document.querySelector('.ce-file-btn'));;
+                var fileBtn = angular.element(document.querySelector('.ce-file-btn'));
                 var dropbox = fileUploadObj[0];
 
 
@@ -76,10 +76,7 @@ angular.module('core')
                    fileBtn[0].click();
 
                 };
-                console.log(fileBtn.test)
-                $scope.$watch(fileBtn.test,function(test){
-                    console.log(test);
-                });
+
                 $scope.onFileUpladChange = function($files){
                     console.log($files);
                 };
