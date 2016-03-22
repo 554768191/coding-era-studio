@@ -23,7 +23,7 @@ gulp.task('scripts-reload', function () {
 });
 
 gulp.task('scripts-min', function () {
-    del(['public/dist/js']);// 清空旧文件
+    del(['public/dist/js/*']);// 清空旧文件
     return buildScripts()
         .pipe($.concat('all.js'))
         .pipe($.uglify()) // 压缩

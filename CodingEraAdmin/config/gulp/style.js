@@ -41,7 +41,7 @@ gulp.task('csslint', function (done) {
 
 //CSS build
 gulp.task('css-min', function (done) {
-    del(['public/dist/css']);// 清空旧文件
+    del(['public/dist/css/*']);// 清空旧文件
     return gulp.src(allAssets.assets.css)
         .pipe($.concat('all.css'))
         .pipe($.cssmin())
