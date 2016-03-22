@@ -4,8 +4,9 @@
 "use strict";
 
 angular.module('core')
-    .factory('ceAjax', ['$rootScope','$http','Authentication','ceConfig','ceUtil',
-        function($rootScope,$http,Authentication,ceConfig,ceUtil) {
+    .factory('ceAjax', [
+        '$rootScope','$http','Authentication','ceUtil',
+        function($rootScope,$http,Authentication,ceUtil) {
         var ceAjaxService = {};
         var token = Authentication.user.accessToken || "none";
 
@@ -32,7 +33,7 @@ angular.module('core')
         //post,get等共同调用
         var commentService = function (selfService,options){
 
-            angular.extend(options,{url:ceConfig.apiUrl+options.url});
+            angular.extend(options,{url:Authentication.apiURL+options.url});
             ceUtil.loading();
             $http(options).success(function(res){
                 ceUtil.loading();

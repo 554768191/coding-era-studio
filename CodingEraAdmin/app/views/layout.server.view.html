@@ -41,6 +41,7 @@
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
+		var apiURL= '{{ apiURL }}';
 		AV.initialize('{{leanCloud.appId}}', '{{leanCloud.appKey}}');
 	</script>
 

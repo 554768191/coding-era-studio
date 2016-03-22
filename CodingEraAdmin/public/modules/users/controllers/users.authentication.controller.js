@@ -11,7 +11,7 @@ angular.module('users').controller('AuthenticationController',[
             // 注册
             $scope.signup = function () {
                 // /auth/signup
-                $http.post('http://localhost:8080/api/open/user/signup', $scope.credentials).success(function (response) {
+                $http.post(Authentication.apiURL + '/open/user/signup', $scope.credentials).success(function (response) {
 
                     // If successful we assign the response to the global user model
                     $scope.authentication.user = response.data;

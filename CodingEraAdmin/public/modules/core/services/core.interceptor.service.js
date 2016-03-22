@@ -3,8 +3,9 @@
  */
 "use strict";
 
-angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector','ceConfig', 'Authentication',
-    function($rootScope,$q, $injector,LoadingBar,ceConfig,Authentication) {
+angular.module('core').factory('ceInterceptor', [
+    '$rootScope', '$q', '$injector','LoadingBar', 'Authentication',
+    function($rootScope,$q, $injector,LoadingBar,Authentication) {
     var httpInterceptor = {
         'responseError' : function(response) {
             //GeekUtil.closeLoading();
@@ -17,7 +18,7 @@ angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector'
             //LoadingBar.hide();
             //console.log(response.config);
             var url = response.config.url;
-            if(response.config.url.indexOf(ceConfig.apiUrl)>=0){
+            if(response.config.url.indexOf(Authentication.apiURL)>=0){
                 $rootScope.$emit("stopLoading",url);
             }
             return response;
@@ -29,7 +30,7 @@ angular.module('core').factory('ceInterceptor', [ '$rootScope','$q', '$injector'
                 console.log('找不到要请求的URL');
                 return;
             }
-            if(url.indexOf(ceConfig.apiUrl)>=0){
+            if(url.indexOf(Authentication.apiURL)>=0){
                 $rootScope.$emit("startLoading",url);
             }
 
