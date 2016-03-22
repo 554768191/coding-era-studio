@@ -2,9 +2,9 @@
  * Created by Jason.
  */
 'use strict';
-angular.module('dynamic').factory('dynamicService', ['$resource', '$log', 'ceConfig',
-    function ($resource, $log, ceConfig) {
-        var service = $resource(ceConfig.apiUrl + '/demo/:demoId', {
+angular.module('dynamic').factory('dynamicService', ['$resource', '$log', 'Authentication',
+    function ($resource, $log, Authentication) {
+        var service = $resource(Authentication.apiURL + '/demo/:demoId', {
             demoId: '@_id'
         }, {
             update: {

@@ -3,14 +3,17 @@
 /**
  * Module dependencies.
  *
- * req.user:调用passport的login之后才有值
- *
  */
+var config = require('../../config/config');
+
 exports.index = function(req, res) {
+	//req.user:调用passport的login之后才有值
 	var user = req.user || null;
+	var apiURL = config.codingera.apiURL;
 	if(user){
 		res.render('index', {
 			user: user,
+			apiURL : apiURL,
 			request: req
 		});
 	}else{
