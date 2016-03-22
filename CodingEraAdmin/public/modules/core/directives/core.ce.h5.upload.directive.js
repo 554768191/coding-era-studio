@@ -19,8 +19,6 @@ angular.module('core')
                 var fileBtn = angular.element(document.querySelector('.ce-file-btn'));
                 var dropbox = fileUploadObj[0];
 
-
-
                 var loadImageByUrl = function(url){
                     $scope.showImage = true;
                     $timeout(function(){
@@ -37,7 +35,6 @@ angular.module('core')
                 };
 
                 var uploadFile = function(file){
-                    var name = file.name;
                     leanCloud.uploadImage(file).success(function(obj){
                         $log.debug('上传文件成功:',obj);
                         loadImageByUrl(obj.url());
@@ -60,7 +57,6 @@ angular.module('core')
                 //点击删除
                 $scope.onCleanImageClick = function($event){
                     $scope.showImage = false;
-                    $event.stopPropagation();
                     $timeout(function(){
                         fileUploadObj.find('img').removeAttr('src');
                         ngModel.$setViewValue(null);
@@ -70,15 +66,20 @@ angular.module('core')
 
                 //点击上传
                 $scope.onUploadClick = function(){
-                    console.log(fileBtn);
-                    //fileBtn.triggerHandler('click');
-                    //console.log(fileBtn[0]);
-                   fileBtn[0].click();
+                   fileBtn[0].click();//模拟点击文件上传
 
                 };
 
                 $scope.onFileUpladChange = function($files){
-                    console.log($files);
+                    if($files.length>1){//暂时支持一张
+                        ceUtil.toast('只能上传一张图片');
+                        return;
+                    }
+                    for (var i = 0; i < $files.length; i++) {
+                        var file = $files[i];
+                        uploadFile(file);
+
+                    }
                 };
 
                 document.addEventListener("dragenter", function(e){

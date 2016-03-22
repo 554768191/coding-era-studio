@@ -157,7 +157,7 @@ angular.module('core').config([
         };
     }])
     .directive('ceMarkdown',
-    ['markdownActions','ceMarkdownConfig',function(markdownActions,ceMarkdownConfig) {
+    ['markdownActions','ceMarkdownConfig','$log','leanCloud',function(markdownActions,ceMarkdownConfig,$log,leanCloud) {
         return {
             restrict: "E",
             replace:true,
@@ -169,7 +169,7 @@ angular.module('core').config([
                             '<button ng-repeat="toolbtn in item.group" type="button" class="btn btn-default " ng-click="callAction(toolbtn.action)" title="{{toolbtn.tip}}"><span class="glyphicon {{toolbtn.icon}}" aria-hidden="true"></span></button>',
                         '</div>',
                       '</div>',
-                      '<textarea class="ce-textarea"   ng-show="!preview" ></textarea class>',
+                      '<textarea class="ce-textarea" ngf-drop="uploadImage($files)" ngf-pattern="\'image/*\'"  ng-show="!preview" ></textarea class>',
                       '<div class="ce-preview" ng-bind-html="text | markdown" ng-show="preview"></div>',
                       '</div>',
                         ].join(''),
@@ -195,6 +195,28 @@ angular.module('core').config([
 
                 return function postlink($scope, el, attrs, ngModel) {
                     $scope.toolbar = ceMarkdownConfig.toolbar;
+
+                    //粘贴的图片是blod格式,转换成base64
+                    var readBlobAsDataURL =function (blob, callback) {
+                        var a = new FileReader();
+                        a.onload = function(e) {callback(e.target.result);};
+                        a.readAsDataURL(blob);
+                    };
+
+                    //粘贴图片
+                    $scope.uploadImage = function($files){
+                        readBlobAsDataURL($files[0], function (dataurl){
+
+                            var replacements=[];
+
+
+                            leanCloud.uploadImageByBase64(dataurl).success(function(obj){
+                                replacements.push('![图片名称]('+obj.url()+')');
+                                codemirror.replaceSelections(replacements,'around');
+                            });
+
+                        });
+                    };
 
                     ngModel.$render = function () {
                         $scope.text = ngModel.$viewValue || '';

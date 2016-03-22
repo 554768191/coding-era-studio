@@ -7,7 +7,6 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
     $scope.case = {};
 
     if(!angular.isUndefined($stateParams.caseId)){
-        console.log($stateParams.caseId);
         CaseService.getCaseById($stateParams.caseId).success(function(res){
             $scope.case = res.data;
         });
