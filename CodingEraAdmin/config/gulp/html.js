@@ -19,9 +19,9 @@ var assets = _.union(
 
 gulp.task('html', function () {
     del(['public/dist/html/*']);// 清空旧文件
-    //return gulp.src(['public/modules/**/*.html',
-    //    'public/modules/*/img/*',
-    //    'public/modules/*/i18n/*'
-    //])
-    //    .pipe(gulp.dest('public/dist/html'));
+    return gulp.src(['public/modules/**/*.html',
+        'public/modules/*/img/*',
+        'public/modules/*/i18n/*'
+    ])
+        .pipe(gulp.dest('public/dist/html'));
 });
