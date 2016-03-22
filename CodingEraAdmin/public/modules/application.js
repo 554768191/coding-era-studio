@@ -11,8 +11,11 @@ ceApp.run([
 		$templateCache.put('cePaginationTemplate','modules/core/views/templates/core.pagination.template.html');
 	}
 ]).config([
-	'$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider',
-	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider) {
+	'$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider','$logProvider',
+	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider,$logProvider) {
+		//日志输出模式
+		$logProvider.debugEnabled(true);
+
 		// Setting HTML5 Location Mode
 		$locationProvider.hashPrefix('!');
 		$translateProvider.useLoader('$translatePartialLoader', {

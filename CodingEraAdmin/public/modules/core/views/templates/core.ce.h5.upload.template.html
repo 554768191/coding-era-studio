@@ -1,6 +1,10 @@
 <div class="ce-h5-upload-container">
+    <input ngf-select="onFileUpladChange()" ng-model="test" class="ce-file-btn" name="attachment" type="file" accept="image/gif, image/jpeg, image/png,image/jpg">
     <div class="ce-h5-upload" >
-        <div class="ce-h5-upload-tips" ng-transclude  ng-if="!showImage"></div>
+        <div class="ce-h5-upload-tips" ng-transclude  ng-if="!showImage" ng-click="onUploadClick()"></div>
         <img  ng-if="showImage" />
+        <a class="clean-image-btn" ng-click="onCleanImageClick()" ng-if="showImage">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
     </div>
 </div>
