@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
-import org.assertj.core.util.DateUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -199,7 +198,7 @@ public class UserServiceImpl implements UserService {
 			if(expiresDate == null){
 				return null;
 			}
-			Date now = DateUtil.now();
+			Date now = new Date();
 			long result = expiresDate.getTime() - now.getTime();
 			if(result < 0){
 				return null;
