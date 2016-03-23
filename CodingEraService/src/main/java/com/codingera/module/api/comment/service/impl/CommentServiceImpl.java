@@ -14,11 +14,12 @@ import org.springframework.stereotype.Service;
 
 import com.codingera.module.api.comment.criteria.CommentQueryCriteria;
 import com.codingera.module.api.comment.model.Comment;
+import com.codingera.module.api.comment.model.CommentCase;
 import com.codingera.module.api.comment.model.CommentRoot;
-import com.codingera.module.api.comment.model.CommentView;
 import com.codingera.module.api.comment.repository.CommentRepository;
 import com.codingera.module.api.comment.repository.CommentRootRepository;
 import com.codingera.module.api.comment.service.CommentService;
+import com.codingera.module.api.comment.view.CommentView;
 
 @Service("CommentService")
 public class CommentServiceImpl implements CommentService {

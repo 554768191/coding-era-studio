@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.codingera.module.api.comment.criteria.CommentQueryCriteria;
 import com.codingera.module.api.comment.model.Comment;
-import com.codingera.module.api.comment.model.CommentView;
+import com.codingera.module.api.comment.view.CommentView;
 
 public interface CommentService {
 
