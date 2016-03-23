@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,7 @@ public class CaseController {
 	
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ActionResult saveDemo(Case ceCase) {
+	public ActionResult saveDemo(@RequestBody Case ceCase) {
 		CaseService.save(ceCase);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
 	}
