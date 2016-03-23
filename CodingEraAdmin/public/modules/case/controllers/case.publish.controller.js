@@ -55,9 +55,6 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
 
     $scope.onPublishClick = function(status){
         $scope.case.status = status;
-       console.log($scope.case);
-        //return;
-        var caseStr = JSON.stringify($scope.case);
         CaseService.saveCase($scope.case).success(function(res){
             ceUtil.toast('发布成功');
             $state.go('caseManage.list',{status:status});

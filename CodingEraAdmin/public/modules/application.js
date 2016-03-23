@@ -21,44 +21,7 @@ ceApp.run([
 		$translateProvider.useLoader('$translatePartialLoader', {
 			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
 		});
-		//拦截ajax请求事件
-		//$httpProvider.interceptors.push('ceInterceptor');
-		//解决post,put跨域问题
 
-		var form_encodes_support = ["post", "put"];
-		angular.forEach(form_encodes_support,
-				function(method) {
-					$httpProvider.defaults.headers[method]["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8";
-				});
-		var param = function(obj) {
-			var name, value, fullSubName, subName, subValue, innerObj, i, query = "";
-			for (name in obj) if (value = obj[name], value instanceof Array) {
-				for (i = 0; i < value.length; ++i) {
-					subValue = value[i];
-							fullSubName = name + "[" + i + "]";
-							innerObj = {};
-							innerObj[fullSubName] = subValue;
-							query += param(innerObj) + "&";
-				}
-			}
-			else if (value instanceof Object) {
-				for (subName in value) {
-					subValue = value[subName];
-					fullSubName = name + "[" + subName + "]";
-					innerObj = {};
-					innerObj[fullSubName] = subValue;
-					query += param(innerObj) + "&";
-				}
-			}
-			else if(0 !== value && null !== value){
-				query += encodeURIComponent(name) + "=" + encodeURIComponent(value) + "&";
-			}
-			return query.length ? query.substr(0, query.length - 1) : query;
-		};
-
-		$httpProvider.defaults.transformRequest = [function(data) {
-			return angular.isObject(data) && "[object File]" !== String(data) ? param(data) : data;
-		}];
 
 		$translatePartialLoaderProvider.addPart('core');
 		$translateProvider.preferredLanguage('zh-cn');

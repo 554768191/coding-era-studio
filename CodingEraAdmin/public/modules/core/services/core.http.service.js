@@ -79,7 +79,9 @@ angular.module('core')
             var self = this;
             var selfService = customService(self);
             angular.extend(options, {method:'post'});
-            angular.extend(options.data,{access_token: token});
+            options.params = {
+                access_token: token
+            };
             commentService(selfService,options);
             return selfService;
         };
