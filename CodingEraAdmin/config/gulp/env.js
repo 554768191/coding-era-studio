@@ -8,12 +8,11 @@ var runSequence = require('run-sequence');
 //开发模式
 gulp.task('dev', function (done) {
     process.env.NODE_ENV = 'development';
-
-    runSequence('css', 'scripts', ['browser-sync','watch'], done);
+    runSequence('sass', 'csslint', 'jshint', ['browser-sync','watch'], done);
 });
 
 //生产模式
 gulp.task('prod', function (done) {
     process.env.NODE_ENV = 'production';
-    runSequence('css', 'scripts', ['browser-sync','watch'], done);
+    runSequence('css', 'scripts', 'html', ['browser-sync','watch'], done);
 });

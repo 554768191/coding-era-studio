@@ -73,7 +73,7 @@ exports.post = function (url, data, done) {
             if(response.statusCode == 200)
                 return done(null, JSON.parse(body));
             if(body){
-                done(JSON.parse(body));
+                done(body);
             }else{
                 done(response.statusCode);
             }
