@@ -18,19 +18,15 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown=true)
 @Table(name = "ce_case")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@id")
 public class Case extends IdEntity {
 
 	
@@ -59,7 +55,7 @@ public class Case extends IdEntity {
     
     private Status status;
     
-    private List<Tag> tags;
+    private List<Tag> tags = new ArrayList<Tag>();
 
     @Column(name="TITLE",length = 50)
     public String getTitle() {
@@ -106,7 +102,7 @@ public class Case extends IdEntity {
 		this.status = status;
 	}
 	
-	@JsonManagedReference
+//@JsonManagedReference
 	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "ce_case_tag", 
             joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 

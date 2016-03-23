@@ -42,6 +42,12 @@ public class TagController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ActionResult findTags(@ModelAttribute TagQueryCriteria criteria) {
+		List<Tag> tagList =  tagService.findTagsByCriteria(criteria);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, tagList);
+	}
+	
+	@RequestMapping(value = "/wrapper/list", method = RequestMethod.GET)
+	public ActionResult findWrapperTags(@ModelAttribute TagQueryCriteria criteria) {
 		List<TagResource> tagResourceList = new ArrayList<TagResource>();
 		List<Tag> tagList = (List<Tag>) tagService.findTagsByCriteria(criteria);
 		for (Tag tag : tagList) {

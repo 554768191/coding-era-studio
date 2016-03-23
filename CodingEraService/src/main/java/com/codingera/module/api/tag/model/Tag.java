@@ -9,18 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 import com.codingera.module.api.cases.model.Case;
 import com.codingera.module.base.model.IdEntity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown=true)
 @Table(name = "ce_tag")
 public class Tag extends IdEntity {
 
@@ -78,7 +71,7 @@ public class Tag extends IdEntity {
 	}
 
 
-	@JsonBackReference
+	//@JsonBackReference
 	@ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
 	public List<Case> getCases() {
 		return cases;

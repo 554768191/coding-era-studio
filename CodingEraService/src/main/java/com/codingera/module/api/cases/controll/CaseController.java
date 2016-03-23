@@ -20,6 +20,7 @@ import com.codingera.module.base.controll.ActionResult;
 /**
  * CASE
  */
+
 @RestController
 @RequestMapping("/api/case")
 public class CaseController {
