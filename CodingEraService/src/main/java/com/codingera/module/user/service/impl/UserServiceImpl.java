@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
@@ -38,9 +39,8 @@ public class UserServiceImpl implements UserService {
 	public User create(User user) {
 
 		User existUserName = this.getUserByUserName(user.getUsername());
-		if (existUserName != null) {
-			throw new ValidationException("user name already exist :" + user.getUsername());
-		}
+		
+		Assert.notNull(existUserName, "user name already exist :" + user.getUsername());
 
 		// 生成密码
 		// 以前使用的是md5，Md5PasswordEncoder 和 ShaPasswordEncoder，现在推荐用bcrpt。
@@ -139,15 +139,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateUser(User user) {
 		User account = this.getUserByUserName(user.getUsername());
-		if (account == null) {
-			throw new ValidationException("user info is null :" + user.getUsername());
-		}
+		Assert.notNull(account, "user info is null :" + user.getUsername());
+		
 		User currentUser = this.loadCurrentUser();
 		if (!account.getId().equals(currentUser.getId())) {
 			boolean isAdmin = hasRole(UserRole.Role.ROLE_ADMIN);
-			if (isAdmin == false) {
-				throw new ValidationException("you have no right to update user info !");
-			}
+			Assert.isTrue(isAdmin, "you have no right to update user info !");
 		}
 		boolean isDirty = false;
 		if (user.getEmail() != null) {
@@ -170,18 +167,18 @@ public class UserServiceImpl implements UserService {
 			account.setAvatar(user.getAvatar());
 			isDirty = true;
 		}
-		if (isDirty == false) {
-			throw new ValidationException("No change to save");
-		}
+		
+		Assert.isTrue(isDirty, "No change to save");
+		
 		return userRepository.save(account);
 	}
 
 	@Override
 	public User saveUserResetPasswordToken(UserResetPasswordToken token) {
 		User account = this.getUserByUserName(token.getUsername());
-		if (account == null) {
-			throw new ValidationException("用户名不存在 :" + token.getUsername());
-		}
+		
+		Assert.notNull(account, "用户名不存在 :" + token.getUsername());
+		
 		UserResetPasswordToken storeToken = this.userResetPasswordTokenRepository.getUserResetPasswordTokenByUsername(token.getUsername());
 		BeanUtils.copyProperties(token, storeToken, "id");
 		

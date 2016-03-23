@@ -31,8 +31,6 @@ public class CommentRoot extends IdEntity {
 	@JoinColumn(name = "COMMENT_ID")
 	@JsonIgnore
 	private Comment comment;
-//	@Column(name = "COMMENT_ID", nullable = false)
-//	private Long commentId;
 
 	// 对应 主表的实体类简写名称,如Claim类,则是 com.sevendaysinn.claim.model.Claim
 	@Column(name = "MODEL_NAME", length = 100, nullable = false)

@@ -1,7 +1,8 @@
-package com.codingera.module.api.comment.model;
+package com.codingera.module.api.comment.view;
 
 import java.util.List;
 
+import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.base.model.BaseView;
 
 public class CommentView extends BaseView {
