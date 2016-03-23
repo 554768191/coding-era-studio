@@ -9,10 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 import com.codingera.module.api.cases.model.Case;
 import com.codingera.module.base.model.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -73,6 +75,7 @@ public class Tag extends IdEntity {
 		this.hot = hot;
 	}
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
 	public List<Case> getCases() {
 		return cases;

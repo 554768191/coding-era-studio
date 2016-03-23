@@ -18,10 +18,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -55,7 +57,7 @@ public class Case extends IdEntity {
     
     private Status status;
     
-    private List<Tag> tags = new ArrayList<Tag>();
+    private List<Tag> tags;
 
     @Column(name="TITLE",length = 50)
     public String getTitle() {
@@ -102,7 +104,7 @@ public class Case extends IdEntity {
 		this.status = status;
 	}
 	
-	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "ce_case_tag", 
             joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 

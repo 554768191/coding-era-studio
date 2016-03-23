@@ -30,7 +30,7 @@ public class CaseController {
 
 	@RequestMapping(value="/{caseId}",method = RequestMethod.GET)
 	@ResponseBody
-	public ActionResult saveDemo(@PathVariable Long caseId) {
+	public ActionResult getDemo(@PathVariable Long caseId) {
 		Case ceCase = CaseService.getById(caseId);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
 	}
