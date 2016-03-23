@@ -22,8 +22,10 @@ import javax.persistence.Table;
 
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -104,7 +106,7 @@ public class Case extends IdEntity {
 		this.status = status;
 	}
 	
-	@JsonIgnore
+	@JsonManagedReference
 	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "ce_case_tag", 
             joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
