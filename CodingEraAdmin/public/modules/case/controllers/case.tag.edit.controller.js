@@ -12,7 +12,7 @@ angular.module('case').controller('tagEditCtrl', [
         $scope.ok = function () {
             var storeTag = $scope.tag;
             delete storeTag.$$hashKey;
-            TagService.save().success(function(res){
+            TagService.save(storeTag).success(function(res){
                 ceUtil.toast('保存成功');
                 $uibModalInstance.close();
             });
