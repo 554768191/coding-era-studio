@@ -9,10 +9,14 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.codingera.module.api.cases.model.Case;
 import com.codingera.module.base.model.IdEntity;
 
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Table(name = "ce_tag")
 public class Tag extends IdEntity {
 

@@ -1,6 +1,7 @@
 package com.codingera.module.api.cases.model;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,10 +18,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
 
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Table(name = "ce_case")
 public class Case extends IdEntity {
 
@@ -50,7 +55,7 @@ public class Case extends IdEntity {
     
     private Status status;
     
-    private List<Tag> tags;
+    private List<Tag> tags = new ArrayList<Tag>();
 
     @Column(name="TITLE",length = 50)
     public String getTitle() {

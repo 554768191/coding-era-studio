@@ -12,7 +12,9 @@ var ApplicationConfiguration = (function() {
 		'ui.grid',
 		'ui.grid.pagination',
 		'ui.grid.selection',
-		'ngFileUpload'
+		'ngFileUpload',
+		'ui.select',
+		'ngSanitize',
 	];
 
 	var registerModule = function(moduleName, dependencies) {

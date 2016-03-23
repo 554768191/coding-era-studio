@@ -40,7 +40,9 @@
     "marked": "~0.3.5",
     "animate.css": "~3.5.1",
     "lodash": "~4.0.0",
-    "codemirror": "^5.12.0"
+    "codemirror": "^5.12.0",
+    "ui-select": "angular-ui-select#^0.16.0",
+    "angular-sanitize": "^1.5.2"
   },
   "resolutions": {
     "angular": "~1.4"

@@ -18,7 +18,8 @@ module.exports = {
 				'public/components/google-code-prettify/bin/prettify.min.css',
 				'public/components/animate.css/animate.min.css',
 				'public/components/bootstrap-wysiwyg/index.min.css',
-				'public/components/codemirror/lib/codemirror.css'
+				'public/components/codemirror/lib/codemirror.css',
+				'public/components/ui-select/dist/select.min.css'
 			],
 			js: [
 				'public/components/angular/angular.min.js',
@@ -32,11 +33,13 @@ module.exports = {
 				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
 				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
 				'public/components/angular-ui-grid/ui-grid.min.js',
+				'public/components/angular-sanitize/angular-sanitize.min.js',
 				'public/components/google-code-prettify/bin/prettify.min.js',
 				'public/components/ng-file-upload/ng-file-upload.min.js',
 				'public/components/marked/marked.min.js',
 				'public/components/codemirror/lib/codemirror.js',
-				'public/components/lodash/dist/lodash.min.js'
+				'public/components/lodash/dist/lodash.min.js',
+				'public/components/ui-select/dist/select.min.js'
 			]
 		},
 		css: ['public/dist/css/all.min.css'],
