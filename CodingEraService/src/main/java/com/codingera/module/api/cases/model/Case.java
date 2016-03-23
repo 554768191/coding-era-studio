@@ -2,16 +2,22 @@ package com.codingera.module.api.cases.model;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
 
 @Entity
@@ -36,13 +42,15 @@ public class Case extends IdEntity {
 
     private String content;
     
-    private String bannnerUrl;
+    private String bannerUrl;
     
     private Date createTime;
 
 
     
     private Status status;
+    
+    private List<Tag> tags;
 
     @Column(name="TITLE",length = 50)
     public String getTitle() {
@@ -61,11 +69,12 @@ public class Case extends IdEntity {
     
     
 
-    public String getBannnerUrl() {
-		return bannnerUrl;
+    @Column(length=200)
+	public String getBannerUrl() {
+		return bannerUrl;
 	}
-	public void setBannnerUrl(String bannnerUrl) {
-		this.bannnerUrl = bannnerUrl;
+	public void setBannerUrl(String bannerUrl) {
+		this.bannerUrl = bannerUrl;
 	}
 	public void setContent(String content) {
         this.content = content;
@@ -86,6 +95,18 @@ public class Case extends IdEntity {
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	
+	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "ce_case_tag", 
+            joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
+            inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
+	public List<Tag> getTags() {
+		return tags;
+	}
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 	
 	

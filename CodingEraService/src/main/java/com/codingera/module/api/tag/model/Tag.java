@@ -1,10 +1,15 @@
 package com.codingera.module.api.tag.model;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.codingera.module.api.cases.model.Case;
 import com.codingera.module.base.model.IdEntity;
 
 @Entity
@@ -33,6 +38,8 @@ public class Tag extends IdEntity {
 	private String type;
 	// 热门
 	private Integer hot;
+	
+	private List<Case> cases;
 
 
     @Column(name="NAME",length = 50)
@@ -62,5 +69,15 @@ public class Tag extends IdEntity {
 		this.hot = hot;
 	}
 
+	@ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
+	public List<Case> getCases() {
+		return cases;
+	}
+
+	public void setCases(List<Case> cases) {
+		this.cases = cases;
+	}
+
+	
    
 }
