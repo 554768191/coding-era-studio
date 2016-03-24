@@ -45,7 +45,6 @@ module.exports = function(app) {
 	// Finish the authentication process by attempting to obtain an access
 	// token.  If authorization was granted, the user will be logged in.
 	// Otherwise, authentication has failed.
-	app.route('/auth/provider/callback').get(
-			users.oauthCallback('oauth2')
-	);
+	app.route('/auth/provider/callback').get( users.oauthCallback('oauth2'));
+	app.route('/auth/provider/refreshToken').get(users.refreshToken('oauth2'));
 };

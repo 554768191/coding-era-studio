@@ -59,12 +59,18 @@ angular.module('users').run([
 		});
 
 		// Set the httpProvider "not authorized" interceptor
-		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
-			function($q, $location, Authentication) {
+		$httpProvider.interceptors.push(['$q', '$window', '$location', 'Authentication',
+			function($q, $window, $location, Authentication) {
 				return {
 					responseError: function(rejection) {
 						console.log('rejection.status', rejection.status);
 						switch (rejection.status) {
+							case -1:
+								//$window.location.href = '/auth/provider';
+								$window.location.href = '/auth/provider/refreshToken';
+								//$location.path('http://localhost:3000/');
+								Authentication.user = null;
+								break;
 							case 401:
 								// Deauthenticate the global user
 								Authentication.user = null;

@@ -3,20 +3,22 @@
  */
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2').Strategy,
+    refresh = require('passport-oauth2-refresh'),
     config = require('../config'),
-    request = require('../../app/controllers/request.server.controller.js');
+    request = require('../../app/controllers/request.server.controller.js'),
     users = require('../../app/controllers/users.server.controller');
 
-module.exports = function() {
-    passport.use('oauth2', new OAuth2Strategy({
+module.exports = function () {
+
+    var strategy = new OAuth2Strategy({
             // 这里要自定义认证头才能获取token. @see https://dev.fitbit.com/docs/oauth2/#access-token-request
             // Authorization Header:
             // The Authorization header must be set to Basic followed by a space,
             // then the Base64 encoded string of your application's client id and secret concatenated with a colon.
             // For example, the Base64 encoded string, Y2xpZW50X2lkOmNsaWVudCBzZWNyZXQ=,
             // is decoded as [client_id]:[client_secret].
-            customHeaders : {
-                Authorization: 'Basic '+ new Buffer(config.codingera.clientID + ':' + config.codingera.clientSecret).toString('base64')
+            customHeaders: {
+                Authorization: 'Basic ' + new Buffer(config.codingera.clientID + ':' + config.codingera.clientSecret).toString('base64')
             },
             authorizationURL: config.codingera.authorizationURL,
             tokenURL: config.codingera.tokenURL,
@@ -28,7 +30,7 @@ module.exports = function() {
         function (req, accessToken, refreshToken, profile, done) {
 
             //todo 后台不知如何返回user profile,暂时再查一次
-            request.getWithToken(config.codingera.userInfoURL, accessToken, function(error, user) {
+            request.getWithToken(config.codingera.userInfoURL, accessToken, function (error, user) {
 
                 if (error) {
                     return done(new Error(error.error_description));
@@ -36,6 +38,7 @@ module.exports = function() {
 
                 // Set token
                 user["accessToken"] = accessToken;
+                user["refreshToken"] = refreshToken;
 
                 // Set the provider data and include tokens
                 var providerData = profile._json || {};
@@ -65,6 +68,7 @@ module.exports = function() {
                 users.saveOAuthUserProfile(req, providerUserProfile, done);
             });
 
-        }
-    ));
+        });
+    passport.use('oauth2', strategy);
+    refresh.use(strategy);
 };

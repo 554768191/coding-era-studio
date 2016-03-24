@@ -10,6 +10,7 @@ var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller'),
 	config = require('../../../config/config'),
 	passport = require('passport');
+var refresh = require('passport-oauth2-refresh');
 var http = require('http');
 var querystring = require('querystring');
 var request = require('../request.server.controller.js');
@@ -279,4 +280,34 @@ exports.update = function(req, res) {
  */
 exports.me = function(req, res) {
 	res.json(req.user || null);
+};
+
+
+exports.refreshToken = function(strategy) {
+	return function(req, res, next) {
+		var user  = req.user;
+		if (!user) {
+			return res.redirect('/#!/signin');
+		}
+		var refreshToken = user.refreshToken;
+		refresh.requestNewAccessToken(strategy, refreshToken, function(err, accessToken, refreshToken) {
+			// You have a new access token, store it in the user object,
+			// or use it to make a new request.
+			// `refreshToken` may or may not exist, depending on the strategy you are using.
+			// You probably don't need it anyway, as according to the OAuth 2.0 spec,
+			// it should be the same as the initial refresh token.
+			// or use it to make a new request.
+			if(err){
+				return res.status(404).send(err);
+			}
+			user["accessToken"] = accessToken;
+			user["refreshToken"] = refreshToken;
+			req.login(user, function(err) {
+				if (err) {
+					return res.redirect('/#!/signin');
+				}
+				return res.redirect('/');
+			});
+		});
+	};
 };
