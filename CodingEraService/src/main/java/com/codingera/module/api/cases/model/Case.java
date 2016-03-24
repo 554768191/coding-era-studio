@@ -103,7 +103,7 @@ public class Case extends IdEntity {
 	}
 	
 //@JsonManagedReference
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "ce_case_tag", 
             joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
             inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
