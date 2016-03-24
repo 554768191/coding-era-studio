@@ -1,58 +1,16 @@
 'use strict';
 
-angular.module('case')
-
-    .filter('propsFilter', function() {
-        return function(items, props) {
-            var out = [];
-
-            if (angular.isArray(items)) {
-                var keys = Object.keys(props);
-
-                items.forEach(function(item) {
-                    var itemMatches = false;
-
-                    for (var i = 0; i < keys.length; i++) {
-                        var prop = keys[i];
-                        var text = props[prop].toLowerCase();
-                        if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-                            itemMatches = true;
-                            break;
-                        }
-                    }
-
-                    if (itemMatches) {
-                        out.push(item);
-                    }
-                });
-            } else {
-                // Let the output be the input untouched
-                out = items;
-            }
-
-            return out;
-        };
-    })
-    .controller('casePublishCtrl',['$scope','$log','$state','$stateParams','CaseService', 'ceUtil',
-function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
+angular.module('case').controller('casePublishCtrl',['$scope','$log','$state','$stateParams','CaseService', 'ceUtil','TagService','$resource',
+function ($scope, $log,$state,$stateParams,CaseService,ceUtil,TagService,$resource){
 
 
     $scope.case = {};
 
     if(!angular.isUndefined($stateParams.caseId)){
-        CaseService.getCaseById($stateParams.caseId).success(function(res){
-            $scope.case = res.data;
-        });
+        $scope.case = CaseService.getCaseById($stateParams.caseId);
     }
 
-
-    //实时编译
-    $scope.$watch('case.content',function(newValue,oldValue){
-        if(newValue){
-            $scope.case.maker = window.marked(newValue);
-        }
-    });
-
+    //发布&保存
     $scope.onPublishClick = function(status){
         $scope.case.status = status;
         CaseService.saveCase($scope.case).success(function(res){
@@ -61,6 +19,7 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
         });
     };
 
+    //录入新标签事件
     $scope.tagTransform = function (str){
         return {
             id:null,
@@ -68,15 +27,15 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
         };
     };
 
-    $scope.itemArray = [
-        {id: 1, name: 'first'},
-        {id: 2, name: 'second'},
-        {id: 3, name: 'third'},
-        {id: 4, name: 'fourth'},
-        {id: 5, name: 'fifth'},
-    ];
+    //获取所有标签
+    function getTageList(){
+        TagService.getAllTags().success(function(res){
+            $scope.itemArray = res.data;
+        });
+    }
+    getTageList();
+    $scope.itemArray = [];
 
-    $scope.selected = { value: $scope.itemArray[0] };
 
 
            

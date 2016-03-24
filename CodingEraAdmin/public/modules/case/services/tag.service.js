@@ -11,6 +11,10 @@ angular.module('case').factory('TagService', [ '$log','ceAjax',
             return ceAjax.get({url:'/tag',data:parameters});
         };
 
+        service.getAllTags = function(){
+            return ceAjax.get({url:'/tag/list'});
+        };
+
         service.save = function(parameters){
             return ceAjax.post({url:'/tag', data:parameters});
         };

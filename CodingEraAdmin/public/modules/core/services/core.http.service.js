@@ -4,28 +4,27 @@
 "use strict";
 
 angular.module('core')
-    .factory('ceAjax', [
-        '$rootScope','$http','Authentication','ceUtil',
-        function($rootScope,$http,Authentication,ceUtil) {
+    .factory('ceAjax', ['$rootScope','$http','Authentication','ceUtil', function($rootScope,$http,Authentication,ceUtil) {
         var ceAjaxService = {};
         var token = Authentication.user.accessToken || "none";
 
-        var customService = function(processObj){
+
+        var customService = function(){
             var selfService ={};
             selfService.successCallback = null;
             selfService.success = function(callback){
                 selfService.successCallback =callback;
-                return processObj;
+                return selfService;
             };
             selfService.errorCallback = null;
             selfService.error = function(callback){
                 selfService.errorCallback = callback;
-                return processObj;
+                return selfService;
             };
             selfService.completeCallback = null;
             selfService.complete = function(callback){
                 selfService.completeCallback = callback;
-                return processObj;
+                return selfService;
             };
             return selfService;
         };
@@ -38,18 +37,26 @@ angular.module('core')
             $http(options).success(function(res){
                 ceUtil.loading();
                 if(res.result==='success'){
-                    selfService.successCallback(res);
+                    if(angular.isArray(res.data)){
+                        selfService.values = [];
+                        angular.extend(selfService.values,res.data);
+                    }else{
+                        angular.extend(selfService,res.data);
+                    }
+                    if(angular.isFunction(selfService.successCallback)){
+                        selfService.successCallback(res);
+                    }
                 }else{
                     if(typeof selfService.errorCallback !== 'undefined'){
-                        selfService.errorCallback(res);
+                        if(angular.isFunction(selfService.errorCallback)){
+                            selfService.errorCallback(res);
+                        }
                     }else{
                         ceUtil.toast(res.message);
                     }
                 }
             }).error(function(res){
                 ceUtil.loading();
-
-                console.log("gay yan",  res);
 
                 if(res && res.message){
                     var status = res.status;
@@ -63,8 +70,7 @@ angular.module('core')
 
 
         ceAjaxService.get = function(options){
-            var self = this;
-            var selfService = customService(self);
+            var selfService = customService();
             var getOptions = {
                 'url':options.url,
                 'method':'get',
@@ -76,8 +82,7 @@ angular.module('core')
         };
 
         ceAjaxService.post = function(options){
-            var self = this;
-            var selfService = customService(self);
+            var selfService = customService();
             angular.extend(options, {method:'post'});
             options.params = {
                 access_token: token
@@ -87,8 +92,7 @@ angular.module('core')
         };
 
         ceAjaxService.delete = function(options){
-            var self = this;
-            var selfService = customService(self);
+            var selfService = customService();
             var getOptions = {
                 'url':options.url,
                 'method':'delete',
