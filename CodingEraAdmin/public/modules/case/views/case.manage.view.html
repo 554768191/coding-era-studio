@@ -1,3 +1,4 @@
+<!--
 <div class="row ce-panel">
     <div class="col-sm-3 " >
         <div class="ce-panel-left">
@@ -14,10 +15,19 @@
     </div>
     <div class="ce-panel-line col-sm-3 hidden-xs"></div>
     <div class="col-sm-9">
-        <!-- ce-rightContent必须和ce-leftbar配套使用 -->
-
         <div class="ce-panel-right" ui-view=""></div>
     </div>
 </div>
+-->
+
+<ce-page-manager>
+    <ce-page-menu>
+        <ce-page-btn ce-style="btn" ui-sref="caseManage.publish({caseId:null})">发布作品</ce-page-btn>
+        <ce-group-line></ce-group-line>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'PUBLISHED'})" ce-icon="glyphicon-th-list">已发布</ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'SKETCH'})" ce-icon="glyphicon-list-alt">草稿</ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'DELETED'})" ce-icon="glyphicon-trash">回收站</ce-page-btn>
+    </ce-page-menu>
+</ce-page-manager>
 
 
