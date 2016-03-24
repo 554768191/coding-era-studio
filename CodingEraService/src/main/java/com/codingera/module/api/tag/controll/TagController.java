@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,7 +59,7 @@ public class TagController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ActionResult saveTag(Tag tag) {
+	public ActionResult saveTag(@RequestBody Tag tag) {
 		tag = tagService.save(tag);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, tag);
 	}
