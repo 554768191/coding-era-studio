@@ -1,23 +1,21 @@
 package com.codingera.module.api.demo.controll;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codingera.module.api.demo.criteria.DemoQueryCriteria;
 import com.codingera.module.api.demo.model.Demo;
 import com.codingera.module.api.demo.model.DemoResource;
+import com.codingera.module.api.demo.model.DemoResourceAssembler;
+import com.codingera.module.api.demo.model.DemoResources;
 import com.codingera.module.api.demo.repository.DemoRepository;
 import com.codingera.module.api.demo.service.DemoService;
 import com.codingera.module.base.controll.ActionResult;
@@ -36,7 +34,7 @@ public class DemoController {
 
 	@RequestMapping(value = "/{demoId}", method = RequestMethod.GET)
 	public ActionResult readDemo(@PathVariable Long demoId) {
-		return new ActionResult(ActionResult.RESULT_SUCCESS, new DemoResource(this.demoRepository.findOne(demoId)));
+		return new ActionResult(ActionResult.RESULT_SUCCESS, new DemoResourceAssembler().toResource(this.demoRepository.findOne(demoId)));
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -59,13 +57,10 @@ public class DemoController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ActionResult readDemos() {
-		List<DemoResource> demoResourceList = new ArrayList<DemoResource>();
 		List<Demo> demoList = (List<Demo>) demoRepository.findAll();
-		for (Demo demo : demoList) {
-			DemoResource demoResource = new DemoResource(demo);
-			demoResourceList.add(demoResource);
-		}
-		return new ActionResult(ActionResult.RESULT_SUCCESS, new Resources<DemoResource>(demoResourceList));
+		List<DemoResource> demoResourceList = new DemoResourceAssembler().toResources(demoList);
+		
+		return new ActionResult(ActionResult.RESULT_SUCCESS, new DemoResources(demoResourceList));
 	}
 
 }
