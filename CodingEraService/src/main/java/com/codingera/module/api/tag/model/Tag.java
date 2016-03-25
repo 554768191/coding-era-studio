@@ -11,10 +11,12 @@ import javax.persistence.Table;
 
 import com.codingera.module.api.cases.model.Case;
 import com.codingera.module.base.model.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name = "ce_tag")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Tag extends IdEntity {
 
 	

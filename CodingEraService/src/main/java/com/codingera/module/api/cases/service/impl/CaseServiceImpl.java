@@ -3,6 +3,7 @@ package com.codingera.module.api.cases.service.impl;
 
 import java.util.Date;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,7 +47,9 @@ public class CaseServiceImpl implements CaseService {
 
 	@Override
 	public Case getById(Long id) {
-		return caseRepository.findOne(id);
+		Case ceCase = caseRepository.findOne(id);
+				Hibernate.initialize(ceCase.getTags());
+		return ceCase;
 	}
 
 

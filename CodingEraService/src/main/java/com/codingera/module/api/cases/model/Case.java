@@ -21,12 +21,14 @@ import javax.persistence.Table;
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity
 @Table(name = "ce_case")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@id")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "id")
 public class Case extends IdEntity {
 
 	
@@ -102,8 +104,7 @@ public class Case extends IdEntity {
 		this.status = status;
 	}
 	
-//@JsonManagedReference
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "ce_case_tag", 
             joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
             inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
