@@ -1,0 +1,60 @@
+@import "core.env";
+
+
+
+.ce-data-list{
+  $detail-height:64px;
+  .ce-data-data-empty{
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+  }
+  .ce-data-preview{
+    height:$detail-height;
+    border-bottom:1px solid #dde1e3;
+    margin-bottom:5px;
+    position: relative;
+    padding:0 5px;
+    &:hover{
+      background: #FAFAFA;
+      border-radius: 3px;
+      .ce-data-toolbar{
+        display: block;
+      }
+    }
+    .title{
+      height:$detail-height * 0.5;
+      line-height: $detail-height * 0.5;
+      font-size: 120%;
+    }
+    .subtitle{
+      height:$detail-height * 0.5;
+      line-height: $detail-height * 0.5;
+      color:#888;
+      font-size: 90%;
+    }
+    .ce-data-toolbar{
+      display: none;
+      position: absolute;
+      height: $detail-height;
+      right:0;
+      top:0;
+      $btn-size:20px;
+      .toolbar-btn{
+        &:hover{
+          color:#000;
+        }
+        width:$btn-size;
+        height:$btn-size;
+        display: inline-block;
+        margin-top:($detail-height - $btn-size) * 0.5;
+        margin-right:10px;
+        &.del{
+          color:#FF0000;
+        }
+
+      }
+    }
+  }
+
+}

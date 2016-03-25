@@ -6,6 +6,7 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
 
 
     $scope.caseData = {};
+    $scope.key = 'title';
 
     //分页参数
     var searchOptions = {
@@ -24,14 +25,14 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
     $scope.onSearch();
 
     //编辑记录
-    $scope.onEditClick = function(id){
-        $state.go('caseManage.publish',{caseId:id});
+    $scope.onEditClick = function(obj){
+        $state.go('caseManage.publish',{caseId:obj.id});
     };
 
     //删除记录
-    $scope.onDeleteClick = function(id){
+    $scope.onDeleteClick = function(obj){
         ceUtil.confirmMessage('确认删除?').success(function(){
-            CaseService.deleteCase({id:id}).success(function(){
+            CaseService.deleteCase({id:obj.id}).success(function(){
                 ceUtil.toast('删除成功');
                 $scope.onSearch();
             });
