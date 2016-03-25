@@ -13,7 +13,6 @@ import com.codingera.module.jpa.CriterionUtils;
 import com.codingera.module.jpa.JpaCriteria;
 import com.codingera.module.jpa.JpaQueryUtils;
 import com.codingera.module.jpa.OrCriterion;
-import com.codingera.module.jpa.SimpleCriterion;
 
 public class CaseRepositoryImpl implements CaseRepositoryCustom {
 
