@@ -7,6 +7,4 @@ import com.codingera.module.api.cases.repository.custom.CaseRepositoryCustom;
 
 public interface CaseRepository extends PagingAndSortingRepository<Case, Long>,CaseRepositoryCustom {
 
-
-	
 }
