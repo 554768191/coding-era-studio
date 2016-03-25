@@ -51,7 +51,6 @@ public class CaseController {
 	}
 	
 	/**
-	 * get方法不行,佶闪你看下
 	 * @param pr
 	 * @param criteria
 	 * @return
