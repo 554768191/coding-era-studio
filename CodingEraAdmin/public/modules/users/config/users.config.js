@@ -66,9 +66,7 @@ angular.module('users').run([
 						console.log('rejection.status', rejection.status);
 						switch (rejection.status) {
 							case -1:
-								//$window.location.href = '/auth/provider';
 								$window.location.href = '/auth/provider/refreshToken';
-								//$location.path('http://localhost:3000/');
 								Authentication.user = null;
 								break;
 							case 401:

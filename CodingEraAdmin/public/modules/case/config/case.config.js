@@ -15,8 +15,12 @@ angular.module('case')
         caseMenu.addNodeMenus(node_case_list);
 
         //TAG
-        var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '管理标签列表', icon: 'tag', route: 'tagList'});
+        var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagList'});
         caseMenu.addNodeMenus(node_tag_list);
+
+        //COMMENT
+        var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentList'});
+        caseMenu.addNodeMenus(node_comment_list);
 
         Menus.addMenus(caseMenu.getMenus());
     }
@@ -50,6 +54,16 @@ angular.module('case')
                 url: '/tag/list',
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
                 controller:'tagListCtrl'
+            })
+            .state('commentEdit', {
+                url: '/comment/edit',
+                templateUrl: 'modules/case/views/case.comment.edit.view.html',
+                controller:'commentEditCtrl'
+            })
+            .state('commentList', {
+                url: '/comment/list',
+                templateUrl: 'modules/case/views/case.comment.list.view.html',
+                controller:'commentListCtrl'
             });
 
     }

@@ -298,7 +298,7 @@ exports.refreshToken = function(strategy) {
 			// it should be the same as the initial refresh token.
 			// or use it to make a new request.
 			if(err){
-				return res.status(404).send(err);
+				return res.status(500).render('500', {error:"请求无响应"});
 			}
 			user["accessToken"] = accessToken;
 			user["refreshToken"] = refreshToken;
