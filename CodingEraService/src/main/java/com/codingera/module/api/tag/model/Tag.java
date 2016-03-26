@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "ce_tag")
 @JsonIgnoreProperties(ignoreUnknown=true)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@tagid")
 public class Tag extends IdEntity {
 
 	
@@ -72,9 +73,8 @@ public class Tag extends IdEntity {
 		this.hot = hot;
 	}
 
-
-	//@JsonBackReference
 	@ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
+//	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@caseid")
 	public List<Case> getCases() {
 		return cases;
 	}

@@ -14,6 +14,7 @@ public class CommentQueryCriteria extends QueryCriteria {
 	private String type; //same as modelName
 	private Long modelId;
 	private Long commentId;
+	private Long parentId;
 
 	public String getKeyWord() {
 		return keyWord;
@@ -45,6 +46,14 @@ public class CommentQueryCriteria extends QueryCriteria {
 
 	public void setCommentId(Long commentId) {
 		this.commentId = commentId;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 	
 

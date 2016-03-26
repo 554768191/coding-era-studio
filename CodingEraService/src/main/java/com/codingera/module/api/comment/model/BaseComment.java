@@ -22,7 +22,7 @@ public abstract class BaseComment extends IdEntity {
 	 */
 	private static final long serialVersionUID = 3246120447625111803L;
 	
-	private String titile;
+	private String title;
 	private String content;
 
 	// 评论人昵称
@@ -38,14 +38,14 @@ public abstract class BaseComment extends IdEntity {
 	private Integer status;
 
 	@Column(name = "TITLE", length = 50)
-	public String getTitile() {
-		return titile;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitile(String titile) {
-		this.titile = titile;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-
+	
 	@Column(name = "CONTENT")
 	public String getContent() {
 		return content;

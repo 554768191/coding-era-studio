@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,7 +53,7 @@ public class CommentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ActionResult saveComment(Comment comment) {
+	public ActionResult saveComment(@RequestBody Comment comment) {
 		comment = commentService.save(comment);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, comment);
 	}

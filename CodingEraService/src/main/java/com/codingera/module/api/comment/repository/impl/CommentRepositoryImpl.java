@@ -22,14 +22,17 @@ public class CommentRepositoryImpl implements CommentRepositoryCustom {
 	@PersistenceContext
 	private EntityManager em;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Page<Comment> findCommentsByCriteria(Pageable pg, CommentQueryCriteria criteria) {
-		JpaCriteria s = new JpaCriteria("Comment d");
-		s.add(new OrCriterion(
-				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
-				CriterionUtils.contains("d.type", criteria.getKeyWord(), true)));
-		s.setSortBy("d.id desc");
-		return JpaQueryUtils.query(em, s, pg);
+		JpaCriteria jpaCriteria = new JpaCriteria("Comment c");
+		jpaCriteria.add(new OrCriterion(
+				CriterionUtils.contains("c.title", criteria.getKeyWord(), true), 
+				CriterionUtils.contains("c.content", criteria.getKeyWord(), true)));
+		jpaCriteria.add(new OrCriterion(
+				CriterionUtils.equals("c.parentId", criteria.getParentId(), true)));
+		jpaCriteria.setSortBy("c.id desc");
+		return JpaQueryUtils.query(em, jpaCriteria, pg);
 	}
 
 	@Override
