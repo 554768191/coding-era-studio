@@ -4,14 +4,14 @@
  * 上传文件
  */
 'use strict';
-angular.module('todo').factory('FileUploadService', ['$http', '$log', 'ceConfig', 'Upload',
-    function ($http, $log, ceConfig, Upload) {
+angular.module('todo').factory('FileUploadService', ['$http', '$log', 'ceConfig', 'Upload', 'Authentication',
+    function ($http, $log, ceConfig, Upload, Authentication) {
         var service = {
-
             upload: function (file, task) {
                 if (file) {
+                    var token = Authentication.user.accessToken;
                     Upload.upload({
-                        url: 'http://localhost:8999/api/fileUpload/uploadImage',
+                        url: Authentication.apiURL + '/fileUpload/uploadImage?access_token=' + token,
                         data: {'file': file}
                     }).then(function (resp) {
                         console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
@@ -20,7 +20,7 @@ angular.module('todo').factory('FileUploadService', ['$http', '$log', 'ceConfig'
                         //返回markdown格式:
                         //![图片](https://dn-coding-net-production-pp.qbox.me/7f77e48e-be1f-48c0-a50b-6be7f3c75a56.png)
 
-                        task.content += '![图片]('+'http://localhost:8999' + resp.data.data.path + ')';
+                        task.content += '![图片](' + Authentication.apiURL.replace("/api","") + resp.data.data.path + ')';
                     }, function (resp) {
                         console.log('Error status: ' + resp.status);
                         file.status = resp.status;
