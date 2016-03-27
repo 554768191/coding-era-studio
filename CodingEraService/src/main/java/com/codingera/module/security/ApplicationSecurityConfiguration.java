@@ -27,7 +27,7 @@ class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void init(WebSecurity web) throws Exception {
 		super.init(web);
-		web.ignoring().antMatchers("/", "/api/open/**", "/h2-console/**");
+		web.ignoring().antMatchers("/temp/**", "/api/open/**", "/h2-console/**");
 	}
 
 	@Override

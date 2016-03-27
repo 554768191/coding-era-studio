@@ -2,23 +2,13 @@ package com.codingera.module.file.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 
-import com.codingera.module.base.model.IdEntity;
+import com.codingera.module.base.model.NewIdEntity;
 
 @Entity
 @Table(name = "ce_attachment")
-public class Attachment extends IdEntity {
-
-//	@TableGenerator(name = "idGen", table = "ID_GENERATOR", pkColumnName = "ID_KEY", valueColumnName = "ID_VALUE", pkColumnValue = "ATTACHMENT_ID", allocationSize = 1)
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.TABLE, generator = "idGen")
-//	@Column(name = "ID")
-//	private Long id;
+public class Attachment extends NewIdEntity {
 
 	/**
 	 * 
