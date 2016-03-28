@@ -8,7 +8,7 @@ angular.module('case')
     function(Menus) {
 
         var caseMenu = Menus.genParentMenus({name: '作品', icon: 'th-large'});
-        caseMenu.setOrder(-1);
+        caseMenu.setOrder(1);
 
         //CASE
         var node_case_list = Menus.genNodeMenus({name: '作品列表', subTitle: '管理作品列表', icon: 'th-list', route: 'caseManage'});

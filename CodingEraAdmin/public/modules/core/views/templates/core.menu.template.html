@@ -10,7 +10,7 @@
                 <span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}
             </a>
 
-            <a class="parent-a"  ng-switch-when="true" ui-sref="{{item.route}}"  >
+            <a class="parent-a"  ng-switch-when="true" ui-sref="{{item.route}}" ui-sref-opts="{reload:true}"  >
                 <span class="glyphicon glyphicon-{{item.icon}}" aria-hidden="true"></span> {{item.name}}
             </a>
 

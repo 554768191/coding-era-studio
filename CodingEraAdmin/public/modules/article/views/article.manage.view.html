@@ -1,0 +1,12 @@
+
+<ce-page-manager>
+    <ce-page-menu>
+        <ce-page-btn ce-style="btn" ui-sref="articleManage.publish({articleId:null})">发布文章</ce-page-btn>
+        <ce-group-line></ce-group-line>
+        <ce-page-btn ce-style="menu" ui-sref="articleManage.list({status:'PUBLISHED'})" ce-icon="glyphicon-th-list">已发布</ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="articleManage.list({status:'SKETCH'})" ce-icon="glyphicon-list-alt">草稿</ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="articleManage.list({status:'DELETED'})" ce-icon="glyphicon-trash">回收站</ce-page-btn>
+    </ce-page-menu>
+</ce-page-manager>
+
+
