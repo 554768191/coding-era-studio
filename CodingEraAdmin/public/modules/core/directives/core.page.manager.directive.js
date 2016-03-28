@@ -30,7 +30,7 @@ angular.module('core')
         function() {
             var self={
                 restrict:'E',
-                scope:true,
+                //scope:true,
                 transclude: true,
                 replace: true,
                 template:'<div class="ce-panel-left" ng-transclude></div>',
@@ -54,24 +54,38 @@ angular.module('core')
             };
             return self;
         }])
-    .directive('cePageBtn', [
-        function() {
+    .directive('cePageBtn', ['$timeout',
+        function($timeout) {
             var self={
                 restrict:'E',
                 replace: true,
                 transclude: true,
                 scope:{
-                    'ceIcon':'@'
+                    ceIcon:'@',
+                    ceClick:'&ceClick'
                 },
                 template:function (elem, attr){
                     if(attr.ceStyle==='btn'){
                         return '<button  class="btn btn-default ce-panel-left-btn"   ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span ng-transclude></span></button>';
+                    }else if(attr.ceStyle === 'menu'){
+                        return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}"><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span ng-transclude></span></a>';
+                    }else if(attr.ceStyle === 'search' ){
+                        return ['<div class="input-group ce-panel-search">',
+                                    '<input type="text" class="form-control" ng-model="ceModel"  placeholder="'+attr.placeholder+'" />',
+                                    '<span class="input-group-btn">',
+                                        '<button class="btn btn-default" ng-click="ceClick({keyWord:ceModel})" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>',
+                                    '</span>',
+                                '</div>',
+                            ].join('');
                     }
-                    return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}"><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span ng-transclude></span></a>';
                 },
-                link: function(scope, ele) {
+                compile: function (tElement, tAttrs){
 
+                    return  function postlink(scope, ele,attr,ngModelCtrl) {
+
+                    };
                 }
+
             };
             return self;
         }]);

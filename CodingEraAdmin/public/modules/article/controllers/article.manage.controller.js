@@ -7,5 +7,9 @@ function ($scope, $log,$state){
    if($state.is('articleManage')){
        $state.go('articleManage.list',{status:'PUBLISHED'});
    }
+    //$scope.keyWords = '456';
+    $scope.onSearchClick = function(keyWord){
+      console.log(keyWord);
+    };
 }]);
 
