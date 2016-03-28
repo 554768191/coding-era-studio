@@ -1,3 +1,4 @@
+package com.codingera.module.base.configuration;
 //package com.codingera.module.security;
 //
 //import java.sql.SQLException;

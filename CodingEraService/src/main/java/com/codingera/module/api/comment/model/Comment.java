@@ -42,7 +42,7 @@ public class Comment extends BaseComment {
 	 * 是否有叶子节点
 	 */
 	@Formula(value = "(select count(*) from ce_comment c where c.parent_id = id)")
-	@Transient
+//	@Transient
 	private Integer hasChildren;
 
 	public Case getCeCase() {

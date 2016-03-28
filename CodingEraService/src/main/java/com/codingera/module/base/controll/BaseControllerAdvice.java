@@ -1,4 +1,4 @@
-package com.codingera.module.security.controll;
+package com.codingera.module.base.controll;
 
 import javax.validation.ValidationException;
 

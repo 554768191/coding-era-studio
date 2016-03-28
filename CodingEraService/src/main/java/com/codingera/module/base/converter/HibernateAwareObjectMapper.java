@@ -1,4 +1,4 @@
-package com.codingera.module.security;
+package com.codingera.module.base.converter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;

@@ -1,4 +1,4 @@
-package com.codingera.module.security;
+package com.codingera.module.base.configuration;
 
 import javax.sql.DataSource;
 

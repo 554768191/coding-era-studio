@@ -1,21 +1,15 @@
-<#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Log in</title>
+    <title>CodingEra</title>
 	<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<nav role="navigation">
-	    <ul>
-	        <li><a href="/">Home</a></li>
-	    </ul>
-	</nav>
 	
-	<h1>Log in</h1>
-	
+	<h1>登录</h1>
+	<div class="error">${error!''}</div>
+	<div class="info">${logout!''}</div>
 	<form role="form" action="login" method="post" class="form-inline">
 		<div class="form-group">
 			<label for="inputUsername" class="sr-only">Username</label>
@@ -24,14 +18,16 @@
 		
 		<div class="form-group">
 			<label for="inputPassword" class="sr-only">Password</label>
-			<input type="text" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
+			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
 		</div>
 		
-	    <div class="form-group">
+	   <!--  <div class="form-group">
 	        <label for="remember-me">Remember me</label>
 	        <input type="checkbox" name="remember-me" id="remember-me"/>
-	    </div>
-		<button class="btn btn-primary" type="submit">Sign in</button>
+	    </div> -->
+	    
+	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<button class="btn btn-primary" type="submit">登录</button>
 	</form>
 	
 	

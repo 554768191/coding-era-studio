@@ -1,4 +1,4 @@
-package com.codingera.module.security;
+package com.codingera.module.base.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,14 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.codingera.module.base.converter.HibernateAwareObjectMapper;
 import com.codingera.module.base.converter.LocalTimeConverter;
 
 /**
  * 
  * @author JasonWoo
+ * 
+ * 请注意：开启注解@EnableWebMvc后，WebMvcAutoConfiguration中配置就不会生效，你需要自己来配置需要的每一项。
  * 
  */
 @Configuration
