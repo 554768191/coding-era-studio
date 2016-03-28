@@ -1,6 +1,5 @@
-package com.codingera.module.api.cases.controll;
+package com.codingera.module.api.article.controll;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,41 +12,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codingera.module.api.cases.criteria.CaseQueryCriteria;
-import com.codingera.module.api.cases.model.Case;
-import com.codingera.module.api.cases.service.CaseService;
+import com.codingera.module.api.article.criteria.ArticleQueryCriteria;
+import com.codingera.module.api.article.model.Article;
+import com.codingera.module.api.article.service.ArticleService;
 import com.codingera.module.base.controll.ActionResult;
 
 /**
- * CASE
+ * Article
  */
 
 @RestController
-@RequestMapping("/api/case")
-public class CaseController {
+@RequestMapping("/api/article")
+public class ArticleController {
 
 
 	
-	@Autowired CaseService CaseService;
+	@Autowired ArticleService ArticleService;
 
-	@RequestMapping(value="/{caseId}",method = RequestMethod.GET)
+	@RequestMapping(value="/{articleId}",method = RequestMethod.GET)
 	@ResponseBody
-	public ActionResult getCase(@PathVariable Long caseId) {
-		Case ceCase = CaseService.getById(caseId);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
+	public ActionResult getArticle(@PathVariable Long articleId) {
+		Article article = ArticleService.getById(articleId);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, article);
 	}
 	
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ActionResult saveCase(@RequestBody Case ceCase) {
-		CaseService.save(ceCase);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
+	public ActionResult saveArticle(@RequestBody Article article) {
+		ArticleService.save(article);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, article);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
-	public ActionResult deleteCase(@RequestParam Long id) {
-		CaseService.deleteById(id);
+	public ActionResult deleteArticle(@RequestParam Long id) {
+		ArticleService.deleteById(id);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, null);
 	}
 	
@@ -58,8 +57,8 @@ public class CaseController {
 	 */
 	@RequestMapping(value="/list",method = RequestMethod.GET)
 	@ResponseBody
-	public ActionResult findCases(Pageable pr, @ModelAttribute CaseQueryCriteria criteria) {
-		Page<Case> pages = CaseService.findCaseByCriteria(pr, criteria);
+	public ActionResult findArticles(Pageable pr, @ModelAttribute ArticleQueryCriteria criteria) {
+		Page<Article> pages = ArticleService.findArticleByCriteria(pr, criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
 	

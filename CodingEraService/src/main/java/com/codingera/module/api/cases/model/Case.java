@@ -28,7 +28,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "ce_case")
 @JsonIgnoreProperties(ignoreUnknown = true)
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@caseid")
 public class Case extends IdEntity {
 
 	/**
@@ -107,7 +106,6 @@ public class Case extends IdEntity {
 	@JoinTable(name = "ce_case_tag", 
 		joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
 		inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
-	// @JsonIdentityInfo(generator =  ObjectIdGenerators.IntSequenceGenerator.class,property = "@tagid")
 	public List<Tag> getTags() {
 		return tags;
 	}
@@ -116,7 +114,6 @@ public class Case extends IdEntity {
 		this.tags = tags;
 	}
 
-	// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@commentid")
 	@OneToMany(mappedBy = "ceCase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Comment> getComments() {
 		return comments;
