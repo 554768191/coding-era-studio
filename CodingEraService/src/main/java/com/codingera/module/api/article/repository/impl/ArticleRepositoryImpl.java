@@ -23,7 +23,7 @@ public class ArticleRepositoryImpl implements ArticleRepositoryCustom {
 	@Override
 	public Page<Article> findArticleByCriteria(Pageable pg, ArticleQueryCriteria criteria) {
 		JpaCriteria s = new JpaCriteria("Article a");
-		s.add(new OrCriterion(CriterionUtils.contains("c.title", criteria.getKeyWord(), true)));
+		s.add(new OrCriterion(CriterionUtils.contains("a.title", criteria.getKeyWord(), true)));
 		s.add(CriterionUtils.equals("a.status", criteria.getStatus(), false));
 		s.setSortBy("a.createTime desc");
 		return JpaQueryUtils.query(em, s, pg);

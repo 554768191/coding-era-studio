@@ -1,36 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Coding Era - 编码时代工作室授权登陆系统</title>
     <meta charset="utf-8">
-    <title>CodingEra</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="mongodb, express, angularjs, node.js, mongoose, passport">
+    <meta name="description" content="Coding Era工作室">
+    <link href="/temp/logo_32X32.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	
-	<h1>登录</h1>
-	<div class="error">${error!''}</div>
-	<div class="info">${logout!''}</div>
-	<form role="form" action="login" method="post" class="form-inline">
-		<div class="form-group">
-			<label for="inputUsername" class="sr-only">Username</label>
-			<input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="login-container">
+					<h1 class="title">登录</h1>
+					<div class="error">${error!''}</div>
+					<div class="info">${logout!''}</div>
+					<form role="form" action="login" method="post" >
+						<div class="form-group">
+							<label for="inputUsername" class="sr-only">Username</label>
+							<input type="text"  id="inputUsername" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
+						</div>
+						
+						<div class="form-group">
+							<label for="inputPassword" class="sr-only">Password</label>
+							<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
+						</div>
+						
+					   <!--  <div class="form-group">
+					        <label for="remember-me">Remember me</label>
+					        <input type="checkbox" name="remember-me" id="remember-me"/>
+					    </div> -->
+					    
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<button class="btn btn-primary" type="submit">登录</button>
+					</form>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="footer-container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="footer-left">
+								<img src="/temp/logo_64X64_transparent.png" />
+								Coding Era - 编码时代工作室
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="footer-right">
+							Copyright © 2015-2016 CodingEra.com | <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15026348号</a>
+                    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
+	<style>
+		html{height:100%}
+		body{
+			height:100%;
+			background-image:url(/temp/banner.jpg);
+			background-size: cover;
+   		 	background-color: #29303b;
+    		background-position: center;
+		}
+		.login-container{
+			
+			text-align: center;
+			max-width:300px;
+			margin:120px auto auto auto;
+		}
 		
-		<div class="form-group">
-			<label for="inputPassword" class="sr-only">Password</label>
-			<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
-		</div>
+		.login-container .title{
+			color:#fff;
+			text-shadow: 1px 1px 8px #0f0f0f;
+			font-size:400%;
+			margin-bottom:50px;
+		}
 		
-	   <!--  <div class="form-group">
-	        <label for="remember-me">Remember me</label>
-	        <input type="checkbox" name="remember-me" id="remember-me"/>
-	    </div> -->
-	    
-	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<button class="btn btn-primary" type="submit">登录</button>
-	</form>
-	
-	
-	
+		.error{
+			color:#ff0000;
+			font-size:130%;
+			/*text-shadow: 1px 1px 8px #0f0f0f;*/
+		}
+		.info{
+			color:#fff;
+			font-size:130%;
+			text-shadow: 1px 1px 8px #0f0f0f;
+		}
+		
+		input:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0px 1000px white inset;
+			border: 1px solid #CCC!important;
+			background-image: none;
+			background-color: #fff;
+		}
+		
+		.footer{
+			position: fixed;
+			bottom:0;
+			height:64px;
+			left:0;
+			width:100%;
+			background:rgba(0,0,0,.5);
+			color:#EAEBED;
+		}
+		.footer-left{
+			height:64px;
+			line-height: 64px;
+			padding-left:20px;
+			
+		}
+		.footer-left img{
+			width:32px;
+			height:32px;
+			vertical-align: middle;
+		}
+		
+		.footer-right{
+			text-align: right;
+			padding-right:20px;
+		}
+		.footer-right a{
+			height:64px;
+			line-height: 64px;
+			color:#EAEBED;
+			
+		}
+		
+
+	</style>
 </body>
 </html>
