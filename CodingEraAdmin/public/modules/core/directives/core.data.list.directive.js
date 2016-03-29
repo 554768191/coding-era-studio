@@ -20,21 +20,17 @@ angular.module('core')
 
                     $scope.toolbars = [];
 
-                    //TODO
-                    //这里全部使用通知方式可能不规范,但不知道为什么,子指令总是访问不了父指令
-                    //日后知道怎么修改,一定会回来修正 -- 可能是世界上的技术之父「 Yan神 」
-                    $scope.$on('ceDataListAddData', function(events,data){
+                    this.addData = function(data){
                         if(!angular.isUndefined(data.title)){
                             $scope.title = data.title;
                         }
                         if(!angular.isUndefined(data.subtitle)){
                             $scope.subtitle = data.subtitle;
                         }
-
-                    });
+                    };
 
                     //设置Toolbar
-                    $scope.$on('ceDataListAddFunction', function(events,data){
+                    this.addToolBar = function(data){
                         var toobar = {
                             icon:data.icon,
                             eventHandler:data.eventHandler,
@@ -42,15 +38,16 @@ angular.module('core')
                             statusEquals:data.statusEquals
                         };
                         $scope.toolbars.push(toobar);
-
-                    });
+                    };
 
                     //设置状态key
-                    $scope.$on('ceDataListSetStatusKey', function(events,data){
+                    this.setStatus = function (data){
                         if(!angular.isUndefined(data.statusKey)){
                             $scope.statusKey = data.statusKey;
                         }
-                    });
+                    };
+
+
                 }],
                 template:['<div class="ce-data-list" >',
                                 '<div ng-transclude></div>',
@@ -80,13 +77,13 @@ angular.module('core')
             var self={
                 restrict:'E',
                 replace: true,
-                //require: '?ceDataList',
+                require: '^ceDataList',
                 scope:{
                     title:'@',
                     subtitle:'@'
                 },
-                link: function(scope, ele) {
-                    scope.$emit('ceDataListAddData', scope);
+                link: function(scope, ele,attr,ceDataList) {
+                    ceDataList.addData(scope);
 
                 }
             };
@@ -97,11 +94,12 @@ angular.module('core')
             var self={
                 restrict:'E',
                 replace: true,
+                require: '^ceDataList',
                 scope:{
                     statusKey:'@'
                 },
-                link: function(scope, ele) {
-                    scope.$emit('ceDataListSetStatusKey', scope);
+                link: function(scope, ele,attr,ceDataList) {
+                    ceDataList.setStatus(scope);
 
                 }
             };
@@ -111,14 +109,15 @@ angular.module('core')
         function() {
             var self={
                 restrict:'EA',
+                require: '^ceDataList',
                 scope: {
                     eventHandler: '&ngClick',
                     title:'@',
                     icon:'@',
                     statusEquals:'@'
                 },
-                link:function($scope,tElm,tAttrs) {
-                    $scope.$emit('ceDataListAddFunction', $scope);
+                link:function($scope,tElm,tAttrs,ceDataList) {
+                    ceDataList.addToolBar($scope);
                 }
             };
             return self;
