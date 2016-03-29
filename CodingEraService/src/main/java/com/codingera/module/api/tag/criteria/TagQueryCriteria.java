@@ -1,12 +1,15 @@
 package com.codingera.module.api.tag.criteria;
 
+import com.codingera.module.api.tag.model.Tag.Status;
 import com.codingera.module.jpa.QueryCriteria;
 
 public class TagQueryCriteria extends QueryCriteria {
 
 	private String keyWord;
 
-	private String type;
+	private String category;
+	
+	private Status status;
 
 	public String getKeyWord() {
 		return keyWord;
@@ -16,12 +19,21 @@ public class TagQueryCriteria extends QueryCriteria {
 		this.keyWord = keyWord;
 	}
 
-	public String getType() {
-		return type;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	
 }
