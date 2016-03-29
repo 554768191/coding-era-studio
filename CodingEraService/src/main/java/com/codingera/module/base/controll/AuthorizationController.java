@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +13,6 @@ import com.codingera.module.base.model.Credentials;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 import com.codingera.module.user.view.UserView;
-import com.google.common.base.Optional;
 
 /**
  * @see <a
@@ -31,18 +29,14 @@ public class AuthorizationController {
 	public ModelAndView showLoginForm(final Credentials credentials) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		if (credentials.getError() != null) {
-			model.put("error", "Invalid username and password!");
+			model.put("error", "无效的登录名或者密码!");
+//			model.put("error", "Invalid username and password!");
 		}
 		if (credentials.getLogout() != null) {
 			model.put("logout", "You've been logged out successfully.");
 		}
 		return new ModelAndView("login", model);
 	}
-
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
-//		return new ModelAndView("login", "error", error);
-//	}
 
 	/**
 	 * 获取当前登录用户信息
