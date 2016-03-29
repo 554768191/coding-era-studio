@@ -78,4 +78,30 @@ $border-color:#DEE5E7;
 
 }
 
+.ce-page-header{
+  $page-header-height:60px;
+  height:$page-header-height;
+  border-bottom:1px solid #DEE5E7;
+  margin-top:-15px;
+  margin-bottom:15px;
+  background: #F6F8F8;
+  .ce-page-header-title{
+    line-height: $page-header-height;
+    font-size: 130%;
+    //margin-left:-15px;
+    font-weight: 600;
+    color:#555;
+  }
+  .ce-page-header-bar{
+    line-height: $page-header-height;
+    .input-group{
+      line-height: $page-header-height;
+      float: right;
+      .form-control{
+        float: none;
+      }
+    }
+  }
+}
+
 

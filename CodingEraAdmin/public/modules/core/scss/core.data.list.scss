@@ -11,13 +11,13 @@
   }
   .ce-data-preview{
     height:$detail-height;
-    border-bottom:1px solid #dde1e3;
+    border-bottom:1px solid #EAEFF0;
     margin-bottom:5px;
     position: relative;
-    padding:0 5px;
+    padding:0 6px;
     &:hover{
       background: #FAFAFA;
-      border-radius: 3px;
+      border-radius: 4px;
       .ce-data-toolbar{
         display: block;
       }
@@ -26,6 +26,7 @@
       height:$detail-height * 0.5;
       line-height: $detail-height * 0.5;
       font-size: 120%;
+      color:#666;
     }
     .subtitle{
       height:$detail-height * 0.5;

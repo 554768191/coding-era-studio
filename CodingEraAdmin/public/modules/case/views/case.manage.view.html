@@ -1,11 +1,11 @@
 
 <ce-page-manager>
     <ce-page-menu>
-        <ce-page-btn ce-style="btn" ui-sref="caseManage.publish({caseId:null})">发布作品</ce-page-btn>
+        <ce-page-btn ce-style="btn" ui-sref="caseManage.publish({'caseId':null})" ce-title="发布作品"></ce-page-btn>
         <ce-group-line></ce-group-line>
-        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'PUBLISHED'})" ce-icon="glyphicon-th-list">已发布</ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'SKETCH'})" ce-icon="glyphicon-list-alt">草稿</ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({status:'DELETED'})" ce-icon="glyphicon-trash">回收站</ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'PUBLISHED'})" ce-icon="glyphicon-th-list" ce-title="已发布"></ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'SKETCH'})" ce-icon="glyphicon-list-alt" ce-title="草稿"></ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
     </ce-page-menu>
 </ce-page-manager>
 

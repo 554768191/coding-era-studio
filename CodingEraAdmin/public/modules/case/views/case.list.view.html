@@ -1,4 +1,8 @@
 
+<ce-page-header>
+    <ce-search-bar ce-placeholder="搜索作品..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
+</ce-page-header>
+
 <!-- 传入 CoadingEraService 返回的 Json (Spring -> ActionResult For Page<Model>) -->
 <ce-data-list ce-data="caseData" page-previous-click="previousPage()" page-next-click="nextPage()" >
     <ce-data title="title"></ce-data>

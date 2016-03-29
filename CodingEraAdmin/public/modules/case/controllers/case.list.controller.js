@@ -13,7 +13,8 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
         page: 0,//当前页
         size: 10,//每页大小
         sort: null, //排序(没做!!!!)
-        status:$stateParams.status
+        status:$stateParams.status,
+        keyWord:null
     };
 
     //搜索
@@ -50,6 +51,11 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
         searchOptions.page += 1;
         $scope.onSearch();
 
+    };
+
+    $scope.onSearchClick = function(keyWord){
+        searchOptions.keyWord = keyWord;
+        $scope.onSearch();
     };
 
            
