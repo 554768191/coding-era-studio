@@ -41,16 +41,19 @@ angular.module('core')
                 animation: true,
                 size:'sm',
                 templateUrl: '/modules/core/views/templates/core.confirm.view.html',
-                controller: function($scope,$uibModalInstance){
-                    $scope.message = message;
-                    $scope.cancel = function(){
-                        $uibModalInstance.dismiss('cancel');
-                    };
-                    $scope.ok = function(){
-                        $uibModalInstance.close();
-                        successCallback();
-                    };
-                }
+                controller:[
+                    '$scope','$uibModalInstance',
+                    function($scope,$uibModalInstance){
+                        $scope.message = message;
+                        $scope.cancel = function(){
+                            $uibModalInstance.dismiss('cancel');
+                        };
+                        $scope.ok = function(){
+                            $uibModalInstance.close();
+                            successCallback();
+                        };
+                    }
+                ]
             });
 
 

@@ -7,6 +7,10 @@ angular.module('case').factory('TagService', [ '$log','ceAjax',
 
         var service ={};
 
+        service.getTagById = function(id){
+            return ceAjax.get({url:'/tag/'+id});
+        };
+
         service.getTags = function(parameters){
             return ceAjax.get({url:'/tag',data:parameters});
         };

@@ -15,7 +15,7 @@ angular.module('case')
         caseMenu.addNodeMenus(node_case_list);
 
         //TAG
-        var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagList'});
+        var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagManage'});
         caseMenu.addNodeMenus(node_tag_list);
 
         //COMMENT
@@ -45,15 +45,20 @@ angular.module('case')
                 templateUrl: 'modules/case/views/case.publish.view.html',
                 controller:'casePublishCtrl'
             })
-            .state('tagEdit', {
-                url: '/tag/edit',
-                templateUrl: 'modules/case/views/case.tag.edit.view.html',
-                controller:'tagEditCtrl'
+            .state('tagManage', {
+                url: '/tag',
+                templateUrl: 'modules/case/views/case.tag.manage.view.html',
+                controller:'tagManageCtrl'
             })
-            .state('tagList', {
-                url: '/tag/list',
+            .state('tagManage.list', {
+                url: '/list?:status',
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
                 controller:'tagListCtrl'
+            })
+            .state('tagManage.edit', {
+                url: '/edit?:tagId',
+                templateUrl: 'modules/case/views/case.tag.edit.view.html',
+                controller:'tagEditCtrl'
             })
             .state('commentEdit', {
                 url: '/comment/edit',
