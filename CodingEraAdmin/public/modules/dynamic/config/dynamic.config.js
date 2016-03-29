@@ -4,7 +4,7 @@
 'use strict';
 angular.module('dynamic').run(['Menus',
     function (Menus) {
-        var parentMenus = Menus.genParentMenus({name:'网站管理', icon:'tasks'});
+        var parentMenus = Menus.genParentMenus({name:'网站管理', icon:'tasks', isPublic:false, roles:'JASON'});
         var manage = Menus.genNodeMenus({name:'发布动态', icon:'tasks', route:'todo'});
 
         parentMenus.setOrder(999);
