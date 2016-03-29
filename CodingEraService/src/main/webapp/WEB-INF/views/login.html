@@ -38,7 +38,7 @@
 					    </div> -->
 					    
 					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						<button class="btn btn-primary" type="submit">登录</button>
+						<button class="btn  login-btn btn-lg" type="submit" >登录</button>
 					</form>
 				</div>
 			</div>
@@ -134,7 +134,29 @@
 			color:#EAEBED;
 			
 		}
-		
+		.login-btn{
+			background:#4ac6fa;
+			border-color:#4ac6fa;
+			box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+			color: #fff;
+			border-radius: 4px;
+			width:30%;
+		}
+		.login-btn:hover{
+			background:#41b9eb;
+			border-color:#41b9eb;
+			color: #fff;
+		}
+		.login-btn:active{
+			background:#41b9eb;
+			border-color:#41b9eb;
+			color: #fff;
+		}
+		.login-btn:focus{
+			background:#41b9eb;
+			border-color:#41b9eb;
+			color: #fff;
+		}
 
 	</style>
 </body>
