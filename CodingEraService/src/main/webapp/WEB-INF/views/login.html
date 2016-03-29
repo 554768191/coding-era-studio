@@ -12,77 +12,70 @@
     <meta name="description" content="Coding Era工作室">
     <link href="/temp/logo_32X32.ico" rel="shortcut icon" type="image/x-icon">
 	<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="login-container">
-					<h1 class="title">登录</h1>
-					<div class="error">${error!''}</div>
-					<div class="info">${logout!''}</div>
-					<form role="form" action="login" method="post" >
-						<div class="form-group">
-							<label for="inputUsername" class="sr-only">Username</label>
-							<input type="text"  id="inputUsername" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
-						</div>
-						
-						<div class="form-group">
-							<label for="inputPassword" class="sr-only">Password</label>
-							<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
-						</div>
-						
-					   <!--  <div class="form-group">
-					        <label for="remember-me">Remember me</label>
-					        <input type="checkbox" name="remember-me" id="remember-me"/>
-					    </div> -->
-					    
-					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						<button class="btn  login-btn btn-lg" type="submit" >登录</button>
-					</form>
-				</div>
-			</div>
-			<div class="footer">
-				<div class="footer-container">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="footer-left">
-								<img src="/temp/logo_64X64_transparent.png" />
-								Coding Era - 编码时代工作室
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="footer-right">
-							Copyright © 2015-2016 CodingEra.com | <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15026348号</a>
-                    </div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<style>
 		html{height:100%}
 		body{
 			height:100%;
-			background-image:url(/temp/banner.jpg);
 			background-size: cover;
-   		 	background-color: #29303b;
+   		 	background-color: #3A3F52;
     		background-position: center;
 		}
+		
+		.wrapper {
+		    padding: 15px;
+		}
+		.text-center {
+		    text-align: center;
+		}
 		.login-container{
-			
+			color:#EAEBED;
 			text-align: center;
-			max-width:300px;
-			margin:120px auto auto auto;
+			max-width:330px;
+			margin:100px auto auto auto;
+		}
+		
+		.no-border, .no-borders {
+		    border-color: transparent;
+		    border-width: 0;
+		}
+		
+		.list-group-sm .list-group-item {
+		    padding: 6px 10px;
+		}
+		
+		.no-border, .no-borders {
+		    border-color: transparent;
+		    border-width: 0;
+		}
+		
+		.form-control, .form-control:focus {
+		    -webkit-box-shadow: none;
+		    box-shadow: none;
+		}
+		
+		.form-control {
+		    border-color: #cfdadd;
+		    border-radius: 2px;
 		}
 		
 		.login-container .title{
-			color:#fff;
-			text-shadow: 1px 1px 8px #0f0f0f;
-			font-size:400%;
-			margin-bottom:50px;
+
+			float: none;
+		    height: auto;
+		    padding: 0 20px;
+		    font-size: 36px;
+		    font-weight: 600;
+		    line-height: 50px;
+		    text-align: center;
+		    height:50px;
+		    
+		}
+		
+		.login-container .title img{
+			width:50px;
+			height:50px;
+			vertical-align: middle;
+   			margin-top: -8px;
 		}
 		
 		.error{
@@ -97,50 +90,20 @@
 		}
 		
 		input:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0px 1000px white inset;
-			border: 1px solid #CCC!important;
+			-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+			/*border: 1px solid #CCC!important;*/
 			background-image: none;
-			background-color: #fff;
+			background-color: #fff !important;
 		}
 		
-		.footer{
-			position: fixed;
-			bottom:0;
-			height:64px;
-			left:0;
-			width:100%;
-			background:rgba(0,0,0,.5);
-			color:#EAEBED;
-		}
-		.footer-left{
-			height:64px;
-			line-height: 64px;
-			padding-left:20px;
-			
-		}
-		.footer-left img{
-			width:32px;
-			height:32px;
-			vertical-align: middle;
-		}
 		
-		.footer-right{
-			text-align: right;
-			padding-right:20px;
-		}
-		.footer-right a{
-			height:64px;
-			line-height: 64px;
-			color:#EAEBED;
-			
-		}
 		.login-btn{
 			background:#4ac6fa;
 			border-color:#4ac6fa;
-			box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
 			color: #fff;
 			border-radius: 4px;
-			width:30%;
+			width:100%;
+			margin-bottom:50px;
 		}
 		.login-btn:hover{
 			background:#41b9eb;
@@ -157,7 +120,52 @@
 			border-color:#41b9eb;
 			color: #fff;
 		}
+		
+		.text-muted {
+			margin-top:50px;
+		    color: #98a6ad;
+		}
 
 	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="login-container">
+					<div class="title"><img src="/temp/logo_64X64_transparent.png" />&nbsp;&nbsp;Coding Era</div>
+					<div class="wrapper text-center">
+				      <strong>${error!''}</strong>
+				    </div>
+					<div class="info">${logout!''}</div>
+					<form role="form" action="login" method="post" >
+						
+						<div class="list-group list-group-sm">
+					        <div class="list-group-item">
+					        	<input type="text"  id="inputUsername" name="username" class="form-control no-border" placeholder="Username" required="required" autofocus="autofocus"  />
+					        </div>
+					        <div class="list-group-item">
+					           <input type="password" id="inputPassword" name="password" class="form-control no-border" placeholder="Password" required="required" />
+					        </div>
+				     	 </div>
+						
+						
+					   <!--  <div class="form-group">
+					        <label for="remember-me">Remember me</label>
+					        <input type="checkbox" name="remember-me" id="remember-me"/>
+					    </div> -->
+					    
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<button class="btn  login-btn btn-lg" type="submit" >登录</button>
+					</form>
+					
+					<small class="text-muted"> Copyright © 2015-2016 CodingEra.com <br> Coding Era - 编码时代工作室</small>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
