@@ -11,26 +11,25 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.codingera.module.base.model.IdEntity;
+import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ce_user")
-public class User extends IdEntity implements UserDetails, Comparable<User> {
+public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 
 	private static final long serialVersionUID = -192550188817193798L;
 
+	@Column(name = "user_name", length = 20, unique = true)
 	private String username;
-	private String displayName;	
-	private String email;
-	private String phone;
 
+	@Column(name = "password", length = 100)
 	private String password;
 
 	private boolean accountNonExpired;
@@ -41,15 +40,39 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 
 	private boolean enabled;
 
+	private String email;
+	private String phone;
 	private String avatar;
-
 	private Integer sex;
 
+	@Column(name = "intro", length = 140)
 	private String intro;
 
+	@Column(name = "display_name", length = 50)
+	private String displayName;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER)
+	private List<UserRole> roles = new ArrayList<UserRole>();
+
+	@Transient
 	private Date lastLoginTime;
 
-	private List<UserRole> roles = new ArrayList<UserRole>();
+	@Transient
+	private String status;
+
+	public String getStatus() {
+		if (this.isEnabled() && this.isAccountNonExpired() && this.accountNonLocked && this.credentialsNonExpired) {
+			return "PASSED";
+		} else if (!this.isEnabled()) {
+			return "WAITING";
+		}
+		return "DELETED";
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Transient
 	@Override
@@ -68,7 +91,6 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 	}
 
 	@Override
-	@Column(name = "password", length = 100)
 	public String getPassword() {
 		return password;
 	}
@@ -78,7 +100,6 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 	}
 
 	@Override
-	@Column(name = "user_name", length = 20, unique = true)
 	public String getUsername() {
 		return username;
 	}
@@ -121,8 +142,6 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 		this.enabled = enabled;
 	}
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER)
 	public List<UserRole> getRoles() {
 		return roles;
 	}
@@ -147,27 +166,12 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 		this.sex = sex;
 	}
 
-	@Column(name = "intro", length = 140)
 	public String getIntro() {
 		return intro;
 	}
 
 	public void setIntro(String intro) {
 		this.intro = intro;
-	}
-
-	@Transient
-	public Date getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public void setLastLoginTime(Date lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-	@Override
-	public int compareTo(User arg0) {
-		return arg0.getLastLoginTime().compareTo(this.getLastLoginTime());
 	}
 
 	public String getEmail() {
@@ -186,13 +190,25 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 		this.phone = phone;
 	}
 
-	@Column(name = "display_name", length = 50)
 	public String getDisplayName() {
 		return displayName;
 	}
 
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	@Override
+	public int compareTo(User arg0) {
+		return arg0.getLastLoginTime().compareTo(this.getLastLoginTime());
 	}
 
 }

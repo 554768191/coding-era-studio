@@ -18,12 +18,10 @@ public class UserView implements Serializable {
 	private String displayName;
 	private String email;
 	private String phone;
-
 	private String avatar;
-
 	private Integer sex;
-
 	private String intro;
+	private String status;
 
 	private List<UserRole> roles = new ArrayList<UserRole>();
 	private Collection<? extends GrantedAuthority> authorities;
@@ -42,6 +40,7 @@ public class UserView implements Serializable {
 		this.avatar = user.getAvatar();
 		this.roles = user.getRoles();
 		this.authorities = user.getAuthorities();
+		this.status = user.getStatus();
 	}
 
 	public String getUsername() {
@@ -114,6 +113,14 @@ public class UserView implements Serializable {
 
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
