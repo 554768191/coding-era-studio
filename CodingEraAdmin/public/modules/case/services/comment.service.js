@@ -7,6 +7,10 @@ angular.module('case').factory('CommentService', [ '$log','ceAjax',
 
         var service ={};
 
+        service.getCommentById = function(id){
+            return ceAjax.get({url:'/comments/'+id});
+        };
+
         service.getRootComments = function(parameters){
             parameters = parameters || {};
             parameters.parentId = 0;

@@ -183,7 +183,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 					//});
 				} else {
 					var err = null;
-					return done(err, user, "/#!/demo");
+					return done(err, user, "/#!/article/list?status=PUBLISHED");
 				}
 			//}
 		//});

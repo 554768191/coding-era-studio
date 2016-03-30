@@ -19,7 +19,7 @@ angular.module('case')
         caseMenu.addNodeMenus(node_tag_list);
 
         //COMMENT
-        var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentList'});
+        var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentManage'});
         caseMenu.addNodeMenus(node_comment_list);
 
         Menus.addMenus(caseMenu.getMenus());
@@ -60,13 +60,18 @@ angular.module('case')
                 templateUrl: 'modules/case/views/case.tag.edit.view.html',
                 controller:'tagEditCtrl'
             })
-            .state('commentEdit', {
-                url: '/comment/edit',
+            .state('commentManage', {
+                url: '/comment',
+                templateUrl: 'modules/case/views/case.comment.manage.view.html',
+                controller:'commentManageCtrl'
+            })
+            .state('commentManage.edit', {
+                url: '/edit?:commentId',
                 templateUrl: 'modules/case/views/case.comment.edit.view.html',
                 controller:'commentEditCtrl'
             })
-            .state('commentList', {
-                url: '/comment/list',
+            .state('commentManage.list', {
+                url: '/list?:status',
                 templateUrl: 'modules/case/views/case.comment.list.view.html',
                 controller:'commentListCtrl'
             });

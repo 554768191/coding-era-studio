@@ -1,34 +1,14 @@
+<ce-page-header>
+    <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
+</ce-page-header>
 
-<div class="ce-tool-bar row">
-    <div class="col-sm-4">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="searchOptions.keyWord" />
-            <div class="input-group-btn" uib-dropdown>
-                <button type="button" class="btn btn-info" ng-click="onSearch()"  >
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-info" uib-dropdown-toggle aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">{{'SYSTEM.APP.BTN.QUERY.MORE'| translate }}</span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a ng-click="addDemo()">{{'SYSTEM.APP.BTN.QUERY.ADVANCED' | translate }}</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-8 text-right">
-        <button type="button" class="btn btn-info" ng-click="onCreateClick()">新增</button>
-        <button type="button" class="btn btn-info" ng-click="onEditClick()">详情</button>
-        <button type="button" class="btn btn-info" ng-click="onEditClick()">置顶</button>
-        <button type="button" class="btn btn-info" ng-click="onEditClick()">通过</button>
-        <button type="button" class="btn btn-danger" ng-click="onDeletedClick()">屏蔽</button>
-    </div>
-</div>
+<ce-data-list ce-data="jsonData" page-previous-click="previousPage()" page-next-click="nextPage()" >
+    <ce-data title="content"></ce-data>
+    <ce-data subtitle="createdTime"></ce-data>
+    <ce-data-toolbar status-key="status" >
+        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
+        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'WAITING,SKETCH'"></ce-data-toolbar-btn>
+    </ce-data-toolbar>
+</ce-data-list>
 
-<h3>下拉模板</h3>
-<div  ui-grid="gridOptions2" ui-grid-pagination ui-grid-selection ui-grid-expandable ui-grid-auto-resize ng-style="getTableStyle()"></div>
-<!--
-<h3>tree</h3>
-<div  ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-tree-view ui-grid-auto-resize ng-style="getTableStyle()"></div>
--->
+
