@@ -4,8 +4,8 @@
 angular.module('users').run([
     'Menus',
     function (Menus) {
-        var userMenu = Menus.genParentMenus({name: '系统管理', icon: 'user'});
-        var node_users = Menus.genNodeMenus({name: '所有用户', icon: 'ice-lolly-tasted', route: 'usersManage'});
+        var userMenu = Menus.genParentMenus({name: '系统管理', icon: 'cog'});
+        var node_users = Menus.genNodeMenus({name: '所有用户', icon: 'user', route: 'usersManage'});
         userMenu.setOrder(1);
         userMenu.addNodeMenus(node_users);
         Menus.addMenus(userMenu.getMenus());
