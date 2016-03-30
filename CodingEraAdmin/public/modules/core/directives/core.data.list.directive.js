@@ -40,11 +40,27 @@ angular.module('core')
                         $scope.toolbars.push(toobar);
                     };
 
+
+
                     //设置状态key
                     this.setStatus = function (data){
                         if(!angular.isUndefined(data.statusKey)){
                             $scope.statusKey = data.statusKey;
                         }
+                    };
+
+                    $scope.showToolBar = function (toolbars,data){
+                        var i = 0;
+                        angular.forEach(toolbars,function(value){
+
+                            if(value.statusEquals.indexOf(data[$scope.statusKey]) > 0){
+                                i++;
+                            }
+                        });
+                        if(i>0){
+                            return true;
+                        }
+                        return false;
                     };
 
 
@@ -54,10 +70,10 @@ angular.module('core')
                                 '<div class="ce-data-data-empty" ng-if="ceData.totalElements == 0">目前没有数据 >_< </div>',
                                 '<div class="ce-data-preview" ng-repeat="item in ceData.content">',
                                     '<div class="title" ng-bind="item[title]" ng-click="testClick({obj:item})"></div>',
-                                    '<div class="subtitle">发表于 {{item[subtitle]  | date:\'yyyy-MM-dd\'}}</div>',
-                                    '<div class="ce-data-toolbar" >',
+                                    '<div class="subtitle"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item[subtitle]  | date:\'yyyy-MM-dd\'}}</div>',
+                                    '<div class="ce-data-toolbar" ng-if="showToolBar(toolbars,item)">',
                                         '<a ng-if="toolbar.statusEquals.indexOf(item[statusKey])>0" class="toolbar-btn" ng-class="{del:toolbar.icon==\'glyphicon-trash\'}" ng-repeat="toolbar in toolbars" ng-click="toolbar.eventHandler({obj:item})" title="{{toolbar.title}}" >',
-                                            '<span class="glyphicon {{toolbar.icon}}" aria-hidden="true"></span>',
+                                            '<span class="glyphicon {{toolbar.icon}}" aria-hidden="true"></span> {{toolbar.title}}',
                                         '</a>',
                                     '</div>',
                                 '</div>',
