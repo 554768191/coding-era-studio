@@ -1,5 +1,6 @@
 package com.codingera.module.api.comment.criteria;
 
+import com.codingera.module.api.comment.model.BaseComment.Status;
 import com.codingera.module.jpa.QueryCriteria;
 
 public class CommentQueryCriteria extends QueryCriteria {
@@ -15,6 +16,8 @@ public class CommentQueryCriteria extends QueryCriteria {
 	private Long modelId;
 	private Long commentId;
 	private Long parentId;
+	
+	private Status status;
 
 	public String getKeyWord() {
 		return keyWord;
@@ -54,6 +57,14 @@ public class CommentQueryCriteria extends QueryCriteria {
 
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 

@@ -31,6 +31,7 @@ public class CommentRepositoryImpl implements CommentRepositoryCustom {
 				CriterionUtils.contains("c.content", criteria.getKeyWord(), true)));
 		jpaCriteria.add(new OrCriterion(
 				CriterionUtils.equals("c.parentId", criteria.getParentId(), true)));
+		jpaCriteria.add(CriterionUtils.equals("c.status", criteria.getStatus(), false));
 		jpaCriteria.setSortBy("c.id desc");
 		return JpaQueryUtils.query(em, jpaCriteria, pg);
 	}
