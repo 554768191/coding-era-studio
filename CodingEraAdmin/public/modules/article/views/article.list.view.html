@@ -12,6 +12,7 @@
     <!-- 2. status-key in ( status-equals ) 工具条上的按钮将会显示「 此参数可选 」 -->
     <ce-data-toolbar status-key="status" >
         <!-- ngClick ( onEditClick 是你 controller 中的方法名)参数 obj 必须这样写,指令会把正行对象传回去 -->
+        <ce-data-toolbar-btn icon="glyphicon-eye-open" title="预览" ng-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
         <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
         <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'PUBLISHED,SKETCH'"></ce-data-toolbar-btn>
     </ce-data-toolbar>

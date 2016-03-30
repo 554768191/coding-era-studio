@@ -6,16 +6,13 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
 
 
     $scope.caseData = {};
-    $scope.key = 'title';
 
-    //分页参数
-    var searchOptions = {
-        page: 0,//当前页
-        size: 10,//每页大小
-        sort: null, //排序(没做!!!!)
+    var searchOptions = ceUtil.initPageParameter({
         status:$stateParams.status,
         keyWord:null
-    };
+    });
+
+
 
     //搜索
     $scope.onSearch = function(){

@@ -93,6 +93,18 @@ angular.module('core')
             };
             return self;
         }])
+    .directive('ceGroupName', [
+        function() {
+            var self={
+                restrict:'E',
+                replace: true,
+                template:'<div class="groupName"></div>',
+                link: function(scope, ele) {
+
+                }
+            };
+            return self;
+        }])
     .directive('cePageBtn', ['$timeout','cePageManagerService',
         function($timeout,cePageManagerService) {
             var self={

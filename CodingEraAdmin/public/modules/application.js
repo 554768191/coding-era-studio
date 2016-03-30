@@ -54,6 +54,8 @@ angular.element(document).ready(function() {
 
 //项目配置项
 ceApp.constant('ceConfig', {
+	page: 0,//默认当前页
+	size: 10,//默认每页大小
 	//显示分页数(注意不是最大页数),建议输入单数(暂时也只支持单数....)
 	showDisplayPage:5
 });

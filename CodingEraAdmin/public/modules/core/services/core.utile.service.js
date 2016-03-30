@@ -4,7 +4,7 @@
 "use strict";
 
 angular.module('core')
-    .factory('ceUtil', ['$rootScope','$templateCache','$uibModal',function($rootScope,$templateCache,$uibModal) {
+    .factory('ceUtil', ['$rootScope','$templateCache','$uibModal','ceConfig',function($rootScope,$templateCache,$uibModal,ceConfig) {
         var service = {};
 
 
@@ -100,6 +100,17 @@ angular.module('core')
             src.last = res.data.last;
             src.number = res.data.number;
             return src;
+        };
+
+
+        service.initPageParameter = function(options){
+            var option = {
+                    page: ceConfig.page,//当前页
+                    size: ceConfig.size,//每页大小
+                    sort: null
+            };
+            angular.extend(options,options);
+            return options;
         };
 
 
