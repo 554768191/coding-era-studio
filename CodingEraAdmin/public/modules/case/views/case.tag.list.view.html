@@ -3,11 +3,15 @@
     <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
 </ce-page-header>
 
-<ce-data-list ce-data="jsonData" page-previous-click="previousPage()" page-next-click="nextPage()" >
-    <ce-data title="name"></ce-data>
-    <!--<ce-data subtitle="type"></ce-data>-->
-    <ce-data-toolbar status-key="status" >
-        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'INIT','SKETCH'"></ce-data-toolbar-btn>
-        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'INIT,SKETCH'"></ce-data-toolbar-btn>
-    </ce-data-toolbar>
-</ce-data-list>
+<div class="ce-tag-list">
+    <div class="tags" ng-repeat="tag in jsonData.content" ng-click="onEditClick(tag)">
+        <div class="name" ng-bind="tag.name"></div>
+        <div class="del" ng-click="onDeleteClick(tag)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="ce-clear-float"></div>
+    <div class="tag-load-more" ng-click="nextPage()" ng-if="!jsonData.last">
+        点击加载更多
+    </div>
+</div>

@@ -93,6 +93,15 @@ angular.module('core')
             return uuid.join('');
         };
 
+        //合并Page<Object>数据,loadMore加载更多使用
+        service.loadMoreData = function (src,res){
+            src.content = src.content.concat(res.data.content);
+            src.first = res.data.first;
+            src.last = res.data.last;
+            src.number = res.data.number;
+            return src;
+        };
+
 
 
     return service;
