@@ -4,6 +4,7 @@
 </ce-page-header>
 
 <div class="ce-tag-list">
+    <div class="tag-data-empty" ng-if="jsonData.totalElements == 0">目前没有数据 >_< </div>
     <div class="tags" ng-repeat="tag in jsonData.content" ng-click="onEditClick(tag)">
         <div class="name" ng-bind="tag.name"></div>
         <div class="del" ng-click="onDeleteClick(tag)">
