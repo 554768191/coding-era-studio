@@ -144,7 +144,7 @@ angular.module('core')
                     //父指令 <- ceDataToolbar 获取值「 statusKey 」
                     scope.statusKey = tbCtrl.statusKey;
                 }
-            }
+            };
         }])
     .directive('ceDataCustom',[function(){
         return {
