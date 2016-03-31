@@ -8,7 +8,7 @@ angular.module('case')
     function(Menus) {
 
         var caseMenu = Menus.genMenu({name: '作品',subTitle: '管理作品列表', icon: 'th-large', route: 'caseManage'});
-        caseMenu.setOrder(1);
+        caseMenu.setOrder(2);
 
         //CASE
         //var node_case_list = Menus.genNodeMenus({name: '作品列表', subTitle: '管理作品列表', icon: 'th-list', route: 'caseManage'});
@@ -55,25 +55,10 @@ angular.module('case')
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
                 controller:'tagListCtrl'
             })
-            .state('caseManage.tag.edit', {
+            .state('caseManage.tagEdit', {
                 url: '/tag/edit?:tagId',
                 templateUrl: 'modules/case/views/case.tag.edit.view.html',
                 controller:'tagEditCtrl'
-            })
-            .state('commentManage', {
-                url: '/comment',
-                templateUrl: 'modules/case/views/case.comment.manage.view.html',
-                controller:'commentManageCtrl'
-            })
-            .state('commentManage.edit', {
-                url: '/edit?:commentId',
-                templateUrl: 'modules/case/views/case.comment.edit.view.html',
-                controller:'commentEditCtrl'
-            })
-            .state('commentManage.list', {
-                url: '/list?:status',
-                templateUrl: 'modules/case/views/case.comment.list.view.html',
-                controller:'commentListCtrl'
             });
 
     }

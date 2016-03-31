@@ -3,7 +3,7 @@
 /*
  Comment 编辑页面
  */
-angular.module('case').controller('commentEditCtrl', [
+angular.module('comment').controller('commentEditCtrl', [
     '$scope', '$log', '$state', '$stateParams', 'CommentService', 'ceUtil',
     function ($scope, $log, $state, $stateParams, CommentService, ceUtil) {
 

@@ -2,7 +2,7 @@
  * Created by Yan on 15/12/8.
  */
 'use strict';
-angular.module('case').factory('CommentService', [ '$log','ceAjax',
+angular.module('comment').factory('CommentService', [ '$log','ceAjax',
     function($log,ceAjax) {
 
         var service ={};

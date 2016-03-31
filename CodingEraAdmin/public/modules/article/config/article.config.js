@@ -7,7 +7,7 @@ angular.module('case')
     function(Menus) {
 
         var articleMenu = Menus.genMenu({name: '文章',subTitle:'网站的所有文案管理', icon: 'file',route:'articleManage'});
-        articleMenu.setOrder(0);
+        articleMenu.setOrder(1);
 
 
 

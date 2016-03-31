@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('case').controller('commentManageCtrl', [
+angular.module('comment').controller('commentManageCtrl', [
     '$scope', '$log', '$state',
     function ($scope, $log, $state) {
         if ($state.is('commentManage')) {
