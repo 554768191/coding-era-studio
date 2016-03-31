@@ -72,9 +72,9 @@ $border-color:#DEE5E7;
   position: absolute;
   bottom: 0;
   top: 0;
-  left: 60px;
+  //为什么是 - 6 (母鸡哇,反正刚好...)
+  left: $ce-menu-width - 6;
   z-index: 1;
-  //top: -60px;
 }
 
 .group-ame{
