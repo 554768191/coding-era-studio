@@ -8,7 +8,7 @@ angular.module('core')
         function( $rootScope,$timeout,$log,leanCloud,ceUtil) {
         return {
             restrict: 'E',
-            templateUrl:'modules/core/views/templates/core.ce.h5.upload.template.html',
+            templateUrl:'modules/core/views/templates/core.h5.upload.template.html',
             transclude: true,
             scope:true,
             require: 'ngModel',

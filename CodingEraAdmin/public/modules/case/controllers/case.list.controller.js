@@ -12,8 +12,6 @@ function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
         keyWord:null
     });
 
-
-
     //搜索
     $scope.onSearch = function(){
         CaseService.getCases(searchOptions).success(function(res){

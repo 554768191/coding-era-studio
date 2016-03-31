@@ -29,14 +29,6 @@ ceApp.run([
 	}]);
 
 
-angular.module('ui.grid.i18n').config([
-	'i18nConstants',
-	function(i18nConstants){
-		//设置grid默认为中文
-		i18nConstants.DEFAULT_LANG='zh-cn';
-	}]);
-
-
 
 angular.element(document).ready(function() {
 	//Fixing facebook bug with redirect

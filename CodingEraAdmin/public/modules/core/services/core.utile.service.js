@@ -109,8 +109,8 @@ angular.module('core')
                     size: ceConfig.size,//每页大小
                     sort: null
             };
-            angular.extend(options,options);
-            return options;
+            angular.extend(option,options);
+            return option;
         };
 
 

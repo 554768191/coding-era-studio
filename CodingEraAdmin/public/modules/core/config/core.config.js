@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('core').run(['ContentHead',
-    function(ContentHead) {
-        ContentHead.setTitle('Dashboard');
+angular.module('core').run([
+    function() {
+        //ContentHead.setTitle('Dashboard');
     }
 ]);

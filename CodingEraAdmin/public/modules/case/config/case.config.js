@@ -7,20 +7,20 @@ angular.module('case')
     .run(['Menus',
     function(Menus) {
 
-        var caseMenu = Menus.genParentMenus({name: '作品', icon: 'th-large'});
+        var caseMenu = Menus.genMenu({name: '作品',subTitle: '管理作品列表', icon: 'th-large', route: 'caseManage'});
         caseMenu.setOrder(1);
 
         //CASE
-        var node_case_list = Menus.genNodeMenus({name: '作品列表', subTitle: '管理作品列表', icon: 'th-list', route: 'caseManage'});
-        caseMenu.addNodeMenus(node_case_list);
+        //var node_case_list = Menus.genNodeMenus({name: '作品列表', subTitle: '管理作品列表', icon: 'th-list', route: 'caseManage'});
+        //caseMenu.addNodeMenus(node_case_list);
 
         //TAG
-        var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagManage'});
-        caseMenu.addNodeMenus(node_tag_list);
+        //var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagManage'});
+        //caseMenu.addNodeMenus(node_tag_list);
 
         //COMMENT
-        var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentManage'});
-        caseMenu.addNodeMenus(node_comment_list);
+        //var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentManage'});
+        //caseMenu.addNodeMenus(node_comment_list);
 
         Menus.addMenus(caseMenu.getMenus());
     }
@@ -45,18 +45,18 @@ angular.module('case')
                 templateUrl: 'modules/case/views/case.publish.view.html',
                 controller:'casePublishCtrl'
             })
-            .state('tagManage', {
-                url: '/tag',
-                templateUrl: 'modules/case/views/case.tag.manage.view.html',
-                controller:'tagManageCtrl'
-            })
-            .state('tagManage.list', {
-                url: '/list?:status',
+            //.state('tagManage', {
+            //    url: '/tag',
+            //    templateUrl: 'modules/case/views/case.tag.manage.view.html',
+            //    controller:'tagManageCtrl'
+            //})
+            .state('caseManage.tagList', {
+                url: '/tag/list?:status',
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
                 controller:'tagListCtrl'
             })
-            .state('tagManage.edit', {
-                url: '/edit?:tagId',
+            .state('caseManage.tag.edit', {
+                url: '/tag/edit?:tagId',
                 templateUrl: 'modules/case/views/case.tag.edit.view.html',
                 controller:'tagEditCtrl'
             })

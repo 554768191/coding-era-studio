@@ -6,7 +6,7 @@ angular.module('case')
     .run(['Menus',
     function(Menus) {
 
-        var articleMenu = Menus.genParentMenus({name: '文章',subTitle:'网站的所有文案管理', icon: 'file',route:'articleManage'});
+        var articleMenu = Menus.genMenu({name: '文章',subTitle:'网站的所有文案管理', icon: 'file',route:'articleManage'});
         articleMenu.setOrder(0);
 
 

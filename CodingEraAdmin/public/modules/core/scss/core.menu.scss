@@ -5,6 +5,9 @@
 /**
  * 	菜单样式
  */
+.ce-slide-menu{
+  width:$ce-menu-width;
+}
 
 .ce-content {
     .ce-menu {
@@ -17,97 +20,30 @@
       $hover-color: #32374B;
       z-index: 1;
       overflow-y: hidden;
+      overflow-x: auto;
       @include ce-user-select(none);
-      ul.parent li {
+      a {
         display: block;
-        position: relative;
-        &.pactive, &:hover {
-          background: $hover-color;
+        font-size: $ce-font-size;
+        text-align: center;
+        color: #B4B6BD;
+        padding:14px 0;
+        &:hover{
           color: #fff;
-          a.parent-a {
-            border-left: 4px solid $ce-color;
-
-          }
         }
-        a {
+        &.active {
+          background: $hover-color;
+          color: $ce-color;
+        }
+        .glyphicon{
+          $icon-size:18px;
           display: block;
-          font-size: $ce-font-size;
-          line-height: 20px;
-          padding: 11px 14px;
-          color: #B4B6BD;
-          border-left: 4px solid $ce-dark-color;
-
-        }
-
-        ul.node {
-          background: $ce-dark-color;
-          overflow: hidden;
-          //display:none;
-          li {
-
-            &:hover {
-              background: $hover-color;
-              a {
-                border-left: 4px solid $hover-color;
-              }
-            }
-          }
-          a {
-            padding: 11px 14px 11px 30px;
-            &.active {
-              color: #fff;
-              background: $hover-color;
-              border-left: 4px solid $hover-color;
-            }
-
-          }
-          &.ng-hide-add {
-            @include ce-animation(0.2s slideUp);
-
-          }
-          &.ng-hide-remove {
-            @include ce-animation(0.2s slideDown);
-
-          }
-          @keyframes slideUp {
-            0% {
-              @include ce-transform(translate3d(0, 0, 0));
-            }
-            100% {
-              @include ce-transform(translate3d(-239px, 0, 0));
-
-            }
-          }
-
-          @-webkit-keyframes slideUp {
-            from {
-              @include ce-transform(translate3d(0, 0, 0));
-            }
-            to {
-              @include ce-transform(translate3d(-239px, 0, 0));
-
-            }
-          }
-
-          @keyframes slideDown {
-            0% {
-              @include ce-transform(translate3d(-239px, 0, 0));
-            }
-            100% {
-              @include ce-transform(translate3d(0, 0, 0));
-            }
-          }
-
-          @-webkit-keyframes slideDown {
-            from {
-              @include ce-animation(translate3d(-239px, 0, 0));
-            }
-            to {
-              @include ce-animation(translate3d(0, 0, 0));
-            }
-          }
-
+          font-size: $icon-size;
+          width:$icon-size;
+          height:$icon-size;
+          margin:0 auto 8px auto;
         }
       }
+
     }
   }

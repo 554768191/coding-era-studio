@@ -50,7 +50,7 @@ angular.module('core')
                 scope:true,
                 transclude: true,
                 template:['<div class="row ce-panel">',
-                                '<div class="col-sm-3 " ng-transclude>',
+                                '<div class="col-sm-3 " style="z-index: 2" ng-transclude>',
                                 '</div>',
                                 '<div class="ce-panel-line col-sm-3 hidden-xs"></div>',
                                 '<div class="col-sm-9">',
@@ -86,7 +86,7 @@ angular.module('core')
             var self={
                 restrict:'E',
                 replace: true,
-                template:'<div class="line"></div>',
+                template:'<div class="line" ></div>',
                 link: function(scope, ele) {
 
                 }
@@ -98,7 +98,8 @@ angular.module('core')
             var self={
                 restrict:'E',
                 replace: true,
-                template:'<div class="groupName"></div>',
+                transclude: true,
+                template:'<div class="group-ame" ng-transclude></div>',
                 link: function(scope, ele) {
 
                 }

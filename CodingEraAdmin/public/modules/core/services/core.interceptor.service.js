@@ -4,8 +4,8 @@
 "use strict";
 
 angular.module('core').factory('ceInterceptor', [
-    '$rootScope', '$q', '$injector','LoadingBar', 'Authentication',
-    function($rootScope,$q, $injector,LoadingBar,Authentication) {
+    '$rootScope', '$q', '$injector', 'Authentication',
+    function($rootScope,$q, $injector,Authentication) {
     var httpInterceptor = {
         'responseError' : function(response) {
             //GeekUtil.closeLoading();

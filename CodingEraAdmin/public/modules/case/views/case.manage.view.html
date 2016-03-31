@@ -6,6 +6,12 @@
         <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'PUBLISHED'})" ce-icon="glyphicon-th-list" ce-title="已发布"></ce-page-btn>
         <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'SKETCH'})" ce-icon="glyphicon-list-alt" ce-title="草稿"></ce-page-btn>
         <ce-page-btn ce-style="menu" ui-sref="caseManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
+        <ce-group-line></ce-group-line>
+
+        <ce-group-name>标签</ce-group-name>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.tagList({'status':'INIT'})" ce-icon="glyphicon-th-list" ce-title="在用"></ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.tagList({'status':'SKETCH'})" ce-icon="glyphicon-list-alt" ce-title="草稿"></ce-page-btn>
+        <ce-page-btn ce-style="menu" ui-sref="caseManage.tagList({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
     </ce-page-menu>
 </ce-page-manager>
 
