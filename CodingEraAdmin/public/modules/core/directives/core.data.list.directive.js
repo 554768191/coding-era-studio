@@ -8,11 +8,12 @@ angular.module('core')
         function() {
             var self={
                 restrict:'E',
+                //require:['^ngRepeat'],
                 scope:{
                     ceData:'=',
                     pagePreviousClick: '&',
                     pageNextClick: '&',
-                    smallSize:'@'
+                    smallSize:'@',
                 },
                 priority:100,
                 replace: true,
@@ -66,19 +67,15 @@ angular.module('core')
 
 
                 }],
+                link:function(scope,el,attr,ngRepeatCtrl){
+                    console.log('ceDataList.scope:',scope);
+                },
                 template:['<div class="ce-data-list" >',
-                                '<div ng-transclude></div>',
+
                                 '<div class="ce-data-data-empty" ng-if="ceData.totalElements == 0">目前没有数据 >_< </div>',
                                 '<div class="row data-row-container" >',
                                     '<div class="col-xs-12"  ng-class="{\'col-sm-12\':!smallSize,\'col-sm-6\':smallSize}" ng-repeat="item in ceData.content">',
-                                        '<div class="ce-data-preview" >',
-                                            '<div class="title" ng-bind="item[title]" ng-click="testClick({obj:item})"></div>',
-                                            '<div class="subtitle"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item[subtitle]  | date:\'yyyy-MM-dd\'}}</div>',
-                                            '<div class="ce-data-toolbar" ng-if="showToolBar(toolbars,item)">',
-                                                '<a ng-if="toolbar.statusEquals.indexOf(item[statusKey])>0" class="toolbar-btn" ng-class="{del:toolbar.icon==\'glyphicon-trash\'}" ng-repeat="toolbar in toolbars" ng-click="toolbar.eventHandler({obj:item})" title="{{toolbar.title}}" >',
-                                                    '<span class="glyphicon {{toolbar.icon}}" aria-hidden="true"></span> {{toolbar.title}}',
-                                                '</a>',
-                                            '</div>',
+                                        '<div class="ce-data-preview" ce-index="$index" ng-model="item" ng-transclude>',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -93,53 +90,74 @@ angular.module('core')
             };
         return self;
     }])
-    .directive('ceData', [
-        function() {
-            var self={
-                restrict:'E',
-                replace: true,
-                require: '^ceDataList',
-                scope:{
-                    title:'@',
-                    subtitle:'@'
-                },
-                link: function(scope, ele,attr,ceDataList) {
-                    ceDataList.addData(scope);
-
-                }
-            };
-            return self;
-        }])
     .directive('ceDataToolbar', [
         function() {
-            var self={
+            return {
                 restrict:'E',
                 replace: true,
-                require: '^ceDataList',
+                transclude: true,
                 scope:{
                     statusKey:'@'
                 },
-                link: function(scope, ele,attr,ceDataList) {
-                    ceDataList.setStatus(scope);
+                controller:['$scope',function($scope){
+                    /**
+                     * 不明白为什么是两个$parent.$parent才找到「 item 」
+                     * (可能是因为使用了ngRepeat)
+                     */
 
+                     // 传值「 item 」到子指令 -> ceDataToolbarBtn
+                    this.item =  $scope.$parent.$parent.item;
+
+                    // 传值「 statusKey 」到子指令 -> ceDataToolbarBtn
+                    this.statusKey = $scope.statusKey;
+                }],
+                template:'<div class="ce-data-toolbar" ng-model="item" ng-transclude></div>',
+                link: function(scope, ele,attr,selfCtrl) {
+                    // seflCtrl = 上面的 controller
+                    // 获取自己的 Controller 中传入的值
+                    scope.item = selfCtrl.item;
                 }
             };
-            return self;
         }])
     .directive('ceDataToolbarBtn', [
         function() {
-            var self={
-                restrict:'EA',
-                require: '^ceDataList',
+            return {
+                restrict:'E',
+                require: '^ceDataToolbar',
+                replace: true,
                 scope: {
-                    eventHandler: '&ngClick',
+                    eventHandler: '&ceClick',
                     title:'@',
                     icon:'@',
                     statusEquals:'@'
                 },
-                link:function($scope,tElm,tAttrs,ceDataList) {
-                    ceDataList.addToolBar($scope);
+                template:[
+                    '<div class="toolbar-btn">',
+                        '<a ng-if="statusEquals.indexOf(item[statusKey])>0"  ng-class="{del:icon==\'glyphicon-trash\'}"  ng-click="eventHandler({obj:item})" title="{{title}}" >',
+                            '<span class="glyphicon {{icon}}" aria-hidden="true"></span> {{title}}',
+                        '</a>',
+                    '</div>',
+                ].join(''),
+                link:function(scope,tElm,tAttrs,tbCtrl) {
+                    //父指令 <- ceDataToolbar 获取值「 item 」
+                    scope.item = tbCtrl.item;
+                    //父指令 <- ceDataToolbar 获取值「 statusKey 」
+                    scope.statusKey = tbCtrl.statusKey;
                 }
-            };
-            return self;
-        }]);
+            }
+        }])
+    .directive('ceDataCustom',[function(){
+        return {
+            restrict:'E',
+            transclude: true,
+            replace: true,
+            scope:false,
+            controller:['$scope',function($scope){
+                // 获取父指令的「item」
+                $scope.item =  $scope.$parent.item;
+            }],
+            template:'<div class="ce-data-custom" ng-transclude></div>',
+        };
+
+    }])
+    ;

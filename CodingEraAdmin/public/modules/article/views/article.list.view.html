@@ -4,14 +4,12 @@
     <ce-search-bar ce-placeholder="搜索文章..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
 </ce-page-header>
 
-<!-- 传入 CoadingEraService 返回的 Json (Spring -> ActionResult For Page<Model>) -->
 <ce-data-list ce-data="articleData" page-previous-click="previousPage()" page-next-click="nextPage()" >
-    <ce-data title="title"></ce-data>
-    <ce-data subtitle="createTime"></ce-data><!-- subtitle 暂时先写死日期吧 -->
-    <!-- 1. 工具条根据什么状态显示,status-key 是可配字段 -->
-    <!-- 2. status-key in ( status-equals ) 工具条上的按钮将会显示「 此参数可选 」 -->
+    <ce-data-custom>
+        <h4 ng-bind="item.title"></h4>
+        <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createTime  | date:'yyyy-MM-dd'}}</small>
+    </ce-data-custom>
     <ce-data-toolbar status-key="status" >
-        <!-- ngClick ( onEditClick 是你 controller 中的方法名)参数 obj 必须这样写,指令会把正行对象传回去 -->
         <ce-data-toolbar-btn icon="glyphicon-eye-open" title="预览" ng-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
         <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
         <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'PUBLISHED,SKETCH'"></ce-data-toolbar-btn>
