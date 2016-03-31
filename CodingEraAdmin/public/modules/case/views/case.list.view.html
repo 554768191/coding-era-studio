@@ -4,7 +4,7 @@
 </ce-page-header>
 
 <!-- 传入 CoadingEraService 返回的 Json (Spring -> ActionResult For Page<Model>) -->
-<ce-data-list ce-data="caseData" page-previous-click="previousPage()" page-next-click="nextPage()" >
+<ce-data-list ce-data="caseData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >
     <ce-data title="title"></ce-data>
     <ce-data subtitle="createTime"></ce-data><!-- subtitle 暂时先写死日期吧 -->
     <!-- 1. 工具条根据什么状态显示,status-key 是可配字段 -->

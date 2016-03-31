@@ -11,6 +11,9 @@
   }
   $data-border-color:#DEE5E7;
   $data-list-padding:15px;
+  .data-row-container{
+    padding-left:15px;
+  }
   .ce-data-preview{
     background: #fff;
     margin-bottom:10px;
@@ -18,21 +21,16 @@
     box-shadow: 0 0 0 1px rgba(234, 239, 240, 0.5);
     position: relative;
     padding: $data-list-padding $data-list-padding;
+    margin-left: -15px;
     &:hover{
       background: #FAFAFA;
-      //border-radius: 4px;
-      .ce-data-toolbar{
-        //display: block;
-      }
     }
     .title{
-      //height:$detail-height * 0.5;
       line-height: $detail-height * 0.5;
       font-size: 130%;
       color:#666;
     }
     .subtitle{
-      //height:$detail-height * 0.5;
       line-height: $detail-height * 0.5;
       color:#888;
       font-size: 90%;

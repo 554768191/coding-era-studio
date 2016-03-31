@@ -6,11 +6,14 @@
 <div class="ce-head-container container-fluid">
 	<div class="row">
 		<div class="ce-side-head col-sm-1">
-			<div class="ce-logo " >
+			<div class="ce-logo " tooltip-placement="right"  uib-tooltip-template="'logoText.html'">
 				<div class="animated" ng-class="{tada:onAnimated,swing:!onAnimated}" ng-click="onAnimated=!onAnimated">
 				<img   src="/modules/core/img/logo_64X64_transparent.png">
 				</div>
 			</div>
+			<script type="text/ng-template" id="logoText.html">
+				<div class="logo-tip">Coding Era Admin</div>
+			</script>
 		</div>
 
 		<div class="container-fluid">
