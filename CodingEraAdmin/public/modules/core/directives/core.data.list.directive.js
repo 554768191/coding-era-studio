@@ -95,7 +95,7 @@ angular.module('core')
                     // 父指令 <- ceDataToolbar 获取值「 item 」
                     scope.item = tbCtrl.item;
                     // 根据状态判断该按钮是否显示
-                    scope.showBtn = scope.statusEquals.indexOf(tbCtrl.item[tbCtrl.statusKey])>0
+                    scope.showBtn = scope.statusEquals.indexOf(tbCtrl.item[tbCtrl.statusKey])>0;
                     if(scope.showBtn){
                         // 显示工具栏逻辑
                         tbCtrl.countItemBtn();
