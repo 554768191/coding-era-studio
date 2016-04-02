@@ -22,9 +22,7 @@ public class ArticleServiceImpl implements ArticleService {
 	
 	@Override
 	public Article save(Article article) {
-		if(article.getCreateTime() == null){
-			article.setCreateTime(new Date());
-		}
+		
 		if(article.getStatus() == null){
 			//如果为空,默认草稿
 			article.setStatus(Article.Status.SKETCH);

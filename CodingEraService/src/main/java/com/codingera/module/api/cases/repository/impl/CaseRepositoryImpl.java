@@ -25,7 +25,7 @@ public class CaseRepositoryImpl implements CaseRepositoryCustom {
 		JpaCriteria s = new JpaCriteria("Case c");
 		s.add(new OrCriterion(CriterionUtils.contains("c.title", criteria.getKeyWord(), true)));
 		s.add(CriterionUtils.equals("c.status", criteria.getStatus(), false));
-		s.setSortBy("c.createTime desc");
+		s.setSortBy("c.createdTime desc");
 		return JpaQueryUtils.query(em, s, pg);
 	}
 

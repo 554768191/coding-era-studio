@@ -23,9 +23,6 @@ public class CaseServiceImpl implements CaseService {
 	
 	@Override
 	public Case save(Case ceCase) {
-		if(ceCase.getCreateTime() == null){
-			ceCase.setCreateTime(new Date());
-		}
 		if(ceCase.getStatus() == null){
 			//如果为空,默认草稿
 			ceCase.setStatus(Case.Status.SKETCH);

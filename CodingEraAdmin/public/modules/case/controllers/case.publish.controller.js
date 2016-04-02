@@ -1,43 +1,45 @@
 'use strict';
 
-angular.module('case').controller('casePublishCtrl',['$scope','$log','$state','$stateParams','CaseService', 'ceUtil','TagService','$resource',
-function ($scope, $log,$state,$stateParams,CaseService,ceUtil,TagService,$resource){
+angular.module('case').controller('casePublishCtrl',[
+    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil','TagService','$resource',
+    function ($scope, $log,$state,$stateParams,CaseService,ceUtil,TagService,$resource){
 
 
-    $scope.case = {};
+        $scope.case = {};
 
-    if(!angular.isUndefined($stateParams.caseId)){
-        $scope.case = CaseService.getCaseById($stateParams.caseId);
-    }
+        if(!angular.isUndefined($stateParams.caseId)){
+            $scope.case = CaseService.getCaseById($stateParams.caseId);
+        }
 
-    //发布&保存
-    $scope.onPublishClick = function(status){
-        $scope.case.status = status;
-        CaseService.saveCase($scope.case).success(function(res){
-            ceUtil.toast('发布成功');
-            $state.go('caseManage.list',{status:status});
-        });
-    };
-
-    //录入新标签事件
-    $scope.tagTransform = function (str){
-        return {
-            id:null,
-            name:str
+        //发布&保存
+        $scope.onPublishClick = function(status){
+            $scope.case.status = status;
+            CaseService.saveCase($scope.case).success(function(res){
+                ceUtil.toast('发布成功');
+                $state.go('caseManage.list',{status:status});
+            });
         };
-    };
 
-    //获取所有标签
-    function getTageList(){
-        TagService.getAllTags().success(function(res){
-            $scope.itemArray = res.data;
-        });
+        //录入新标签事件
+        $scope.tagTransform = function (str){
+            return {
+                id:null,
+                name:str
+            };
+        };
+
+        //获取所有标签
+        function getTageList(){
+            TagService.getAllTags().success(function(res){
+                $scope.itemArray = res.data;
+            });
+        }
+        getTageList();
+        $scope.itemArray = [];
+
+
+
+
     }
-    getTageList();
-    $scope.itemArray = [];
-
-
-
-           
-}]);
+]);
 

@@ -48,7 +48,6 @@ public class Case extends IdEntity {
 
 	private String bannerUrl;
 
-	private Date createTime;
 
 	private Status status;
 
@@ -85,13 +84,6 @@ public class Case extends IdEntity {
 		this.content = content;
 	}
 
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
 
 	@Enumerated(EnumType.STRING)
 	public Status getStatus() {

@@ -1,0 +1,16 @@
+<ce-page-header>
+    <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
+</ce-page-header>
+
+<ce-data-list ce-data="jsonData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >
+    <ce-data-custom>
+        <h4 ng-bind="item.content"></h4>
+        <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createdTime  | date:'yyyy-MM-dd'}}</small>
+    </ce-data-custom>
+    <ce-data-toolbar status-key="status" >
+        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
+        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'WAITING,SKETCH'"></ce-data-toolbar-btn>
+    </ce-data-toolbar>
+</ce-data-list>
+
+

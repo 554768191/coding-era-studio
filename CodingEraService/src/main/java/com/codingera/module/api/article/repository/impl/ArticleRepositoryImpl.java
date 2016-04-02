@@ -25,7 +25,7 @@ public class ArticleRepositoryImpl implements ArticleRepositoryCustom {
 		JpaCriteria s = new JpaCriteria("Article a");
 		s.add(new OrCriterion(CriterionUtils.contains("a.title", criteria.getKeyWord(), true)));
 		s.add(CriterionUtils.equals("a.status", criteria.getStatus(), false));
-		s.setSortBy("a.createTime desc");
+		s.setSortBy("a.createdTime desc");
 		return JpaQueryUtils.query(em, s, pg);
 	}
 

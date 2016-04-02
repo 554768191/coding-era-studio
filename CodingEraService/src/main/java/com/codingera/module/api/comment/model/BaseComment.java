@@ -47,9 +47,9 @@ public abstract class BaseComment extends NewIdEntity {
 	@Column(name = "USER_ID")
 	private Long userId;
 
-	// 评论时间
-	@Column(name = "CREATED_TIME")
-	private Date createdTime;
+//	// 评论时间
+//	@Column(name = "CREATED_TIME")
+//	private Date createdTime;
 
 	// 父ID root:0 child:commentId
 	@Column(name = "PARENT_ID")
@@ -104,13 +104,13 @@ public abstract class BaseComment extends NewIdEntity {
 		this.parentId = parentId;
 	}
 
-	public Date getCreatedTime() {
-		return createdTime;
-	}
-
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
-	}
+//	public Date getCreatedTime() {
+//		return createdTime;
+//	}
+//
+//	public void setCreatedTime(Date createdTime) {
+//		this.createdTime = createdTime;
+//	}
 
 	public Status getStatus() {
 		return status;
