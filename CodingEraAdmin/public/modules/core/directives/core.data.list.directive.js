@@ -6,9 +6,8 @@
 angular.module('core')
     .directive('ceDataList', [
         function() {
-            var self={
+            return {
                 restrict:'E',
-                //require:['^ngRepeat'],
                 scope:{
                     ceData:'=',
                     pagePreviousClick: '&',
@@ -18,58 +17,6 @@ angular.module('core')
                 priority:100,
                 replace: true,
                 transclude: true,
-                controller:['$scope',function($scope){
-
-                    $scope.toolbars = [];
-
-                    this.addData = function(data){
-                        if(!angular.isUndefined(data.title)){
-                            $scope.title = data.title;
-                        }
-                        if(!angular.isUndefined(data.subtitle)){
-                            $scope.subtitle = data.subtitle;
-                        }
-                    };
-
-                    //设置Toolbar
-                    this.addToolBar = function(data){
-                        var toobar = {
-                            icon:data.icon,
-                            eventHandler:data.eventHandler,
-                            title:data.title,
-                            statusEquals:data.statusEquals
-                        };
-                        $scope.toolbars.push(toobar);
-                    };
-
-
-
-                    //设置状态key
-                    this.setStatus = function (data){
-                        if(!angular.isUndefined(data.statusKey)){
-                            $scope.statusKey = data.statusKey;
-                        }
-                    };
-
-                    $scope.showToolBar = function (toolbars,data){
-                        var i = 0;
-                        angular.forEach(toolbars,function(value){
-
-                            if(value.statusEquals.indexOf(data[$scope.statusKey]) > 0){
-                                i++;
-                            }
-                        });
-                        if(i>0){
-                            return true;
-                        }
-                        return false;
-                    };
-
-
-                }],
-                link:function(scope,el,attr,ngRepeatCtrl){
-                    console.log('ceDataList.scope:',scope);
-                },
                 template:['<div class="ce-data-list" >',
 
                                 '<div class="ce-data-data-empty" ng-if="ceData.totalElements == 0">目前没有数据 >_< </div>',
@@ -88,7 +35,6 @@ angular.module('core')
                             '</div>',
                         ].join('')
             };
-        return self;
     }])
     .directive('ceDataToolbar', [
         function() {
@@ -110,8 +56,14 @@ angular.module('core')
 
                     // 传值「 statusKey 」到子指令 -> ceDataToolbarBtn
                     this.statusKey = $scope.statusKey;
+
+                    // 显示工具栏逻辑
+                    $scope.itemBtnCount = 0;
+                    this.countItemBtn = function (){
+                        $scope.itemBtnCount ++;
+                    };
                 }],
-                template:'<div class="ce-data-toolbar" ng-model="item" ng-transclude></div>',
+                template:'<div ng-class="{\'show-btn\':itemBtnCount>0}"  class="ce-data-toolbar" ng-transclude></div>',
                 link: function(scope, ele,attr,selfCtrl) {
                     // seflCtrl = 上面的 controller
                     // 获取自己的 Controller 中传入的值
@@ -133,16 +85,21 @@ angular.module('core')
                 },
                 template:[
                     '<div class="toolbar-btn">',
-                        '<a ng-if="statusEquals.indexOf(item[statusKey])>0"  ng-class="{del:icon==\'glyphicon-trash\'}"  ng-click="eventHandler({obj:item})" title="{{title}}" >',
+                        '<a ng-if="showBtn"  ng-class="{del:icon==\'glyphicon-trash\'}"  ng-click="eventHandler({obj:item})" title="{{title}}" >',
                             '<span class="glyphicon {{icon}}" aria-hidden="true"></span> {{title}}',
                         '</a>',
                     '</div>',
                 ].join(''),
                 link:function(scope,tElm,tAttrs,tbCtrl) {
-                    //父指令 <- ceDataToolbar 获取值「 item 」
+
+                    // 父指令 <- ceDataToolbar 获取值「 item 」
                     scope.item = tbCtrl.item;
-                    //父指令 <- ceDataToolbar 获取值「 statusKey 」
-                    scope.statusKey = tbCtrl.statusKey;
+                    // 根据状态判断该按钮是否显示
+                    scope.showBtn = scope.statusEquals.indexOf(tbCtrl.item[tbCtrl.statusKey])>0
+                    if(scope.showBtn){
+                        // 显示工具栏逻辑
+                        tbCtrl.countItemBtn();
+                    }
                 }
             };
         }])
@@ -153,7 +110,7 @@ angular.module('core')
             replace: true,
             scope:false,
             controller:['$scope',function($scope){
-                // 获取父指令的「item」
+                // 获取父指令的「 item 」
                 $scope.item =  $scope.$parent.item;
             }],
             template:'<div class="ce-data-custom" ng-transclude></div>',
