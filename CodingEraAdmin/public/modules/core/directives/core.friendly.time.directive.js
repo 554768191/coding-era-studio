@@ -10,7 +10,7 @@ angular.module('core').directive("ceFriendlyTime", ["$timeout", function ($timeo
         MIN_FORMAT = "分钟前",
         TODAY_FORMAT = "今天 HH:mm",
         YESTERDAY_FORMAT = "昨天 HH:mm",
-        DATE_FORMAT = "天前 HH:mm",
+        DATE_FORMAT = "DD日 HH:mm",
         YEAR_FORMAT = "MM-DD HH:mm",
         ALL_FORMAT = "YYYY-MM-DD HH:mm";
 
@@ -83,7 +83,7 @@ angular.module('core').directive("ceFriendlyTime", ["$timeout", function ($timeo
                     if (duration_day === 1) { // 昨天
                         formatStr = prossTime.format(YESTERDAY_FORMAT);
                     } else { // 日期
-                        formatStr = duration_day + prossTime.format(DATE_FORMAT);
+                        formatStr = prossTime.format(DATE_FORMAT);
                     }
                 }
             } else {
