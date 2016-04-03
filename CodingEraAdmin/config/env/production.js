@@ -39,7 +39,8 @@ module.exports = {
 				'public/components/marked/marked.min.js',
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
-				'public/components/ui-select/dist/select.min.js'
+				'public/components/ui-select/dist/select.min.js',
+				'public/components/moment/min/moment.min.js'
 			]
 		},
 		css: ['public/dist/css/all.min.css'],

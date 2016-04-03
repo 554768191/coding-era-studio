@@ -1,35 +1,21 @@
 <div class="modal-header">
-    <h3 class="modal-title">编辑</h3>
+    <h3 class="modal-title">发布动态</h3>
 </div>
 <div class="modal-body">
     <div class="form-group">
-        <label>内容</label>
-        <textarea class="form-control" id="type" placeholder="内容" ng-model="comment.content"></textarea>
+        <div class="dynamic-edit-publish-top">
+            <div class="avatar"><img ng-src="{{currentUser.avatar}}" /></div>
+            <div class="name" ng-bind="currentUser.displayName"></div>
+        </div>
     </div>
     <div class="form-group">
-        <label for="name">评论人</label>
-        <input type="text" class="form-control" id="name" placeholder="标题" ng-model="comment.title" ng-disabled="true">
-    </div>
-    <div class="form-group">
-        <label for="name">状态</label>
-        <input type="text" class="form-control" id="status" placeholder="标题" ng-model="comment.status" ng-disabled="true">
-    </div>
-    <div class="form-group">
-        <label for="name">评论时间</label>
-        <input type="text" class="form-control" id="createdTime" placeholder="标题" ng-model="comment.createdTime" ng-disabled="true">
-    </div>
-    <div class="form-group">
-        <label for="name">回复数</label>
-        <input type="text" class="form-control" id="hasChildren" placeholder="标题" ng-model="comment.hasChildren" ng-disabled="true">
-    </div>
-    <div class="form-group">
-        <label for="name">文章</label>
-        <input type="text" class="form-control" id="ceCase" placeholder="标题" ng-model="comment.ceCase" ng-disabled="true">
+        <label>最新动态内容</label>
+        <textarea class="form-control" id="type" placeholder="输入最新动态" ng-model="dynamic.content"></textarea>
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">保存</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">返回</button>
+    <button class="btn btn-info" type="button" ng-click="onPublishClick()">发布</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
 </div>
 
 

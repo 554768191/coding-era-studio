@@ -4,7 +4,8 @@
 "use strict";
 
 angular.module('core')
-    .directive('ceContentHead', ['$window','$timeout','Menus','Authentication',
+    .directive('ceContentHead', [
+        '$window','$timeout','Menus','Authentication',
         function($window,$timeout,Menus,Authentication) {
             var service={
                 restrict:'EA',
@@ -22,7 +23,7 @@ angular.module('core')
                     '你好,{{authentication.user.displayName}}!',
                     '</div>',
                     '<div class="userInfo-avatar">',
-                    '   <img src="/modules/core/img/logo_128X128.png">',
+                    '   <img ng-src="{{authentication.user.avatar}}">',
                     '</div>',
                     '</div>',
                     '</div>',

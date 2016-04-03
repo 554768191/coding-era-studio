@@ -19,7 +19,6 @@ angular.module('comment').controller('commentListCtrl', [
         //搜索
         $scope.onSearch = function(){
             CommentService.getComments(searchOptions).success(function(res){
-                console.log('res',res);
                 $scope.jsonData = res.data;
             });
         };

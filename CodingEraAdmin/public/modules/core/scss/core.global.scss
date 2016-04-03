@@ -108,3 +108,20 @@ code{
   @include ce-box-shadow(inset 0 0 6px rgba(0,0,0,0.3));
   background-color: #3A3F53;
 }
+
+.btn-info{
+  background: $ce-color;
+  border-color: $ce-color;
+  &:hover{
+    background: $ce-color;
+    border-color: $ce-color;
+  }
+  &:focus{
+    background:$ce-color;
+    border-color: $ce-color;
+  }
+  &:active{
+    background-color: $ce-color;
+    border-color: $ce-color;
+  }
+}

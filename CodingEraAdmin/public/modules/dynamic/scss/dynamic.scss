@@ -1,0 +1,182 @@
+@import "../../core/scss/core.env";
+
+
+
+.ce-dynamic-container{
+
+    padding-left:45px;
+    $line-color:$ce-color;
+    $line-size:3px;
+    .dynamic-line-container{
+      margin-top:35px;
+      padding-top:20px;
+      padding-bottom:100px;
+      margin-bottom:50px;
+      border-left:$line-size solid $line-color;
+      position: relative;
+    }
+    .dynamic-publish-container{
+      position: absolute;
+      $publish-border-size:3px;
+      $publish-width:90px;
+      $publish-height:40px;
+      top:$publish-height * -0.5;
+      left:(($publish-width + ($publish-border-size*2)) + $line-size*-0.5 ) * -0.5;
+      a{
+        text-align: center;
+        color:#fff;
+        display: inline-block;
+        background: $line-color;
+        height: $publish-height;
+        width:$publish-width;
+        border:$publish-border-size solid #F4F5F7;
+        line-height: $publish-height - $publish-border-size * 2;
+        font-size:80%;
+        border-radius: 6px;
+        position: relative;
+      }
+
+    }
+
+    .dynamic-more-container{
+      position: absolute;
+      $publish-border-size:3px;
+      $publish-width:90px;
+      $publish-height:40px;
+      bottom:$publish-height * -0.5;
+      left:(($publish-width + ($publish-border-size*2)) + $line-size*-0.5 ) * -0.5;
+      a{
+        text-align: center;
+        color:$ce-color;
+        display: inline-block;
+        background: #fff;
+        height: $publish-height;
+        width:$publish-width;
+        border:$publish-border-size solid #F4F5F7;
+        line-height: $publish-height - $publish-border-size * 2;
+        font-size:80%;
+        border-radius: 6px;
+        position: relative;
+      }
+
+    }
+
+    .dynamic-card{
+
+      $card-background:#fff;
+      $card-border-color:#F4F5F7;
+      $card-margin-left:20px;
+      background: $card-background;
+      border:1px solid #eeeeee;
+      padding:10px;
+      border-radius: 2px;
+      margin-left:$card-margin-left;
+      position: relative;
+      margin-top:50px;
+
+      $triangle-size:12px;
+      .triangle-left-border{
+        $triangle-border-size:$triangle-size + 1;
+        width: 0;
+        height: 0;
+        border-top: $triangle-border-size/2 solid transparent;
+        border-right: $triangle-border-size solid $card-border-color;
+        border-bottom: $triangle-border-size/2 solid transparent;
+        position: absolute;
+        left:$triangle-border-size * -1;
+        top:$triangle-size;
+      }
+      .triangle-left {
+        width: 0;
+        height: 0;
+        border-top: $triangle-size/2 solid transparent;
+        border-right: $triangle-size solid $card-background;
+        border-bottom: $triangle-size/2 solid transparent;
+        position: absolute;
+        left:( $triangle-size - 1 ) * -1;
+        top:$triangle-size;
+      }
+
+      $point-size:18px;
+      $point-border:3px;
+      .point{
+        width:$point-size;
+        height:$point-size;
+        background: $line-color + 10;
+        position: absolute;
+        top:$triangle-size - ($point-size - $triangle-size)/2;
+        left:($card-margin-left + ($point-size + $point-border*2)/2 ) * -1;
+        border:$point-border solid #F4F5F7;
+        border-radius: 100px;
+      }
+
+
+      //卡样式
+      .card-detail{
+        .top{
+          position: relative;
+          .avatar{
+            $avatar-size:50px;
+            width:$avatar-size;
+            height:$avatar-size;
+            img{
+              width:$avatar-size;
+              height:$avatar-size;
+              border-radius: 100%;
+            }
+          }
+          .name{
+            position: absolute;
+            top:0;
+            left:60px;
+            height:25px;
+            line-height: 30px;
+            font-size:110%;
+          }
+          .time{
+            position: absolute;
+            left:60px;
+            top:25px;
+            height:25px;
+            line-height: 25px;
+            color:#888;
+            font-size:80%;
+          }
+        }
+
+        .bottom{
+          .content{
+            margin-top:10px;
+            padding:10px;
+            background: #fff;
+            border-radius: 2px;
+            color:#37393A;
+          }
+
+        }
+      }
+    }
+
+}
+
+.dynamic-edit-publish-top{
+  position: relative;
+  $avatar-size:50px;
+  .avatar{
+    width:$avatar-size;
+    height:$avatar-size;
+    img{
+      width:$avatar-size;
+      height:$avatar-size;
+      border-radius: 100%;
+    }
+  }
+  .name{
+    position: absolute;
+    top:0;
+    left:60px;
+    height:$avatar-size;
+    line-height: $avatar-size;
+    font-size:110%;
+  }
+}

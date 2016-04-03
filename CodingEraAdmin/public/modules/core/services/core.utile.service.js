@@ -4,7 +4,9 @@
 "use strict";
 
 angular.module('core')
-    .factory('ceUtil', ['$rootScope','$templateCache','$uibModal','ceConfig',function($rootScope,$templateCache,$uibModal,ceConfig) {
+    .factory('ceUtil', [
+        '$rootScope','$templateCache','$uibModal','$state','ceConfig',
+        function($rootScope,$templateCache,$uibModal,$state,ceConfig) {
         var service = {};
 
 
@@ -17,14 +19,7 @@ angular.module('core')
 
         };
 
-        //获取分页模板
-        service.getPaginationTemplate = function(){
-            var paginationScope = $rootScope.$new(true);
-            var paginationTemplate = $templateCache.get('cePaginationTemplate');
-           // $compile(paginationTemplate)(paginationScope);
-            return paginationTemplate;
-           // return $templateCache.get('cePaginationTemplate');
-        };
+
 
 
         //模态消息对话框(确认,取消)
@@ -114,6 +109,58 @@ angular.module('core')
         };
 
 
+        /**
+         *
+         * @param
+         * options:{
+         *  route : 「 在 config.js 中配置的路由 」,
+         *  data : 「 传递到该 modal 中 controller 参数 , controller 使用 data 接收 」
+         * }
+         */
+        service.openModal = function (options){
+            var errorPrefix = ' openModal 初始化错误 ';
+            if(angular.isUndefined(options.route)){
+                throw new Error( errorPrefix + ', 缺失 route 参数!');
+            }
+            var stateParameter = $state.get(options.route);
+            var option = {
+                animation:true,
+                controller:stateParameter.controller,
+                templateUrl:stateParameter.templateUrl,
+                resolve: {
+                    data: function () {
+                        return option.data || {};
+                    }
+                }
+            };
+            angular.extend(option,options);
+
+            var modalInstance = $uibModal.open(option);
+
+            var successCallback = null;
+            var cancelCallback = null;
+            var selfService ={};
+            selfService.success = function(callback){
+                successCallback =callback;
+                return selfService;
+            };
+            selfService.cancel = function(callback){
+                cancelCallback =callback;
+                return selfService;
+            };
+
+            modalInstance.result.then(function (res) {
+                if ( successCallback !== null ) {
+                    successCallback(res);
+                }
+            }, function () {
+                if ( cancelCallback !== null ) {
+                    cancelCallback();
+                }
+            });
+
+            return selfService;
+        };
 
     return service;
 } ]);

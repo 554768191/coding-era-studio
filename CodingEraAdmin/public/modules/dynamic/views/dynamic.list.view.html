@@ -2,15 +2,67 @@
     <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
 </ce-page-header>
 
-<ce-data-list ce-data="jsonData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >
-    <ce-data-custom>
-        <h4 ng-bind="item.content"></h4>
-        <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createdTime  | date:'yyyy-MM-dd'}}</small>
-    </ce-data-custom>
-    <ce-data-toolbar status-key="status" >
-        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
-        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'WAITING,SKETCH'"></ce-data-toolbar-btn>
-    </ce-data-toolbar>
-</ce-data-list>
+<div class="ce-dynamic-container">
+
+    <div class="dynamic-line-container">
+
+        <div class="dynamic-publish-container " >
+            <a ng-click="onPublishClick()" >
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                发布动态
+            </a>
+        </div>
+
+
+
+        <div class="dynamic-card" ng-repeat="dynamic in dynamicData.content"><!-- dynamic-card -->
+            <div class="point"></div>
+            <div class="triangle-left-border"></div>
+            <div class="triangle-left"></div>
+            <div class="card-detail">
+                <div class="top">
+                    <div class="avatar">
+                        <img ng-if="dynamic.createdUser.avatar === null" ng-src="/modules/core/img/avatar.png">
+                        <img ng-if="dynamic.createdUser.avatar !== null" ng-src="{{dynamic.createdUser.avatar}}">
+                    </div>
+                    <div class="name" ng-bind="dynamic.createdUser.displayName"></div>
+                    <div class="time" ce-friendly-time="dynamic.createdTime"></div>
+                </div>
+                <div class="bottom">
+                    <div class="content" ng-bind="dynamic.content">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dynamic-card" ng-if="dynamicData.content.length == 0"><!-- dynamic-card -->
+            <div class="point"></div>
+            <div class="triangle-left-border"></div>
+            <div class="triangle-left"></div>
+            <div class="card-detail">
+                <div class="top">
+                    <div class="avatar"><img src="/modules/core/img/logo_128X128.png"></div>
+                    <div class="name">Coding Era</div>
+                    <div class="time">Now...</div>
+                </div>
+                <div class="bottom">
+                    <div class="content">
+                        Coding Era 提示您 , 当前没有动态 , 请点击「 发布动态 」
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dynamic-more-container " >
+            <a ng-click="" >
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                加载更多
+            </a>
+        </div>
+
+    </div>
+
+</div>
 
 

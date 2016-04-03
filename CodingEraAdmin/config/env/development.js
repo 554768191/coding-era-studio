@@ -39,7 +39,8 @@ module.exports = {
 				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
-				'public/components/ui-select/dist/select.js'
+				'public/components/ui-select/dist/select.js',
+				'public/components/moment/min/moment.min.js'
 			]
 		},
 		sass:['public/modules/**/scss/*.scss'],
