@@ -90,7 +90,9 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 		this.password = password;
 	}
 
+	
 	@Override
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}

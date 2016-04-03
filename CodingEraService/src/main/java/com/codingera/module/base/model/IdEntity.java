@@ -8,9 +8,12 @@ package com.codingera.module.base.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -45,22 +48,34 @@ public abstract class IdEntity implements Serializable {
 	
 	private Date createdTime;
 	
-	private String createdUserCode;
+	private User createdUser;
 	
 	private long version;
 	
 	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "created_user_id")
+	public User getCreatedUser() {
+		return createdUser;
+	}
+
+	public void setCreatedUser(User createdUser) {
+		this.createdUser = createdUser;
+	}
+
 	@PrePersist
 	public void prePersist() {
 		if(this.getCreatedTime()== null) {
 			this.setCreatedTime(new Date());
 		}
-		if(this.getCreatedUserCode() == null){
+		if(this.getCreatedUser() == null){
 			User user = CeSecurityUtil.getCurrentUser();
 			if(user != null){
-				this.setCreatedUserCode(user.getUsername());
+				this.setCreatedUser(user);
 			}else{
-				this.setCreatedUserCode("admin");
+				//应该模拟一个admin用户,等佶闪清明回来再决定
+				//this.setCreatedUserCode(null);
 			}
 		}
 		
@@ -70,6 +85,9 @@ public abstract class IdEntity implements Serializable {
 //	public void preUpdate() {
 //		
 //	}
+	
+	
+	
 
 	public Date getCreatedTime() {
 		return createdTime;
@@ -84,15 +102,6 @@ public abstract class IdEntity implements Serializable {
 
 
 
-	public String getCreatedUserCode() {
-		return createdUserCode;
-	}
-
-
-
-	public void setCreatedUserCode(String createdUserCode) {
-		this.createdUserCode = createdUserCode;
-	}
 
 	@Version
 	public long getVersion() {
