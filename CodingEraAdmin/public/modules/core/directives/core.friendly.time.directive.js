@@ -61,16 +61,16 @@ angular.module('core').directive("ceFriendlyTime", ["$timeout", function ($timeo
                             }
                             //10秒刷新一次
                             timer = $timeout(function(){
-                                reset(element, time, timer)
+                                reset(element, time, timer);
                             },10000);
                         } else {
                             // 不是同一分钟,返回多少分钟前
-                            var duration = now_minute - prossTime_minute;
+                            var duration_minute = now_minute - prossTime_minute;
                             //MIN_FORMAT
-                            formatStr = duration + MIN_FORMAT;
+                            formatStr = duration_minute + MIN_FORMAT;
                             //一分钟刷新一次
                             timer = $timeout(function(){
-                                reset(element, time, timer)
+                                reset(element, time, timer);
                             },60000);
                         }
                     } else {
@@ -79,8 +79,8 @@ angular.module('core').directive("ceFriendlyTime", ["$timeout", function ($timeo
                     }
                 } else {
                     // 不是同一天
-                    var duration = now_date - prossTime_date;
-                    if (duration == 1) { // 昨天
+                    var duration_day = now_date - prossTime_date;
+                    if (duration_day === 1) { // 昨天
                         formatStr = prossTime.format(YESTERDAY_FORMAT);
                     } else { // 日期
                         formatStr = prossTime.format(DATE_FORMAT);
