@@ -8,6 +8,9 @@
     $line-color:$ce-color;
     $line-size:3px;
     .dynamic-line-container{
+      &.deleted-status{
+        margin-top:-15px;
+      }
       margin-top:35px;
       padding-top:20px;
       padding-bottom:100px;
@@ -45,7 +48,7 @@
       $publish-height:40px;
       bottom:$publish-height * -0.5;
       left:(($publish-width + ($publish-border-size*2)) + $line-size*-0.5 ) * -0.5;
-      a{
+      .more-btn{
         text-align: center;
         color:$ce-color;
         display: inline-block;
@@ -64,11 +67,12 @@
     .dynamic-card{
 
       $card-background:#fff;
-      $card-border-color:#F4F5F7;
+      $card-border-color:#eeeeee;
       $card-margin-left:20px;
+      $card-padding:15px;
       background: $card-background;
-      border:1px solid #eeeeee;
-      padding:10px;
+      border:1px solid $card-border-color;
+      padding:$card-padding;
       border-radius: 2px;
       margin-left:$card-margin-left;
       position: relative;
@@ -152,6 +156,39 @@
             border-radius: 2px;
             color:#37393A;
           }
+
+        }
+      }
+
+
+      .toolbar-container{
+        @include ce-display-box;
+        $btn-size:40px;
+        height: $btn-size;
+        border-top:1px solid #EAEFF0;
+        margin:$card-padding ($card-padding * -1) ($card-padding * -1) ($card-padding * -1);
+        .toolbar-btn{
+          @include ce-flex(1);
+          border-right:1px solid #EAEFF0;
+          text-align: center;
+
+          width:0;
+          height:$btn-size;
+          line-height: $btn-size;
+          display:block;
+          &:last-child{
+            border-right:0;
+          }
+
+          a{
+            &:hover{
+              color:$ce-color !important;
+            }
+            &.del{
+              color:#FF0000;
+            }
+          }
+
 
         }
       }

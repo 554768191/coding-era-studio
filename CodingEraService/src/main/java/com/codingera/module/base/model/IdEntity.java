@@ -8,6 +8,7 @@ package com.codingera.module.base.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,8 +55,8 @@ public abstract class IdEntity implements Serializable {
 	
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "created_user_id")
+	@ManyToOne(fetch = FetchType.LAZY,cascade = { CascadeType.DETACH,CascadeType.REFRESH })
+	@JoinColumn(name = "created_user_id",updatable=false)
 	public User getCreatedUser() {
 		return createdUser;
 	}

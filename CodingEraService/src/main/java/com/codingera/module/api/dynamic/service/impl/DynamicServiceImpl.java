@@ -50,6 +50,7 @@ public class DynamicServiceImpl implements DynamicService {
 	@Override
 	public Dynamic getById(Long id) {
 		Dynamic ceDynamic = dynamicRepository.findOne(id);
+		//Hibernate.initialize(ceDynamic.getCreatedUser());
 		return ceDynamic;
 	}
 

@@ -5,21 +5,30 @@ angular.module('dynamic').controller('dynamicListCtrl', [
     function ($scope, $log,$state,$stateParams, DynamicService, ceUtil) {
 
         $scope.dynamicData = {};
-
+        $scope.status = $stateParams.status;
 
         var searchOptions = ceUtil.initPageParameter({status:$stateParams.status,keyWord:null});
 
         //搜索
-        $scope.onSearch = function(){
+        $scope.onSearch = function(isLoadMore){
             DynamicService.getDynamics(searchOptions).success(function(res){
-                $scope.dynamicData = res.data;
+                if(angular.isUndefined(isLoadMore)){
+                    $scope.dynamicData = res.data;
+                }else{
+                    //引用工具loadMoreData方法
+                    ceUtil.loadMoreData($scope.dynamicData,res);
+                }
             });
         };
         $scope.onSearch();
 
         //编辑记录
         $scope.onEditClick = function(obj){
-            $state.go('dynamicManage.edit',{dynamicId:obj.id});
+            ceUtil.openModal({route:'dynamicManage.edit',data:{id:obj.id}}).success(function(res){
+                //console.log(res)
+                //重新加载数据
+                $scope.onSearch();
+            });
         };
 
         //删除记录
@@ -42,16 +51,12 @@ angular.module('dynamic').controller('dynamicListCtrl', [
             });
         };
 
-        //上一页
-        $scope.previousPage = function(){
-            searchOptions.page -= 1;
-            $scope.onSearch();
-        };
+
 
         //下一页
-        $scope.nextPage = function(){
+        $scope.onLoadMoreClick = function(){
             searchOptions.page += 1;
-            $scope.onSearch();
+            $scope.onSearch(true);
 
         };
 

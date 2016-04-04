@@ -4,9 +4,9 @@
 
 <div class="ce-dynamic-container">
 
-    <div class="dynamic-line-container">
+    <div class="dynamic-line-container" ng-class="{'deleted-status':status !== 'PUBLISHED'}">
 
-        <div class="dynamic-publish-container " >
+        <div class="dynamic-publish-container " ng-if="status === 'PUBLISHED' " >
             <a ng-click="onPublishClick()" >
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 发布动态
@@ -32,6 +32,14 @@
                     <div class="content" ng-bind="dynamic.content">
                     </div>
                 </div>
+                <div class="toolbar-container" ng-if="status === 'PUBLISHED' ">
+                    <div class="toolbar-btn">
+                        <a  ng-click="onEditClick(dynamic)" title="编辑" class="ng-binding ng-scope"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 编辑</a>
+                    </div>
+                    <div class="toolbar-btn">
+                        <a  ng-click="onDeleteClick(dynamic)" title="删除" class="ng-binding ng-scope"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 删除</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -47,7 +55,12 @@
                 </div>
                 <div class="bottom">
                     <div class="content">
-                        Coding Era 提示您 , 当前没有动态 , 请点击「 发布动态 」
+                        <span ng-if="status === 'PUBLISHED' ">
+                            Coding Era 提示您 , 当前没有动态 , 请点击「 发布动态 」
+                        </span>
+                        <span ng-if="status !== 'PUBLISHED' ">
+                            Coding Era 提示您 , 当前「 回收站 」没有已删除动态
+                        </span>
                     </div>
                 </div>
             </div>
@@ -55,10 +68,13 @@
 
 
         <div class="dynamic-more-container " >
-            <a ng-click="" >
+            <a ng-click="onLoadMoreClick()" class="more-btn" ng-if="!dynamicData.last" >
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                 加载更多
             </a>
+            <span class="more-btn"  ng-if="dynamicData.last" >
+                没有更多了
+            </span>
         </div>
 
     </div>

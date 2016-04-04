@@ -85,7 +85,7 @@ angular.module('core')
                 },
                 template:[
                     '<div class="toolbar-btn">',
-                        '<a ng-if="showBtn"  ng-class="{del:icon==\'glyphicon-trash\'}"  ng-click="eventHandler({obj:item})" title="{{title}}" >',
+                        '<a ng-if="showBtn"   ng-click="eventHandler({obj:item})" title="{{title}}" >',
                             '<span class="glyphicon {{icon}}" aria-hidden="true"></span> {{title}}',
                         '</a>',
                     '</div>',

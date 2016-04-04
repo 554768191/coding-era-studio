@@ -4,13 +4,20 @@
  Dynamic 编辑页面
  */
 angular.module('dynamic').controller('dynamicEditCtrl', [
-    '$scope', '$log','$uibModalInstance','Authentication', 'DynamicService', 'ceUtil',
-    function ($scope, $log,$uibModalInstance,Authentication, DynamicService, ceUtil) {
+    '$scope', '$log','$uibModalInstance','Authentication', 'DynamicService', 'ceUtil','data',
+    function ($scope, $log,$uibModalInstance,Authentication, DynamicService, ceUtil,data) {
+
+        $scope.publishedBtnText = '发布';
 
         $scope.dynamic = {};
         //当前登录用户
         $scope.currentUser = Authentication.user;
 
+        //编辑
+        if(!angular.isUndefined( data.id )){
+            $scope.dynamic = DynamicService.getDynamicById(data.id);
+            $scope.publishedBtnText = '保存';
+        }
 
         //发布&保存
         $scope.onPublishClick = function () {
