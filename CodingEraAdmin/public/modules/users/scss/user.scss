@@ -1,0 +1,15 @@
+@import "../../core/scss/core.env";
+
+
+//头像
+.user-avatar-container{
+  $avatar-size:150px;
+  width: $avatar-size;
+  height: $avatar-size;
+  margin: 15px auto auto auto;
+  img{
+    width:$avatar-size;
+    height:$avatar-size;
+    border-radius: 50%;
+  }
+}

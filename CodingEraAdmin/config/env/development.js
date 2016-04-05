@@ -19,7 +19,8 @@ module.exports = {
 				'public/components/animate.css/animate.css',
 				'public/components/bootstrap-wysiwyg/index.css',
 				'public/components/codemirror/lib/codemirror.css',
-				'public/components/ui-select/dist/select.min.css'
+				'public/components/ui-select/dist/select.min.css',
+				'public/components/ng-img-crop/compile/minified/ng-img-crop.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -36,6 +37,7 @@ module.exports = {
 				'public/components/angular-sanitize/angular-sanitize.min.js',
 				'public/components/google-code-prettify/src/prettify.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
+				'public/components/ng-img-crop/compile/minified/ng-img-crop.js',
 				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
