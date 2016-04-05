@@ -16,7 +16,7 @@ angular.module('case').controller('tagEditCtrl', [
         }
 
         //发布&保存
-        $scope.onPublishClick = function (status) {
+        $scope.onPublishClick = function (status, isValid) {
             $scope.tag.status = status;
             TagService.save($scope.tag).success(function (res) {
                 ceUtil.toast('保存成功');
