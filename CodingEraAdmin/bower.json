@@ -42,7 +42,8 @@
     "codemirror": "^5.12.0",
     "ui-select": "angular-ui-select#^0.16.0",
     "angular-sanitize": "^1.5.2",
-    "moment": "^2.12.0"
+    "moment": "^2.12.0",
+    "ng-img-crop": "ngImgCrop#^0.3.2"
   },
   "resolutions": {
     "angular": "~1.4"

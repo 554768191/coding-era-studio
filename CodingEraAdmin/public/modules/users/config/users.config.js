@@ -26,10 +26,13 @@ angular.module('users').run([
             .state('usersManage.edit', {
                 url: '/edit?:userId',
                 templateUrl: 'modules/users/views/settings/users.profile.view.html',
+                controller:'SettingsController'
             })
+            //个人信息
             .state('usersManage.profile', {
                 url: '/settings/profile',
-                templateUrl: 'modules/users/views/settings/users.profile.view.html'
+                templateUrl: 'modules/users/views/settings/users.profile.view.html',
+                controller:'SettingsController'
             })
             .state('password', {
                 url: '/settings/password',

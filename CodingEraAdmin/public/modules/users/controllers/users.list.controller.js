@@ -27,7 +27,6 @@ angular.module('users').controller('usersListCtrl', [
         //搜索
         $scope.onSearch = function(){
             UserService.getUsers(searchOptions).success(function(res){
-                console.log('res',res);
                 $scope.jsonData = res.data;
             });
         };

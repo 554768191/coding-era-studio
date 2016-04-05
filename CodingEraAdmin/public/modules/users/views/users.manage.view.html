@@ -1,12 +1,15 @@
 
 <ce-page-manager>
     <ce-page-menu>
-        <ce-page-btn ce-style="btn" ui-sref="usersManage.edit({'usersId':null})" ce-title="你的信息"></ce-page-btn>
+        <ce-group-name title="用户信息">
+            <ce-page-btn ce-style="menu" ui-sref="usersManage.edit({'usersId':null})" ce-icon="glyphicon-user" ce-title="我的资料"></ce-page-btn>
+        </ce-group-name>
         <ce-group-line ></ce-group-line>
-
-        <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'PASSED','enabled':'true'})" ce-icon="glyphicon-th-list" ce-title="用户列表"></ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'WAITING','enabled':'false'})" ce-icon="glyphicon-list-alt" ce-title="待审用户"></ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'DELETED','credentialsNonExpired':'false'})" ce-icon="glyphicon-trash" ce-title="黑名单"></ce-page-btn>
+        <ce-group-name title="用户管理">
+            <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'PASSED','enabled':'true'})" ce-icon="glyphicon-th-list" ce-title="用户列表"></ce-page-btn>
+            <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'WAITING','enabled':'false'})" ce-icon="glyphicon-question-sign" ce-title="待审用户"></ce-page-btn>
+            <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'DELETED','credentialsNonExpired':'false'})" ce-icon="glyphicon-remove-sign" ce-title="黑名单"></ce-page-btn>
+        </ce-group-name>
     </ce-page-menu>
 </ce-page-manager>
 
