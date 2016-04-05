@@ -28,7 +28,6 @@ public class TagRepositoryImpl implements TagRepositoryCustom {
 		s.add(new OrCriterion(
 				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
 				CriterionUtils.contains("d.category", criteria.getKeyWord(), true)));
-		s.add(CriterionUtils.equals("d.status", criteria.getStatus(), false));
 		s.setSortBy("d.id desc");
 		return JpaQueryUtils.query(em, s, pg);
 	}

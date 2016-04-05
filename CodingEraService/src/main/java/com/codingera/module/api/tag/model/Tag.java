@@ -22,12 +22,6 @@ public class Tag extends NewIdEntity {
 
 	private static final long serialVersionUID = 2167007833436749963L;
 
-	public enum Status {
-		INIT, 
-		SKETCH, // 草稿
-		DELETED// 删除
-	}
-
 	public Tag() {
 		super();
 	}
@@ -46,9 +40,6 @@ public class Tag extends NewIdEntity {
 	// 热门
 	@Column(name = "HOT")
 	private Integer hot;
-
-	@Enumerated(EnumType.STRING)
-	private Status status;
 
 	@ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
 	// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@caseid")
@@ -84,14 +75,6 @@ public class Tag extends NewIdEntity {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
 }

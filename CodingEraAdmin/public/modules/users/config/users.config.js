@@ -4,8 +4,7 @@
 angular.module('users').run([
     'Menus',
     function (Menus) {
-        var userMenu = Menus.genMenu({name: '系统', icon: 'cog',route: 'usersManage'});
-        //var node_users = Menus.genNodeMenus({name: '所有用户', icon: 'user', });
+        var userMenu = Menus.genMenu({name: '用户', icon: 'user',route: 'usersManage'});
         userMenu.setOrder(99);
         //userMenu.addNodeMenus(node_users);
         Menus.addMenus(userMenu.getMenus());
@@ -80,7 +79,7 @@ angular.module('users').run([
                         console.log('rejection.status', rejection.status);
                         switch (rejection.status) {
                             case -1:
-                                //$window.location.href = '/auth/provider/refreshToken';
+                                $window.location.href = '/auth/provider/refreshToken';
                                 Authentication.user = null;
                                 break;
                             case 401:

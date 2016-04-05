@@ -20,9 +20,13 @@ angular.module('case').controller('tagEditCtrl', [
             $scope.tag.status = status;
             TagService.save($scope.tag).success(function (res) {
                 ceUtil.toast('保存成功');
-                $state.go('tagManage.list', {status: status});
+                $state.go('caseManage.tagList', {status: status});
             });
         };
+
+        $scope.onCancelClick = function () {
+            history.back(-1);
+        }
 
     }]);
 

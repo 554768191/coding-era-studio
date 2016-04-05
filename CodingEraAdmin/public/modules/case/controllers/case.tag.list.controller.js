@@ -40,7 +40,7 @@ angular.module('case').controller('tagListCtrl', [
 
         //编辑记录
         $scope.onEditClick = function (obj) {
-            $state.go('tagManage.edit', {tagId: obj.id});
+            $state.go('caseManage.tagEdit', {tagId: obj.id});
         };
 
         //删除记录
