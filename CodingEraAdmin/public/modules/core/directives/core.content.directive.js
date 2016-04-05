@@ -5,8 +5,8 @@
 
 angular.module('core')
     .directive('ceContentHead', [
-        '$window','$timeout','Menus','Authentication',
-        function($window,$timeout,Menus,Authentication) {
+        '$window','$timeout','Menus','Authentication','cePageManagerService',
+        function($window,$timeout,Menus,Authentication,cePageManagerService) {
             var service={
                 restrict:'EA',
                 template:[
@@ -14,6 +14,8 @@ angular.module('core')
                     '<div class="ce-content-head "  >',
                     '<span class="ce-content-title"  >',
                     '<h1 ng-bind="title"></h1>',
+                    '<h2 ng-bind="title2" ng-if="title2"></h2>',
+                    '<h2 ng-bind="title3" ng-if="title3"></h2>',
                     '</span>',
                     '<span class="ce-content-subtitle"  ng-bind="subTitle" ></span>',
 
@@ -45,9 +47,19 @@ angular.module('core')
                             }
                             //ContentHead.autoRefreshTitle(stateName);
                             var currentMenu = Menus.getMenusByRoute(stateName);
+
                             if(currentMenu){
                                 scope.title = currentMenu.name;
                                 scope.subTitle = currentMenu.subTitle;
+                            }
+
+                            // 子导航
+                            var subNavi = cePageManagerService.getSubNavi();
+                            if( angular.isUndefined(subNavi.parentTitle) ){
+                                scope.title2 = subNavi.title;
+                            }else{
+                                scope.title2 = subNavi.parentTitle;
+                                scope.title3 = subNavi.title;
                             }
                         });
                     });
@@ -63,8 +75,11 @@ angular.module('core')
 
                 scope.onResize = function() {
                     var headHeight = angular.element(document.querySelector('.ce-side-head')).height();
+                    var mHead = angular.element(document.querySelector('.m-navbar-padding'));
+                    var mHeadPaddingHeight = mHead[0].clientHeight;
+
                     var windowHeight = $window.innerHeight;
-                    ele.css({height:windowHeight-headHeight+"px"});
+                    ele.css({height: windowHeight- headHeight - mHeadPaddingHeight +"px"});
                 };
                 scope.onResize();
                 angular.element($window).bind('resize', function() {

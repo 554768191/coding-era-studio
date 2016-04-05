@@ -1,6 +1,38 @@
 @import "core.env";
 
+//移动端样式
+.m-navbar-padding{
+  height: 50px;
+}
+.m-navbar{
+  background: $ce-dark-color;
+  .navbar-brand{
+    color:#EAEBED;
+    padding: 12px 15px;
+    img{
+      width:32px;
+      height:32px;
+      display: inline-block;
+      margin-top:-4px;
+    }
+  }
 
+  .dropdown-menu{
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border:0;
+    border-radius: 0;
+  }
+  .navbar-nav > li > a{
+    color:#EAEBED;
+    &:hover{
+      color:$ce-color;
+    }
+  }
+}
 
 /**
  * 	菜单样式

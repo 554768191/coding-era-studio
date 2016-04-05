@@ -9,20 +9,20 @@ angular.module('core')
 
 
 
-        service.titles = [];
+        service.subNavis = [];
 
-        service.addTitle = function(objs){
-            service.titles.splice(service.titles.length,0,objs);
+        service.addSubNavi = function(objs){
+            service.subNavis.splice(service.subNavis.length,0,objs);
         };
 
-        service.getTitle = function (){
-            var title = '';
-            angular.forEach(service.titles,function(values){
+        service.getSubNavi = function (){
+            var navi = {};
+            angular.forEach(service.subNavis,function(values){
                 var bracketBefore = values.uiSref.indexOf('(');
                 var bracketAfter = values.uiSref.indexOf(')');
                 if(bracketBefore === -1){
                     if($state.is(values.uiSref)){
-                        title = values.title;
+                        navi = values;
                     }
                 }else{
                     var parentUrl = values.uiSref.substring(0,bracketBefore);
@@ -30,38 +30,35 @@ angular.module('core')
                     parameter = parameter.replace(/'/g, '"');
                     parameter = angular.fromJson(parameter);
                     if($state.is(parentUrl,parameter)){
-                        title = values.title;
+                        navi = values;
                     }
                 }
 
             });
 
 
-            return title;
+            return navi;
         };
 
 
         return service;
     }])
     .directive('cePageManager', [
-        function() {
+        '$window',
+        function($window) {
             var self={
                 restrict:'E',
                 scope:true,
                 transclude: true,
                 template:['<div class="row ce-panel">',
-                                '<div class="col-sm-3 hidden-xs" style="z-index: 2" ng-transclude>',
+                                '<div class="col-sm-3 hidden-xs ce-panel-left-container"  ng-transclude>',
                                 '</div>',
-                                '<div class="ce-panel-line col-sm-3 hidden-xs"></div>',
-                                '<div class="col-sm-9">',
+                                //'<div class="ce-panel-line col-sm-3 hidden-xs"></div>',
+                                '<div class="col-sm-9 col-xs-12 ce-panel-right-container">',
                                     '<div class="ce-panel-right" ui-view=""></div>',
                                 '<div>',
                             '</div>',
-                        ].join(''),
-                link: function(scope, ele) {
-
-
-                }
+                        ].join('')
             };
         return self;
     }])
@@ -69,14 +66,9 @@ angular.module('core')
         function() {
             var self={
                 restrict:'E',
-                //scope:true,
                 transclude: true,
                 replace: true,
                 template:'<div class="ce-panel-left" ng-transclude></div>',
-                link: function(scope, ele) {
-
-
-                }
             };
             return self;
         }])
@@ -86,10 +78,7 @@ angular.module('core')
             var self={
                 restrict:'E',
                 replace: true,
-                template:'<div class="line" ></div>',
-                link: function(scope, ele) {
-
-                }
+                template:'<div class="line" ></div>'
             };
             return self;
         }])
@@ -99,10 +88,15 @@ angular.module('core')
                 restrict:'E',
                 replace: true,
                 transclude: true,
-                template:'<div class="group-ame" ng-transclude></div>',
-                link: function(scope, ele) {
-
-                }
+                scope:{
+                    title:'@'
+                },
+                template:[
+                    '<div class="ce-panel-group">',
+                        '<div class="group-name" ng-bind="title"></div>',
+                        '<di class="group-list" ng-transclude></div>',
+                    '</div>'
+                ].join('')
             };
             return self;
         }])
@@ -119,10 +113,19 @@ angular.module('core')
                 },
                 template:function (elem, attr){
                     if(attr.ceStyle==='btn'){
-                        cePageManagerService.addTitle({title:attr.ceTitle,uiSref:attr.uiSref});
+
+                        cePageManagerService.addSubNavi({title:attr.ceTitle,uiSref:attr.uiSref});
                         return '<button  class="btn btn-default ce-panel-left-btn"   ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span>{{ceTitle}}</span></button>';
                     }else if(attr.ceStyle === 'menu'){
-                        cePageManagerService.addTitle({title:attr.ceTitle,uiSref:attr.uiSref});
+                        var naviObject = {
+                            title:attr.ceTitle,
+                            uiSref:attr.uiSref
+                        };
+                        // 添加组标题
+                        if(!angular.isUndefined(elem[0].parentNode)){
+                            naviObject.parentTitle = elem[0].parentNode.title;
+                        }
+                        cePageManagerService.addSubNavi(naviObject);
                         return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}" ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span>{{ceTitle}}</span></a>';
                     }else if(attr.ceStyle === 'search' ){
                         return ['<div class="input-group ce-panel-search">',
@@ -133,13 +136,7 @@ angular.module('core')
                                 '</div>',
                             ].join('');
                     }
-                },
-                compile: function (tElement, tAttrs){
-                    return  function postlink(scope, ele,attr,ngModelCtrl) {
-
-                    };
                 }
-
             };
             return self;
         }])
@@ -148,17 +145,11 @@ angular.module('core')
             restrict: 'E',
             transclude: true,
             scope: {},
-            controller: ['$scope','cePageManagerService', function($scope,cePageManagerService) {
-                $scope.title =cePageManagerService.getTitle();
-            }],
             template: [
             '<div class="row ce-page-header">',
                 '<div class="col-sm-8">',
-                    '<div class="ce-page-header-title">',
-                    '{{title}}',
-                    '</div>',
                 '</div>',
-                '<div class="col-sm-4">',
+                '<div class="col-sm-4 col-xs-12"">',
                     '<div class="ce-page-header-bar" ng-transclude>',
                     '</div>',
                 '</div>',
@@ -168,16 +159,13 @@ angular.module('core')
     })
     .directive('ceSearchBar', function() {
         return {
-            require: '^cePageHeader',
             restrict: 'E',
             transclude: true,
             scope: {
                 cePlaceholder: '@',
                 ceClick:'&'
             },
-            link: function(scope, element, attrs, cePageHeader) {
-                //cePageHeader.setSearchBar(scope);
-            },
+
             template: [
                 '<div class="input-group">',
                     '<input type="text" class="form-control" ng-model="keyWord" placeholder="{{cePlaceholder}}">',

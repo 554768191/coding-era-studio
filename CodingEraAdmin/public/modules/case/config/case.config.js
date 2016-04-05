@@ -7,7 +7,7 @@ angular.module('case')
     .run(['Menus',
     function(Menus) {
 
-        var caseMenu = Menus.genMenu({name: '作品',subTitle: '管理作品列表', icon: 'th-large', route: 'caseManage'});
+        var caseMenu = Menus.genMenu({name: '案例',subTitle: '管理门户展示的作品', icon: 'th-large', route: 'caseManage'});
         caseMenu.setOrder(2);
 
         //CASE

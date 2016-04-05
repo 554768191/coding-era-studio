@@ -2,12 +2,14 @@
 
 
 $border-color:#DEE5E7;
-.ce-panel-left{
-  margin-top:-15px;
-  padding-top:20px;
-  margin-right: -15px;
-  height:100%;
+.ce-panel-left-container{
+  height: 100%;
+  border-right: 1px solid #DEE5E7;
 
+}
+.ce-panel-left{
+  padding-top:15px;
+  height:100%;
   .line{
     height:1px;
     border-top:1px solid $border-color;
@@ -18,10 +20,12 @@ $border-color:#DEE5E7;
   .group-name{
     font-weight: 600;
     margin-top: -15px;
-    font-size:120%;
+    font-size:130%;
     margin-bottom:15px;
     padding-left:15px;
   }
+
+
 
 
   .ce-panel-search{
@@ -77,16 +81,14 @@ $border-color:#DEE5E7;
   z-index: 1;
 }
 
-.group-ame{
-  padding-left:15px;
-  font-size: 130%;
-  font-weight: 600;
-  margin-top:-15px;
-  margin-bottom:15px;
+.ce-panel-right-container{
+  border-left: 1px solid #DEE5E7;
+  margin-left:-1px;
 }
 .ce-panel-right{
-  padding-left:15px;
+  padding-top:15px;
   padding-bottom:15px;
+
 
 }
 
@@ -94,9 +96,8 @@ $border-color:#DEE5E7;
   $page-header-height:60px;
   height:$page-header-height;
   border-bottom:1px solid #DEE5E7;
-  margin-top:-15px;
-  margin-bottom:15px;
-  background: #F6F8F8;
+  margin:-15px 0 15px 0;
+  //background: #F6F8F8;
   .ce-page-header-title{
     line-height: $page-header-height;
     font-size: 130%;
