@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
 		User existUserName = this.getUserByUserName(user.getUsername());
 		
-		Assert.notNull(existUserName, "user name already exist :" + user.getUsername());
+		Assert.isNull(existUserName, "user name already exist :" + user.getUsername());
 
 		// 生成密码
 		// 以前使用的是md5，Md5PasswordEncoder 和 ShaPasswordEncoder，现在推荐用bcrpt。
