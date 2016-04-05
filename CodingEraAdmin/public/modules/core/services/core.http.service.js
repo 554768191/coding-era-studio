@@ -57,11 +57,15 @@ angular.module('core')
                 }
             }).error(function(res){
                 ceUtil.loading();
-
-                if(res && res.message){
-                    var status = res.status;
-                    ceUtil.toast(res.message);
-                    return;
+                if(res){
+                    if(res.data){
+                        ceUtil.toast(res.data);
+                        return;
+                    }
+                    if(res.message){
+                        ceUtil.toast(res.message);
+                        return;
+                    }
                 }
                 ceUtil.toast('token过期,或者网络连接异常');//暂时这么写着
             });
