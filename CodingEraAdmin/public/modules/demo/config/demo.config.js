@@ -7,7 +7,7 @@ angular.module('demo')
     .run(['Menus',
     function(Menus) {
         //DEMO
-        var demoMenu=Menus.genMenu({name:'Super Example',icon:'comment', isPublic:false, roles:'JASON'});
+        //var demoMenu=Menus.genMenu({name:'Super Example',icon:'comment', isPublic:false, roles:'JASON'});
         //var node_demo=Menus.genNodeMenus({name:'Base Example',subTitle:'这是一个副标题(不配置就不出现)',icon:'ice-lolly-tasted',route:'demo'});
         //demoMenu.setOrder(98);
         //demoMenu.addNodeMenus(node_demo);
@@ -19,7 +19,7 @@ angular.module('demo')
         //var node_widget_button=Menus.genNodeMenus({name:'按钮',subTitle:'基本跟官方一样',route:'widget/button'});
         //widgetMenu.addNodeMenus(node_widget_panel);
         //widgetMenu.addNodeMenus(node_widget_button);
-        Menus.addMenus(demoMenu.getMenus());
+        //Menus.addMenus(demoMenu.getMenus());
     }
 ]).config(['$stateProvider','$translatePartialLoaderProvider',
     function($stateProvider,$translatePartialLoaderProvider) {

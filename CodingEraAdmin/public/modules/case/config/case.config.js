@@ -45,11 +45,6 @@ angular.module('case')
                 templateUrl: 'modules/case/views/case.publish.view.html',
                 controller:'casePublishCtrl'
             })
-            //.state('tagManage', {
-            //    url: '/tag',
-            //    templateUrl: 'modules/case/views/case.tag.manage.view.html',
-            //    controller:'tagManageCtrl'
-            //})
             .state('caseManage.tagList', {
                 url: '/tag/list?:status',
                 templateUrl: 'modules/case/views/case.tag.list.view.html',
