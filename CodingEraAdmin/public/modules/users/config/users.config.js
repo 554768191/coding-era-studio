@@ -28,11 +28,17 @@ angular.module('users').run([
                 templateUrl: 'modules/users/views/settings/users.profile.view.html',
                 controller:'SettingsController'
             })
-            //个人信息
+            // 个人信息
             .state('usersManage.profile', {
                 url: '/settings/profile',
                 templateUrl: 'modules/users/views/settings/users.profile.view.html',
                 controller:'SettingsController'
+            })
+            // 个人信息 -> 修改头像
+            .state('usersManage.avatar', {
+                url: '/settings/profile',
+                templateUrl: 'modules/users/views/settings/users.profile.avatar.edit.view.html',
+                controller:'SettingsAvatarController'
             })
             .state('password', {
                 url: '/settings/password',

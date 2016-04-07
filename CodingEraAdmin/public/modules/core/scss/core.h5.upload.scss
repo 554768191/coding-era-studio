@@ -7,6 +7,14 @@
   .ce-file-btn{
     display: none;
   }
+
+  .crop-area{
+    background: #000;
+    overflow: hidden;
+    width:100%;
+    height:350px;
+  }
+
   .ce-h5-upload{
     min-height:150px;
     width:100%;

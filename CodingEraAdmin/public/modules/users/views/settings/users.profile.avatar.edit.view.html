@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h3 class="modal-title">修改头像</h3>
+</div>
+<div class="modal-body">
+    <ce-h5-upload  ng-model="cropAvatarUrl" ce-crop="true">
+        <span class="glyphicon glyphicon-open-file" aria-hidden="true"></span>
+        点击或将文件拖拽至此上传
+    </ce-h5-upload>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info" type="button" ng-click="onOkClick()">确定</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+</div>

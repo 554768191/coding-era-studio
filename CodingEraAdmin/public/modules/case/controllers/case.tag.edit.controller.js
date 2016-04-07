@@ -26,7 +26,7 @@ angular.module('case').controller('tagEditCtrl', [
 
         $scope.onCancelClick = function () {
             history.back(-1);
-        }
+        };
 
     }]);
 

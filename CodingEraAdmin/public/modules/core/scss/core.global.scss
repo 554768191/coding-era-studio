@@ -113,7 +113,7 @@ code{
   background: $ce-color;
   border-color: $ce-color;
   &:hover{
-    background: $ce-color;
+    background: $ce-color - 20;
     border-color: $ce-color;
   }
   &:focus{

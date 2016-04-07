@@ -37,7 +37,7 @@ module.exports = {
 				'public/components/angular-sanitize/angular-sanitize.min.js',
 				'public/components/google-code-prettify/src/prettify.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
-				'public/components/ng-img-crop/compile/minified/ng-img-crop.js',
+				'public/components/ng-img-crop/compile/unminified/ng-img-crop.js',
 				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
