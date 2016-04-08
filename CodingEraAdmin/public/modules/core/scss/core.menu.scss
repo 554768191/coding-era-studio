@@ -39,14 +39,17 @@
  */
 .ce-slide-menu{
   width:$ce-menu-width;
+  &.menu-bg{
+    width:$ce-menu-width;
+  }
 }
 
-.ce-content {
+
     .ce-menu {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: $ce-menu-width;
       height: 100%;
       background-color: $ce-dark-color;
       $hover-color: #32374B;
@@ -78,4 +81,4 @@
       }
 
     }
-  }
+

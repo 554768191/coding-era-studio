@@ -31,18 +31,12 @@
 <!-- START ce-head -->
 <div class="ce-head-container container-fluid hidden-xs">
 	<div class="row">
-		<div class="ce-side-head col-sm-1 ">
-			<div class="ce-logo " tooltip-placement="right"  uib-tooltip-template="'logoText.html'">
-				<div class="animated" ng-class="{tada:onAnimated,swing:!onAnimated}" ng-click="onAnimated=!onAnimated">
-				<img   src="/modules/core/img/logo_64X64_transparent.png">
-				</div>
-			</div>
-			<script type="text/ng-template" id="logoText.html">
-				<div class="logo-tip">Coding Era Admin</div>
-			</script>
-		</div>
 
-		<div class="container-fluid">
+
+		<div class="col-sm-12">
+			<script type="text/ng-template" id="logoText.html">
+				<div class="logo-tip">Coding Era Studio</div>
+			</script>
 			<ce-content-head></ce-content-head>
 		</div>
 
@@ -54,14 +48,17 @@
 <!-- START ce-content -->
 <div class="ce-content container-fluid">
 	<div class="row">
-		<div class="ce-slide-menu col-sm-1 hidden-xs">
-			<ce-menu></ce-menu><!-- 菜单 -->
-		</div>
-		<div class="container-fluid">
+		<!--<div class="ce-slide-menu col-sm-1 hidden-xs">-->
+
+		<!--</div>-->
+		<div class=" col-sm-12">
 			<div class="row">
-					<div ce-ui-butterbar></div>
 
-
+					<!-- 下面这行代码别删 -->
+					<!--<div ce-ui-butterbar></div>-->
+					<div class="ce-slide-menu hidden-xs col-sm-1 menu-bg">
+						<ce-menu></ce-menu><!-- 菜单 -->
+					</div>
 					<div  ui-view  class="ce-content-view container-fluid"></div>
 			</div>
 

@@ -10,8 +10,15 @@ angular.module('core')
             var service={
                 restrict:'EA',
                 template:[
-                    '<div class="row">',
-                        '<div class="ce-content-head "  >',
+                    '<div class="ce-content-head"  >',
+                        '<div class="ce-side-head">',
+                            '<div class="ce-logo " tooltip-placement="right"  uib-tooltip-template="\'logoText.html\'">',
+                            '<div class="animated" ng-class="{tada:onAnimated,swing:!onAnimated}" ng-click="onAnimated=!onAnimated">',
+                            '<img   src="/modules/core/img/logo_64X64_transparent.png">',
+                            '</div>',
+                            '</div>',
+                        '</div>',
+                        '<div class="ce-content-main">',
                             '<span class="ce-content-title"  >',
                                 '<h1 ng-bind="title"></h1>',
                                 '<h2 ng-bind="title2" ng-if="title2"></h2>',

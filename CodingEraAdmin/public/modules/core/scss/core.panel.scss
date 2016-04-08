@@ -69,17 +69,7 @@ $border-color:#DEE5E7;
  // position: relative;
   height:100%
 }
-.ce-panel-line{
 
-  border-right: 1px solid #DEE5E7;
-  padding: 0 !important;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  //为什么是 - 6 (母鸡哇,反正刚好...)
-  left: $ce-menu-width - 6;
-  z-index: 1;
-}
 
 .ce-panel-right-container{
   border-left: 1px solid #DEE5E7;
