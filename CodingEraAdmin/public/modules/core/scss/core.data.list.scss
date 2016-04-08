@@ -32,12 +32,13 @@
     }
 
     .ce-data-toolbar{
-      display: none;
       &.show-btn{
         @include ce-display-box;
       }
-      $btn-size:40px;
-      height: $btn-size;
+      $btn-toolbar-height:38px;
+      display: none;
+      height: $btn-toolbar-height;
+      line-height: $btn-toolbar-height;
       border-top:1px solid #EAEFF0;
       margin:15px ($data-list-padding * -1) ($data-list-padding * -1) ($data-list-padding * -1);
       .toolbar-btn{
@@ -46,8 +47,10 @@
         text-align: center;
 
         width:0;
-        height:$btn-size;
+        $btn-size:$btn-toolbar-height - 16;
+        height: $btn-size;
         line-height: $btn-size;
+        margin-top:8px;
         display:block;
         &:last-child{
           border-right:0;
