@@ -17,7 +17,8 @@
     "io": true,
     "ApplicationConfiguration": true,
     "CeConfig":true,
-    "AV":true
+    "AV":true,
+    "$":true
   },
   "predef": [ // Extra globals.
     "inject",

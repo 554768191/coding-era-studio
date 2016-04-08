@@ -3,29 +3,26 @@ var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, Appli
 
 //i18n - 国际化配置
 ceApp.run([
-	'$rootScope', '$translate','$templateCache',
-	function ($rootScope, $translate,$templateCache) {
-		$rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-			$translate.refresh();
-		});
-		$templateCache.put('cePaginationTemplate','modules/core/views/templates/core.pagination.template.html');
+	'$rootScope' ,'$templateCache',
+	function ($rootScope,$templateCache) {
+
 	}
 ]).config([
-	'$locationProvider','$httpProvider','$translateProvider','$translatePartialLoaderProvider','$logProvider',
-	function($locationProvider,$httpProvider,$translateProvider,$translatePartialLoaderProvider,$logProvider) {
+	'$locationProvider','$httpProvider','$logProvider',
+	function($locationProvider,$httpProvider,$logProvider) {
 		//日志输出模式
 		$logProvider.debugEnabled(true);
 
 		// Setting HTML5 Location Mode
 		$locationProvider.hashPrefix('!');
-		$translateProvider.useLoader('$translatePartialLoader', {
-			urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
-		});
-
-
-		$translatePartialLoaderProvider.addPart('core');
-		$translateProvider.preferredLanguage('zh-cn');
-		$translateProvider.useSanitizeValueStrategy('escaped');
+		//$translateProvider.useLoader('$translatePartialLoader', {
+		//	urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
+		//});
+        //
+        //
+		//$translatePartialLoaderProvider.addPart('core');
+		//$translateProvider.preferredLanguage('zh-cn');
+		//$translateProvider.useSanitizeValueStrategy('escaped');
 	}]);
 
 

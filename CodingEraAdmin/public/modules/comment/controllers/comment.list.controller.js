@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('comment').controller('commentListCtrl', [
-    '$scope', '$log', '$translate', '$interval', '$uibModal', '$state', '$stateParams', 'path', 'CommentService', 'ceUtil',
-    function ($scope, $log, $translate, $interval, $uibModal, $state, $stateParams, path, CommentService, ceUtil) {
+    '$scope', '$log', '$interval', '$uibModal', '$state', '$stateParams', 'path', 'CommentService', 'ceUtil',
+    function ($scope, $log, $interval, $uibModal, $state, $stateParams, path, CommentService, ceUtil) {
 
         $scope.jsonData = {};
         $scope.key = 'title';

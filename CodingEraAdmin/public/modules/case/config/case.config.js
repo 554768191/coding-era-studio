@@ -10,25 +10,12 @@ angular.module('case')
         var caseMenu = Menus.genMenu({name: '案例',subTitle: '管理门户展示的作品', icon: 'th-large', route: 'caseManage'});
         caseMenu.setOrder(2);
 
-        //CASE
-        //var node_case_list = Menus.genNodeMenus({name: '作品列表', subTitle: '管理作品列表', icon: 'th-list', route: 'caseManage'});
-        //caseMenu.addNodeMenus(node_case_list);
-
-        //TAG
-        //var node_tag_list = Menus.genNodeMenus({name: '标签管理', subTitle: '标签列表', icon: 'tag', route: 'tagManage'});
-        //caseMenu.addNodeMenus(node_tag_list);
-
-        //COMMENT
-        //var node_comment_list = Menus.genNodeMenus({name: '评论管理', subTitle: '评论列表', icon: 'comment', route: 'commentManage'});
-        //caseMenu.addNodeMenus(node_comment_list);
-
         Menus.addMenus(caseMenu.getMenus());
     }
-]).config(['$stateProvider','$translatePartialLoaderProvider',
-    function($stateProvider,$translatePartialLoaderProvider) {
+]).config([
+    '$stateProvider',
+    function($stateProvider) {
 
-        //国际化
-        $translatePartialLoaderProvider.addPart('case');
         $stateProvider
             .state('caseManage', {
                 url: '/case',

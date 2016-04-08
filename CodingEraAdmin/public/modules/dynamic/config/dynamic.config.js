@@ -8,16 +8,12 @@ angular.module('dynamic')
 
         var dynamicMenu = Menus.genMenu({name: '动态',subTitle: '发布 Coding Era 团队动态', icon: 'globe', route: 'dynamicManage'});
         dynamicMenu.setOrder(4);
-
-
-
         Menus.addMenus(dynamicMenu.getMenus());
     }
-]).config(['$stateProvider','$translatePartialLoaderProvider',
-    function($stateProvider,$translatePartialLoaderProvider) {
+]).config([
+    '$stateProvider',
+    function($stateProvider) {
 
-        //国际化
-        $translatePartialLoaderProvider.addPart('dynamic');
         $stateProvider
             .state('dynamicManage', {
                 url: '/dynamic',

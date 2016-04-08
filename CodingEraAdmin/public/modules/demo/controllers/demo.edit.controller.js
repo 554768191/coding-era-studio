@@ -3,7 +3,8 @@
 /*
  Demo 编辑页面
  */
-angular.module('demo').controller('demoEditCtrl', ['$scope', '$uibModalInstance', '$log', '$http', 'DemoService', 'ceUtil',
+angular.module('demo').controller('demoEditCtrl', [
+    '$scope', '$uibModalInstance', '$log', '$http', 'DemoService', 'ceUtil',
     function ($scope, $uibModalInstance, $log, $http, DemoService, ceUtil) {
 
         $scope.demo = {};

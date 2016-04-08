@@ -93,6 +93,8 @@
     height:$ce-head-height;
     right:0;
     top:0;
+    min-width: 180px;
+    cursor: pointer;
     .userInfo-container{
       position: relative;
       $avatarSize:$ce-head-height - 20;
@@ -100,6 +102,7 @@
         height:$ce-head-height;
         padding-right:$avatarSize + 20;
         line-height: $ce-head-height;
+        text-align: right;
       }
 
       .userInfo-avatar{

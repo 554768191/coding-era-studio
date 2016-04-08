@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('case').controller('caseListCtrl',[
-    '$scope','$log','$translate','$state','$stateParams','CaseService', 'ceUtil',
-function ($scope, $log,$translate,$state,$stateParams,CaseService,ceUtil){
+    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil',
+function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
 
 
     $scope.caseData = {};

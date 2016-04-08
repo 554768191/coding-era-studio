@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('demo').controller('demoCtrl',['$scope','$uibModal','$log','$translate','DemoService','ceConfig','path',
-    'ceUtil',
-function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,ceUtil){
+angular.module('demo').controller('demoCtrl',[
+    '$scope','$uibModal','$log','DemoService','ceConfig','path', 'ceUtil',
+function ($scope, $uibModal, $log,DemoService,ceConfig,path,ceUtil){
 
     $scope.demoData = {};
 
@@ -61,30 +61,7 @@ function ($scope, $uibModal, $log,$translate,DemoService,ceConfig,path,ceUtil){
 
 
 
-    //grid配置
-    $scope.gridOptions = {
-        gridMenuTitleFilter: $translate,
-        data:'demoData.data.content',//就是页面的$scope.demoData
-        paginationPageSizes: [10, 20, 50],//每页显示多少
-        paginationPageSize: 10,//当前显示多少页
-        useExternalPagination:true,//不用默认的分页控制器
-        animate:false,
-        columnDefs: [//这个不解释了,你懂的
-            { name: 'name',displayName:'名称' },
-            { name: 'remark',displayName:'备注' }
-        ],
-        paginationTemplate:ceUtil.getPaginationTemplate(),
-        onRegisterApi: function(gridApi) {
-            //分页发生改变
-            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
-                searchOptions.page = newPage - 1;//默认-1,我们service从0页开始,看看springMvc能不能配置吧
-                searchOptions.size = pageSize;
-                //重新查询demoData数据
-                //$scope.demoData=DemoService.query(searchOptions);
-                $scope.onSearch();
-            });
-        }
-    };
+
 
 
            

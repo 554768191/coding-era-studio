@@ -8,7 +8,6 @@ var ApplicationConfiguration = (function() {
 		'ui.router',
 		'ui.bootstrap',
 		'ui.utils',
-		'pascalprecht.translate',
 		'ngFileUpload',
 		'ui.select',
 		'ngSanitize',

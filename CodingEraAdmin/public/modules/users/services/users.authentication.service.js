@@ -4,7 +4,7 @@
 angular.module('users').factory('Authentication', ['$window','$log', function($window,$log) {
 	var user = $window.user || null;
 	//如果头像为空,使用默认头像
-	if(user.avatar === null){
+	if(user.avatar === null || user.avatar === ''){
 		user.avatar = '/modules/core/img/avatar.png';
 	}
 	var auth = {

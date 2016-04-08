@@ -115,9 +115,10 @@ angular.module('core')
                 $scope.items=Menus.getMenus();
             }],
             link: function(scope, ele) {
-                var headHeight = angular.element(document.querySelector('.ce-side-head')).height();
+                //引用了 jquery 所有不能使用 jqLite 了
+                var headHeight = $('.ce-side-head').height();//angular.element(document.querySelector('.ce-side-head')).height();
                 scope.onResize = function() {
-                    var contentHeight = angular.element(document.querySelector('.ce-content')).height();
+                    var contentHeight = $('.ce-content').height();//angular.element(document.querySelector('.ce-content')).height();
                     var height = $window.innerHeight;
                     if(contentHeight > height){
                         ele.css({height:contentHeight+"px"});

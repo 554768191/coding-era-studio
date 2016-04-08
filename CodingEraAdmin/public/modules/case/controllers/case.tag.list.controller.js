@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('case').controller('tagListCtrl', [
-    '$scope', '$log', '$state', '$stateParams', '$translate', '$uibModal', 'path', 'TagService', 'ceUtil',
-    function ($scope, $log, $state, $stateParams, $translate, $uibModal, path, TagService, ceUtil) {
+    '$scope', '$log', '$state', '$stateParams', '$uibModal', 'path', 'TagService', 'ceUtil',
+    function ($scope, $log, $state, $stateParams, $uibModal, path, TagService, ceUtil) {
 
         $scope.jsonData = {};
         $scope.key = 'title';

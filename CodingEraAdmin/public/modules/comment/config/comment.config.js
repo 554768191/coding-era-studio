@@ -13,11 +13,9 @@ angular.module('comment')
 
         Menus.addMenus(commentMenu.getMenus());
     }
-]).config(['$stateProvider','$translatePartialLoaderProvider',
-    function($stateProvider,$translatePartialLoaderProvider) {
+]).config(['$stateProvider',
+    function($stateProvider) {
 
-        //国际化
-        $translatePartialLoaderProvider.addPart('comment');
         $stateProvider
             .state('commentManage', {
                 url: '/comment',

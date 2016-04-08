@@ -21,11 +21,8 @@ angular.module('todo').run(['Menus',
         //parentMenus.addNodeMenus(jason6);
         //Menus.addMenus(parentMenus.getMenus());
     }
-]).config(['$stateProvider','$translatePartialLoaderProvider',
-    function ($stateProvider,$translatePartialLoaderProvider) {
-        //国际化
-        $translatePartialLoaderProvider.addPart('todo');
-        //
+]).config(['$stateProvider',
+    function ($stateProvider) {
         $stateProvider
             .state('todo', {
                 url: '/todo',

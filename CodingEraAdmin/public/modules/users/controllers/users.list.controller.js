@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('users').controller('usersListCtrl', [
-    '$scope', '$log', '$translate', '$state', '$stateParams', '$location', 'path', 'UserService', 'ceUtil',
-    function ($scope, $log, $translate, $state, $stateParams, $location, path, UserService, ceUtil) {
+    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'UserService', 'ceUtil',
+    function ($scope, $log, $state, $stateParams, $location, path, UserService, ceUtil) {
 
 
         //{name: 'displayName', displayName: '昵称', allowCellFocus: true},

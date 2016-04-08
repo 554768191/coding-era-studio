@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('article').controller('articleListCtrl',[
-    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil',
+angular.module('article').controller('articleListGridCtrl',['$scope','$log','$state','$stateParams','ArticleService',
+    'ceUtil',
 function ($scope, $log,$state,$stateParams,ArticleService,ceUtil){
 
 
@@ -56,6 +56,18 @@ function ($scope, $log,$state,$stateParams,ArticleService,ceUtil){
         searchOptions.keyWord = keyWord;
         $scope.onSearch();
     };
+
+
+
+    // grid 操作对象
+    $scope.grid = null;
+    $scope.columns = [
+        {name: "标题", field: "title"},
+        {name: "内容", field: "content"}
+    ];
+
+
+
 
            
 }]);

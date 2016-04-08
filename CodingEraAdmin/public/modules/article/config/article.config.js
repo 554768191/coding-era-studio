@@ -5,19 +5,14 @@
 angular.module('case')
     .run(['Menus',
     function(Menus) {
-
         var articleMenu = Menus.genMenu({name: '文章',subTitle:'网站的所有文案管理', icon: 'file',route:'articleManage'});
         articleMenu.setOrder(1);
-
-
-
         Menus.addMenus(articleMenu.getMenus());
     }
-]).config(['$stateProvider','$translatePartialLoaderProvider',
-    function($stateProvider,$translatePartialLoaderProvider) {
+]).config([
+    '$stateProvider',
+    function($stateProvider) {
 
-        //国际化
-        $translatePartialLoaderProvider.addPart('article');
         $stateProvider
             .state('articleManage', {
                 url: '/article',

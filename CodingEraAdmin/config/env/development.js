@@ -20,7 +20,8 @@ module.exports = {
 				'public/components/bootstrap-wysiwyg/index.css',
 				'public/components/codemirror/lib/codemirror.css',
 				'public/components/ui-select/dist/select.min.css',
-				'public/components/ng-img-crop/compile/minified/ng-img-crop.css'
+				'public/components/ng-img-crop/compile/minified/ng-img-crop.css',
+				'public/components/slickgrid/slick.grid.css'
 			],
 			js: [
 				'public/components/angular/angular.js',
@@ -30,19 +31,20 @@ module.exports = {
 				'public/components/angular-ui-router/release/angular-ui-router.js',
 				'public/components/angular-ui-utils/ui-utils.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/components/angular-translate/angular-translate.js',
-				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.js',
-				'public/components/angular-ui-grid/ui-grid.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
-				'public/components/google-code-prettify/src/prettify.js',
 				'public/components/ng-file-upload/ng-file-upload.js',
 				'public/components/ng-img-crop/compile/unminified/ng-img-crop.js',
 				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
 				'public/components/ui-select/dist/select.js',
-				'public/components/moment/min/moment.min.js'
+				'public/components/moment/min/moment.min.js',
+				'public/components/jquery/dist/jquery.min.js',
+
+				// 这里使用 slickgrid 考虑是否不使用 bower 库引用,因为github中并没有压缩包的 (还是脚本也能解决?)
+				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
+				'public/components/slickgrid/slick.core.js',
+				'public/components/slickgrid/slick.grid.js',
 			]
 		},
 		sass:['public/modules/**/scss/*.scss'],

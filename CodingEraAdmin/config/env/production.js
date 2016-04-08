@@ -30,10 +30,6 @@ module.exports = {
 				'public/components/angular-ui-router/release/angular-ui-router.min.js',
 				'public/components/angular-ui-utils/ui-utils.min.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-				'public/components/angular-translate/angular-translate.min.js',
-				'public/components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
-				'public/components/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
-				'public/components/angular-ui-grid/ui-grid.min.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
 				'public/components/google-code-prettify/bin/prettify.min.js',
 				'public/components/ng-file-upload/ng-file-upload.min.js',
@@ -42,7 +38,12 @@ module.exports = {
 				'public/components/codemirror/lib/codemirror.js',
 				'public/components/lodash/dist/lodash.min.js',
 				'public/components/ui-select/dist/select.min.js',
-				'public/components/moment/min/moment.min.js'
+				'public/components/moment/min/moment.min.js',
+
+				// 这里使用 slickgrid 考虑是否不使用 bower 库引用,因为github中并没有压缩包的 (还是脚本也能解决?)
+				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
+				'public/components/slickgrid/slick.core.js',
+				'public/components/slickgrid/slick.grid.js',
 			]
 		},
 		css: ['public/dist/css/all.min.css'],
