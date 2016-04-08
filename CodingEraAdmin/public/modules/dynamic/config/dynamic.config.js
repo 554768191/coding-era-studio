@@ -6,7 +6,7 @@ angular.module('dynamic')
     .run(['Menus',
     function(Menus) {
 
-        var dynamicMenu = Menus.genMenu({name: '动态',subTitle: '发布 Coding Era 团队动态', icon: 'globe', route: 'dynamicManage'});
+        var dynamicMenu = Menus.genMenu({name: '动态',subTitle: '发布 Coding Era Studio 编码时代工作室动态', icon: 'globe', route: 'dynamicManage'});
         dynamicMenu.setOrder(4);
         Menus.addMenus(dynamicMenu.getMenus());
     }

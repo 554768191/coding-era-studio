@@ -91,9 +91,9 @@
   .ce-userInfo{
     position: absolute;
     height:$ce-head-height;
-    right:0;
+    right: 5px;
     top:0;
-    min-width: 180px;
+    //min-width: 180px;
     cursor: pointer;
     .userInfo-container{
       position: relative;
@@ -107,7 +107,7 @@
 
       .userInfo-avatar{
         position: absolute;
-        right:10px;
+        right:5px;
         top:($ce-head-height - $avatarSize) * 0.5;
         width:$avatarSize;
         height:$avatarSize;
