@@ -67,6 +67,7 @@ angular.module('core')
                             var subNavi = cePageManagerService.getSubNavi();
                             if( angular.isUndefined(subNavi.parentTitle) ){
                                 scope.title2 = subNavi.title;
+                                scope.title3 = null;
                             }else{
                                 scope.title2 = subNavi.parentTitle;
                                 scope.title3 = subNavi.title;

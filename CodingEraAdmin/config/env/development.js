@@ -66,7 +66,7 @@ module.exports = {
 		}
 	},
 	app: {
-		title: 'Coding Era - 开发模式'
+		title: 'Coding Era Studio Admin - 开发模式'
 	},
 	github: {
 		clientID: process.env.GITHUB_ID || 'eae6a961352846d592b3',

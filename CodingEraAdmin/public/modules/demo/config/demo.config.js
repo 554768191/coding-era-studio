@@ -6,7 +6,7 @@ angular.module('demo')
     .run(['Menus',
     function(Menus) {
         //DEMO
-        var demoMenu=Menus.genMenu({name:'DEMO',icon:'sunglasses',roules:'demo',route:'demo'});
+        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roules:'demo',route:'demo'});
         demoMenu.setOrder(999);
         Menus.addMenus(demoMenu.getMenus());
     }

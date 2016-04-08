@@ -4,7 +4,7 @@
 angular.module('users').run([
     'Menus',
     function (Menus) {
-        var userMenu = Menus.genMenu({name: '用户', icon: 'user',route: 'usersManage'});
+        var userMenu = Menus.genMenu({name: '管理',subTitle:'管理后台设置', icon: 'cog',route: 'usersManage'});
         userMenu.setOrder(99);
         //userMenu.addNodeMenus(node_users);
         Menus.addMenus(userMenu.getMenus());

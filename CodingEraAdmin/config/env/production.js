@@ -59,7 +59,7 @@ module.exports = {
 		}
 	},
 	app: {
-		title: 'Coding Era 编码时代'
+		title: 'Coding Era Studio - 编码时代工作室'
 	},
 	github: {
 		clientID: process.env.GITHUB_ID || 'eae6a961352846d592b3',
