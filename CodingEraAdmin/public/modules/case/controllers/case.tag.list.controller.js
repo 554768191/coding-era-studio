@@ -41,7 +41,7 @@ angular.module('case').controller('tagListCtrl', [
         //编辑记录
         $scope.onEditClick = function (obj,$event) {
             $event.stopPropagation();
-            ceUtil.openModal({route:'caseManage.tagEdit',data:obj}).success(function(res){
+            ceUtil.openModal({route:'caseManage.tagEdit',size:'sm',data:obj}).success(function(res){
                 $scope.onSearch();
             });
         };

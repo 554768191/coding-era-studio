@@ -10,7 +10,7 @@ angular.module('case').controller('caseManageCtrl',[
 
 
         $scope.onAddTagClick = function(){
-            ceUtil.openModal({route:'caseManage.tagEdit'}).success(function(res){
+            ceUtil.openModal({route:'caseManage.tagEdit',size:'sm'}).success(function(res){
                 $state.go('caseManage.tagList',{status:'INIT'},{reload:true});
             });
         };
