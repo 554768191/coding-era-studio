@@ -1,8 +1,10 @@
 
 <ce-page-manager>
     <ce-page-menu>
-        <ce-page-btn ce-style="menu" ui-sref="commentManage.list({'status':'WAITING'})" ce-icon="glyphicon-th-list" ce-title="评论列表"></ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="commentManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
+        <ce-group-name title="评论管理">
+            <ce-page-btn ce-style="menu" ui-sref="commentManage.list({'status':'WAITING'})" ce-icon="glyphicon-th-list" ce-title="评论列表"></ce-page-btn>
+            <ce-page-btn ce-style="menu" ui-sref="commentManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
+        </ce-group-name>
     </ce-page-menu>
 </ce-page-manager>
 

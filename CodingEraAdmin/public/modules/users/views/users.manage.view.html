@@ -1,10 +1,9 @@
 
 <ce-page-manager>
     <ce-page-menu>
-        <ce-group-name title="用户信息">
-            <ce-page-btn ce-style="menu" ui-sref="usersManage.edit({'usersId':null})" ce-icon="glyphicon-user" ce-title="我的资料"></ce-page-btn>
+        <ce-group-name title="我的资料">
+            <ce-page-btn ce-style="menu" ui-sref="usersManage.edit({'usersId':null})" ce-icon="glyphicon-user" ce-title="个人设置"></ce-page-btn>
         </ce-group-name>
-        <ce-group-line ></ce-group-line>
         <ce-group-name title="用户管理">
             <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'PASSED','enabled':'true'})" ce-icon="glyphicon-th-list" ce-title="用户列表"></ce-page-btn>
             <ce-page-btn ce-style="menu" ui-sref="usersManage.list({'status':'WAITING','enabled':'false'})" ce-icon="glyphicon-question-sign" ce-title="待审用户"></ce-page-btn>

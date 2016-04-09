@@ -36,7 +36,7 @@ angular.module('core')
                                     '</div>',
                                 '</div>',
                                 '<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu aria-labelledby="simple-dropdown">',
-                                    '<li ><a ui-sref="usersManage.edit({\'usersId\':null})"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 我的资料</a></li>',
+                                    '<li ><a ui-sref="usersManage.edit({\'usersId\':null})"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 个人设置</a></li>',
                                     '<li class="divider"></li>',
                                     '<li ><a ng-click="onExitClick()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出</a></li>',
                                 '</ul>',

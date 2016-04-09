@@ -1,8 +1,10 @@
 
 <ce-page-manager>
     <ce-page-menu>
-        <ce-page-btn ce-style="menu" ui-sref="dynamicManage.list({'status':'PUBLISHED'})" ce-icon="glyphicon-globe" ce-title="最新动态"></ce-page-btn>
-        <ce-page-btn ce-style="menu" ui-sref="dynamicManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
+        <ce-group-name title="动态管理">
+            <ce-page-btn ce-style="menu" ui-sref="dynamicManage.list({'status':'PUBLISHED'})" ce-icon="glyphicon-globe" ce-title="最新动态"></ce-page-btn>
+            <ce-page-btn ce-style="menu" ui-sref="dynamicManage.list({'status':'DELETED'})" ce-icon="glyphicon-trash" ce-title="回收站"></ce-page-btn>
+        </ce-group-name>
     </ce-page-menu>
 </ce-page-manager>
 

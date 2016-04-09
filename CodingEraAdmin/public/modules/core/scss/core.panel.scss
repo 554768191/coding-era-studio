@@ -17,13 +17,24 @@ $border-color:#DEE5E7;
     margin-bottom:30px;
   }
 
+  .ce-panel-group{
+    position: relative;
+    padding-bottom: 15px;
+  }
+
   .group-name{
     font-weight: 600;
     font-size:150%;
-    margin-bottom:15px;
-    padding-left:15px;
+    padding-left:10px;
+    margin-top:15px;
   }
 
+  .group-line{
+    height:1px;
+    border-top:1px solid $border-color;
+    margin-bottom:15px;
+    margin-top:15px;
+  }
 
 
 
@@ -36,7 +47,19 @@ $border-color:#DEE5E7;
     width:100%;
   }
 
-
+  .ce-panel-left-bar{
+    position: absolute;
+    right:10px;
+    top:5px;
+    font-size: 110%;
+    color: #555;
+    &.active{
+      color:$ce-color;
+    }
+    &:hover{
+      color:$ce-color;
+    }
+  }
   .ce-panel-left-menu{
 
     .glyphicon{

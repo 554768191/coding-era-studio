@@ -96,7 +96,8 @@ angular.module('core')
                 template:[
                     '<div class="ce-panel-group">',
                         '<div class="group-name" ng-bind="title"></div>',
-                        '<di class="group-list" ng-transclude></div>',
+                        '<div class="group-line" ></div>',
+                        '<div class="group-list" ng-transclude></div>',
                     '</div>'
                 ].join('')
             };
@@ -128,7 +129,18 @@ angular.module('core')
                             naviObject.parentTitle = elem[0].parentNode.title;
                         }
                         cePageManagerService.addSubNavi(naviObject);
-                        return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}" ng-click="ceClick()" ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span>{{ceTitle}}</span></a>';
+                        return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}" ng-click="ceClick()" ><span class="glyphicon {{ceIcon}}" aria-hidden="true" ></span><span>{{ceTitle}}</span></a>';
+                    }else if(attr.ceStyle === 'bar'){
+                        var bar_naviObject = {
+                            title:attr.ceTitle,
+                            uiSref:attr.uiSref
+                        };
+                        // 添加组标题
+                        if(!angular.isUndefined(elem[0].parentNode)){
+                            bar_naviObject.parentTitle = elem[0].parentNode.title;
+                        }
+                        cePageManagerService.addSubNavi(bar_naviObject);
+                        return '<a  class="ce-panel-left-bar" ui-sref-active="active"  ui-sref-opts="{reload:true}" ng-click="ceClick()" title="{{ceTitle}}"><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span></a>';
                     }else if(attr.ceStyle === 'search' ){
                         return ['<div class="input-group ce-panel-search">',
                                     '<input type="text" class="form-control" ng-model="ceModel"  placeholder="'+attr.placeholder+'" />',
