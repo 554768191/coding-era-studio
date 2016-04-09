@@ -183,7 +183,14 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 					//});
 				} else {
 					var err = null;
-					return done(err, user, "/#!/article/list?status=PUBLISHED");
+					// 登录后跳转的路径
+					console.log('jason------', req);
+					req.session.url = '/awesome';
+					console.log('jason------', req.session);
+
+
+					var url = "/#!/article/list?status=PUBLISHED";
+					return done(err, user, url);
 				}
 			//}
 		//});

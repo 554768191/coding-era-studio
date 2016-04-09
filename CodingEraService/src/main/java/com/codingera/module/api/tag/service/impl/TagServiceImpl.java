@@ -35,7 +35,7 @@ public class TagServiceImpl implements TagService {
 	public void delById(Long id) {
 		Tag tag =  this.getById(id);
 		Hibernate.initialize(tag.getCases());
-		Assert.isNull(tag.getCases(), "标签【"+tag.getName()+"】已经被使用");
+		Assert.isTrue(tag.getCases().isEmpty(), "标签【"+tag.getName()+"】已经被使用");
 		tagRepository.delete(id);
 	}
 
@@ -53,7 +53,7 @@ public class TagServiceImpl implements TagService {
 	public void deleleTag(Tag tag) {
 		tag =  this.getById(tag.getId());
 		Hibernate.initialize(tag.getCases());
-		Assert.isNull(tag.getCases(), "标签【"+tag.getName()+"】已经被使用");
+		Assert.isTrue(tag.getCases().isEmpty(), "标签【"+tag.getName()+"】已经被使用");
 		tagRepository.delete(tag);
 	}
 
