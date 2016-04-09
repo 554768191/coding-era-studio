@@ -46,16 +46,6 @@ public class OAuth2ResourceConfiguration extends ResourceServerConfigurerAdapter
 		http.exceptionHandling()
 			.authenticationEntryPoint(customAuthenticationEntryPoint)
 		.and()
-			.formLogin()
-			.loginPage("/login")
-			.permitAll()
-		.and()
-			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/oauth/logout"))
-			.logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
-		.and()
-			.requestMatchers()
-			.antMatchers("/", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
-		.and()
 			.authorizeRequests().anyRequest().authenticated();
 	}
 
