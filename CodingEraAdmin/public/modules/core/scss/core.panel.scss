@@ -108,9 +108,7 @@ $border-color:#DEE5E7;
 .ce-page-header{
   $page-header-height:60px;
   height:$page-header-height;
-  border-bottom:1px solid #DEE5E7;
-  margin:-15px 0 15px 0;
-  //background: #F6F8F8;
+  margin:-15px 0 5px 0;
   .ce-page-header-title{
     line-height: $page-header-height;
     font-size: 130%;
