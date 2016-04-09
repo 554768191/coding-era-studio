@@ -18,7 +18,8 @@
 
         <ce-group-line ></ce-group-line>
         <ce-group-name title="标签管理">
-            <ce-page-btn ce-style="menu" ui-sref="caseManage.tagEdit({'tagId':null})" ce-icon="glyphicon-tag" ce-title="新增标签"></ce-page-btn>
+            <!--<ce-page-btn ce-style="menu" ui-sref="caseManage.tagEdit({'tagId':null})" ce-icon="glyphicon-tag" ce-title="新增标签"></ce-page-btn>-->
+            <ce-page-btn ce-style="menu" ce-click="onAddTagClick()" ce-icon="glyphicon-tag" ce-title="新增标签"></ce-page-btn>
             <ce-page-btn ce-style="menu" ui-sref="caseManage.tagList({'status':'INIT'})" ce-icon="glyphicon-tags" ce-title="标签列表"></ce-page-btn>
         </ce-group-name>
     </ce-page-menu>

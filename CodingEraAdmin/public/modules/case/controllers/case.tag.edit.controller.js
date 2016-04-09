@@ -4,28 +4,31 @@
  Tag 编辑页面
  */
 angular.module('case').controller('tagEditCtrl', [
-    '$scope', '$state', '$stateParams', '$log', 'TagService', 'ceUtil',
-    function ($scope, $state, $stateParams, $log, TagService, ceUtil) {
+    '$scope', '$log','$uibModalInstance', 'TagService', 'ceUtil','data',
+    function ($scope, $log,$uibModalInstance, TagService, ceUtil,data) {
 
         $scope.tag = {};
-
-        if (angular.isDefined($stateParams.tagId)) {
-            TagService.getTagById($stateParams.tagId).success(function (res) {
+        if (angular.isDefined(data.id)) {
+            TagService.getTagById(data.id).success(function (res) {
                 $scope.tag = res.data.tag;
             });
         }
 
         //发布&保存
         $scope.onPublishClick = function (status, isValid) {
+            if(!isValid){
+                return;
+            }
             $scope.tag.status = status;
             TagService.save($scope.tag).success(function (res) {
                 ceUtil.toast('保存成功');
-                $state.go('caseManage.tagList', {status: status});
+                $uibModalInstance.close(res.data);
             });
         };
 
-        $scope.onCancelClick = function () {
-            history.back(-1);
+        //窗口点击取消
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
         };
 
     }]);

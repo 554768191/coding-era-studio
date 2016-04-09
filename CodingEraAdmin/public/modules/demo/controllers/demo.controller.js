@@ -23,7 +23,7 @@ function ($scope, $uibModal, $log,DemoService,ceConfig,path,ceUtil){
         });
     };
     //加载时默认搜索一次
-    $scope.onSearch();
+    //$scope.onSearch();
 
 
     $scope.onDeletedClick = function(){

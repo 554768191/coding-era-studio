@@ -39,12 +39,16 @@ angular.module('case').controller('tagListCtrl', [
         };
 
         //编辑记录
-        $scope.onEditClick = function (obj) {
-            $state.go('caseManage.tagEdit', {tagId: obj.id});
+        $scope.onEditClick = function (obj,$event) {
+            $event.stopPropagation();
+            ceUtil.openModal({route:'caseManage.tagEdit',data:obj}).success(function(res){
+                $scope.onSearch();
+            });
         };
 
         //删除记录
-        $scope.onDeleteClick = function (obj) {
+        $scope.onDeleteClick = function (obj,$event) {
+            $event.stopPropagation();
             ceUtil.confirmMessage('确认删除?').success(function () {
                 TagService.deleteTag({id: obj.id}).success(function () {
                     ceUtil.toast('删除成功');

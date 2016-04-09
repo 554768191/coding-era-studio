@@ -18,19 +18,21 @@ angular.module('core')
         service.getSubNavi = function (){
             var navi = {};
             angular.forEach(service.subNavis,function(values){
-                var bracketBefore = values.uiSref.indexOf('(');
-                var bracketAfter = values.uiSref.indexOf(')');
-                if(bracketBefore === -1){
-                    if($state.is(values.uiSref)){
-                        navi = values;
-                    }
-                }else{
-                    var parentUrl = values.uiSref.substring(0,bracketBefore);
-                    var parameter = values.uiSref.substring(bracketBefore + 1,bracketAfter );
-                    parameter = parameter.replace(/'/g, '"');
-                    parameter = angular.fromJson(parameter);
-                    if($state.is(parentUrl,parameter)){
-                        navi = values;
+                if(!angular.isUndefined(values.uiSref)){
+                    var bracketBefore = values.uiSref.indexOf('(');
+                    var bracketAfter = values.uiSref.indexOf(')');
+                    if(bracketBefore === -1){
+                        if($state.is(values.uiSref)){
+                            navi = values;
+                        }
+                    }else{
+                        var parentUrl = values.uiSref.substring(0,bracketBefore);
+                        var parameter = values.uiSref.substring(bracketBefore + 1,bracketAfter );
+                        parameter = parameter.replace(/'/g, '"');
+                        parameter = angular.fromJson(parameter);
+                        if($state.is(parentUrl,parameter)){
+                            navi = values;
+                        }
                     }
                 }
 
@@ -126,7 +128,7 @@ angular.module('core')
                             naviObject.parentTitle = elem[0].parentNode.title;
                         }
                         cePageManagerService.addSubNavi(naviObject);
-                        return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}" ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span>{{ceTitle}}</span></a>';
+                        return '<a  class="ce-panel-left-menu" ui-sref-active="active"  ui-sref-opts="{reload:true}" ng-click="ceClick()" ><span class="glyphicon {{ceIcon}}" aria-hidden="true"></span><span>{{ceTitle}}</span></a>';
                     }else if(attr.ceStyle === 'search' ){
                         return ['<div class="input-group ce-panel-search">',
                                     '<input type="text" class="form-control" ng-model="ceModel"  placeholder="'+attr.placeholder+'" />',
