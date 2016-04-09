@@ -28,10 +28,8 @@ import com.codingera.module.user.service.UserService;
  */
 @Configuration
 @EnableAuthorizationServer
-@EnableResourceServer
+//@EnableResourceServer
 class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
-
-	String applicationName = "mobile";
 
 	@Autowired
 	private DataSource dataSource;
@@ -43,9 +41,8 @@ class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 	@Autowired
 	AuthenticationManagerBuilder authenticationManagerBuilder;
 	
-	// 配置ApplicationSecurityConfiguration后启用这个居然报错
-//	@Autowired
-//    private AuthenticationManager authenticationManager;
+	@Autowired
+    private AuthenticationManager authenticationManager;
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -53,16 +50,17 @@ class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		//将token信息存放数据库
 		JdbcTokenStore tokenStore = new JdbcTokenStore(dataSource);
 		
-		// Workaround for
-		// https://github.com/spring-projects/spring-boot/issues/1801
-		endpoints.authenticationManager(new AuthenticationManager() {
-			@Override
-			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-				return authenticationManagerBuilder.getOrBuild().authenticate(authentication);
-			}
-		}).tokenStore(tokenStore);
+		// 之前版本SpringBoot的bug，一定要这么写，暂时保留
+		// @see https://github.com/spring-projects/spring-boot/issues/1801
+//		endpoints.authenticationManager(new AuthenticationManager() {
+//			@Override
+//			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+//				return authenticationManagerBuilder.getOrBuild().authenticate(authentication);
+//			}
+//		}).tokenStore(tokenStore);
 //		endpoints.userDetailsService(userService).tokenStore(tokenStore);
-//		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore);
+		
+		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore);
 		
 	}
 
@@ -78,12 +76,12 @@ class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 		clients.jdbc(dataSource);
 	}
 
-//	@Override
-//	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-//		// TODO Auto-generated method stub
-//		super.configure(security);
-//		security.allowFormAuthenticationForClients();
-//	}
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		// TODO Auto-generated method stub
+		super.configure(security);
+		security.allowFormAuthenticationForClients();
+	}
 
 	
 }
