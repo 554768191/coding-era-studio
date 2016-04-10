@@ -17,13 +17,15 @@
   .ce-data-preview{
     background: #fff;
     margin-bottom:10px;
-    border:1px solid $data-border-color;
-    box-shadow: 0 0 0 1px rgba(234, 239, 240, 0.5);
+   // border:1px solid $data-border-color;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    border-radius: 4px;
     position: relative;
     padding: $data-list-padding $data-list-padding;
     margin-left: -15px;
     &:hover{
-      background: #FAFAFA;
+      //box-shadow: 0 0 2px $ce-color;
+      box-shadow: 0 0 2px rgba(74,198,250,.8);
     }
     .ce-data-custom{
       h1,h2,h3,h4,h5,h6{
@@ -40,6 +42,9 @@
       height: $btn-toolbar-height;
       line-height: $btn-toolbar-height;
       border-top:1px solid #EAEFF0;
+      background: #FAFAFA;
+      border-radius: 0 0 4px 4px;
+
       margin:15px ($data-list-padding * -1) ($data-list-padding * -1) ($data-list-padding * -1);
       .toolbar-btn{
         @include ce-flex(1);
@@ -57,6 +62,7 @@
         }
 
         a{
+          color:#666;
           &:hover{
             color:$ce-color !important;
           }

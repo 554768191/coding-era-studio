@@ -75,6 +75,7 @@
         border-color: #F4F5F7;
         left:0;
         top: -10px;
+        box-shadow:none;
         .start-point{
           &.click{
             cursor: pointer;
@@ -85,7 +86,7 @@
           height:$trash-point-size;
           background: $line-color + 10;
           position: absolute;
-          top:$triangle-size - ($trash-point-size - $triangle-size)/2;
+          top:$triangle-size/2;
           left:($card-margin-left + ($trash-point-size + $trash-point-border*2)/2 ) * -1;
           border:$trash-point-border solid #F4F5F7;
           border-radius: 100px;
@@ -99,9 +100,10 @@
       }
 
       background: $card-background;
-      border:1px solid $card-border-color;
+      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      border-radius: 4px;
       padding:$card-padding;
-      border-radius: 2px;
+      border-radius: 4px;
       margin-left:$card-margin-left;
       position: relative;
       margin-top:50px;
@@ -194,6 +196,8 @@
         $btn-size:40px;
         height: $btn-size;
         border-top:1px solid #EAEFF0;
+        background: #fcfcfc;
+        border-radius: 0 0 4px 4px;
         margin:$card-padding ($card-padding * -1) ($card-padding * -1) ($card-padding * -1);
         .toolbar-btn{
           @include ce-flex(1);
@@ -201,14 +205,16 @@
           text-align: center;
 
           width:0;
-          height:$btn-size;
-          line-height: $btn-size;
+          height:$btn-size - 16;
+          margin-top: 8px;
+          line-height: $btn-size - 16;
           display:block;
           &:last-child{
             border-right:0;
           }
 
           a{
+            color:#666;
             &:hover{
               color:$ce-color !important;
             }
