@@ -8,4 +8,5 @@ import com.codingera.module.api.tag.repository.custom.TagRepositoryCustom;
 
 public interface TagRepository extends PagingAndSortingRepository<Tag, Long>, JpaSpecificationExecutor<Tag>, TagRepositoryCustom {
 
+	public Tag getTagByName(String name); 
 }

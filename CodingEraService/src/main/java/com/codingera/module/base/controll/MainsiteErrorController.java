@@ -24,7 +24,7 @@ public class MainsiteErrorController implements ErrorController {
 
 	@RequestMapping(value = ERROR_PATH)
 	public String handleError() {
-		return "pages/404";
+		return "404";
 	}
 
 	@Override

@@ -23,6 +23,8 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public Tag save(Tag tag) {
+		Tag storeTag = tagRepository.getTagByName(tag.getName());
+		Assert.isNull(storeTag, "标签名【"+tag.getName()+"】已存在");
 		return tagRepository.save(tag);
 	}
 

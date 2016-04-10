@@ -14,8 +14,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.codingera.module.base.filter.CsrfHeaderFilter;
 import com.codingera.module.base.handler.CustomAuthenticationEntryPoint;
 import com.codingera.module.base.handler.CustomLogoutSuccessHandler;
 
@@ -52,7 +56,15 @@ class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.requestMatchers()
 			.antMatchers("/aa", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
 		.and()
-			.authorizeRequests().anyRequest().authenticated();
+			.authorizeRequests().anyRequest().authenticated()
+		.and()
+			.addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
+			.csrf().csrfTokenRepository(csrfTokenRepository());
+	}
+	private CsrfTokenRepository csrfTokenRepository() {
+	  HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+	  repository.setHeaderName("X-XSRF-TOKEN");
+	  return repository;
 	}
 
 	@Override

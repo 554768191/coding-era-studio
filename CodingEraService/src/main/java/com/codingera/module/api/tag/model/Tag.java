@@ -32,7 +32,7 @@ public class Tag extends NewIdEntity {
 	}
 
 	// 名字
-	@Column(name = "NAME", length = 50)
+	@Column(name = "NAME", length = 50, unique=true)
 	private String name;
 	// 类别
 	@Column(name = "CATEGORY", length = 10)
