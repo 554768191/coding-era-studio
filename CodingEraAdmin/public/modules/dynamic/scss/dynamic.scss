@@ -44,7 +44,7 @@
       $publish-width:36px;
       $publish-height:36px;
       bottom:$publish-height * -0.5;
-      left:(($publish-width + ($publish-border-size*2)) + $line-size*-0.5 ) * -0.5;
+      left:(($publish-width + ($publish-border-size*2)) + $line-size*-0.5 - $line-size/2 ) * -0.5;
       .more-btn{
         text-align: center;
         color:$ce-color;
@@ -87,7 +87,7 @@
           background: $line-color + 10;
           position: absolute;
           top:$triangle-size/2;
-          left:($card-margin-left + ($trash-point-size + $trash-point-border*2)/2 ) * -1;
+          left:($card-margin-left + ($trash-point-size + $trash-point-border*2 - $line-size/2 )/2 ) * -1;
           border:$trash-point-border solid #F4F5F7;
           border-radius: 100px;
           text-align: center;
@@ -138,7 +138,7 @@
         background: $line-color + 10;
         position: absolute;
         top:$triangle-size - ($point-size - $triangle-size)/2;
-        left:($card-margin-left + ($point-size + $point-border*2)/2 ) * -1;
+        left:($card-margin-left + ($point-size + $point-border*2 - $line-size/2)/2 ) * -1;
         border:$point-border solid #F4F5F7;
         border-radius: 100px;
       }
