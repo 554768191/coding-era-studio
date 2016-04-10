@@ -7,8 +7,16 @@
 <ce-data-list ce-data="caseData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >
     <ce-data-custom>
         <!-- 这里面怎么玩都可以,但都必须使用「 item 」来获取值 -->
-        <h4 ng-bind="item.title"></h4>
-        <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createdTime  | date:'yyyy-MM-dd'}}</small>
+        <h4 >
+            <span ng-bind="item.title"></span>
+        </h4>
+        <h5>
+            <small>
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <span ce-friendly-time="item.createdTime"></span>
+            </small>
+        </h5>
+        <img ng-src="{{item.bannerUrl}}" class="img-responsive img-thumbnail case-list-img" alt="Responsive image">
     </ce-data-custom>
     <!-- 1. 工具条根据什么状态显示,status-key 是可配字段 -->
     <!-- 2. status-key in ( status-equals ) 工具条上的按钮将会显示「 此参数可选 」 -->

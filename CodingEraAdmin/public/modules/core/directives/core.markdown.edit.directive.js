@@ -136,26 +136,7 @@ angular.module('core').config([
             redo:function(cm){cm.redo();}
         };
     }])
-    .filter('markdown',['$sce',function($sce){
-        var marked=(function(marked){
-            marked.setOptions({
-             renderer: new marked.Renderer(),
-             gfm: true,
-             tables: true,
-             breaks: false,
-             pedantic: false,
-             sanitize: true,
-             smartLists: true,
-             smartypants: false
-             });
-            return marked;
-        })(window.marked);
 
-        return function(input){
-            if(!input||typeof input!=='string') return '';
-            return $sce.trustAsHtml(marked(input));
-        };
-    }])
     .directive('ceMarkdown',
     ['markdownActions','ceMarkdownConfig','$log','leanCloud',function(markdownActions,ceMarkdownConfig,$log,leanCloud) {
         return {

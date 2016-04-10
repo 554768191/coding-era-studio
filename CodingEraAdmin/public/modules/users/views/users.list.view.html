@@ -6,7 +6,24 @@
 
     <ce-data-list ce-data="jsonData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >
         <ce-data-custom>
-            <h4 ng-bind="item.username"></h4>
+            <div class="user-list-card">
+                <div class="top">
+                    <div class="avatar">
+                        <img ng-src="{{item.avatar}}" class="img-circle" />
+                    </div>
+                    <div class="name" ng-bind="item.displayName">Yan</div>
+                </div>
+                <div class="detail">
+                    <ul class="list-unstyled">
+                        <li><label>性别</label> {{item.sex == 1 ?'男':'女'}}</li>
+                        <li><label>邮箱</label> {{item.email}}</li>
+                        <li><label>电话</label> {{item.phone}}</li>
+                        <li><label>状态</label> {{item.enabled ? '可用' : '禁用' }}</li>
+                        <li><label>创建时间</label> <span ce-friendly-time="item.createdTime"></span></li>
+                    </ul>
+                </div>
+
+            </div>
         </ce-data-custom>
         <ce-data-toolbar status-key="status" >
             <ce-data-toolbar-btn icon="glyphicon-user" title="角色" ng-click="onEditClick( obj );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>

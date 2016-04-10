@@ -6,8 +6,14 @@
 
 <ce-data-list ce-data="articleData" page-previous-click="previousPage()" page-next-click="nextPage()" >
     <ce-data-custom>
-        <h4 ng-bind="item.title"></h4>
-        <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createTime  | date:'yyyy-MM-dd'}}</small>
+
+        <h2 >
+            <span ng-bind="item.title"></span>
+        </h2>
+        <small>发表于<span ce-friendly-time="item.createdTime"></span></small>
+        <div class="article-list-content">
+            <p ng-bind-html="item.content | markdown"></p></td></tr>
+        </div>
     </ce-data-custom>
     <ce-data-toolbar status-key="status" >
         <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ce-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
