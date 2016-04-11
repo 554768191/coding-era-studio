@@ -44,6 +44,8 @@ module.exports = {
 				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
 				'public/components/slickgrid/slick.core.js',
 				'public/components/slickgrid/slick.grid.js',
+				'public/components/angular-validation/dist/angular-validation.min.js',
+				'public/components/angular-validation/dist/angular-validation-rule.min.js',
 			]
 		},
 		css: ['public/dist/css/all.min.css'],

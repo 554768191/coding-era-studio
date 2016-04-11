@@ -32,19 +32,34 @@ module.exports = {
 				'public/components/angular-ui-utils/ui-utils.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
+				'public/components/lodash/dist/lodash.min.js',
+
+				// ngGileUpload 强大的文件上传工具
 				'public/components/ng-file-upload/ng-file-upload.js',
+				// ngImgCrop 图片截图工具
 				'public/components/ng-img-crop/compile/unminified/ng-img-crop.js',
+
+				// ui-select 下拉多选,可自定义 , 解决 bootstrap 不能下拉自定义录入
+				'public/components/ui-select/dist/select.js',
+
+				// moment 第三方是日期处理类库,用于解析、检验、操作、以及显示日期等 ( 炒鸡强大)
+				'public/components/moment/min/moment.min.js',
+
+				// markdown 指令依赖包
 				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
-				'public/components/lodash/dist/lodash.min.js',
-				'public/components/ui-select/dist/select.js',
-				'public/components/moment/min/moment.min.js',
-				'public/components/jquery/dist/jquery.min.js',
 
 				// 这里使用 slickgrid 考虑是否不使用 bower 库引用,因为github中并没有压缩包的 (还是脚本也能解决?)
+				// 依赖 Jquery , 必须放 slickgrid 包前 (引用后 angular 的 jQLite 不能使用 )
+				'public/components/jquery/dist/jquery.min.js',
 				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
 				'public/components/slickgrid/slick.core.js',
 				'public/components/slickgrid/slick.grid.js',
+
+				//第三方校验框架 angular-validation
+				'public/components/angular-validation/dist/angular-validation.js',
+				'public/components/angular-validation/dist/angular-validation-rule.js',
+
 			]
 		},
 		sass:['public/modules/**/scss/*.scss'],

@@ -14,11 +14,10 @@ angular.module('case').controller('tagEditCtrl', [
             });
         }
 
+
         //发布&保存
-        $scope.onPublishClick = function (status, isValid) {
-            if(!isValid){
-                return;
-            }
+        $scope.onPublishClick = function (status) {
+
             $scope.tag.status = status;
             TagService.save($scope.tag).success(function (res) {
                 ceUtil.toast('保存成功');

@@ -8,21 +8,43 @@ ceApp.run([
 
 	}
 ]).config([
-	'$locationProvider','$httpProvider','$logProvider',
-	function($locationProvider,$httpProvider,$logProvider) {
+	'$locationProvider','$httpProvider','$logProvider','$validationProvider',
+	function($locationProvider,$httpProvider,$logProvider,$validationProvider) {
 		//日志输出模式
 		$logProvider.debugEnabled(true);
 
 		// Setting HTML5 Location Mode
 		$locationProvider.hashPrefix('!');
-		//$translateProvider.useLoader('$translatePartialLoader', {
-		//	urlTemplate: 'modules/{part}/i18n/{part}-{lang}.json'
-		//});
-        //
-        //
-		//$translatePartialLoaderProvider.addPart('core');
-		//$translateProvider.preferredLanguage('zh-cn');
-		//$translateProvider.useSanitizeValueStrategy('escaped');
+
+		// 关闭 angular-validation 校验成功提示 ( 成功还提示个毛啊? )
+		$validationProvider.showSuccessMessage = false;
+
+		//设置失败时返回 HTML 格式 ( 这里统一使用 bootstrap 的 text-danger 样式 )
+		$validationProvider.setErrorHTML(function (msg, element, attrs) {
+			// remember to return your HTML
+			// eg: return '<p class="invalid">' + msg + '</p>';
+			// or using filter
+			// eg: return '<p class="invalid">{{"' + msg + '"| lowercase}}</p>';
+			return '<p class="text-danger">'+msg+'</p>';
+		});
+
+		$validationProvider.validCallback = function(element) {
+			var parentFormGroup = $(element).parents('.form-group:first');
+			parentFormGroup.removeClass('has-error').addClass('has-success has-feedback');
+			$(element).prev('.form-control-feedback').remove();
+			$(element).before('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
+
+		};
+
+		$validationProvider.invalidCallback = function(element) {
+			var parentFormGroup = $(element).parents('.form-group:first');
+			parentFormGroup.removeClass('has-success').addClass('has-error has-feedback');
+			$(element).prev('.form-control-feedback').remove();
+			$(element).before('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>');
+		};
+
+		$validationProvider.setValidMethod('submit');
+
 	}]);
 
 

@@ -1,7 +1,15 @@
-<form>
+<form name="EditForm" >
     <div class="form-group">
         <label >名称</label>
-        <input type="text" class="form-control"  placeholder="作品名称" ng-model="article.title">
+        <input
+                type="text"
+                class="form-control"
+                placeholder="作品名称"
+                ng-model="article.title"
+                name="title"
+                validator="required"
+                required-error-message="必须输入作品名称"
+        />
     </div>
     <div class="form-group">
         <label >文章详情</label>
@@ -12,6 +20,6 @@
 
     </div>
 
-    <button type="submit" class="btn btn-info" ng-click="onPublishClick('PUBLISHED')">发布</button>
+    <button type="submit" class="btn btn-info" validation-submit="EditForm" ng-click="onPublishClick('PUBLISHED')">发布</button>
     <button type="submit" class="btn btn-default" ng-click="onPublishClick('SKETCH')">保存为草稿</button>
 </form>

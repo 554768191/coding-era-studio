@@ -11,7 +11,9 @@ var ApplicationConfiguration = (function() {
 		'ngFileUpload',
 		'ui.select',
 		'ngSanitize',
-		'ngImgCrop'
+		'ngImgCrop',
+		'validation',
+		'validation.rule'
 	];
 
 	var registerModule = function(moduleName, dependencies) {
