@@ -12,6 +12,7 @@ module.exports = {
     },
     port: 3000,
     templateEngine: 'swig',
+    apiURL:'http://localhost:8080/api/open',
     assets: {
         lib: {
             css: [
@@ -31,7 +32,7 @@ module.exports = {
         ],
         server: {
             gulpConfig: 'gulpfile.js',
-            allJs: [ 'config/**/*.js', 'public/modules/*/*.js'],
+            allJs: [ 'config/**/*.js', 'public/modules/*/*.js','public/routes/*/*.js','public/controllers/**/*.js'],
             views: 'public/modules/**/*.html'
         }
     }

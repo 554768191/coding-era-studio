@@ -4,10 +4,11 @@
 
 var gulp = require('gulp');
 var allAssets = require('./allAssets');
-var  chalk = require('chalk');
+var chalk = require('chalk');
+var $ = require('gulp-load-plugins')();
+var _ = require('lodash');
 
 var app = require('../express')();
-
 
 
 //启动express

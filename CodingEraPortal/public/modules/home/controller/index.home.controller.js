@@ -10,13 +10,15 @@ var homeController = (function(){
         var naviHeight = 70;
         var windowHeight =  window.innerHeight - naviHeight;
         var sectionHeadObj = $('.section-header');
-        sectionHeadObj.height(windowHeight);
-
-        $(window).resize(function(){
-            //重新获取浏览器高度
-            windowHeight = window.innerHeight - naviHeight;
-            sectionHeadObj.height(windowHeight);
-        });
+        var blueBackground = $('.ce-blue-background');
+       // sectionHeadObj.height(windowHeight);
+        console.log(window);
+        blueBackground.height($('.ce-wrapper-body').height());
+        //$(window).resize(function(){
+        //    //重新获取浏览器高度
+        //    windowHeight = window.innerHeight - naviHeight;
+        //    sectionHeadObj.height(windowHeight);
+        //});
 
     };
 

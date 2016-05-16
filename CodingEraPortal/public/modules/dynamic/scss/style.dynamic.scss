@@ -1,4 +1,4 @@
-@import "../../comment/scss/comment.env";
+@import "../../layout/scss/comment.env";
 
 $dynamic-color:#36A9FF;
 @include setJumbotronColor($dynamic-color,'dynamic');

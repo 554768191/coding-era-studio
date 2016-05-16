@@ -13,6 +13,36 @@
 <div class="container case-content">
     <div class="row">
         <div class="col-xs-12 col-md-8">
+
+
+
+            {% for caseObject in cases.data.content %}
+            <div class="case-card"> <!-- case-card -->
+                <div class="case-padding">
+                    <div class="top">
+                        <div class="title"><a href="/case/detail">
+                            <h2 class="hidden-xs">{{caseObject.title}}</h2>
+                            <h4 class="visible-xs-block">{{caseObject.title}}</h4>
+                        </a></div>
+                        <div class="subtitle">
+                            {% for tags in caseObject.tags %}
+                            微信,java,jms
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="pic"><img src="{{caseObject.bannerUrl}}"></div>
+                        <div class="summary">{{caseObject.content}}</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
+                </div>
+            </div><!-- case-card -->
+            {% endfor %}
+
                 <div class="case-card"> <!-- case-card -->
                     <div class="case-padding">
                         <div class="top">
@@ -34,68 +64,7 @@
                     </div>
                 </div><!-- case-card -->
 
-            <div class="case-card"> <!-- case-card -->
-                <div class="case-padding">
-                    <div class="top">
-                        <div class="title"><a href="/case/detail">
-                            <h2 class="hidden-xs">IU互联网酒店-微信公众号</h2>
-                            <h4 class="visible-xs-block">IU互联网酒店-微信公众号</h4>
-                        </a></div>
-                        <div class="subtitle">微信,java,jms</div>
-                    </div>
-                    <div class="content">
-                        <div class="pic"><img src="/static/image/pic.jpg"></div>
-                        <div class="summary">IU酒店是铂涛集团推出的互联网概念酒店。酒店内的住宿体验有微信互动系统，手机、平板、电视多屏互动系统，个性定制服务。植入消费者有需求的互联网基因，打造符合现代年轻人需求的消费者定制互联网酒店。IU酒店是铂涛集团旗下酒店品牌之一...</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
-                </div>
-            </div><!-- case-card -->
 
-            <div class="case-card"> <!-- case-card -->
-                <div class="case-padding">
-                    <div class="top">
-                        <div class="title"><a href="/case/detail">
-                            <h2 class="hidden-xs">IU互联网酒店-微信公众号</h2>
-                            <h4 class="visible-xs-block">IU互联网酒店-微信公众号</h4>
-                        </a></div>
-                        <div class="subtitle">微信,java,jms</div>
-                    </div>
-                    <div class="content">
-                        <div class="pic"><img src="/static/image/pic.jpg"></div>
-                        <div class="summary">IU酒店是铂涛集团推出的互联网概念酒店。酒店内的住宿体验有微信互动系统，手机、平板、电视多屏互动系统，个性定制服务。植入消费者有需求的互联网基因，打造符合现代年轻人需求的消费者定制互联网酒店。IU酒店是铂涛集团旗下酒店品牌之一...</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
-                </div>
-            </div><!-- case-card -->
-
-            <div class="case-card"> <!-- case-card -->
-                <div class="case-padding">
-                    <div class="top">
-                        <div class="title"><a href="/case/detail">
-                            <h2 class="hidden-xs">IU互联网酒店-微信公众号</h2>
-                            <h4 class="visible-xs-block">IU互联网酒店-微信公众号</h4>
-                        </a></div>
-                        <div class="subtitle">微信,java,jms</div>
-                    </div>
-                    <div class="content">
-                        <div class="pic"><img src="/static/image/pic.jpg"></div>
-                        <div class="summary">IU酒店是铂涛集团推出的互联网概念酒店。酒店内的住宿体验有微信互动系统，手机、平板、电视多屏互动系统，个性定制服务。植入消费者有需求的互联网基因，打造符合现代年轻人需求的消费者定制互联网酒店。IU酒店是铂涛集团旗下酒店品牌之一...</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
-                </div>
-            </div><!-- case-card -->
 
 
             <div class="case-page">

@@ -1,4 +1,4 @@
-@import "../../comment/scss/comment.env";
+@import "comment.env";
 //更改bootstrap默认样式
 .navbar-brand{
   padding: 9px 15px 9px 55px;
@@ -6,20 +6,22 @@
   display: block;
   position: relative;
   line-height: 35px;
+
+
 }
 
 //设置导航栏图片位置&大小
 .navbar-brand img{
-  width:32px;
-  height:32px;
+  width:28px;
+  height:28px;
   position: absolute;
-  top:9px;
-  left: 15px;
+  top:12px;
+  left: 16px;
 }
 
 
 
-@mixin gen-navi-color($color,$fontColor){
+@mixin gen-navi-color($color,$fontColor,$menuColor){
   background:$color;
   border:0;
   //导航栏文字颜色
@@ -33,7 +35,7 @@
 
   //导航条文字颜色
   .navbar-nav > li > a{
-    color:#fff;
+    color:$menuColor;
   }
   //小屏幕下,展开按钮默认颜色
   .navbar-toggle .icon-bar {
@@ -57,28 +59,33 @@
 
   //文字hover颜色
   .navbar-nav > li > a:hover{
-    color:#fff;
+    color:$menuColor;
   }
 
   .navbar-nav > li > a:focus{
-    color:#fff;
+    color:$menuColor;
   }
 
   //brandhover颜色
   .navbar-brand:hover{
-    color:#fff;
+    color:$menuColor;
   }
+}
+
+.ce-navbar-main{
+  @include gen-navi-color(rgba(230,246,255,.2),#2295EB,#2295EB);
+  border-bottom: 1px solid rgba(44,151,232,.1);
 }
 
 //控制导航栏透明(黑色透明)
 .ce-navbar-dark{
-  @include gen-navi-color(rgba(0, 0, 0, 0.5),#fff);
+  @include gen-navi-color(rgba(0, 0, 0, 0.5),#fff,#fff);
 }
 
 
 //控制导航栏(绿色导航 关于使用)
 .ce-navbar-green{
-  @include gen-navi-color(#00A700,#fff);
+  @include gen-navi-color(#00A700,#fff,#fff);
 
 
 }
@@ -86,17 +93,17 @@
 
 //蓝色导航
 .ce-navbar-blue{
-  @include gen-navi-color(#36A9FF,#fff);
+  @include gen-navi-color(#36A9FF,#fff,#fff);
 }
 
 //橙色导航
 .ce-navbar-orange{
-  @include gen-navi-color(#FF6F32,#fff);
+  @include gen-navi-color(#FF6F32,#fff,#fff);
 }
 
 //红色导航
 .ce-navbar-red{
-  @include gen-navi-color(#EC4C58,#fff);
+  @include gen-navi-color(#EC4C58,#fff,#fff);
 }
 
 

@@ -11,6 +11,7 @@
     "express": "^4.13.4",
     "glob": "~4.0.5",
     "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.2",
     "gulp-csslint": "^0.2.2",
     "gulp-jshint": "^2.0.0",
     "gulp-livereload": "^3.8.1",
@@ -22,7 +23,8 @@
     "lodash": "^4.6.1",
     "node-sass": "^3.4.2",
     "run-sequence": "^1.1.5",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "tiny-lr": "^0.2.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

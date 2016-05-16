@@ -1,14 +1,15 @@
-@import "../../comment/scss/comment.env";
+@import "comment.env";
 
 .ce-footer{
   padding-top: 20px;
   padding-bottom: 20px;
+  height:80px;
   text-align: center;
   //border-top: 1px solid #000;
-  background: #2B3748;
-  color: #888888;
+  //background: #3A3F52;
+  color: $ce-color;
   a{
-    color: #aaa;
+    color: #8CC8F6;
   }
   .footer-txt{
     padding-top:10px;
