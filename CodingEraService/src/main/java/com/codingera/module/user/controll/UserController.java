@@ -27,7 +27,7 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ActionResult findTags(Pageable pr, @ModelAttribute UserQueryCriteria criteria) {
+	public ActionResult findUsers(Pageable pr, @ModelAttribute UserQueryCriteria criteria) {
 		Page<User> pages = userService.findUsersByCriteria(pr, criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
