@@ -10,10 +10,12 @@ var homeController = (function(){
         var naviHeight = 70;
         var windowHeight =  window.innerHeight - naviHeight;
         var sectionHeadObj = $('.section-header');
-        var blueBackground = $('.ce-blue-background');
+        var blueBackground = $('.gearbox');
+        var paretnBackground = $('.gearbox').parent('div');
        // sectionHeadObj.height(windowHeight);
         console.log(window);
         blueBackground.height($('.ce-wrapper-body').height());
+        paretnBackground.height($('.ce-wrapper-body').height());
         //$(window).resize(function(){
         //    //重新获取浏览器高度
         //    windowHeight = window.innerHeight - naviHeight;

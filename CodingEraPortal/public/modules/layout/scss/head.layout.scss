@@ -2,11 +2,11 @@
 //更改bootstrap默认样式
 .navbar-brand{
   padding: 9px 15px 9px 55px;
-  font-size:20px;
+  font-size:22px;
   display: block;
   position: relative;
   line-height: 35px;
-
+  font-weight: 500;
 
 }
 
@@ -21,7 +21,7 @@
 
 
 
-@mixin gen-navi-color($color,$fontColor,$menuColor){
+@mixin gen-navi-color($color,$fontColor){
   background:$color;
   border:0;
   //导航栏文字颜色
@@ -35,7 +35,7 @@
 
   //导航条文字颜色
   .navbar-nav > li > a{
-    color:$menuColor;
+    color:$fontColor;
   }
   //小屏幕下,展开按钮默认颜色
   .navbar-toggle .icon-bar {
@@ -59,86 +59,65 @@
 
   //文字hover颜色
   .navbar-nav > li > a:hover{
-    color:$menuColor;
+    color:$fontColor;
   }
 
   .navbar-nav > li > a:focus{
-    color:$menuColor;
+    color:$fontColor;
   }
 
   //brandhover颜色
   .navbar-brand:hover{
-    color:$menuColor;
+    color:$fontColor;
   }
 }
 
 .ce-navbar-main{
-  @include gen-navi-color(rgba(230,246,255,.2),#2295EB,#2295EB);
+  @include gen-navi-color(rgba(230,246,255,.2),#2295EB);
   border-bottom: 1px solid rgba(44,151,232,.1);
-}
-
-//控制导航栏透明(黑色透明)
-.ce-navbar-dark{
-  @include gen-navi-color(rgba(0, 0, 0, 0.5),#fff,#fff);
 }
 
 
 //控制导航栏(绿色导航 关于使用)
 .ce-navbar-green{
-  @include gen-navi-color(#00A700,#fff,#fff);
-
-
+  @include gen-navi-color(rgba(237,255,248,.2),#0DB072);
+  border-bottom: 1px solid rgba(32,175,116,.1);
 }
 
 
-//蓝色导航
-.ce-navbar-blue{
-  @include gen-navi-color(#36A9FF,#fff,#fff);
+
+
+.ce-navbar-normal{
+  @include gen-navi-color(#fff,#555);
+  border-bottom: 1px solid #EEEEEE;
+
 }
 
-//橙色导航
-.ce-navbar-orange{
-  @include gen-navi-color(#FF6F32,#fff,#fff);
-}
-
-//红色导航
-.ce-navbar-red{
-  @include gen-navi-color(#EC4C58,#fff,#fff);
-}
 
 
 
 //巨幕
 .jumbotron-header{
-  height:250px;
-  padding-top:80px;
+  height:330px;
+  padding-top:90px;
   position: relative;
   overflow: hidden;
-  .icon{
-    position: absolute;
-    color: #fff;
-    right: 200px;
-    bottom: -100px;
-    font-size: 300px;
-    line-height: 45px;
-    opacity: 0.15;
-
-  }
 }
 
 //大标题
 .jumbotron-header-title{
-  color:#fff;
+  color:#555;
 
   h1{
-    font-size:400%;
+    font-size:350%;
   }
 }
 //副标题
 .jumbotron-header-subtitle{
-  color:#fff;
+  color:#555;
+  font-size: 120%;
   opacity: 0.8;
-
+  margin-top:10px;
 }
 
 

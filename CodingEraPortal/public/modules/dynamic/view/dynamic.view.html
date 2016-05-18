@@ -2,13 +2,43 @@
 {% block content %}
 
 <!-- START navi -->
-{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-blue'} only %}
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-green',logo:'logo_green_ts_64.png'} only %}
 <!-- END   navi -->
 
 <!-- START jumbotron -->
-{%set jumbotron ={title:'最新动态',subtitle:'Coding Era 最新动态',icon:'glyphicon-globe',category:'dynamic'} %}
+{%set jumbotron ={title:'最新动态',subtitle:'Coding Era Studio 最新动态',icon:'glyphicon-globe',category:'dynamic'} %}
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
+
+<div class="ce-green-background">
+    <div class="gearbox">
+        <!--
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        -->
+    </div>
+</div>
+
 
 
 <div class="container dynamic-content">
