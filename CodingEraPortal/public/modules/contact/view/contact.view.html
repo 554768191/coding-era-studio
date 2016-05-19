@@ -2,14 +2,42 @@
 {% block content %}
 
 <!-- START navi -->
-{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-orange'} only %}
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-orange',logo:'logo_org_ts_64.png'} only %}
 <!-- END   navi -->
 
 <!-- START jumbotron -->
-{%set jumbotron = {title:'联系我们',subtitle:'定制项目,交流,都可以找我们',icon:'glyphicon-envelope',category:'contact'} %}
+{%set jumbotron = {title:'Contact',subtitle:'联系我们',category:'contact'} %}
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
 
+
+<div class="ce-orange-background">
+    <div class="gearbox">
+
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container contact-content">
     <div class="row">
@@ -98,4 +126,10 @@
 
     </div>
 </div>
+
+
+<!-- START footer -->
+{%set footer ={color:'orange'} %}
+{% include '../../layout/view/footer.view.html' with footer only %}
+<!-- END   footer -->
 {% endblock %}

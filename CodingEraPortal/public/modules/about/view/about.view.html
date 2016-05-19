@@ -2,13 +2,41 @@
 {% block content %}
 
 <!-- START navi -->
-{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-green'} only %}
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-gray',logo:'logo_dark_ts_64.png'} only %}
 <!-- END   navi -->
 
 <!-- START jumbotron -->
-{%set jumbotron ={title:'关于我们',subtitle:'关于Coding Era - 编码时代工作室',icon:'glyphicon-info-sign',category:'about'} %}
+{%set jumbotron ={title:'About',subtitle:'关于我们',category:'about'} %}
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
+
+<div class="ce-gray-background">
+    <div class="gearbox">
+
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="container about-content">
@@ -45,4 +73,11 @@
         </div>
     </div>
 </div>
+
+
+<!-- START footer -->
+{%set footer ={color:'gray'} %}
+{% include '../../layout/view/footer.view.html' with footer only %}
+<!-- END   footer -->
+
 {% endblock %}

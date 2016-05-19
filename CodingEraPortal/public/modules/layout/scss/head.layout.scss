@@ -73,15 +73,25 @@
 }
 
 .ce-navbar-main{
-  @include gen-navi-color(rgba(230,246,255,.2),#2295EB);
+  @include gen-navi-color(rgba(230,246,255,.2),$ce-color-blue);
   border-bottom: 1px solid rgba(44,151,232,.1);
 }
 
 
 //控制导航栏(绿色导航 关于使用)
 .ce-navbar-green{
-  @include gen-navi-color(rgba(237,255,248,.2),#0DB072);
+  @include gen-navi-color(rgba(237,255,248,.2),$ce-color-green);
   border-bottom: 1px solid rgba(32,175,116,.1);
+}
+
+.ce-navbar-orange{
+  @include gen-navi-color(rgba(255,250,232,.2),$ce-color-orange);
+  border-bottom: 1px solid rgba(243,157,28,.1);
+}
+
+.ce-navbar-gray{
+  @include gen-navi-color(#fff,$ce-color-gray);
+  border-bottom: 1px solid #EEEEEE;
 }
 
 

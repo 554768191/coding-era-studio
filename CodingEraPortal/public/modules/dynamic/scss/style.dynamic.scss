@@ -1,7 +1,7 @@
 @import "../../layout/scss/comment.env";
 
-$dynamic-color:#00B170;
-
+$dynamic-color:$ce-color-green;
+$dynamic-border-color:rgba(32,175,116,.1);
 @include setJumbotronColor(none,'dynamic',$dynamic-color,$borderColor:$dynamic-color);
 
 
@@ -14,8 +14,8 @@ $dynamic-color:#00B170;
     border-left:3px solid $line-color;
   }
   .dynamic-card{
-    $card-background:#fff;
-    $card-border-color:rgba(0,117,112,.2);
+    $card-background:rgba(255,255,255,.5);
+    $card-border-color:$dynamic-border-color;
     $card-margin-left:20px;
     background: $card-background;
     border:1px solid $card-border-color;
@@ -41,7 +41,7 @@ $dynamic-color:#00B170;
       width: 0;
       height: 0;
       border-top: $triangle-size/2 solid transparent;
-      border-right: $triangle-size solid $card-background;
+      border-right: $triangle-size solid #fff;
       border-bottom: $triangle-size/2 solid transparent;
       position: absolute;
       left:( $triangle-size - 1 ) * -1;
@@ -104,6 +104,24 @@ $dynamic-color:#00B170;
         }
 
       }
+    }
+  }
+
+  .point-container{
+    $point-size:18px;
+    $point-border:3px;
+    $card-margin-left:20px;
+    $triangle-size:12px;
+    position: relative;
+    .point{
+      width:$point-size;
+      height:$point-size;
+      background: $line-color + 10;
+      position: absolute;
+      bottom:-105px;
+      left:(  ($point-size + $point-border*2)/2 ) * -1 + 1;
+      border:$point-border solid #fff;
+      border-radius: 100px;
     }
   }
 }

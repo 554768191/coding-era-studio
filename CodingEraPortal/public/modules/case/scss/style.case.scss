@@ -1,16 +1,17 @@
 @import "../../layout/scss/comment.env";
 
-$case-color:#EC4C58;
+$case-color:$ce-color-blue;
+$case-color-border:rgba(44,151,232,.1);
 //设置巨幕颜色
-@include setJumbotronColor($case-color,'case');
+@include setJumbotronColor(none,'case',$case-color);
 
 
 .case-content{
   padding-top:50px;
   padding-bottom:100px;
   .case-card{
-    background: #fafafa;
-    border:1px solid #eeeeee;
+    background: rgba(255,255,255,.5);
+    border:1px solid $case-color-border;
     border-radius: 2px;
     margin-bottom:50px;
     .case-padding{
@@ -55,7 +56,7 @@ $case-color:#EC4C58;
       }
     }
     .bottom{
-      border-top:1px solid #eee;
+      border-top:1px solid $case-color-border;
       height:40px;
       display: -moz-box;
       display: -webkit-box;
@@ -65,7 +66,7 @@ $case-color:#EC4C58;
         height:30px;
         line-height: 30px;
         margin-top:5px;
-        border-right:1px solid #eee;
+        border-right:1px solid $case-color-border;
         text-align: center;
         -webkit-box-flex: 1;
         -moz-box-flex: 1;
@@ -88,8 +89,8 @@ $case-color:#EC4C58;
 
 
 .case-tags{
-  background: #fafafa;
-  border:1px solid #eeeeee;
+  background: rgba(255,255,255,.5);
+  border:1px solid $case-color-border;
   border-radius: 2px;
   padding:10px 20px 20px 20px;
   .tags{

@@ -2,47 +2,75 @@
 {% block content %}
 
 <!-- START navi -->
-{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-red'} only %}
+{% include '../../layout/view/head.view.html' with {clazz:'ce-navbar-main',logo:'logo_blue_ts_64.png'} only %}
 <!-- END   navi -->
 
 <!-- START jumbotron -->
-{%set jumbotron = {title:'作品展示',subtitle:'我们做过的作品',icon:'glyphicon-th-large',category:'case'} %}
+{%set jumbotron = {title:'Case',subtitle:'作品展示',category:'case'} %}
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
+
+
+<div class="ce-blue2-background">
+    <div class="gearbox">
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container case-content">
     <div class="row">
         <div class="col-xs-12 col-md-8">
 
 
-
-            {% for caseObject in cases.data.content %}
-            <div class="case-card"> <!-- case-card -->
-                <div class="case-padding">
-                    <div class="top">
-                        <div class="title"><a href="/case/detail">
-                            <h2 class="hidden-xs">{{caseObject.title}}</h2>
-                            <h4 class="visible-xs-block">{{caseObject.title}}</h4>
-                        </a></div>
-                        <div class="subtitle">
-                            {% for tags in caseObject.tags %}
-                            微信,java,jms
-                            {% endfor %}
+            {% if cases!= null %}
+                {% for caseObject in cases.data.content %}
+                <div class="case-card"> <!-- case-card -->
+                    <div class="case-padding">
+                        <div class="top">
+                            <div class="title"><a href="/case/detail">
+                                <h2 class="hidden-xs">{{caseObject.title}}</h2>
+                                <h4 class="visible-xs-block">{{caseObject.title}}</h4>
+                            </a></div>
+                            <div class="subtitle">
+                                {% for tags in caseObject.tags %}
+                                微信,java,jms
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="pic"><img src="{{caseObject.bannerUrl}}"></div>
+                            <div class="summary">{{caseObject.content}}</div>
                         </div>
                     </div>
-                    <div class="content">
-                        <div class="pic"><img src="{{caseObject.bannerUrl}}"></div>
-                        <div class="summary">{{caseObject.content}}</div>
+                    <div class="bottom">
+                        <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
+                        <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
+                        <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
                     </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
-                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
-                </div>
-            </div><!-- case-card -->
-            {% endfor %}
-
+                </div><!-- case-card -->
+                {% endfor %}
+            {% endif %}
                 <div class="case-card"> <!-- case-card -->
                     <div class="case-padding">
                         <div class="top">
@@ -111,4 +139,10 @@
 
     </div>
 </div>
+
+
+<!-- START footer -->
+{%set footer ={color:'blue'} %}
+{% include '../../layout/view/footer.view.html' with footer only %}
+<!-- END   footer -->
 {% endblock %}

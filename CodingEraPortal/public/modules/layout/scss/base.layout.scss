@@ -33,10 +33,13 @@ $gear-centent-color:#e6f6ff;
 
 //蓝色背景
 @include ce-background('blue',#e6f6ff);
+@include ce-background('blue2',linear-gradient(to bottom,#fff,#e6f6ff),#e6f6ff);
 //绿色
-@include ce-background('green',linear-gradient(to bottom,#fff,#edfff8),none);
+@include ce-background('green',linear-gradient(to bottom,#fff,#edfff8), #e8fff6);
 
+@include ce-background('orange',linear-gradient(to bottom,#fff,#fffae8), #fffae8);
 
+@include ce-background('gray',#fff);
 
 
 //首页巨幕

@@ -23,7 +23,10 @@ exports.get = function (url, done) {
         if (!error && response.result == 'error') {
             done(null, JSON.parse(body));
         } else {
-            done(JSON.parse(body));
+            //不知道怎么处理好
+            console.log(body);
+            done(null, null);
+            //done(JSON.parse(body));
         }
     }
     request(config.apiURL + url, callback);

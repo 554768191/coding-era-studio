@@ -6,13 +6,13 @@
 <!-- END   navi -->
 
 <!-- START jumbotron -->
-{%set jumbotron ={title:'最新动态',subtitle:'Coding Era Studio 最新动态',icon:'glyphicon-globe',category:'dynamic'} %}
+{%set jumbotron ={title:'Dynamic',subtitle:'Coding Era Studio 最新动态',icon:'glyphicon-globe',category:'dynamic'} %}
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
 
 <div class="ce-green-background">
     <div class="gearbox">
-        <!--
+
         <div class="gear one">
             <div class="gear-inner">
                 <div class="bar"></div>
@@ -35,7 +35,6 @@
                 <div class="bar"></div>
             </div>
         </div>
-        -->
     </div>
 </div>
 
@@ -92,7 +91,7 @@
                    <div class="triangle-left"></div>
                    <div class="card-detail">
                        <div class="top">
-                           <div class="avatar"><img src="/static/image/logo_64X64.png" /></div>
+                           <div class="avatar"><img src="/static/image/yan.jpg" /></div>
                            <div class="name">Coding Era</div>
                            <div class="time">今天 11:52</div>
                        </div>
@@ -105,10 +104,21 @@
                </div><!-- dynamic-card -->
             </div>
 
-
+            <div class="col-xs-12 col-md-8">
+                <div class="point-container"><!-- dynamic-card -->
+                    <div class="point"></div>
+                </div><!-- dynamic-card -->
+            </div>
 
 
         </div>
     </div>
 </div>
+
+
+<!-- START footer -->
+{%set footer ={color:'green'} %}
+{% include '../../layout/view/footer.view.html' with footer only %}
+<!-- END   footer -->
+
 {% endblock %}
