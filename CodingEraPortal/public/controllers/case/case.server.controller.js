@@ -12,8 +12,8 @@ var request = require('../comment/request.server.controller.js');
  */
 exports.getCases = function(req, res, next) {
     request.get('/case/list', function (body) {
-        console.log(body);
-        res.render('case/view/case',{cases:body});
+        console.log(body.data);
+        res.render('case/view/case',{resultData:body});
     });
 
 };

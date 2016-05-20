@@ -4,7 +4,7 @@ $about-color:$ce-color-gray;
 //设置巨幕颜色
 @include setJumbotronColor(none,'about',$about-color);
 .about-content{
-  padding-top:50px;
+  //padding-top:50px;
   padding-bottom:100px;
   h3{
     color:$ce-color;

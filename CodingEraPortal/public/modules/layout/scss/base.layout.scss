@@ -1,43 +1,79 @@
 @import "comment.env";
+
 body{
   //background: #e6f6ff;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei","WenQuanYi Micro Hei",Arial,Verdana,sans-serif;
   font-size: 14px;
   height:100%;
 }
+
+.ce-wrapper-body{
+  position: relative;
+}
 $gear-color:#d9f0ff ;
 $gear-centent-color:#e6f6ff;
-@mixin ce-background($name,$backgroundColor,$gear-color:darken($backgroundColor,2.5%)){
+@mixin ce-background($name,$backgroundColor,$gear-color:darken($backgroundColor,5%)){
   .ce-#{$name}-background {
     background: $backgroundColor;
     opacity: 1;
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -2;
     top: 0;
     left: 0;
+    bottom:0;
+    .overlay{
+      background: linear-gradient(to bottom,#fff,rgba(23,158,211,0));
+      height: 400px;
+      width:100%;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+    .linear-color{
+
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      z-index: -1;
+    }
     .gear-inner {
-      background: $gear-color;
+      //background: $gear-color;
+      background: $backgroundColor;
+      border-color: $gear-color;
+      z-index: 2;
+
       .bar {
-        background: $gear-color;
+        //background: $gear-color;
+        border-color: $gear-color;
+        z-index: 1;
       }
     }
     .gear {
+      .overlay{
+        background: $backgroundColor;
+        border: 1px solid $gear-color;
+      }
       &:after {
         background: $backgroundColor;
+        border: 1px solid $gear-color;
       }
     }
   }
 }
 
-//蓝色背景
-@include ce-background('blue',#e6f6ff);
-@include ce-background('blue2',linear-gradient(to bottom,#fff,#e6f6ff),#e6f6ff);
-//绿色
-@include ce-background('green',linear-gradient(to bottom,#fff,#edfff8), #e8fff6);
-
-@include ce-background('orange',linear-gradient(to bottom,#fff,#fffae8), #fffae8);
+//蓝色背景(首页)
+@include ce-background('blue',$ce-color-blue-highlight,$ce-color-blue-border);
+//蓝色背景(作品)
+@include ce-background('blue2',$ce-color-blue-highlight,$ce-color-blue-border);
+//绿色背景
+@include ce-background('green',$ce-color-green-highlight,$ce-color-green-border);
+//橙色背景
+@include ce-background('orange',$ce-color-orange-highlight, $ce-color-orange-border);
 
 @include ce-background('gray',#fff);
 
@@ -126,10 +162,11 @@ $gear-centent-color:#e6f6ff;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;
-    @include ce-common('border-radius',6px);
-    @include ce-common('box-shadow',inset 0 0 20px black);
+    z-index: 3;
+    @include ce-common('border-radius',100%);
+    //@include ce-common('box-shadow',inset 0 0 20px black);
     @include ce-common('transition',background 0.2s);
+    background-color: #000;
   }
 }
 .gearbox.turn .overlay {
@@ -162,11 +199,14 @@ $gear-centent-color:#e6f6ff;
   position: relative;
   height: 100%;
   width: 100%;
-  background: $gear-color;
+  border:1px solid $gear-color;
+  //background: $gear-color;
   @include ce-common('border-radius',100%);
   @include ce-common('animation-iteration-count',infinite);
+
   .bar {
-    background: $gear-color;
+    //background: $gear-color;
+    border:1px solid $gear-color;
     position: absolute;
     left: 50%;
     top: 50%;

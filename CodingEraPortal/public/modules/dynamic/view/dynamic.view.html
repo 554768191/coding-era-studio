@@ -10,33 +10,11 @@
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
 
-<div class="ce-green-background">
-    <div class="gearbox">
 
-        <div class="gear one">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-
-        <div class="gear two">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-        <div class="gear three">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- START background -->
+{%set background = {color:'green',overlay:true} %}
+{% include '../../layout/view/background.view.html' with background only %}
+<!-- END   background -->
 
 
 

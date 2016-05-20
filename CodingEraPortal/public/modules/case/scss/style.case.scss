@@ -7,8 +7,30 @@ $case-color-border:rgba(44,151,232,.1);
 
 
 .case-content{
-  padding-top:50px;
-  padding-bottom:100px;
+  //padding-top:50px;
+  //padding-bottom:100px;
+
+  //错误信息
+  .server-error-msg{
+    color:$ce-color-red;
+  }
+  //分页按钮样式
+  .page-btn{
+    a{
+      background-color: $case-color;
+      border-color: $case-color-border;
+      color:#fff;
+      border-radius: 4px;
+      padding:10px 20px;
+      //动画
+      transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease;
+      &:hover{
+        background-color: rgba(44,151,232,.1);
+        color:$case-color;
+      }
+    }
+  }
+
   .case-card{
     background: rgba(255,255,255,.5);
     border:1px solid $case-color-border;
@@ -20,6 +42,7 @@ $case-color-border:rgba(44,151,232,.1);
         .title{
           a{
             text-decoration: none;
+            color:$case-color;
             &:hover{
               color:$case-color;
             }
@@ -110,6 +133,12 @@ $case-color-border:rgba(44,151,232,.1);
       padding:5px 10px;
       border-radius: 2px;
       margin-bottom:5px;
+      cursor: pointer;
+      transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease;
+      &:hover{
+        background-color: $case-color-border;
+        color:$case-color;
+      }
     }
   }
 }

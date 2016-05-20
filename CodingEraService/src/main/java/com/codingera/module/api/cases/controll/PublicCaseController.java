@@ -48,6 +48,9 @@ public class PublicCaseController {
 	@ResponseBody
 	public ActionResult findCases(Pageable pr, @ModelAttribute CaseQueryCriteria criteria) {
 		Page<Case> pages = CaseService.findCaseByCriteria(pr, criteria);
+		for(Case ceCase: pages.getContent()){
+			Hibernate.initialize(ceCase.getTags());
+		}
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
 	

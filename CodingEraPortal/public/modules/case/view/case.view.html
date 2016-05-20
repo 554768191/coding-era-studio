@@ -10,41 +10,18 @@
 {% include '../../layout/view/jumbotron.view.html' with jumbotron only %}
 <!-- END   jumbotron -->
 
+<!-- START background -->
+{%set background = {color:'blue2',overlay:true} %}
+{% include '../../layout/view/background.view.html' with background only %}
+<!-- END   background -->
 
-<div class="ce-blue2-background">
-    <div class="gearbox">
-        <div class="gear one">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-
-        <div class="gear two">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-        <div class="gear three">
-            <div class="gear-inner">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container case-content">
     <div class="row">
         <div class="col-xs-12 col-md-8">
 
-
-            {% if cases!= null %}
-                {% for caseObject in cases.data.content %}
+            {% if resultData.result == 'success' %}
+                {% for caseObject in resultData.data.content %}
                 <div class="case-card"> <!-- case-card -->
                     <div class="case-padding">
                         <div class="top">
@@ -54,7 +31,7 @@
                             </a></div>
                             <div class="subtitle">
                                 {% for tags in caseObject.tags %}
-                                微信,java,jms
+                                {{tags.name}} {% if !loop.last %},{% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -70,52 +47,30 @@
                     </div>
                 </div><!-- case-card -->
                 {% endfor %}
-            {% endif %}
-                <div class="case-card"> <!-- case-card -->
-                    <div class="case-padding">
-                        <div class="top">
-                            <div class="title"><a href="/case/detail">
-                                <h2 class="hidden-xs">IU互联网酒店-微信公众号</h2>
-                                <h4 class="visible-xs-block">IU互联网酒店-微信公众号</h4>
-                            </a></div>
-                            <div class="subtitle">微信,java,jms</div>
-                        </div>
-                        <div class="content">
-                            <div class="pic"><img src="/static/image/pic.jpg"></div>
-                            <div class="summary">IU酒店是铂涛集团推出的互联网概念酒店。酒店内的住宿体验有微信互动系统，手机、平板、电视多屏互动系统，个性定制服务。植入消费者有需求的互联网基因，打造符合现代年轻人需求的消费者定制互联网酒店。IU酒店是铂涛集团旗下酒店品牌之一...</div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
-                        <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
-                        <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
-                    </div>
-                </div><!-- case-card -->
-
-
-
 
             <div class="case-page">
                 <nav>
-                    <ul class="pagination pagination-lg">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                    <ul class="pager">
+                        {% if !resultData.data.first %}
+                            <li class="previous page-btn"><a href="#">上一页</a></li>
+                        {% endif %}
+                        {% if !resultData.data.last %}
+                            <li class="next page-btn"><a href="#">下一页</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
+
+            {% endif %}
+            {% if resultData.result != 'success' %}
+            <div class="server-error-msg text-center"><h4>{{resultData.message}}</h4></div>
+            {% endif %}
+
+
+
+
+
+
         </div>
 
         <div class="col-md-4 hidden-xs" >

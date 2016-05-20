@@ -19,14 +19,16 @@ exports.get = function (url, done) {
         //} else {
         //    done(JSON.parse(body));
         //}
-
-        if (!error && response.result == 'error') {
-            done(null, JSON.parse(body));
+        //我们后台不标准,暂时修改(针对Service做匹配)
+        if (!error && response.result == 'success') {
+            done(JSON.parse(body));
         } else {
-            //不知道怎么处理好
-            console.log(body);
-            done(null, null);
-            //done(JSON.parse(body));
+            if(body){
+                done(JSON.parse(body));
+            }else{
+                done({result:'error',message:' o(╯□╰)o 服务器失联了,请稍后再试'});
+            }
+
         }
     }
     request(config.apiURL + url, callback);
