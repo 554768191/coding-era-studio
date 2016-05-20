@@ -2,7 +2,7 @@
 
 $dynamic-color:$ce-color-green;
 $dynamic-border-color:rgba(32,175,116,.1);
-@include setJumbotronColor(none,'dynamic',$dynamic-color,$borderColor:$dynamic-color);
+@include setJumbotronColor(none,'dynamic',$dynamic-color);
 
 
 .dynamic-content{
@@ -57,7 +57,7 @@ $dynamic-border-color:rgba(32,175,116,.1);
       position: absolute;
       top:$triangle-size - ($point-size - $triangle-size)/2;
       left:($card-margin-left + ($point-size + $point-border*2)/2 ) * -1;
-      border:$point-border solid #fff;
+      border:$point-border solid $ce-color-green-highlight;
       border-radius: 100px;
     }
 
@@ -108,20 +108,42 @@ $dynamic-border-color:rgba(32,175,116,.1);
   }
 
   .point-container{
-    $point-size:18px;
+    $point-size:31px;
     $point-border:3px;
     $card-margin-left:20px;
     $triangle-size:12px;
     position: relative;
-    .point{
+    .point-start{
+      width:$point-size;
+      height:$point-size;
+      background: $line-color + 10;
+      position: absolute;
+      top:-60px;
+      left:(  ($point-size + $point-border*2)/2 ) * -1 + 1;
+      border:$point-border solid $ce-color-green-highlight;
+      border-radius: 100px;
+      text-align: center;
+      color: #fff;
+      padding-top:4px;
+    }
+    .point-end{
       width:$point-size;
       height:$point-size;
       background: $line-color + 10;
       position: absolute;
       bottom:-105px;
       left:(  ($point-size + $point-border*2)/2 ) * -1 + 1;
-      border:$point-border solid #fff;
+      border:$point-border solid $ce-color-green-highlight;
       border-radius: 100px;
+      text-align: center;
+      color: #fff;
+      padding-top:4px;
+      cursor: pointer;
+      transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease;
+      &:hover{
+        background-color: $ce-color-green-highlight;
+        color:$dynamic-color;
+      }
     }
   }
 }
