@@ -24,10 +24,10 @@ module.exports = {
 
             ]
         },
-        sass:['public/modules/**/scss/*.scss'],
-        css: ['public/modules/**/css/*.css'],
+        sass:['public/modules/**/client/scss/*.scss'],
+        css: ['public/modules/**/client/css/*.css'],
         js: [
-            'public/modules/*/*.js',
+            'public/modules/**/client/*.js',
             'public/modules/*/*[!tests]*/*.js'
         ],
         server: {

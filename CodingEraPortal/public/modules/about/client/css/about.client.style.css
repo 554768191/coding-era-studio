@@ -1,0 +1,13 @@
+.jumbotron-about {
+  background: none; }
+  .jumbotron-about .jumbotron-header-title {
+    color: #555555; }
+  .jumbotron-about .jumbotron-header-subtitle {
+    color: #555555; }
+
+.about-content {
+  padding-bottom: 100px; }
+  .about-content h3 {
+    color: #2c97e8;
+    font-weight: 300;
+    padding-bottom: 50px; }

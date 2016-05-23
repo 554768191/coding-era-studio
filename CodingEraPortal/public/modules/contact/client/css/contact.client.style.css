@@ -1,0 +1,80 @@
+.jumbotron-contact {
+  background: none; }
+  .jumbotron-contact .jumbotron-header-title {
+    color: #F59F00; }
+  .jumbotron-contact .jumbotron-header-subtitle {
+    color: #F59F00; }
+
+.contact-content {
+  padding-top: 50px;
+  padding-bottom: 100px; }
+  .contact-content .contact-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(243, 157, 28, 0.1);
+    border-radius: 2px;
+    margin-bottom: 50px; }
+    .contact-content .contact-card .contact-padding {
+      padding: 20px; }
+    .contact-content .contact-card .top {
+      position: relative; }
+      .contact-content .contact-card .top .avatar {
+        width: 50px;
+        height: 50px; }
+        .contact-content .contact-card .top .avatar img {
+          width: 50px;
+          height: 50px;
+          border-radius: 100%; }
+      .contact-content .contact-card .top .name {
+        position: absolute;
+        left: 60px;
+        height: 25px;
+        top: 0; }
+      .contact-content .contact-card .top .stateMessage {
+        position: absolute;
+        left: 60px;
+        height: 25px;
+        top: 25px;
+        font-size: 90%;
+        color: #888; }
+    .contact-content .contact-card .center {
+      margin-top: 20px;
+      border-top: 1px solid rgba(243, 157, 28, 0.1);
+      padding-top: 20px; }
+      .contact-content .contact-card .center .detail {
+        border-radius: 2px;
+        padding: 20px; }
+    .contact-content .contact-card .bottom {
+      margin-top: 20px; }
+      .contact-content .contact-card .bottom .tag .tags ul {
+        padding: 0; }
+      .contact-content .contact-card .bottom .tag .tags li {
+        float: left;
+        min-width: 50px;
+        height: 20px;
+        line-height: 20px;
+        list-style: none;
+        background: #F59F00;
+        text-align: center;
+        color: #fff;
+        margin-left: 5px;
+        padding: 0 10px;
+        border-radius: 2px;
+        margin-bottom: 5px; }
+    .contact-content .contact-card .contact {
+      border-top: 1px solid rgba(243, 157, 28, 0.1);
+      height: 40px;
+      display: -moz-box;
+      display: -webkit-box;
+      display: box; }
+      .contact-content .contact-card .contact .contacts {
+        height: 30px;
+        line-height: 30px;
+        margin-top: 5px;
+        border-right: 1px solid rgba(243, 157, 28, 0.1);
+        text-align: center;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -ms-box-flex: 1;
+        box-flex: 1; }
+        .contact-content .contact-card .contact .contacts:last-child {
+          border-right: 0; }

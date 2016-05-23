@@ -1,0 +1,31 @@
+.section-header {
+  width: 100%;
+  background-size: cover;
+  padding-top: 70px;
+  padding-bottom: 100px; }
+  .section-header .section-header-sm-title {
+    padding-top: 50px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 8px #0f0f0f; }
+    .section-header .section-header-sm-title h1 {
+      font-size: 350%; }
+  .section-header .section-header-subTitle {
+    padding-top: 40px;
+    text-align: center;
+    color: #2c97e8;
+    font-size: 140%; }
+  .section-header .section-header-button {
+    padding-top: 90px;
+    text-align: center; }
+
+.section-team {
+  padding-top: 150px;
+  color: #2c97e8; }
+
+.section-header-title {
+  padding-top: 50px;
+  text-align: center;
+  color: #2c97e8; }
+  .section-header-title h1 {
+    font-size: 450%; }

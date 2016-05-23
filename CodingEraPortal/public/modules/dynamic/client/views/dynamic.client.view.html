@@ -1,0 +1,112 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-green',logo:'logo_green_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron ={title:'Dynamic',subtitle:'Coding Era Studio 最新动态',category:'dynamic'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+
+<!-- START background -->
+{%set background = {color:'green',overlay:true} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+
+
+<div class="container dynamic-content">
+    <div class="dynamic-line">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-8">
+                <div class="point-container"><!-- dynamic-card -->
+                    <div class="point-start">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+                <div class="dynamic-card"><!-- dynamic-card -->
+                    <div class="point-start"></div>
+                    <div class="triangle-left-border"></div>
+                    <div class="triangle-left"></div>
+                    <div class="card-detail">
+                        <div class="top">
+                            <div class="avatar"><img src="/static/image/jason.jpeg" /></div>
+                            <div class="name">Jason</div>
+                            <div class="time">今天 13:52</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="content">
+                                后台优化代码,提升系统性能
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+                <div class="dynamic-card"><!-- dynamic-card -->
+                    <div class="point"></div>
+                    <div class="triangle-left-border"></div>
+                    <div class="triangle-left"></div>
+                    <div class="card-detail">
+                        <div class="top">
+                            <div class="avatar"><img src="/static/image/yan.jpg" /></div>
+                            <div class="name">Yan</div>
+                            <div class="time">今天 13:52</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="content">
+                                更新版本,添加Swig模板框架,提高代码可读性
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+               <div class="dynamic-card"><!-- dynamic-card -->
+                   <div class="point"></div>
+                   <div class="triangle-left-border"></div>
+                   <div class="triangle-left"></div>
+                   <div class="card-detail">
+                       <div class="top">
+                           <div class="avatar"><img src="/static/image/yan.jpg" /></div>
+                           <div class="name">Coding Era</div>
+                           <div class="time">今天 11:52</div>
+                       </div>
+                       <div class="bottom">
+                           <div class="content">
+                               Coding Era今天上线啦!!!
+                           </div>
+                       </div>
+                   </div>
+               </div><!-- dynamic-card -->
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+                <div class="point-container"><!-- dynamic-card -->
+                    <div class="point-end">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </div>
+                </div><!-- dynamic-card -->
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'green'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-main',logo:'logo_blue_ts_64.png'} only %}
+<!-- END   navi -->
+
+<div class="ce-blue-background">
+    <div class="gearbox">
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-header">
+    <div class="container">
+        <!-- 大标题 -->
+        <div class="row">
+            <div class="col-xs-12 visible-xs-block">
+                <div class="section-header-sm-title">
+                    <h1> Coding Era </h1>
+                </div>
+            </div>
+            <div class="col-xs-12 hidden-xs">
+                <div class="section-header-title">
+                    <h1> Coding Era </h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="section-header-subTitle">
+                    以创新、技术和时尚为生命意义的工作室，专研尖端技术和世界时尚风潮的前线!
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="section-header-button">
+                    <a href="/about" class="btn btn-primary btn-lg">了解我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-team ce-section">
+    <div class="container">
+        <!-- 大标题 -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="text-detail">
+                    <h2>众多公司和团队都在使用</h2>
+                    <p>
+                    轻度手游、在线教育、智能设备、传统媒体、企业应用⋯⋯众多细分领域的客户都在使用我们的服务，不仅有创新工场、CCTV、时尚集团这样的商业机构，也包括知乎、看球啦、口袋锦囊等热门应用。数以万计的团队、开发者的一致选择。
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 text-icon text-center">
+                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'blue'} %}
+{% include '../../../common/client/views/footer.client.view.html'  with footer only %}
+<!-- END   footer -->
+
+{% endblock %}

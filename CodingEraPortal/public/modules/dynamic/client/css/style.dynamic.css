@@ -1,0 +1,108 @@
+.jumbotron-dynamic {
+  background: none; }
+  .jumbotron-dynamic .jumbotron-header-title {
+    color: #00B170; }
+  .jumbotron-dynamic .jumbotron-header-subtitle {
+    color: #00B170; }
+
+.dynamic-content {
+  color: #555; }
+  .dynamic-content .dynamic-line {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    border-left: 3px solid #00B170; }
+  .dynamic-content .dynamic-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(32, 175, 116, 0.1);
+    padding: 10px;
+    border-radius: 2px;
+    margin-left: 20px;
+    position: relative;
+    margin-top: 50px; }
+    .dynamic-content .dynamic-card .triangle-left-border {
+      width: 0;
+      height: 0;
+      border-top: 6.5px solid transparent;
+      border-right: 13px solid rgba(32, 175, 116, 0.1);
+      border-bottom: 6.5px solid transparent;
+      position: absolute;
+      left: -13px;
+      top: 12px; }
+    .dynamic-content .dynamic-card .triangle-left {
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-right: 12px solid #fff;
+      border-bottom: 6px solid transparent;
+      position: absolute;
+      left: -11px;
+      top: 12px; }
+    .dynamic-content .dynamic-card .point {
+      width: 18px;
+      height: 18px;
+      background: #0abb7a;
+      position: absolute;
+      top: 9px;
+      left: -32px;
+      border: 3px solid #e8fff6;
+      border-radius: 100px; }
+    .dynamic-content .dynamic-card .card-detail .top {
+      position: relative; }
+      .dynamic-content .dynamic-card .card-detail .top .avatar {
+        width: 50px;
+        height: 50px; }
+        .dynamic-content .dynamic-card .card-detail .top .avatar img {
+          width: 50px;
+          height: 50px;
+          border-radius: 100%; }
+      .dynamic-content .dynamic-card .card-detail .top .name {
+        position: absolute;
+        top: 0;
+        left: 60px;
+        height: 25px;
+        line-height: 30px;
+        font-size: 110%; }
+      .dynamic-content .dynamic-card .card-detail .top .time {
+        position: absolute;
+        left: 60px;
+        top: 25px;
+        height: 25px;
+        line-height: 25px;
+        color: #888;
+        font-size: 80%; }
+    .dynamic-content .dynamic-card .card-detail .bottom .content {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 2px;
+      color: #37393A; }
+  .dynamic-content .point-container {
+    position: relative; }
+    .dynamic-content .point-container .point-start {
+      width: 31px;
+      height: 31px;
+      background: #0abb7a;
+      position: absolute;
+      top: -60px;
+      left: -17.5px;
+      border: 3px solid #e8fff6;
+      border-radius: 100px;
+      text-align: center;
+      color: #fff;
+      padding-top: 4px; }
+    .dynamic-content .point-container .point-end {
+      width: 31px;
+      height: 31px;
+      background: #0abb7a;
+      position: absolute;
+      bottom: -105px;
+      left: -17.5px;
+      border: 3px solid #e8fff6;
+      border-radius: 100px;
+      text-align: center;
+      color: #fff;
+      padding-top: 4px;
+      cursor: pointer;
+      transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease; }
+      .dynamic-content .point-container .point-end:hover {
+        background-color: #e8fff6;
+        color: #00B170; }

@@ -1,0 +1,62 @@
+@import "env.client.style";
+
+.ce-footer{
+  margin-top:50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height:80px;
+  text-align: center;
+  color: $ce-color;
+  &.blue{
+    color:$ce-color-blue;
+    a{
+      color:darken($ce-color-blue,5%);
+    }
+
+  }
+  &.green{
+    color: $ce-color-green;
+    a{
+      color:darken($ce-color-green,5%);
+    }
+  }
+
+  &.orange{
+    color: $ce-color-orange;
+    a{
+      color:darken($ce-color-orange,5%);
+    }
+  }
+
+  &.gray{
+    color:$ce-color-gray;
+    a{
+      color:darken($ce-color-gray,5%);
+    }
+
+  }
+
+  a{
+    color: #8CC8F6;
+  }
+  .footer-txt{
+    padding-top:10px;
+    text-align: center;
+    img{
+      width:20px;
+      height:20px;
+      vertical-align: bottom;
+    }
+  }
+  .dark-logo{
+    img{
+      width:64px;
+      height:64px;
+    }
+  }
+}
+
+
+
+
+
