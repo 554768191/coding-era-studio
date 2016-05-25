@@ -1,9 +1,10 @@
 /**
  * Created by Yan on 16/3/8.
  */
+"use strict";
 
 var gulp = require('gulp');
-var allAssets = require('./allAssets');
+var allAssets = require('./../allAssets');
 var chalk = require('chalk');
 var $ = require('gulp-load-plugins')();
 var _ = require('lodash');

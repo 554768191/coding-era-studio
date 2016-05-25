@@ -1,5 +1,7 @@
+"use strict";
+
 var gulp = require('gulp');
-var allAssets = require('./allAssets');
+var allAssets = require('./../allAssets');
 var lr = require('tiny-lr');
 var server = lr();
 var $ = require('gulp-load-plugins')();
@@ -8,8 +10,6 @@ var connect = require('gulp-connect');
 gulp.task('reload-file', function () {
     gulp.src(allAssets.assets.server.views)
         .pipe(connect.reload());
-
-    ;
     gulp.watch(allAssets.assets.server.allJs).on('change',function(e){
 
     });

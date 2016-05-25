@@ -14,7 +14,7 @@ var resolvingConfig = function() {
     var conf = {};
 
     conf = _.extend(
-        require('./gulp/allAssets')
+        require('./allAssets')
     );
 
     return conf;
