@@ -12,9 +12,8 @@ var request = commonUtil.getRequest();
 
 
 exports.getAbout = function(req, res, next) {
-    res.render('about/client/views/about');
-    //request.get('/article/ABOUT', function (body) {
-       // res.render('about/client/views/about',{resultData:body});
-    //});
+    request.get('/article/ABOUT', function (body) {
+        res.render('about/client/views/about',{resultData:body});
+    });
 
 };

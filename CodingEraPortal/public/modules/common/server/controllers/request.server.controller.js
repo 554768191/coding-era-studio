@@ -15,14 +15,13 @@ var config = require(path.resolve('./config/config'));
 exports.get = function (url, done) {
     function callback(error, response, body) {
         //我们后台不标准,暂时修改(针对Service做匹配)
-        console.log("jasn2...................:",response.statusCode);
-        if (!error && response.statusCode == 200) {
+        if (typeof response != 'undefined' & !error && response.statusCode == 200) {
             done(JSON.parse(body));
         } else {
-            if(response.statusCode == 404){
+            if(typeof response != 'undefined' && response.statusCode == 404){
                 done({result:'error',message:' o(╯□╰)o 服务器失联了,请稍后再试'});
             }else{
-                done({result:'error',message:' o(╯□╰)o 请求出错了,我们会尽快处理'});
+                done({result:'error',message:' o(╯□╰)o 服务器失联了,稍等一会就好了! '});
             }
         }
     }
