@@ -15,7 +15,7 @@ var request = commonUtil.getRequest();
  */
 exports.getCases = function(req, res, next) {
     request.get('/case/list', function (body) {
-        res.render('case/view/case',{resultData:body});
+        res.render('case/client/views/case',{resultData:body});
     });
 
 };

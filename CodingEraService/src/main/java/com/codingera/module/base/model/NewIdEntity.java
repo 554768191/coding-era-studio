@@ -19,7 +19,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.Version;
 
-import com.codingera.module.commen.util.CeSecurityUtil;
+import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
 
 /**

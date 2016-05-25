@@ -1,4 +1,4 @@
-package com.codingera.module.api.cases.controll;
+package com.codingera.module.api.cases.controll.open;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;

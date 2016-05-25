@@ -8,8 +8,8 @@ var request = commonUtil.getRequest();
 
 
 exports.getDynamic = function(req, res, next) {
-    //request.get('/article/ABOUT', function (body) {
-    res.render('dynamic/client/views/dynamic');
-    //});
+    request.get('/dynamic/list', function (body) {
+        res.render('dynamic/client/views/dynamic',{resultData:body});
+    });
 
 };

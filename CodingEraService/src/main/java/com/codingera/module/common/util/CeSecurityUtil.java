@@ -1,4 +1,4 @@
-package com.codingera.module.commen.util;
+package com.codingera.module.common.util;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
