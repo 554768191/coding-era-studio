@@ -2,6 +2,7 @@ package com.codingera.module.base.converter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
+import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module.Feature;
 
 /**
  * 
@@ -16,6 +17,8 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 public class HibernateAwareObjectMapper extends ObjectMapper {
 
 	public HibernateAwareObjectMapper() {
-		registerModule(new Hibernate4Module());
+		Hibernate4Module hm = new Hibernate4Module();
+		hm.disable(Feature.USE_TRANSIENT_ANNOTATION);//忽略@Transient
+		registerModule(hm);
 	}
 }
