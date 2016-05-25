@@ -7,4 +7,6 @@ import com.codingera.module.api.article.repository.custom.ArticleRepositoryCusto
 
 public interface ArticleRepository extends PagingAndSortingRepository<Article, Long>,ArticleRepositoryCustom {
 
+	
+	Article getByKey(String key);
 }

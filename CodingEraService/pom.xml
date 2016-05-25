@@ -133,6 +133,22 @@
 	        <artifactId>jackson-datatype-hibernate4</artifactId>
 	        <version>2.5.3</version>
 	    </dependency>
+	    
+	    <!-- markdown4j -->
+	    <dependency>
+		    <groupId>org.commonjava.googlecode.markdown4j</groupId>
+		    <artifactId>markdown4j</artifactId>
+		    <version>2.2-cj-1.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.commonjava.googlecode.markdown4j</groupId>
+		    <artifactId>markdown4j</artifactId>
+		    <version>2.2-cj-1.0</version>
+		    <classifier>sources</classifier>
+		    <scope>provided</scope>
+		</dependency>
+	    
 	</dependencies>
 	
 	

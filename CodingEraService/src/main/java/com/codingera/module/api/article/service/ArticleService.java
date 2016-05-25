@@ -9,6 +9,8 @@ import com.codingera.module.api.article.model.Article;
 public interface ArticleService {
 	
 	Article getById(Long id);
+	
+	Article getByKey(String key);
 
 	void deleteById(Long id);
 	

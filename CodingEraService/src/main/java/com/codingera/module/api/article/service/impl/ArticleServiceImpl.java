@@ -48,6 +48,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return article;
 	}
 
+	@Override
+	public Article getByKey(String key) {
+		return articleRepository.getByKey(key);
+	}
+
 
 
 

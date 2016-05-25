@@ -1,7 +1,5 @@
 package com.codingera.module.api.article.model;
 
-import java.util.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +8,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import com.codingera.module.base.model.IdEntity;
+import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "ce_article")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Article extends IdEntity {
+//@JsonIgnoreProperties(ignoreUnknown = true)
+public class Article extends NewIdEntity {
 
 	/**
 	 * 
@@ -31,17 +32,27 @@ public class Article extends IdEntity {
 
 	}
 
+	@Column(name = "TITLE", length = 50)
 	private String title;
 
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "CONTENT")
 	private String content;
 
-
-
+	//暂时用key标记文章(下个版本,做成可配置)
+	@Column( length = 50)
+	private String key;
+	
+	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	
+	@Transient
+	@JsonSerialize
+	@JsonDeserialize
+	public String htmlContent;
 
-	@Column(name = "TITLE", length = 50)
+	
 	public String getTitle() {
 		return title;
 	}
@@ -50,9 +61,7 @@ public class Article extends IdEntity {
 		this.title = title;
 	}
 
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	@Column(name = "CONTENT")
+	
 	public String getContent() {
 		return content;
 	}
@@ -64,7 +73,7 @@ public class Article extends IdEntity {
 
 
 
-	@Enumerated(EnumType.STRING)
+	
 	public Status getStatus() {
 		return status;
 	}
@@ -72,7 +81,24 @@ public class Article extends IdEntity {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+	public String getKey() {
+		return key;
+	}
 
+	public void setKey(String key) {
+		this.key = key;
+	}
 
+	
+	public String getHtmlContent() {
+		return htmlContent;
+	}
+
+	public void setHtmlContent(String htmlContent) {
+		this.htmlContent = htmlContent;
+	}
+
+    
 
 }

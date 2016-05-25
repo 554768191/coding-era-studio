@@ -1,7 +1,6 @@
 package com.codingera.module.api.cases.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -21,9 +20,7 @@ import javax.persistence.Table;
 import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "ce_case")
@@ -43,6 +40,9 @@ public class Case extends IdEntity {
 	}
 
 	private String title;
+	
+	//摘要
+	private String summary;
 
 	private String content;
 
@@ -93,6 +93,16 @@ public class Case extends IdEntity {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+	
+	@Column(length = 200)
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "ce_case_tag", 
@@ -113,5 +123,7 @@ public class Case extends IdEntity {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+	
+	
 
 }
