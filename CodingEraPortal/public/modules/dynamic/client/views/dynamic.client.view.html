@@ -30,65 +30,51 @@
                 </div><!-- dynamic-card -->
             </div>
 
-            <div class="col-xs-12 col-md-8">
-                <div class="dynamic-card"><!-- dynamic-card -->
-                    <div class="point-start"></div>
-                    <div class="triangle-left-border"></div>
-                    <div class="triangle-left"></div>
-                    <div class="card-detail">
-                        <div class="top">
-                            <div class="avatar"><img src="/static/image/jason.jpeg" /></div>
-                            <div class="name">Jason</div>
-                            <div class="time">今天 13:52</div>
-                        </div>
-                        <div class="bottom">
-                            <div class="content">
-                                后台优化代码,提升系统性能
+            {% if resultData.result == 'success' %}
+                {% for dynamic in resultData.data.content %}
+
+                    <div class="col-xs-12 col-md-8">
+                        <div class="dynamic-card"><!-- dynamic-card -->
+                            <div class="point-start"></div>
+                            <div class="triangle-left-border"></div>
+                            <div class="triangle-left"></div>
+                            <div class="card-detail">
+                                <div class="top">
+                                    <div class="avatar"><img src="{{dynamic.createdUser.avatar}}" /></div>
+                                    <div class="name">{{dynamic.createdUser.username}}</div>
+                                    <div class="time">{{dynamic.createdTime | date('Y-m-d')}}</div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="content">
+                                        {{dynamic.content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- dynamic-card -->
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if resultData.result != 'success' %}
+                <div class="col-xs-12 col-md-8">
+                    <div class="dynamic-card"><!-- dynamic-card -->
+                        <div class="point-start"></div>
+                        <div class="triangle-left-border"></div>
+                        <div class="triangle-left"></div>
+                        <div class="card-detail">
+                            <div class="top">
+                                <div class="avatar"><img src="/static/image/logo_64X64.png" /></div>
+                                <div class="name">管理员</div>
+                                <div class="time">现在</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="content">
+                                    Sorry,服务器失联了,请稍后再试 o(╯□╰)o
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- dynamic-card -->
-            </div>
-
-            <div class="col-xs-12 col-md-8">
-                <div class="dynamic-card"><!-- dynamic-card -->
-                    <div class="point"></div>
-                    <div class="triangle-left-border"></div>
-                    <div class="triangle-left"></div>
-                    <div class="card-detail">
-                        <div class="top">
-                            <div class="avatar"><img src="/static/image/yan.jpg" /></div>
-                            <div class="name">Yan</div>
-                            <div class="time">今天 13:52</div>
-                        </div>
-                        <div class="bottom">
-                            <div class="content">
-                                更新版本,添加Swig模板框架,提高代码可读性
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- dynamic-card -->
-            </div>
-
-            <div class="col-xs-12 col-md-8">
-               <div class="dynamic-card"><!-- dynamic-card -->
-                   <div class="point"></div>
-                   <div class="triangle-left-border"></div>
-                   <div class="triangle-left"></div>
-                   <div class="card-detail">
-                       <div class="top">
-                           <div class="avatar"><img src="/static/image/yan.jpg" /></div>
-                           <div class="name">Coding Era</div>
-                           <div class="time">今天 11:52</div>
-                       </div>
-                       <div class="bottom">
-                           <div class="content">
-                               Coding Era今天上线啦!!!
-                           </div>
-                       </div>
-                   </div>
-               </div><!-- dynamic-card -->
-            </div>
+                    </div><!-- dynamic-card -->
+                </div>
+            {% endif %}
 
             <div class="col-xs-12 col-md-8">
                 <div class="point-container"><!-- dynamic-card -->

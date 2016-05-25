@@ -1,5 +1,6 @@
-package com.codingera.module.api.dynamic.controll.open;
+package com.codingera.module.api.cases.controll.open;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codingera.module.api.dynamic.criteria.DynamicQueryCriteria;
-import com.codingera.module.api.dynamic.model.Dynamic;
-import com.codingera.module.api.dynamic.service.DynamicService;
+import com.codingera.module.api.cases.criteria.CaseQueryCriteria;
+import com.codingera.module.api.cases.model.Case;
+import com.codingera.module.api.cases.service.CaseService;
 import com.codingera.module.base.controll.ActionResult;
 
 /**
@@ -22,12 +23,20 @@ import com.codingera.module.base.controll.ActionResult;
  */
 
 @RestController
-@RequestMapping("/api/open/dynamic")
-public class DynamicController {
+@RequestMapping("/api/open/case")
+public class CaseOpenController {
 
 
 	
-	@Autowired DynamicService DynamicService;
+	@Autowired CaseService CaseService;
+
+	@RequestMapping(value="/{caseId}",method = RequestMethod.GET)
+	@ResponseBody
+	public ActionResult getCase(@PathVariable Long caseId) {
+		Case ceCase = CaseService.getById(caseId);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
+	}
+	
 
 	
 	/**
@@ -37,8 +46,11 @@ public class DynamicController {
 	 */
 	@RequestMapping(value="/list",method = RequestMethod.GET)
 	@ResponseBody
-	public ActionResult findDynamics(Pageable pr, @ModelAttribute DynamicQueryCriteria criteria) {
-		Page<Dynamic> pages = DynamicService.findDynamicByCriteria(pr, criteria);
+	public ActionResult findCases(Pageable pr, @ModelAttribute CaseQueryCriteria criteria) {
+		Page<Case> pages = CaseService.findCaseByCriteria(pr, criteria);
+		for(Case ceCase: pages.getContent()){
+			Hibernate.initialize(ceCase.getTags());
+		}
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}
 	
