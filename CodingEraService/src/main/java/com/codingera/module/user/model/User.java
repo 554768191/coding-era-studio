@@ -45,9 +45,13 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 	private String avatar;
 	private Integer sex;
 
+	//个性签名
 	@Column(name = "intro", length = 140)
 	private String intro;
 
+	@Column(length = 200)
+	private String summary;
+	
 	@Column(name = "display_name", length = 50)
 	private String displayName;
 
@@ -206,6 +210,16 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 
 	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
+	}
+	
+	
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	@Override

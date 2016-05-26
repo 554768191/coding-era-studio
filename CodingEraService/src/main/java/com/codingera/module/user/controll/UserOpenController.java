@@ -1,6 +1,9 @@
 package com.codingera.module.user.controll;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codingera.module.base.controll.ActionResult;
+import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserResetPasswordToken;
 import com.codingera.module.user.service.UserService;
@@ -25,6 +29,18 @@ public class UserOpenController {
 
 	@Autowired
 	UserService userService;
+	
+	/**
+	 * 管理员列表(门户的联系人)
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ActionResult getUserList(Pageable pr, @ModelAttribute UserQueryCriteria criteria) {
+		Page<User> pages = userService.findUsersByCriteria(pr, criteria);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
+	}
+	
 
 	/**
 	 * 注册用户

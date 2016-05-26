@@ -48,8 +48,6 @@ public class Article extends NewIdEntity {
 	private Status status;
 
 	@Transient
-	@JsonSerialize
-	@JsonDeserialize
 	public String htmlContent;
 
 	
