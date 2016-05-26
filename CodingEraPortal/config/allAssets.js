@@ -10,7 +10,7 @@ module.exports = {
         description: 'Coding Era工作室',
         keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
     },
-    port: 3000,
+    port: 4000,
     templateEngine: 'swig',
     apiURL:'http://localhost:8080/api/open',
     assets: {

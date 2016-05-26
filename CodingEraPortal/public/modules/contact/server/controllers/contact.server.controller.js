@@ -9,8 +9,8 @@ var request = commonUtil.getRequest();
 
 
 exports.getContact = function(req, res, next) {
-    //request.get('/article/ABOUT', function (body) {
-        res.render('contact/client/views/contact');
-    //});
+    request.get('/user/list', function (body) {
+        res.render('contact/client/views/contact',{resultData:body});
+    });
 
 };
