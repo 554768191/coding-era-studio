@@ -11,12 +11,12 @@
         </div>
     </div>
     <div class="col-sm-9">
-        <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)"   dautocomplete="off">
+        <form name="userForm"    dautocomplete="off">
                     <div class="form-group">
 
                         <label for="displayName">昵称</label>
                         <input type="text" id="displayName" name="displayName" class="form-control "
-                               data-ng-model="user.displayName" placeholder="Display Name">
+                               ng-model="user.displayName" placeholder="Display Name">
                         <span  class="help-block">此「 昵称 」将会使用在文章,作品等地方展示</span>
                     </div>
 
@@ -32,22 +32,32 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="intro">个性签名</label>
+                        <input type="text" id="intro"  name="intro" class="form-control " ng-model="user.intro"
+                               placeholder="个性签名">
+                    </div>
+                    <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control " data-ng-model="user.email"
+                        <input type="email" id="email" name="email" class="form-control " ng-model="user.email"
                                placeholder="Email">
                         <span  class="help-block">填写「 Email 」方便管理员内部联系</span>
                     </div>
                     <div class="form-group">
                         <label for="phone">联系电话</label>
-                        <input type="emaphoneil" id="phone" name="phone" class="form-control " data-ng-model="user.phone"
+                        <input type="phone" id="phone" name="phone" class="form-control " ng-model="user.phone"
                                placeholder="联系电话">
                         <span  class="help-block">填写「 联系电话 」方便管理员内部联系</span>
                     </div>
+                <div class="form-group">
+                    <label for="summary">个性签名</label>
+                    <textarea id="summary"  name="summary" class="form-control " ng-model="user.summary"
+                           placeholder="简单介绍下自己"></textarea>
+                </div>
                 <div class="form-group text-center visible-xs" >
-                    <button type="submit" class="btn btn-large btn-info">保存信息</button>
+                    <button  class="btn btn-large btn-info"  validation-submit="userForm" ng-click="updateUserProfile()">保存信息</button>
                 </div>
                 <div class="form-group hidden-xs">
-                    <button type="submit" class="btn btn-large btn-info">保存信息</button>
+                    <button  class="btn btn-large btn-info" validation-submit="userForm" ng-click="updateUserProfile()">保存信息</button>
                 </div>
         </form>
     </div>
