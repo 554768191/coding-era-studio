@@ -19,17 +19,17 @@ angular.module('comment')
         $stateProvider
             .state('commentManage', {
                 url: '/comment',
-                templateUrl: 'modules/comment/views/comment.manage.view.html',
+                templateUrl: 'modules/comment/views/comment-manage.client.view.html',
                 controller:'commentManageCtrl'
             })
             .state('commentManage.edit', {
                 url: '/edit?:commentId',
-                templateUrl: 'modules/comment/views/comment.edit.view.html',
+                templateUrl: 'modules/comment/views/comment-edit.client.view.html',
                 controller:'commentEditCtrl'
             })
             .state('commentManage.list', {
                 url: '/list?:status',
-                templateUrl: 'modules/comment/views/comment.list.view.html',
+                templateUrl: 'modules/comment/views/comment-list.client.view.html',
                 controller:'commentListCtrl'
             });
 

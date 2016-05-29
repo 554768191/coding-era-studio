@@ -1,0 +1,131 @@
+@import "core-env.client.style";
+
+
+$border-color:#DEE5E7;
+.ce-panel-left-container{
+  height: 100%;
+  border-right: 1px solid #DEE5E7;
+
+}
+.ce-panel-left{
+  padding-top:15px;
+  height:100%;
+  .line{
+    height:1px;
+    border-top:1px solid $border-color;
+    margin-top:30px;
+    margin-bottom:30px;
+  }
+
+  .ce-panel-group{
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .group-name{
+    font-weight: 600;
+    font-size:150%;
+    padding-left:10px;
+    margin-top:15px;
+  }
+
+  .group-line{
+    height:1px;
+    border-top:1px solid $border-color;
+    margin-bottom:15px;
+    margin-top:15px;
+  }
+
+
+
+  .ce-panel-search{
+    margin:20px auto;
+    width:100%;
+  }
+
+  .ce-panel-left-btn{
+    width:100%;
+  }
+
+  .ce-panel-left-bar{
+    position: absolute;
+    right:10px;
+    top:5px;
+    font-size: 110%;
+    color: #555;
+    &.active{
+      color:$ce-color;
+    }
+    &:hover{
+      color:$ce-color;
+    }
+  }
+  .ce-panel-left-menu{
+
+    .glyphicon{
+      margin-right:5px;
+    }
+    &.active{
+      &:hover{
+        background: $ce-color;
+        color:#fff;
+      }
+      background: $ce-color;
+      color:#fff;
+      border-radius: 3px;
+    }
+    &:hover{
+      background: #fff;
+      border-radius: 3px;
+      color:#000;
+    }
+    display: block;
+    height:35px;
+    line-height: 35px;
+    width:100%;
+    padding-left:15px;
+    margin:0 auto 5px auto;
+    color: #555;
+  }
+}
+.ce-panel{
+ // position: relative;
+  height:100%
+}
+
+
+.ce-panel-right-container{
+  border-left: 1px solid #DEE5E7;
+  margin-left:-1px;
+}
+.ce-panel-right{
+  padding-top:15px;
+  padding-bottom:15px;
+
+
+}
+
+.ce-page-header{
+  $page-header-height:60px;
+  height:$page-header-height;
+  margin:-15px 0 5px 0;
+  .ce-page-header-title{
+    line-height: $page-header-height;
+    font-size: 130%;
+    //margin-left:-15px;
+    font-weight: 600;
+    color:#555;
+  }
+  .ce-page-header-bar{
+    line-height: $page-header-height;
+    .input-group{
+      line-height: $page-header-height;
+      float: right;
+      .form-control{
+        float: none;
+      }
+    }
+  }
+}
+
+
