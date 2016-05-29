@@ -21,8 +21,6 @@ public interface UserService extends UserDetailsService {
 
 	public Page<User> findUsersByCriteria(Pageable pr, UserQueryCriteria criteria);
 
-	public User loadCurrentUser();
-
 	public User updateUser(User user);
 
 	public User saveUserResetPasswordToken(UserResetPasswordToken token);

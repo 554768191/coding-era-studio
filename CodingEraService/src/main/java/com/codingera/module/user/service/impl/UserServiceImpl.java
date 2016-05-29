@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserResetPasswordToken;
@@ -56,7 +57,8 @@ public class UserServiceImpl implements UserService {
 		List<UserRole> userRoles = new ArrayList<UserRole>();
 		UserRole userRole = new UserRole();
 		userRole.setUser(user);
-		userRole.setRole(UserRole.Role.ROLE_USER);
+//		userRole.setRole(UserRole.Role.ROLE_USER);
+		userRole.setRole("ROLE_USER");
 		userRoles.add(userRole);
 		user.setRoles(userRoles);
 
@@ -94,56 +96,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User loadCurrentUser() {
-		User current;
-		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		final Object principal = authentication.getPrincipal();
-		if (authentication instanceof OAuth2Authentication && (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {
-			current = loadOauthUserJsonDto((OAuth2Authentication) authentication);
-		} else {
-			final User userDetails = (User) principal;
-			current = userDetails;
-		}
-		return current;
-	}
-
-	private User loadOauthUserJsonDto(OAuth2Authentication oAuth2Authentication) {
-		User userJsonDto = new User();
-		userJsonDto.setUsername(oAuth2Authentication.getName());
-
-		// final Collection<GrantedAuthority> authorities =
-		// oAuth2Authentication.getAuthorities();
-		// for (GrantedAuthority authority : authorities) {
-		// userJsonDto.getRoles().add(authority.getAuthority());
-		// }
-		return userJsonDto;
-	}
-
-	/**
-	 * TODO Jason 用户角色判断写法没有优化
-	 * 
-	 * @param role
-	 * @return
-	 */
-	private boolean hasRole(UserRole.Role role) {
-		User currentUser = this.loadCurrentUser();
-		List<UserRole> hasRoles = currentUser.getRoles();
-		for (UserRole userRole : hasRoles) {
-			if (role.equals(userRole.getRole())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
 	public User updateUser(User user) {
 		User account = this.getUserByUserName(user.getUsername());
 		Assert.notNull(account, "user info is null :" + user.getUsername());
 		
-		User currentUser = this.loadCurrentUser();
+		User currentUser = CeSecurityUtil.getCurrentUser();
 		if (!account.getId().equals(currentUser.getId())) {
-			boolean isAdmin = hasRole(UserRole.Role.ROLE_ADMIN);
+//			boolean isAdmin = hasRole(UserRole.Role.ROLE_ADMIN);
+			boolean isAdmin = CeSecurityUtil.hasRole(currentUser, CeSecurityUtil.ROLE_ADMIN);
 			Assert.isTrue(isAdmin, "you have no right to update user info !");
 		}
 		boolean isDirty = false;

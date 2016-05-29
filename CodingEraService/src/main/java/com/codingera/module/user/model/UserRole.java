@@ -2,8 +2,6 @@ package com.codingera.module.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,15 +18,16 @@ public class UserRole extends IdEntity {
 	 */
 	private static final long serialVersionUID = 6529807424722399560L;
 
-	public static enum Role {
-		ROLE_ADMIN, ROLE_USER, ROLE_GUEST, 
-		ROLE_UNITY, ROLE_MOBILE,
-		ROLE_JASON
-	}
+//	public static enum Role {
+//		ROLE_ADMIN, ROLE_USER, ROLE_GUEST, 
+//		ROLE_UNITY, ROLE_MOBILE,
+//		ROLE_JASON
+//	}
 
 	private User user;
 
-	private Role role;
+//	private Role role;
+	private String role;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -37,9 +36,9 @@ public class UserRole extends IdEntity {
 		return user;
 	}
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "role", length = 20)
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
@@ -47,7 +46,7 @@ public class UserRole extends IdEntity {
 		this.user = user;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

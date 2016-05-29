@@ -1,5 +1,6 @@
 package com.codingera.module.base.controll;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.codingera.module.base.model.Credentials;
+import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 import com.codingera.module.user.view.UserView;
@@ -30,7 +32,7 @@ public class AuthorizationController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		if (credentials.getError() != null) {
 			model.put("error", "无效的登录名或者密码!");
-//			model.put("error", "Invalid username and password!");
+			// model.put("error", "Invalid username and password!");
 		}
 		if (credentials.getLogout() != null) {
 			model.put("logout", "You've been logged out successfully.");
@@ -45,9 +47,14 @@ public class AuthorizationController {
 	 */
 	@RequestMapping("/api/me")
 	public UserView userInfo() {
-		User current = userService.loadCurrentUser();
+		User current = CeSecurityUtil.getCurrentUser();
 		UserView view = new UserView(current);
 		return view;
+	}
+
+	@RequestMapping("/user")
+	public Principal user(Principal user) {
+		return user;
 	}
 
 }
