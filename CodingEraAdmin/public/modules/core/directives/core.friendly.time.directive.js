@@ -11,8 +11,8 @@ angular.module('core').directive("ceFriendlyTime", ["$timeout", function ($timeo
         TODAY_FORMAT = "今天 HH:mm",
         YESTERDAY_FORMAT = "昨天 HH:mm",
         DATE_FORMAT = "DD日 HH:mm",
-        YEAR_FORMAT = "MM月DD日",
-        ALL_FORMAT = "YYYY月MM日DD";
+        YEAR_FORMAT = "MM月DD日 HH:mm",
+        ALL_FORMAT = "YYYY月MM日DD HH:mm";
 
     function reset(element, time, timer) {
         // 1. 获取当前时间

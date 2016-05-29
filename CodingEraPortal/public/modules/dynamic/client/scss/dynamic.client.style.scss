@@ -125,6 +125,7 @@ $dynamic-border-color:rgba(32,175,116,.1);
       text-align: center;
       color: #fff;
       padding-top:4px;
+
     }
     .point-end{
       width:$point-size;
@@ -138,8 +139,14 @@ $dynamic-border-color:rgba(32,175,116,.1);
       text-align: center;
       color: #fff;
       padding-top:4px;
-      cursor: pointer;
       transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease;
+      .glyphicon{
+        margin-left: 1px;
+        margin-top: -1px;
+      }
+      &.hand{
+        cursor: pointer;
+      }
       &:hover{
         background-color: $ce-color-green-highlight;
         color:$dynamic-color;

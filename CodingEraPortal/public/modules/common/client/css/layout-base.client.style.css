@@ -275,6 +275,13 @@ body {
       margin-left: -300px;
       margin-top: -62.5px; }
 
+.auto-rotate {
+  -webkit-box-animation: clockwise 1s infinite linear;
+  -moz-box-animation: clockwise 1s infinite linear;
+  -ms-box-animation: clockwise 1s infinite linear;
+  -o-box-animation: clockwise 1s infinite linear;
+  animation: clockwise 1s infinite linear; }
+
 .gearbox {
   height: 100%;
   width: 100%;

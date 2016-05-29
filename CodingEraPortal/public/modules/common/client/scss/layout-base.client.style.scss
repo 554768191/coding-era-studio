@@ -146,7 +146,9 @@ $gear-centent-color:#e6f6ff;
 }
 
 
-
+.auto-rotate{
+  @include ce-common('animation',clockwise 1s infinite linear);
+}
 
 .gearbox {
   height: 100%;

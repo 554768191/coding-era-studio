@@ -20,19 +20,22 @@ module.exports = {
             ],
             js: [
                 'public/components/jquery/dist/jquery.js',
-                'public/components/bootstrap/dist/js/bootstrap.js'
-
+                'public/components/bootstrap/dist/js/bootstrap.js',
+                //debug(生产时,记得换非debug的包)
+                'public/components/artTemplate/dist/template-native-debug.js',
+                //moment时间插件
+                'public/components/moment/min/moment.min.js'
             ]
         },
         sass:['public/modules/**/client/scss/*.scss'],
         css: ['public/modules/**/client/css/*.css'],
         js: [
-            'public/modules/**/client/*.js',
+            'public/modules/**/client/controllers/*.js',
             'public/modules/*/*[!tests]*/*.js'
         ],
         server: {
             gulpConfig: 'gulpfile.js',
-            allJs: [ 'config/**/*.js', 'public/modules/*/*.js','public/routes/*/*.js','public/controllers/**/*.js'],
+            allJs: [ 'config/**/*.js', 'public/modules/*/*.js','public/routes/*/*.js','public/**/client/controllers/**/*.js'],
             views: 'public/modules/**/*.html'
         }
     }

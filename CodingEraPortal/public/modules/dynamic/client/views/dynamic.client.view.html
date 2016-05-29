@@ -28,21 +28,21 @@
                         <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                     </div>
                 </div><!-- dynamic-card -->
-            </div>
 
-            {% if resultData.result == 'success' %}
-                {% for dynamic in resultData.data.content %}
 
-                    <div class="col-xs-12 col-md-8">
+                {% if resultData.result == 'success' %}
+                    {% for dynamic in resultData.data.content %}
+
+
                         <div class="dynamic-card"><!-- dynamic-card -->
-                            <div class="point-start"></div>
+                            <div class="point"></div>
                             <div class="triangle-left-border"></div>
                             <div class="triangle-left"></div>
                             <div class="card-detail">
                                 <div class="top">
                                     <div class="avatar"><img src="{{dynamic.createdUser.avatar}}" /></div>
                                     <div class="name">{{dynamic.createdUser.username}}</div>
-                                    <div class="time">{{dynamic.createdTime | date('Y-m-d')}}</div>
+                                    <div class="time" name="dynamic-time-{{dynamic.id}}" data-timer="0" data-time="{{dynamic.createdTime}}"></div>
                                 </div>
                                 <div class="bottom">
                                     <div class="content">
@@ -51,11 +51,11 @@
                                 </div>
                             </div>
                         </div><!-- dynamic-card -->
-                    </div>
-                {% endfor %}
-            {% endif %}
-            {% if resultData.result != 'success' %}
-                <div class="col-xs-12 col-md-8">
+
+                    {% endfor %}
+                {% endif %}
+
+                {% if resultData.result != 'success' %}
                     <div class="dynamic-card"><!-- dynamic-card -->
                         <div class="point-start"></div>
                         <div class="triangle-left-border"></div>
@@ -73,15 +73,23 @@
                             </div>
                         </div>
                     </div><!-- dynamic-card -->
-                </div>
-            {% endif %}
+                {% endif %}
 
-            <div class="col-xs-12 col-md-8">
-                <div class="point-container"><!-- dynamic-card -->
-                    <div class="point-end">
+
+                <div class="point-container point-end-container"><!-- dynamic-card -->
+                    <input type="hidden" id="dynamic-size" value="{{resultData.data.size}}">
+                    {% if !resultData.data.last %}
+                    <div class="point-end hand" data-page="{{resultData.data.number}}">
                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                     </div>
+                    {% endif %}
+                    {% if resultData.data.last %}
+                    <div class="point-end">
+                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                    </div>
+                    {% endif %}
                 </div><!-- dynamic-card -->
+
             </div>
 
 
@@ -89,6 +97,26 @@
     </div>
 </div>
 
+
+<script id="dynamic-card-template" type="text/html">
+    <div class="dynamic-card"><!-- dynamic-card -->
+        <div class="point"></div>
+        <div class="triangle-left-border"></div>
+        <div class="triangle-left"></div>
+        <div class="card-detail">
+        <div class="top">
+        <div class="avatar"><img src="<%= dynamic.createdUser.avatar %>" /></div>
+        <div class="name"><%= dynamic.createdUser.username %></div>
+        <div class="time" name="dynamic-time-<%= dynamic.id %>" data-timer="0" data-time="<%= dynamic.createdTime %>"></div>
+        </div>
+        <div class="bottom">
+                <div class="content">
+                    <%= dynamic.content %>
+        </div>
+        </div>
+        </div>
+    </div><!-- dynamic-card -->
+</script>
 
 <!-- START footer -->
 {%set footer ={color:'green'} %}

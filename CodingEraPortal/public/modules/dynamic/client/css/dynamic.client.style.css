@@ -102,8 +102,12 @@
       text-align: center;
       color: #fff;
       padding-top: 4px;
-      cursor: pointer;
       transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease; }
+      .dynamic-content .point-container .point-end .glyphicon {
+        margin-left: 1px;
+        margin-top: -1px; }
+      .dynamic-content .point-container .point-end.hand {
+        cursor: pointer; }
       .dynamic-content .point-container .point-end:hover {
         background-color: #e8fff6;
         color: #00B170; }

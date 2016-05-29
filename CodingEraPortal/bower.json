@@ -21,6 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3"
+    "bootstrap": "~3",
+    "artTemplate": "^3.0.1",
+    "moment": "^2.13.0"
   }
 }
