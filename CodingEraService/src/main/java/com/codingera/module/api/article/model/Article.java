@@ -35,15 +35,15 @@ public class Article extends NewIdEntity {
 	@Column(name = "TITLE", length = 50)
 	private String title;
 
+	//暂时用key标记文章(下个版本,做成可配置)
+	@Column(name = "KEY", length = 50)
+	private String key;
+		
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	@Column(name = "CONTENT")
 	private String content;
 
-	//暂时用key标记文章(下个版本,做成可配置)
-	@Column( length = 50)
-	private String key;
-	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
