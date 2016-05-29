@@ -127,6 +127,16 @@ public class UserServiceImpl implements UserService {
 			account.setAvatar(user.getAvatar());
 			isDirty = true;
 		}
+		//不明真相,学上面添加判断..我加了个性签名和简介两个字段....by Yanson
+		if(user.getIntro() != null){
+			account.setIntro(user.getIntro());
+			isDirty = true;
+		}
+		
+		if(user.getSummary() != null){
+			account.setSummary(user.getSummary());
+			isDirty = true;
+		}
 		
 		Assert.isTrue(isDirty, "No change to save");
 		
