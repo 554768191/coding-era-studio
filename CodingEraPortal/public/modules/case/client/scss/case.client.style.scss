@@ -32,7 +32,7 @@ $case-color-border:rgba(44,151,232,.1);
   }
 
   .case-card{
-    background: rgba(255,255,255,.5);
+    background: $ce-card-background;
     border:1px solid $case-color-border;
     border-radius: 2px;
     margin-bottom:50px;

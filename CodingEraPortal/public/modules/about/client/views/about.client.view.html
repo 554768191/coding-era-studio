@@ -22,7 +22,7 @@
 <div class="container about-content">
     <div class="row">
 
-        <div class="col-xs-12 col-md-8">
+        <div class="col-md-12 hidden-xs abount-padding">
             {% if resultData.result == 'success' %}
             <h3>
                 {{resultData.data.title}}
@@ -37,6 +37,17 @@
             {% endif %}
         </div>
 
+        <div class="col-xs-12 visible-xs">
+            {% if resultData.result == 'success' %}
+            {% autoescape %}
+            {{resultData.data.htmlContent}}
+            {% endautoescape %}
+            {% endif %}
+
+            {% if resultData.result != 'success' %}
+            {{resultData.message}}
+            {% endif %}
+        </div>
 
     </div>
 </div>

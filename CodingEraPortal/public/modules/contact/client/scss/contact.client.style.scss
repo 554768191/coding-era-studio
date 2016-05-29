@@ -10,12 +10,22 @@ $contact-border-color:rgba(243,157,28,.1);
   padding-top:50px;
   padding-bottom:100px;
   .contact-card{
-    background: rgba(255,255,255,.5);
+    background: $ce-card-background;
     border:1px solid $contact-border-color;
     border-radius: 2px;
-    margin-bottom:50px;
+    margin-bottom:20px;
     .contact-padding{
       padding:20px;
+    }
+    .welcome-msg{
+      height:282px;
+      text-align: center;
+      line-height: 90px;
+      .question{
+        display: block;
+        font-size: 1500%;
+        color: $ce-color-orange-highlight;
+      }
     }
     .top{
       position: relative;
@@ -53,6 +63,7 @@ $contact-border-color:rgba(243,157,28,.1);
       .detail{
         border-radius: 2px;
         padding:20px;
+        height: 90px;
       }
     }
 

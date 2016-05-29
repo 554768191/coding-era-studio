@@ -14,7 +14,7 @@ $dynamic-border-color:rgba(32,175,116,.1);
     border-left:3px solid $line-color;
   }
   .dynamic-card{
-    $card-background:rgba(255,255,255,.5);
+    $card-background:$ce-card-background;
     $card-border-color:$dynamic-border-color;
     $card-margin-left:20px;
     background: $card-background;

@@ -10,12 +10,20 @@
   padding-top: 50px;
   padding-bottom: 100px; }
   .contact-content .contact-card {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(243, 157, 28, 0.1);
     border-radius: 2px;
-    margin-bottom: 50px; }
+    margin-bottom: 20px; }
     .contact-content .contact-card .contact-padding {
       padding: 20px; }
+    .contact-content .contact-card .welcome-msg {
+      height: 282px;
+      text-align: center;
+      line-height: 90px; }
+      .contact-content .contact-card .welcome-msg .question {
+        display: block;
+        font-size: 1500%;
+        color: #fffae8; }
     .contact-content .contact-card .top {
       position: relative; }
       .contact-content .contact-card .top .avatar {
@@ -43,7 +51,8 @@
       padding-top: 20px; }
       .contact-content .contact-card .center .detail {
         border-radius: 2px;
-        padding: 20px; }
+        padding: 20px;
+        height: 90px; }
     .contact-content .contact-card .bottom {
       margin-top: 20px; }
       .contact-content .contact-card .bottom .tag .tags ul {
