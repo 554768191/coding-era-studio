@@ -3,7 +3,6 @@ package com.codingera.module.base.configuration;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
@@ -36,6 +35,8 @@ class AuthenticationManagerConfiguration extends GlobalAuthenticationConfigurerA
 		// 用户信息存在数据库
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder);
+		
+		// 写法二
 		// auth.jdbcAuthentication().dataSource(this.dataSource);
 
 	}

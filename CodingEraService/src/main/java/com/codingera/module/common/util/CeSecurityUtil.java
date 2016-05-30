@@ -21,6 +21,9 @@ public class CeSecurityUtil {
 	public static final String ROLE_UNITY = "ROLE_UNITY";//测试
 	public static final String ROLE_MOBILE = "ROLE_MOBILE";//移动端用户
 	public static final String ROLE_JASON = "ROLE_JASON";//He is the KING!
+
+	public static final String PERMISSION_READ = "read";//读的权限
+	public static final String PERMISSION_WRITE = "write";//写的权限
 	
 	/**
 	 * 获取当前登录用户

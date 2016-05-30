@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
 
 /**
@@ -15,13 +14,14 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
  *
  */
 @Configuration
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class OAuth2ResourceSecurityConfiguration extends GlobalMethodSecurityConfiguration {
+@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true,securedEnabled = true)
+public class GlobalMethodAuthConfiguration extends GlobalMethodSecurityConfiguration {
 
 	@Override
 	protected MethodSecurityExpressionHandler createExpressionHandler() {
-		return new OAuth2MethodSecurityExpressionHandler();
+		OAuth2MethodSecurityExpressionHandler expressionHandler = new OAuth2MethodSecurityExpressionHandler();
+		expressionHandler.setPermissionEvaluator(new CustomPermissionEvaluator());
+		return expressionHandler;
 	}
 	
 }
