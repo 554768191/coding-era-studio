@@ -15,7 +15,7 @@ angular.module('user').run([
         // Users state routing
         $stateProvider
             .state('usersManage', {
-                url: '/users',
+                url: '/user',
                 templateUrl: 'modules/user/views/user-manage.client.view.html',
                 controller: 'usersManageCtrl'
             })
@@ -30,22 +30,24 @@ angular.module('user').run([
             })
             // 个人信息
             .state('usersManage.profile', {
-                url: '/settings/profile',
+                url: '/profile',
                 templateUrl: 'modules/user/views/user-profile.client.view.html',
                 controller:'SettingsController'
             })
             // 个人信息 -> 修改头像
             .state('usersManage.avatar', {
-                url: '/settings/profile',
+                url: '/profile',
                 templateUrl: 'modules/user/views/user-profile-avatar-edit.client.view.html',
                 controller:'SettingsAvatarController'
             })
+
+            //下面这堆好像没用,到时问佶闪   by Yason
             .state('password', {
-                url: '/settings/password',
+                url: '/password',
                 templateUrl: 'modules/user/views/user-change-password.client.view.html'
             })
             .state('accounts', {
-                url: '/settings/accounts',
+                url: '/accounts',
                 templateUrl: 'modules/user/views/social-accounts.client.view.html'
             })
             .state('signup', {
