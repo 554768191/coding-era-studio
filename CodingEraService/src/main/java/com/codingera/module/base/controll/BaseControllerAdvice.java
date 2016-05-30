@@ -18,18 +18,38 @@ class BaseControllerAdvice {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(BaseControllerAdvice.class);
 
+	/**
+	 * 针对个别异常进行捕捉，先保留
+	 * 
+	 * @param ex
+	 * @return
+	 */
+//	@ResponseBody
+//	@ExceptionHandler(ValidationException.class)
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	VndErrors validationExceptionHandler(ValidationException ex) {
+//		// 返回xml
+//		return new VndErrors("error", ex.getMessage());
+//	}
+//
+//	@ResponseBody
+//	@ExceptionHandler(IllegalArgumentException.class)
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	ActionResult illegalArgumentExceptionHandler(IllegalArgumentException ex) {
+//		// 返回json
+//		return new ActionResult(ActionResult.RESULT_ERROR, ex.getMessage());
+//	}
+	
+	/**
+	 * 全局异常捕捉，统一格式 { "result" : "fail", "data" : "不允许访问" }
+	 * 
+	 * @param ex
+	 * @return
+	 */
 	@ResponseBody
-	@ExceptionHandler(ValidationException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	VndErrors validationExceptionHandler(ValidationException ex) {
-		// 返回xml
-		return new VndErrors("error", ex.getMessage());
-	}
-
-	@ResponseBody
-	@ExceptionHandler(IllegalArgumentException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	ActionResult illegalArgumentExceptionHandler(IllegalArgumentException ex) {
+	@ExceptionHandler(Exception.class)
+	//@ResponseStatus(HttpStatus.BAD_REQUEST)
+	ActionResult exceptionHandler(Exception ex) {
 		// 返回json
 		return new ActionResult(ActionResult.RESULT_ERROR, ex.getMessage());
 	}
