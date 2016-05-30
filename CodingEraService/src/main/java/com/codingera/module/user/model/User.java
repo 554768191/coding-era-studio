@@ -22,9 +22,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "ce_user")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 
 	private static final long serialVersionUID = -192550188817193798L;
@@ -63,7 +65,7 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 	private List<UserRole> roles = new ArrayList<UserRole>();
 	
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.ALL },targetEntity = UserProfileTag.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "ce_user_tag", 
 		joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, 
 		inverseJoinColumns = { @JoinColumn(name = "user_profile_tag_id", referencedColumnName = "id") })

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -92,7 +93,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userRepository.findUserByUsername(username);
+		User user = userRepository.findUserByUsername(username);
+		return user;
 	}
 
 	@Override
@@ -135,6 +137,10 @@ public class UserServiceImpl implements UserService {
 		
 		if(user.getSummary() != null){
 			account.setSummary(user.getSummary());
+			isDirty = true;
+		}
+		if(user.getUserProfileTags() !=null && !user.getUserProfileTags().isEmpty()){
+			account.setUserProfileTags(user.getUserProfileTags());
 			isDirty = true;
 		}
 		

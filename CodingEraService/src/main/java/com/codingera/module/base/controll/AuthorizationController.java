@@ -51,6 +51,8 @@ public class AuthorizationController {
 		UserView view = new UserView(current);
 		return view;
 	}
+	
+
 
 	@RequestMapping("/user")
 	public Principal user(Principal user) {

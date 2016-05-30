@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ActionResult updateUser(User user) {
+	public ActionResult updateUser(@RequestBody User user) {
 		user = userService.updateUser (user);
 		UserView view = new UserView(user);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, view);

@@ -21,6 +21,8 @@ import javax.persistence.Version;
 
 import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 统一定义id的entity基类.
@@ -45,6 +47,7 @@ public abstract class NewIdEntity implements Serializable {
 
 	private Date createdTime;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "created_user_id", updatable = false)
 	private User createdUser;

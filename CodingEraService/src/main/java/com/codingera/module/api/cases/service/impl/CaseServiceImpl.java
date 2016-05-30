@@ -45,7 +45,7 @@ public class CaseServiceImpl implements CaseService {
 	@Override
 	public Case getById(Long id) {
 		Case ceCase = caseRepository.findOne(id);
-				Hibernate.initialize(ceCase.getTags());
+		Hibernate.initialize(ceCase.getTags());
 		return ceCase;
 	}
 

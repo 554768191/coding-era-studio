@@ -41,7 +41,6 @@ public class Tag extends NewIdEntity {
 	private Integer hot;
 
 	@ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-	// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@caseid")
 	private List<Case> cases;
 
 	public String getName() {

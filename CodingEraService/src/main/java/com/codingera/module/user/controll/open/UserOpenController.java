@@ -1,4 +1,4 @@
-package com.codingera.module.user.controll;
+package com.codingera.module.user.controll.open;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

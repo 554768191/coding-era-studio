@@ -19,7 +19,6 @@ import javax.persistence.Table;
 
 import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.api.tag.model.Tag;
-import com.codingera.module.base.model.IdEntity;
 import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
