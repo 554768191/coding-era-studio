@@ -35,6 +35,7 @@ angular.module('core')
             angular.extend(options,{url:Authentication.apiURL+options.url});
             ceUtil.loading();
             $http(options).success(function(res){
+                console.log('jason jason hahaha', res);
                 ceUtil.loading();
                 if(res.result==='success'){
                     if(angular.isArray(res.data)){
@@ -46,6 +47,8 @@ angular.module('core')
                     if(angular.isFunction(selfService.successCallback)){
                         selfService.successCallback(res);
                     }
+                }else if(res.result==='fail'){
+                    ceUtil.toast(res.data);
                 }else{
                     if(typeof selfService.errorCallback !== 'undefined'){
                         if(angular.isFunction(selfService.errorCallback)){
