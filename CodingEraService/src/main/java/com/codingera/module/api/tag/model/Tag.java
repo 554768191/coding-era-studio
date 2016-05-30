@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "ce_tag")
 @JsonIgnoreProperties(ignoreUnknown = true)
-// @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@tagid")
 public class Tag extends NewIdEntity {
 
 	private static final long serialVersionUID = 2167007833436749963L;

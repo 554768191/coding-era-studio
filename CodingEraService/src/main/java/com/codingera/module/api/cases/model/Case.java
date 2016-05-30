@@ -20,12 +20,13 @@ import javax.persistence.Table;
 import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.api.tag.model.Tag;
 import com.codingera.module.base.model.IdEntity;
+import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "ce_case")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Case extends IdEntity {
+public class Case extends NewIdEntity {
 
 	/**
 	 * 
@@ -38,24 +39,36 @@ public class Case extends IdEntity {
 		DELETED// 删除
 
 	}
-
+	@Column(name = "TITLE", length = 50)
 	private String title;
 	
 	//摘要
+	@Column(length = 200)
 	private String summary;
 
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "CONTENT")
 	private String content;
 
+	@Column(length = 200)
 	private String bannerUrl;
 
-
+	@Enumerated(EnumType.STRING)
 	private Status status;
 
+	
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "ce_case_tag", 
+		joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
+		inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
 	private List<Tag> tags = new ArrayList<Tag>();
 
+	
+	@OneToMany(mappedBy = "ceCase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
 
-	@Column(name = "TITLE", length = 50)
+	
 	public String getTitle() {
 		return title;
 	}
@@ -64,14 +77,12 @@ public class Case extends IdEntity {
 		this.title = title;
 	}
 
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	@Column(name = "CONTENT")
+	
 	public String getContent() {
 		return content;
 	}
 
-	@Column(length = 200)
+	
 	public String getBannerUrl() {
 		return bannerUrl;
 	}
@@ -85,7 +96,7 @@ public class Case extends IdEntity {
 	}
 
 
-	@Enumerated(EnumType.STRING)
+	
 	public Status getStatus() {
 		return status;
 	}
@@ -95,7 +106,7 @@ public class Case extends IdEntity {
 	}
 	
 	
-	@Column(length = 200)
+	
 	public String getSummary() {
 		return summary;
 	}
@@ -104,10 +115,7 @@ public class Case extends IdEntity {
 		this.summary = summary;
 	}
 
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "ce_case_tag", 
-		joinColumns = { @JoinColumn(name = "case_id", referencedColumnName = "id") }, 
-		inverseJoinColumns = { @JoinColumn(name = "tag_id", referencedColumnName = "id") })
+	
 	public List<Tag> getTags() {
 		return tags;
 	}
@@ -116,7 +124,7 @@ public class Case extends IdEntity {
 		this.tags = tags;
 	}
 
-	@OneToMany(mappedBy = "ceCase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	
 	public List<Comment> getComments() {
 		return comments;
 	}

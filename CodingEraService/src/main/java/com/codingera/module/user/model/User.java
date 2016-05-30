@@ -9,6 +9,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -58,6 +61,13 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER)
 	private List<UserRole> roles = new ArrayList<UserRole>();
+	
+	
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "ce_user_tag", 
+		joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, 
+		inverseJoinColumns = { @JoinColumn(name = "user_profile_tag_id", referencedColumnName = "id") })
+	private List<UserProfileTag> userProfileTags = new ArrayList<UserProfileTag>();
 
 	@Transient
 	private Date lastLoginTime;
@@ -226,5 +236,15 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 	public int compareTo(User arg0) {
 		return arg0.getLastLoginTime().compareTo(this.getLastLoginTime());
 	}
+
+	public List<UserProfileTag> getUserProfileTags() {
+		return userProfileTags;
+	}
+
+	public void setUserProfileTags(List<UserProfileTag> userProfileTags) {
+		this.userProfileTags = userProfileTags;
+	}
+	
+	
 
 }
