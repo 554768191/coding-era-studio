@@ -41,7 +41,7 @@
                             <div class="card-detail">
                                 <div class="top">
                                     <div class="avatar"><img src="{{dynamic.createdUser.avatar}}" /></div>
-                                    <div class="name">{{dynamic.createdUser.username}}</div>
+                                    <div class="name">{{dynamic.createdUser.displayName | default('管理员')}}</div>
                                     <div class="time" name="dynamic-time-{{dynamic.id}}" data-timer="0" data-time="{{dynamic.createdTime}}"></div>
                                 </div>
                                 <div class="bottom">

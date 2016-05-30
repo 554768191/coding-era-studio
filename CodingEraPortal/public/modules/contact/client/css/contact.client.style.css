@@ -14,6 +14,8 @@
     border: 1px solid rgba(243, 157, 28, 0.1);
     border-radius: 2px;
     margin-bottom: 20px; }
+    .contact-content .contact-card h6 {
+      color: #888; }
     .contact-content .contact-card .contact-padding {
       padding: 20px; }
     .contact-content .contact-card .welcome-msg {
