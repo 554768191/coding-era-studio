@@ -251,36 +251,7 @@ exports.removeOAuthProvider = function(req, res, next) {
 	//}
 };
 
-/**
- * Update user details
- */
-exports.update = function(req, res) {
-	var user = req.user;
-	if (user) {
-		// Merge existing user
-		user = _.extend(user, req.body);
-		delete user.authorities;
-		delete user.roles;
-		var url = config.codingera.apiURL + '/user';
-		var token = user.accessToken;
-		request.postWithToken(url, user, token, function (error, response) {
-			if(error){
-				res.status(400).send(error);
-			}
-			req.login(user, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(user);
-				}
-			});
-		});
-	} else {
-		res.status(400).send({
-			message: 'User is not signed in'
-		});
-	}
-};
+
 
 /**
  * Send User

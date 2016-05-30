@@ -26,13 +26,13 @@ angular.module('user').run([
             .state('usersManage.edit', {
                 url: '/edit?:userId',
                 templateUrl: 'modules/user/views/user-profile.client.view.html',
-                controller:'SettingsController'
+                controller:'UserProfileController'
             })
             // 个人信息
             .state('usersManage.profile', {
                 url: '/profile',
                 templateUrl: 'modules/user/views/user-profile.client.view.html',
-                controller:'SettingsController'
+                controller:'UserProfileController'
             })
             // 个人信息 -> 修改头像
             .state('usersManage.avatar', {

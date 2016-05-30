@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('user').controller('SettingsController', [
-    '$scope', '$http', '$window', '$location', 'UserService', 'Authentication','ceUtil',
-    function ($scope, $http, $window, $location, UserService, Authentication,ceUtil) {
+angular.module('user').controller('UserProfileController', [
+    '$scope', '$http', '$window', '$location', 'UserService','UserTagService', 'Authentication','ceUtil',
+    function ($scope, $http, $window, $location, UserService, UserTagService , Authentication,ceUtil) {
         $scope.user = Authentication.user;
         $scope.readSaveAvatar = false;//是否要修改头像URL (修改头像时使用,避免未保存,头像先改了)
         $scope.readSaveAvatarUrl = '';
@@ -20,17 +20,14 @@ angular.module('user').controller('SettingsController', [
             if($scope.readSaveAvatar){
                 $scope.user.avatar = $scope.readSaveAvatarUrl;
             }
+            console.log(data);
 
-            $http.put('/users',
-                data
-            ).success(function(response) {
-                // If successful show success message and clear form
+            UserService.save(data).success(function(res) {
                 $scope.success = true;
-                $scope.user = Authentication.user = response;
+                $scope.user  = res.data;
+                Authentication.user = res.data;
                 $scope.readSaveAvatar = false;
                 ceUtil.toast('保存成功');
-            }).error(function(response) {
-                $scope.error = response.message;
             });
 
         };
@@ -49,5 +46,24 @@ angular.module('user').controller('SettingsController', [
 
             });
         };
+
+
+        //录入新标签事件
+        $scope.tagTransform = function (str){
+            return {
+                id:null,
+                name:str
+            };
+        };
+
+        //获取所有标签
+        function getTageList(){
+            UserTagService.getTags().success(function(res){
+                console.log(res);
+                $scope.itemArray = res.data;
+            });
+        }
+        getTageList();
+        $scope.itemArray = [];
     }
 ]);
