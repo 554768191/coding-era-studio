@@ -1,7 +1,7 @@
 package com.codingera.module.api.comment.criteria;
 
 import com.codingera.module.api.comment.model.BaseComment.Status;
-import com.codingera.module.jpa.QueryCriteria;
+import com.codingera.module.base.jpa.QueryCriteria;
 
 public class CommentQueryCriteria extends QueryCriteria {
 

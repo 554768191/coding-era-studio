@@ -3,6 +3,7 @@ package com.codingera.module.base.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,8 +20,8 @@ import com.codingera.module.user.service.UserService;
 
 @Configuration
 @EnableWebSecurity
-@Order(-10)
-//@Order(1)
+//@Order(-10)
+@Order(1)
 //@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -29,8 +30,6 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //	private AuthenticationManager authenticationManager;
 	@Autowired
 	private CustomLogoutSuccessHandler customLogoutSuccessHandler;
-	@Autowired
-	private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 	@Autowired
 	private UserService userService;
 	  
@@ -55,11 +54,9 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.and()
 			.requestMatchers()
 			.antMatchers("/", "/user", "/browser/**", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
-//			.and()
-//			.exceptionHandling()
-//			.authenticationEntryPoint(customAuthenticationEntryPoint)
 			.and()
-			.authorizeRequests().anyRequest().authenticated()
+			.authorizeRequests()
+			.anyRequest().authenticated()
 		.and()
 			.addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
 			.csrf()

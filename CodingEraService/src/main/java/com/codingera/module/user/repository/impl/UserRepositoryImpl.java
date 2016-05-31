@@ -6,10 +6,10 @@ import javax.persistence.PersistenceContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.codingera.module.jpa.CriterionUtils;
-import com.codingera.module.jpa.JpaCriteria;
-import com.codingera.module.jpa.JpaQueryUtils;
-import com.codingera.module.jpa.OrCriterion;
+import com.codingera.module.base.jpa.CriterionUtils;
+import com.codingera.module.base.jpa.JpaCriteria;
+import com.codingera.module.base.jpa.JpaQueryUtils;
+import com.codingera.module.base.jpa.OrCriterion;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.repository.custom.UserRepositoryCustom;

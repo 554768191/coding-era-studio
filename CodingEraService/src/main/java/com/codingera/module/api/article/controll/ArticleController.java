@@ -3,6 +3,8 @@ package com.codingera.module.api.article.controll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codingera.module.api.article.criteria.ArticleQueryCriteria;
 import com.codingera.module.api.article.model.Article;
 import com.codingera.module.api.article.service.ArticleService;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.base.controll.ActionResult;
 
 /**
@@ -55,6 +58,13 @@ public class ArticleController {
 	 * @param criteria
 	 * @return
 	 */
+	
+//	@PreAuthorize("hasPermission('99999','A','AA')")
+//	@PreAuthorize("hasPermission('99999','read')")
+//	@Secured({CeSecurityUtil.ROLE_GUEST})
+//	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//	@PreAuthorize("#oauth2.clientHasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/list",method = RequestMethod.GET)
 	@ResponseBody
 	public ActionResult findArticles(Pageable pr, @ModelAttribute ArticleQueryCriteria criteria) {

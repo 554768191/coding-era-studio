@@ -1,4 +1,4 @@
-package com.codingera.module.jpa;
+package com.codingera.module.base.jpa;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

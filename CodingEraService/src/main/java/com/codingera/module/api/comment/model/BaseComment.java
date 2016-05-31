@@ -7,7 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 
 /**
  * 
@@ -17,7 +17,7 @@ import com.codingera.module.base.model.NewIdEntity;
  *
  */
 @MappedSuperclass
-public abstract class BaseComment extends NewIdEntity {
+public abstract class BaseComment extends IdEntity {
 
 	/**
 	 * 

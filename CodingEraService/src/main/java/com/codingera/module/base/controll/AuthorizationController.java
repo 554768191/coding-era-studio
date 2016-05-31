@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.base.model.Credentials;
-import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 import com.codingera.module.user.view.UserView;

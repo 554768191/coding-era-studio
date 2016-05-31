@@ -4,13 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "ce_user_profile_tag")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserProfileTag extends NewIdEntity {
+public class UserProfileTag extends IdEntity {
 
 
 	private static final long serialVersionUID = 8547163154648068420L;

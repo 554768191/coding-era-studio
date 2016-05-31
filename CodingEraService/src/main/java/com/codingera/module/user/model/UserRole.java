@@ -18,26 +18,18 @@ public class UserRole extends IdEntity {
 	 */
 	private static final long serialVersionUID = 6529807424722399560L;
 
-//	public static enum Role {
-//		ROLE_ADMIN, ROLE_USER, ROLE_GUEST, 
-//		ROLE_UNITY, ROLE_MOBILE,
-//		ROLE_JASON
-//	}
-
-	private User user;
-
-//	private Role role;
-	private String role;
-
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
+	private User user;
+
+	@Column(name = "role", length = 20)
+	private String role;
+
 	public User getUser() {
 		return user;
 	}
 
-//	@Enumerated(EnumType.STRING)
-	@Column(name = "role", length = 20)
 	public String getRole() {
 		return role;
 	}

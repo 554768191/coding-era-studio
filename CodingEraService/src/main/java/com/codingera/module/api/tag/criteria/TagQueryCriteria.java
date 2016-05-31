@@ -1,6 +1,6 @@
 package com.codingera.module.api.tag.criteria;
 
-import com.codingera.module.jpa.QueryCriteria;
+import com.codingera.module.base.jpa.QueryCriteria;
 
 public class TagQueryCriteria extends QueryCriteria {
 

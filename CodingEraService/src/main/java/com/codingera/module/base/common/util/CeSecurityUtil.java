@@ -1,4 +1,4 @@
-package com.codingera.module.common.util;
+package com.codingera.module.base.common.util;
 
 import java.util.List;
 
@@ -30,21 +30,30 @@ public class CeSecurityUtil {
 	 * @return
 	 */
 	public static User getCurrentUser() {
-		User current;
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		final Object principal = authentication.getPrincipal();
-		if (authentication instanceof OAuth2Authentication && (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {
-			current = loadOauthUserJsonDto((OAuth2Authentication) authentication);
-		} else {
-			final User userDetails = (User) principal;
-			current = userDetails;
-		}
+		User current = castAuthenticationToUser(authentication);
 		return current;
 	}
 	
-	public static User loadOauthUserJsonDto(OAuth2Authentication oAuth2Authentication) {
+	public static User castAuthenticationToUser(Authentication authentication) {
+		User current;
+		final Object principal = authentication.getPrincipal();
+		if (authentication instanceof OAuth2Authentication && (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {
+			current = loadAuthUserJsonDto(authentication);
+			return current;
+		}
+		if(principal instanceof String){
+			current = loadAuthUserJsonDto(authentication);
+			return current;
+		}
+		final User userDetails = (User) principal;
+		current = userDetails;
+		return current;
+	}
+	
+	private static User loadAuthUserJsonDto(Authentication Authentication) {
 		User userJsonDto = new User();
-		userJsonDto.setUsername(oAuth2Authentication.getName());
+		userJsonDto.setUsername(Authentication.getName());
 		return userJsonDto;
 	}
 	
@@ -54,7 +63,6 @@ public class CeSecurityUtil {
 	 * @param role
 	 * @return
 	 */
-//	private boolean hasRole(UserRole.Role role) {
 	public static boolean hasRole(User currentUser, String role) {
 		Assert.notNull(currentUser, "user is null");
 		List<UserRole> hasRoles = currentUser.getRoles();

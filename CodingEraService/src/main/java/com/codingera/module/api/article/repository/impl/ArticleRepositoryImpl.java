@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import com.codingera.module.api.article.criteria.ArticleQueryCriteria;
 import com.codingera.module.api.article.model.Article;
 import com.codingera.module.api.article.repository.custom.ArticleRepositoryCustom;
-import com.codingera.module.jpa.CriterionUtils;
-import com.codingera.module.jpa.JpaCriteria;
-import com.codingera.module.jpa.JpaQueryUtils;
-import com.codingera.module.jpa.OrCriterion;
+import com.codingera.module.base.jpa.CriterionUtils;
+import com.codingera.module.base.jpa.JpaCriteria;
+import com.codingera.module.base.jpa.JpaQueryUtils;
+import com.codingera.module.base.jpa.OrCriterion;
 
 public class ArticleRepositoryImpl implements ArticleRepositoryCustom {
 
