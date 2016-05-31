@@ -54,8 +54,13 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 	@Column(name = "intro", length = 140)
 	private String intro;
 
+	//简介
 	@Column(length = 200)
 	private String summary;
+	
+	//微信
+	@Column(length = 100)
+	private String wechat;
 	
 	@Column(name = "display_name", length = 50)
 	private String displayName;
@@ -245,6 +250,14 @@ public class User extends NewIdEntity implements UserDetails, Comparable<User> {
 
 	public void setUserProfileTags(List<UserProfileTag> userProfileTags) {
 		this.userProfileTags = userProfileTags;
+	}
+
+	public String getWechat() {
+		return wechat;
+	}
+
+	public void setWechat(String wechat) {
+		this.wechat = wechat;
 	}
 	
 	

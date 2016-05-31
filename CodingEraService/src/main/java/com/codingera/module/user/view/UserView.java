@@ -24,7 +24,7 @@ public class UserView implements Serializable {
 	private String intro;
 	private String status;
 	private String summary;
-	private List<UserProfileTag> userProfileTag = new ArrayList<UserProfileTag>();
+	private List<UserProfileTag> userProfileTags = new ArrayList<UserProfileTag>();
 
 	private List<UserRole> roles = new ArrayList<UserRole>();
 	private Collection<? extends GrantedAuthority> authorities;
@@ -46,7 +46,7 @@ public class UserView implements Serializable {
 		this.status = user.getStatus();
 		this.intro = user.getIntro();
 		this.summary = user.getSummary();
-		this.userProfileTag = user.getUserProfileTags();
+		this.userProfileTags = user.getUserProfileTags();
 	}
 
 	public String getUsername() {
@@ -137,13 +137,15 @@ public class UserView implements Serializable {
 		this.summary = summary;
 	}
 
-	public List<UserProfileTag> getUserProfileTag() {
-		return userProfileTag;
+	public List<UserProfileTag> getUserProfileTags() {
+		return userProfileTags;
 	}
 
-	public void setUserProfileTag(List<UserProfileTag> userProfileTag) {
-		this.userProfileTag = userProfileTag;
+	public void setUserProfileTags(List<UserProfileTag> userProfileTags) {
+		this.userProfileTags = userProfileTags;
 	}
+
+	
 	
 	
 
