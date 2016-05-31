@@ -11,11 +11,11 @@ import org.springframework.data.domain.Pageable;
 import com.codingera.module.api.comment.criteria.CommentQueryCriteria;
 import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.api.comment.repository.custom.CommentRepositoryCustom;
-import com.codingera.module.jpa.CriterionUtils;
-import com.codingera.module.jpa.JpaCriteria;
-import com.codingera.module.jpa.JpaQueryUtils;
-import com.codingera.module.jpa.OrCriterion;
-import com.codingera.module.jpa.QueryResult;
+import com.codingera.module.base.jpa.CriterionUtils;
+import com.codingera.module.base.jpa.JpaCriteria;
+import com.codingera.module.base.jpa.JpaQueryUtils;
+import com.codingera.module.base.jpa.OrCriterion;
+import com.codingera.module.base.jpa.QueryResult;
 
 public class CommentRepositoryImpl implements CommentRepositoryCustom {
 

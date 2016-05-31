@@ -1,4 +1,4 @@
-package com.codingera.module.jpa;
+package com.codingera.module.base.jpa;
 
 
 public class SimpleCriterion implements Criterion{

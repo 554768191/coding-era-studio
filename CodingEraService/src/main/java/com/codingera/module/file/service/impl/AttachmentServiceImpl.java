@@ -8,10 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.codingera.module.base.jpa.JpaQueryUtils;
 import com.codingera.module.file.model.Attachment;
 import com.codingera.module.file.repository.AttachmentRepository;
 import com.codingera.module.file.service.AttachmentService;
-import com.codingera.module.jpa.JpaQueryUtils;
 
 @Service("AttachmentService")
 public class AttachmentServiceImpl implements AttachmentService {

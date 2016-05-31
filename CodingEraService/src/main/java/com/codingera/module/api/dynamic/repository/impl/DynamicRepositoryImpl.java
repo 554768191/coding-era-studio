@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import com.codingera.module.api.dynamic.criteria.DynamicQueryCriteria;
 import com.codingera.module.api.dynamic.model.Dynamic;
 import com.codingera.module.api.dynamic.repository.custom.DynamicRepositoryCustom;
-import com.codingera.module.jpa.CriterionUtils;
-import com.codingera.module.jpa.JpaCriteria;
-import com.codingera.module.jpa.JpaQueryUtils;
-import com.codingera.module.jpa.OrCriterion;
+import com.codingera.module.base.jpa.CriterionUtils;
+import com.codingera.module.base.jpa.JpaCriteria;
+import com.codingera.module.base.jpa.JpaQueryUtils;
+import com.codingera.module.base.jpa.OrCriterion;
 
 public class DynamicRepositoryImpl implements DynamicRepositoryCustom {
 
