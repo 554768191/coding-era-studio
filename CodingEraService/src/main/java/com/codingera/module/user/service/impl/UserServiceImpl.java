@@ -22,18 +22,25 @@ import org.springframework.util.Assert;
 
 import com.codingera.module.common.util.CeSecurityUtil;
 import com.codingera.module.user.criteria.UserQueryCriteria;
+import com.codingera.module.user.model.Permission;
+import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserResetPasswordToken;
 import com.codingera.module.user.model.UserRole;
+import com.codingera.module.user.repository.RolePermissionRepository;
 import com.codingera.module.user.repository.UserRepository;
 import com.codingera.module.user.repository.UserResetPasswordTokenRepository;
 import com.codingera.module.user.service.UserService;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	RolePermissionRepository rolePermissionRepository;
 	@Autowired
 	UserResetPasswordTokenRepository userResetPasswordTokenRepository;
 
@@ -58,8 +65,7 @@ public class UserServiceImpl implements UserService {
 		List<UserRole> userRoles = new ArrayList<UserRole>();
 		UserRole userRole = new UserRole();
 		userRole.setUser(user);
-//		userRole.setRole(UserRole.Role.ROLE_USER);
-		userRole.setRole("ROLE_USER");
+		userRole.setRole(CeSecurityUtil.ROLE_USER);
 		userRoles.add(userRole);
 		user.setRoles(userRoles);
 
@@ -194,5 +200,50 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+
+	private List<String> loadRolesFromUser(User user){
+		Assert.notNull(user, "用户不能为空");
+		List<UserRole> hasRoles = user.getRoles();
+		List<String> roles = Lists.transform(hasRoles, new Function<UserRole, String>(){
+			@Override
+			public String apply(UserRole input) {
+				return input.getRole();
+			}
+		});
+		return roles;
+	}
+	
+	@Override
+	public List<RolePermission> findUserPermissions(User user) {
+		List<String> roles = loadRolesFromUser(user);
+		List<RolePermission> result = rolePermissionRepository.findByRoleIn(roles);
+		return result;
+	}
+	
+	@Override
+	public List<RolePermission> findUserPermissions(User user, String resource, String permission) {
+		Assert.doesNotContain(permission, ",", " 非法的权限类型");
+		List<String> roles = loadRolesFromUser(user);
+		List<RolePermission> result = rolePermissionRepository.findRolePermissions(roles, resource, permission);
+		return result;
+	}
+	
+	@Override
+	public List<RolePermission> findUserPermissions(User user, String resource) {
+		List<String> roles = loadRolesFromUser(user);
+		List<RolePermission> result = rolePermissionRepository.findByRoleInAndResource(roles, resource);
+		return result;
+	}
+	
+	@Override
+	public List<RolePermission> findRolePermissions(String role) {
+		return rolePermissionRepository.findByRole(role);
+	}
+
+	@Override
+	public List<RolePermission> findRolePermissions(String role, String resource) {
+		return rolePermissionRepository.findByRoleAndResource(role, resource);
+	}
+
 
 }

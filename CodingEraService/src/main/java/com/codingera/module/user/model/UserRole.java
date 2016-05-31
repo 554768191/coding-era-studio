@@ -6,38 +6,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.IdEntity;
+import com.codingera.module.base.model.NewIdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ce_user_role")
-public class UserRole extends IdEntity {
+public class UserRole extends NewIdEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6529807424722399560L;
 
-//	public static enum Role {
-//		ROLE_ADMIN, ROLE_USER, ROLE_GUEST, 
-//		ROLE_UNITY, ROLE_MOBILE,
-//		ROLE_JASON
-//	}
-
-	private User user;
-
-//	private Role role;
-	private String role;
-
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
+	private User user;
+
+	@Column(name = "role", length = 20)
+	private String role;
+
 	public User getUser() {
 		return user;
 	}
 
-//	@Enumerated(EnumType.STRING)
-	@Column(name = "role", length = 20)
 	public String getRole() {
 		return role;
 	}

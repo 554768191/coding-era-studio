@@ -1,9 +1,14 @@
 package com.codingera.module.base.configuration;
 
+import java.net.URI;
+
 import javax.sql.DataSource;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -15,6 +20,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import com.codingera.module.base.handler.CustomAuthenticationEntryPoint;
 import com.codingera.module.user.service.UserService;
@@ -26,7 +33,7 @@ import com.codingera.module.user.service.UserService;
  */
 @Configuration
 @EnableAuthorizationServer
-@EnableResourceServer
+//@EnableResourceServer
 class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
@@ -40,11 +47,33 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 	@Autowired
 	AuthenticationManagerBuilder authenticationManagerBuilder;
 
-	// @Autowired
-	// private AuthenticationManager authenticationManager;
+	 @Autowired
+	 private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
+//	@Bean
+//	public JwtAccessTokenConverter accessTokenConverter() throws Exception {
+//		JwtAccessTokenConverter jwt = new JwtAccessTokenConverter();
+//		jwt.setSigningKey(key("rsa"));
+//		jwt.setVerifierKey(key("rsa.pub"));
+//		jwt.afterPropertiesSet();
+//		return jwt;
+//	}
+//
+//	@Bean
+//	public JwtTokenStore tokenStore() throws Exception {
+//		JwtAccessTokenConverter enhancer = new JwtAccessTokenConverter();
+//		enhancer.setVerifierKey(key("rsa"));
+//		enhancer.afterPropertiesSet();
+//		return new JwtTokenStore(enhancer);
+//	}
+//
+//	static String key(final String resource) throws Exception {
+//		URI uri = SecurityConfig.class.getClassLoader().getResource(resource).toURI();
+//		return IOUtils.toString(uri);
+//	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -54,16 +83,17 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 
 		// 1.保险写法
 		// @see https://github.com/spring-projects/spring-boot/issues/1801
-		AuthenticationManager auth = new AuthenticationManager() {
-			@Override
-			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-				return authenticationManagerBuilder.getOrBuild().authenticate(authentication);
-			}
-		};
-		endpoints.authenticationManager(auth).tokenStore(tokenStore);
+//		AuthenticationManager auth = new AuthenticationManager() {
+//			@Override
+//			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+//				return authenticationManagerBuilder.getOrBuild().authenticate(authentication);
+//			}
+//		};
+//		endpoints.authenticationManager(auth).tokenStore(tokenStore);
+		// endpoints.accessTokenConverter(accessTokenConverter());
 
-		// 2.这种用法虽然简便，但是目前出现多次创建authenticationManager的情况，所以报错
-		// endpoints.authenticationManager(authenticationManager).userDetailsService(userService).tokenStore(tokenStore);
+		// 2.这种用法虽然简便，但是目前出现多次创建authenticationManager的情况，可能报错
+		 endpoints.authenticationManager(authenticationManager).userDetailsService(userService).tokenStore(tokenStore);
 
 	}
 
@@ -84,7 +114,7 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		super.configure(security);
 		security.allowFormAuthenticationForClients();
-		//security.authenticationEntryPoint(customAuthenticationEntryPoint);
+		// security.authenticationEntryPoint(customAuthenticationEntryPoint);
 	}
 
 }
