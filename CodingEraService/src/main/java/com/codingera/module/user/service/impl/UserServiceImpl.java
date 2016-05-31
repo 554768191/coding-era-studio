@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.codingera.module.common.util.CeSecurityUtil;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.Permission;
 import com.codingera.module.user.model.RolePermission;

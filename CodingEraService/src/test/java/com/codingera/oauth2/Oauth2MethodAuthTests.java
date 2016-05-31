@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.client.token.grant.password.ResourceO
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestOperations;
 
-import com.codingera.module.common.util.CeSecurityUtil;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 
 /**
  * 

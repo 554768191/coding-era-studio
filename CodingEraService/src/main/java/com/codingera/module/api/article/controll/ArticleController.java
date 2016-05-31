@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codingera.module.api.article.criteria.ArticleQueryCriteria;
 import com.codingera.module.api.article.model.Article;
 import com.codingera.module.api.article.service.ArticleService;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.base.controll.ActionResult;
-import com.codingera.module.common.util.CeSecurityUtil;
 
 /**
  * Article

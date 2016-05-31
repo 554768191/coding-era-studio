@@ -1,4 +1,4 @@
-package com.codingera.module.common.util;
+package com.codingera.module.base.common.util;
 
 import java.util.List;
 

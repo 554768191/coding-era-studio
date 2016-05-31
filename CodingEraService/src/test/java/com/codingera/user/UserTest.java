@@ -32,7 +32,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.codingera.CodingeraBootApplication;
 import com.codingera.module.api.demo.model.Demo;
-import com.codingera.module.common.util.CeSecurityUtil;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 

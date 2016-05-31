@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
-import com.codingera.module.common.util.CeSecurityUtil;
+import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
