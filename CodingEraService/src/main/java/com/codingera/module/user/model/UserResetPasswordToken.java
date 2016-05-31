@@ -7,11 +7,10 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.codingera.module.base.model.IdEntity;
-import com.codingera.module.base.model.NewIdEntity;
 
 @Entity
 @Table(name = "ce_user_reset_password_token")
-public class UserResetPasswordToken extends NewIdEntity {
+public class UserResetPasswordToken extends IdEntity {
 
 	/**
 	 * 

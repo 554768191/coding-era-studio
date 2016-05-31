@@ -4,11 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 
 @Entity
 @Table(name = "ce_role_permission")
-public class RolePermission extends NewIdEntity {
+public class RolePermission extends IdEntity {
 
 	/**
 	 * 

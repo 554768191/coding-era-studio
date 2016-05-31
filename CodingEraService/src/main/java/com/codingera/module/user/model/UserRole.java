@@ -6,12 +6,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ce_user_role")
-public class UserRole extends NewIdEntity {
+public class UserRole extends IdEntity {
 
 	/**
 	 * 

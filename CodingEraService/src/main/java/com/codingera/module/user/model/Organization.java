@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 
 /**
  * 
@@ -15,7 +15,7 @@ import com.codingera.module.base.model.NewIdEntity;
  */
 @Entity
 @Table(name = "ce_organization")
-public class Organization extends NewIdEntity {
+public class Organization extends IdEntity {
 
 	/**
 	 * 

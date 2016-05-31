@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 
 /**
  * 

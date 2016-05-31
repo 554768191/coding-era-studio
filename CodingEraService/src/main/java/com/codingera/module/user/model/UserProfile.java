@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.codingera.module.base.model.NewIdEntity;
+import com.codingera.module.base.model.IdEntity;
 
 /**
  * 
@@ -17,7 +17,7 @@ import com.codingera.module.base.model.NewIdEntity;
  */
 @Entity
 @Table(name = "ce_user_profile")
-public class UserProfile extends NewIdEntity {
+public class UserProfile extends IdEntity {
 
 	private static final long serialVersionUID = -192550188817193798L;
 
