@@ -75,10 +75,14 @@
   text-align: center; }
 
 .case-tags {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(44, 151, 232, 0.1);
   border-radius: 2px;
   padding: 10px 20px 20px 20px; }
+  .case-tags .tag-loading {
+    text-align: center;
+    color: #2c97e8;
+    font-size: 200%; }
   .case-tags .tags ul {
     padding: 0; }
   .case-tags .tags li {
@@ -89,16 +93,19 @@
     list-style: none;
     background: #2c97e8;
     text-align: center;
-    color: #fff;
     margin-left: 5px;
     padding: 5px 10px;
     border-radius: 2px;
     margin-bottom: 5px;
     cursor: pointer;
     transition: color .4s ease,opacity .4s ease,border .4s ease,background .4s ease; }
+    .case-tags .tags li a {
+      color: #fff;
+      text-decoration: none; }
     .case-tags .tags li:hover {
-      background-color: rgba(44, 151, 232, 0.1);
-      color: #2c97e8; }
+      background-color: rgba(44, 151, 232, 0.1); }
+      .case-tags .tags li:hover a {
+        color: #2c97e8; }
 
 .case-detail {
   background: #fafafa;

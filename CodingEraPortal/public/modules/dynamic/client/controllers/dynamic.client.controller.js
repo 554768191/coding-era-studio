@@ -19,7 +19,7 @@ var dynamicController = (function(){
             var page = pageBtn.data('page');
             pageBtn.addClass('auto-rotate');
             $.ajax({
-                url:'http://localhost:8080/api/open/dynamic/list?size='+size + '&page='+ (Number(page) + 1),
+                url: window.apiURL + '/dynamic/list?size='+size + '&page='+ (Number(page) + 1),
                 type:'get',
                 dataType:'json',
                 success:function(res){

@@ -34,17 +34,18 @@
                             <p>{{userObject.summary | default('这家伙很懒,什么都没留下 ! ')}}</p>
                         </div>
                     </div>
-                    <div class="bottom">
+                    <div class="bottom hidden-xs">
                         <div class="tag">
                             <h6>Tag</h6>
                             <div class="tags">
                                 <ul>
-                                    <li>Java</li>
-                                    <li>Jquery</li>
-                                    <li>Nodejs</li>
-                                    <li>object-c</li>
-                                    <li>web</li>
-                                    <li>ios</li>
+                                {% if userObject.userProfileTags.length > 0 %}
+                                    {% for tags in userObject.userProfileTags %}
+                                    <li>{{tags.name}}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>无标签</li>
+                                {% endif %}
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>

@@ -20,7 +20,9 @@
     {% for cssFile in cssFiles %}
     <link rel="stylesheet" href="{{cssFile}}">
     {% endfor %}
-
+    <script>
+        window.apiURL = '{{apiURL}}';
+    </script>
 </head>
 
 <body class="ce-wrapper-body">

@@ -19,7 +19,7 @@ module.exports = function() {
     app.locals.keywords = config.app.keywords;
     app.locals.jsFiles = config.getJavaScriptAssets();
     app.locals.cssFiles = config.getCSSAssets();
-
+    app.locals.apiURL = config.apiURL;
 
     //配置模板引擎
     app.engine('client.view.html', consolidate['swig']);
