@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Page<User> findUsersByCriteria(Pageable pr, UserQueryCriteria criteria) {
-		return userRepository.findUserByCriteria(pr, criteria);
+		return userRepository.findByCriteria(pr, criteria);
 	}
 
 	@Override
@@ -235,15 +235,5 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 	
-	@Override
-	public List<RolePermission> findRolePermissions(String role) {
-		return rolePermissionRepository.findByRole(role);
-	}
-
-	@Override
-	public List<RolePermission> findRolePermissions(String role, String resource) {
-		return rolePermissionRepository.findByRoleAndResource(role, resource);
-	}
-
 
 }

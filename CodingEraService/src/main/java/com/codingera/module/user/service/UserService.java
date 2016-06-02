@@ -47,7 +47,6 @@ public interface UserService extends UserDetailsService {
 	
 	public List<RolePermission> findUserPermissions(User user);
 	public List<RolePermission> findUserPermissions(User user, String resource);
-	public List<RolePermission> findRolePermissions(String role);
-	public List<RolePermission> findRolePermissions(String role, String resource);
+	
 
 }

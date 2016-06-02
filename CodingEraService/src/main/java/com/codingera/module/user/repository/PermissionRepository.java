@@ -5,7 +5,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.codingera.module.user.model.Permission;
 
-public interface PermissionRepository extends PagingAndSortingRepository<Permission, Long>, JpaSpecificationExecutor<Permission> {
+public interface PermissionRepository extends PagingAndSortingRepository<Permission, String>, JpaSpecificationExecutor<Permission> {
 
 	Permission getByPermission(String permission);
 	

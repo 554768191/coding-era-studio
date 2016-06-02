@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "ce_article")
-//@JsonIgnoreProperties(ignoreUnknown = true)
+// @JsonIgnoreProperties(ignoreUnknown = true)
 public class Article extends IdEntity {
 
 	/**
@@ -35,10 +35,10 @@ public class Article extends IdEntity {
 	@Column(name = "TITLE", length = 50)
 	private String title;
 
-	//暂时用key标记文章(下个版本,做成可配置)
-	@Column(name = "KEY", length = 50)
-	private String key;
-		
+	// 暂时用key标记文章(下个版本,做成可配置)
+	@Column(name = "TARGET", length = 20)
+	private String target;
+
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	@Column(name = "CONTENT")
@@ -50,7 +50,6 @@ public class Article extends IdEntity {
 	@Transient
 	public String htmlContent;
 
-	
 	public String getTitle() {
 		return title;
 	}
@@ -59,19 +58,14 @@ public class Article extends IdEntity {
 		this.title = title;
 	}
 
-	
 	public String getContent() {
 		return content;
 	}
-
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-
-
-	
 	public Status getStatus() {
 		return status;
 	}
@@ -79,16 +73,15 @@ public class Article extends IdEntity {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
-	public String getKey() {
-		return key;
+
+	public String getTarget() {
+		return target;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setTarget(String target) {
+		this.target = target;
 	}
 
-	
 	public String getHtmlContent() {
 		return htmlContent;
 	}
@@ -96,7 +89,5 @@ public class Article extends IdEntity {
 	public void setHtmlContent(String htmlContent) {
 		this.htmlContent = htmlContent;
 	}
-
-    
 
 }
