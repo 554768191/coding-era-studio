@@ -26,7 +26,7 @@ angular.module('core')
                                         '</div>',
                                     '</div>',
                                 '</div>',
-                                '<nav ng-if="!ceData.first||!ceData.last">',
+                                '<nav ng-if="ceData.totalPages && (!ceData.first||!ceData.last)">',
                                     '<ul class="pager" >',
                                         '<li class="previous" ng-if="!ceData.first"><a ng-click="pagePreviousClick()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 上一页</a></li>',
                                         '<li class="next" ng-if="!ceData.last" ><a ng-click="pageNextClick()">下一页 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>',
@@ -85,7 +85,7 @@ angular.module('core')
                 },
                 template:[
                     '<div class="toolbar-btn">',
-                        '<a ng-if="showBtn"   ng-click="eventHandler({obj:item})" title="{{title}}" >',
+                        '<a ng-if="showBtn" ng-click="eventHandler({obj:item})" title="{{title}}" >',
                             '<span class="glyphicon {{icon}}" aria-hidden="true"></span> {{title}}',
                         '</a>',
                     '</div>',
@@ -94,8 +94,12 @@ angular.module('core')
 
                     // 父指令 <- ceDataToolbar 获取值「 item 」
                     scope.item = tbCtrl.item;
+                    if(!!tbCtrl.statusKey){
+                        scope.showBtn = !!scope.statusEquals ? (','+scope.statusEquals+',').indexOf((',\''+tbCtrl.item[tbCtrl.statusKey]+'\','))>=0 : true;
+                    }else{
+                        scope.showBtn = true;
+                    }
                     // 根据状态判断该按钮是否显示
-                    scope.showBtn = scope.statusEquals.indexOf(tbCtrl.item[tbCtrl.statusKey])>0;
                     if(scope.showBtn){
                         // 显示工具栏逻辑
                         tbCtrl.countItemBtn();

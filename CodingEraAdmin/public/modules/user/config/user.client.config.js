@@ -14,6 +14,7 @@ angular.module('user').run([
 
         // Users state routing
         $stateProvider
+            // 用户管理
             .state('usersManage', {
                 url: '/user',
                 templateUrl: 'modules/user/views/user-manage.client.view.html',
@@ -41,7 +42,40 @@ angular.module('user').run([
                 controller:'SettingsAvatarController'
             })
 
-            //下面这堆好像没用,到时问佶闪   by Yason
+
+            // 角色管理
+            .state('usersManage.rolesManage', {
+                url: '/role',
+                templateUrl: 'modules/user/views/user-role-list.client.view.html'
+            })
+            .state('usersManage.rolesManage.edit', {
+                url: '/edit?:roleId',
+                templateUrl: 'modules/user/views/user-role-edit.client.view.html',
+                controller:'userRoleEditCtrl'
+            })
+            // 资源管理
+            .state('usersManage.resourcesManage', {
+                url: '/resources',
+                templateUrl: 'modules/user/views/user-resource-list.client.view.html'
+            })
+            .state('usersManage.resourcesManage.edit', {
+                url: '/edit?:resourceId',
+                templateUrl: 'modules/user/views/user-resource-edit.client.view.html',
+                controller:'userResourceEditCtrl'
+            })
+            // 权限管理
+            .state('usersManage.permissionsManage', {
+                url: '/permissions',
+                templateUrl: 'modules/user/views/user-permission-list.client.view.html'
+            })
+            .state('usersManage.permissionsManage.edit', {
+                url: '/edit?:permissionId',
+                templateUrl: 'modules/user/views/user-permission-edit.client.view.html',
+                controller:'userPermissionEditCtrl'
+            })
+
+
+            //下面这堆好像没用,到时问Jason   by Yason
             .state('password', {
                 url: '/password',
                 templateUrl: 'modules/user/views/user-change-password.client.view.html'

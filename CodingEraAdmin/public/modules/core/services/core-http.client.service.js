@@ -4,10 +4,11 @@
 "use strict";
 
 angular.module('core')
-    .factory('ceAjax', ['$rootScope','$http','Authentication','ceUtil', function($rootScope,$http,Authentication,ceUtil) {
+    .factory('ceAjax', [
+        '$rootScope','$http','Authentication','ceUtil',
+        function($rootScope,$http,Authentication,ceUtil) {
         var ceAjaxService = {};
         var token = Authentication.user.accessToken || "none";
-
 
         var customService = function(){
             var selfService ={};
@@ -35,7 +36,7 @@ angular.module('core')
             angular.extend(options,{url:Authentication.apiURL+options.url});
             ceUtil.loading();
             $http(options).success(function(res){
-                console.log('jason jason hahaha', res);
+                console.log('request api success return:', res);
                 ceUtil.loading();
                 if(res.result==='success'){
                     if(angular.isArray(res.data)){
@@ -59,6 +60,7 @@ angular.module('core')
                     }
                 }
             }).error(function(res){
+                console.log('request api error return:', res);
                 ceUtil.loading();
                 if(res){
                     if(res.data){

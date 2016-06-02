@@ -23,7 +23,7 @@
     <ce-data-toolbar status-key="status" >
         <!-- ngClick ( onEditClick 是你 controller 中的方法名)参数 obj 必须这样写,指令会把正行对象传回去 -->
         <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ce-click="onEditClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
-        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ce-click="onDeleteClick( obj );" status-equals="'PUBLISHED,SKETCH'"></ce-data-toolbar-btn>
+        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ce-click="onDeleteClick( obj );" status-equals="'PUBLISHED','SKETCH'"></ce-data-toolbar-btn>
     </ce-data-toolbar>
 </ce-data-list>
 

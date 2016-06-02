@@ -1,0 +1,22 @@
+<div ng-controller="userPermissionListCtrl">
+
+    <ce-page-header>
+        <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
+    </ce-page-header>
+
+    <!--<ce-data-list ce-data="jsonData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >-->
+    <ce-data-list ce-data="jsonData" small-size="true" >
+        <ce-data-custom>
+            <ul class="list-unstyled">
+                <li><label>权限</label> {{item.permission}}</li>
+                <li><label>描述</label> {{item.description}}</li>
+            </ul>
+            <!--<small>创建于<span ce-friendly-time="item.createdTime"></span></small>-->
+        </ce-data-custom>
+        <ce-data-toolbar>
+            <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" status-equals="111" ng-click="onEditClick( item );" ></ce-data-toolbar-btn>
+            <!--<ce-data-toolbar-btn icon="glyphicon-trash" title="禁用" ng-click="onDeleteClick( item );"></ce-data-toolbar-btn>-->
+        </ce-data-toolbar>
+    </ce-data-list>
+
+</div>
