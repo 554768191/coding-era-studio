@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codingera.module.base.controll.ActionResult;
 import com.codingera.module.user.criteria.RoleQueryCriteria;
 import com.codingera.module.user.model.Role;
+import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.service.RoleService;
+import com.codingera.module.user.view.RoleView;
 
 /**
  * 
@@ -37,6 +39,17 @@ public class RoleController {
 	@RequestMapping(path="/list", method = RequestMethod.GET)
 	public ActionResult findRoleList() {
 		List<Role> result = roleService.findRoles();
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
+	}
+	
+	@RequestMapping(path="/permissions", method = RequestMethod.GET)
+	public ActionResult findRolePermissions(String role) {
+		List<RolePermission> result = roleService.findRolePermissions(role);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
+	}
+	@RequestMapping(path="/permissions", method = RequestMethod.POST)
+	public ActionResult saveRolePermissions(@RequestBody RoleView roleView) {
+		List<RolePermission> result = roleService.saveRolePermissions(roleView);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
 	}
 	

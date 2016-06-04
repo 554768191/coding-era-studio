@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.codingera.module.user.criteria.RoleQueryCriteria;
 import com.codingera.module.user.model.Role;
 import com.codingera.module.user.model.RolePermission;
+import com.codingera.module.user.view.RoleView;
 
 public interface RoleService{
 
@@ -24,6 +25,8 @@ public interface RoleService{
 	public List<RolePermission> findRolePermissions(String role);
 	
 	public List<RolePermission> findRolePermissions(String role, String resource);
+
+	public List<RolePermission> saveRolePermissions(RoleView roleView);
 
 	
 

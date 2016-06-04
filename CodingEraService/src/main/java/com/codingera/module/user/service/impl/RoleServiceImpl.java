@@ -13,6 +13,7 @@ import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.repository.RolePermissionRepository;
 import com.codingera.module.user.repository.RoleRepository;
 import com.codingera.module.user.service.RoleService;
+import com.codingera.module.user.view.RoleView;
 
 @Service("RoleService")
 public class RoleServiceImpl implements RoleService {
@@ -54,6 +55,10 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public List<Role> findRoles() {
 		return (List<Role>) roleRepository.findAll();
+	}
+	@Override
+	public List<RolePermission> saveRolePermissions(RoleView roleView) {
+		return (List<RolePermission>) rolePermissionRepository.save(roleView.getRolePermissions());
 	}
 
 

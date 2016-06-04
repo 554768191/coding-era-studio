@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.codingera.module.base.model.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "ce_role_permission")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class RolePermission extends IdEntity {
 
 	/**
