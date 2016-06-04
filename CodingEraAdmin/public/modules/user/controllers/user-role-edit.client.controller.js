@@ -4,28 +4,31 @@
  Dynamic 编辑页面
  */
 angular.module('user').controller('userRoleEditCtrl', [
-    '$scope', '$log','$uibModalInstance','Authentication', 'RoleService', 'ceUtil','data',
-    function ($scope, $log,$uibModalInstance,Authentication, RoleService, ceUtil,data) {
+    '$scope', '$log','$uibModalInstance','Authentication', 'RoleService', 'ResourceService','PermissionService', 'ceUtil','data',
+    function ($scope, $log,$uibModalInstance,Authentication, RoleService, ResourceService, PermissionService, ceUtil, data) {
 
         var that = $scope;
 
-        //that.item = {};
         //当前登录用户
         that.currentUser = Authentication.user;
 
-        //编辑
-        //if(angular.isUndefined( data.role )){
+        that.resources = data.resources;
+        that.permissions = data.permissions;
 
-        console.log('jason hehe ',data);
-            that.item = data;
-            //that.publishedBtnText = '新增';
-        //}else{
+
+        //编辑
+        if(angular.isUndefined( data.role.role )){
+
+            that.item = data.role;
+            that.publishedBtnText = '新增';
+        }else{
         //    that.item = RoleService.getById(data.role);
+            that.item = data.role;
             that.publishedBtnText = '保存';
-        //}
+        }
 
         //发布&保存
-        that.onPublishClick = function () {
+        that.onSaveClick = function () {
 
             RoleService.save(that.item).success(function (res) {
                 ceUtil.toast('发布成功');

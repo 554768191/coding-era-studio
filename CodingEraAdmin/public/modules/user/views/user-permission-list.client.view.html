@@ -1,9 +1,11 @@
 <div ng-controller="userPermissionListCtrl">
 
+
     <ce-page-header>
         <ce-search-bar ce-placeholder="搜索..."  ce-click="onSearchClick(keyWord)"></ce-search-bar>
     </ce-page-header>
 
+    <uib-alert>注意!这里的权限是属于所有资源.</uib-alert>
     <!--<ce-data-list ce-data="jsonData" small-size="true" page-previous-click="previousPage()" page-next-click="nextPage()" >-->
     <ce-data-list ce-data="jsonData" small-size="true" >
         <ce-data-custom>

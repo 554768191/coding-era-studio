@@ -2,18 +2,22 @@
  * Created by Yan on 15/12/8.
  */
 'use strict';
-angular.module('user').factory('RoleService', [
+angular.module('user').factory('ResourceService', [
     '$log','$http', 'ceAjax',
     function ($log,$http, ceAjax) {
 
         var service = {};
 
-        service.getRoles = function (parameters) {
-            return ceAjax.get({url: '/role', data: parameters});
+        service.getResources = function (parameters) {
+            return ceAjax.get({url: '/resource', data: parameters});
+        };
+
+        service.getResourcesList = function (parameters) {
+            return ceAjax.get({url: '/resource/list', data: parameters});
         };
 
         service.save = function (parameters) {
-            return ceAjax.post({url: '/role', data: parameters});
+            return ceAjax.post({url: '/resource', data: parameters});
         };
 
 

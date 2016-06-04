@@ -53,6 +53,11 @@ angular.module('user').run([
                 templateUrl: 'modules/user/views/user-role-edit.client.view.html',
                 controller:'userRoleEditCtrl'
             })
+            .state('usersManage.rolesManage.permissions', {
+                url: '/permissions/edit?:roleId',
+                templateUrl: 'modules/user/views/user-role-permissions-edit.client.view.html',
+                controller:'userRolePermissionsEditCtrl'
+            })
             // 资源管理
             .state('usersManage.resourcesManage', {
                 url: '/resources',

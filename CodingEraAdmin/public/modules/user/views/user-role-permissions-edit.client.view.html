@@ -1,0 +1,44 @@
+    <div class="modal-header">
+        <h3 class="modal-title">
+            <span ng-bind="item.role"></span>
+            <small ng-bind="item.description"></small>
+        </h3>
+    </div>
+    <form name="EditForm">
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">资源权限</label>
+                <div class="list-group role-panel">
+                    <div class="checkbox">
+                        <label>
+                            <ce-checkbox key="'role'" status-stored-in="item"></ce-checkbox>
+                            全选
+                        </label>
+                    </div><!--/checkbox-->
+                    <div class="list-group-item ce-animate-list" ng-repeat="resource in resources | orderBy:'order'">
+                        <div class="role-group-head">
+                            <div class="checkbox">
+                                <label>
+                                    <ce-checkbox key="resource.resource" parent="'role'" status-stored-in="item.resources[resource.resource]"></ce-checkbox>
+                                    <b>{{resource.resource}}</b>
+                                    <small>{{resource.description}}</small>
+                                </label>
+                            </div>
+                        </div><!--/role-group-head-->
+                        <div class="role-node" >
+                            <label class="checkbox-inline" ng-repeat="permission in permissions">
+                                <ce-checkbox key="'permission'" parent="resource.resource" status-stored-in="item.resources[resource.resource].permissions[permission.permission]"></ce-checkbox>
+                                {{permission.permission}}
+                            </label>
+                        </div><!--/role-node-->
+                    </div><!--/list-group-item-->
+                </div><!--/list-group-->
+            </div>
+            <uib-alert>{{item}}</uib-alert>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" validation-submit="EditForm" type="submit" ng-click="onSaveClick()">{{publishedBtnText}}</button>
+            <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+

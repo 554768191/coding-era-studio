@@ -1,13 +1,22 @@
 'use strict';
 
 angular.module('user').controller('userRoleListCtrl', [
-    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'RoleService', 'ceUtil',
-    function ($scope, $log, $state, $stateParams, $location, path, RoleService, ceUtil) {
+    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'RoleService', 'ResourceService', 'PermissionService', 'ceUtil',
+    function ($scope, $log, $state, $stateParams, $location, path, RoleService, ResourceService, PermissionService, ceUtil) {
 
         var that = $scope;
 
-        that.jsonData = {};
         that.key = 'title';
+        that.jsonData = {};
+
+        // todo 这里的回调还要优化
+        ResourceService.getResourcesList().success(function(res){
+            that.resources = res.data;
+        });
+
+        PermissionService.getPermissionsList().success(function(res){
+            that.permissions = res.data;
+        });
 
         //分页参数
         var searchOptions = ceUtil.initPageParameter({
@@ -28,7 +37,27 @@ angular.module('user').controller('userRoleListCtrl', [
         that.onEditClick = function(obj){
             if(obj){
                 //$state.go('usersManage.rolesManage.edit',{roleId:obj.role});
-                ceUtil.openModal({route:'usersManage.rolesManage.edit', data: obj}).success(function(res){
+                ceUtil.openModal({route:'usersManage.rolesManage.edit',
+                    data: {
+                        role:obj,
+                        resources:that.resources,
+                        permissions:that.permissions
+                    }
+                }).success(function(res){
+                    //重新加载数据
+                    $scope.onSearch();
+                });
+            }
+        };
+        that.onEditPermissionsClick = function(obj){
+            if(obj){
+                ceUtil.openModal({route:'usersManage.rolesManage.permissions',
+                    data: {
+                        role:obj,
+                        resources:that.resources,
+                        permissions:that.permissions
+                    }
+                }).success(function(res){
                     //重新加载数据
                     $scope.onSearch();
                 });
