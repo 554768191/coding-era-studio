@@ -25,7 +25,7 @@ angular.module('user').run([
                 templateUrl: 'modules/user/views/user-list.client.view.html',
             })
             .state('usersManage.edit', {
-                url: '/edit?:userId',
+                url: '/edit?:username',
                 templateUrl: 'modules/user/views/user-profile.client.view.html',
                 controller:'UserProfileController'
             })
@@ -41,7 +41,12 @@ angular.module('user').run([
                 templateUrl: 'modules/user/views/user-profile-avatar-edit.client.view.html',
                 controller:'SettingsAvatarController'
             })
-
+            // 用户角色
+            .state('usersManage.roles', {
+                url: '/roles/edit?:userId',
+                templateUrl: 'modules/user/views/user-roles-edit.client.view.html',
+                controller:'userRolesEditCtrl'
+            })
 
             // 角色管理
             .state('usersManage.rolesManage', {

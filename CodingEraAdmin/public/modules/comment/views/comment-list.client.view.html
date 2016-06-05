@@ -8,8 +8,8 @@
         <small><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{item.createdTime  | date:'yyyy-MM-dd'}}</small>
     </ce-data-custom>
     <ce-data-toolbar status-key="status" >
-        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( obj );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
-        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( obj );" status-equals="'WAITING,SKETCH'"></ce-data-toolbar-btn>
+        <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
+        <ce-data-toolbar-btn icon="glyphicon-trash" title="删除" ng-click="onDeleteClick( item );" status-equals="'WAITING','SKETCH'"></ce-data-toolbar-btn>
     </ce-data-toolbar>
 </ce-data-list>
 

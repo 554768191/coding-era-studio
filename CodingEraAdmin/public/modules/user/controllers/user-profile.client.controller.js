@@ -1,32 +1,46 @@
 'use strict';
 
 angular.module('user').controller('UserProfileController', [
-    '$scope', '$http', '$window', '$location', 'UserService','UserTagService', 'Authentication','ceUtil',
-    function ($scope, $http, $window, $location, UserService, UserTagService , Authentication,ceUtil) {
-        $scope.user = Authentication.user;
-        $scope.readSaveAvatar = false;//是否要修改头像URL (修改头像时使用,避免未保存,头像先改了)
-        $scope.readSaveAvatarUrl = '';
+    '$scope', '$http', '$window', '$location', '$stateParams', 'UserService','UserTagService', 'Authentication','ceUtil',
+    function ($scope, $http, $window, $location, $stateParams, UserService, UserTagService , Authentication,ceUtil) {
 
+        var that = $scope;
 
+        that.readSaveAvatar = false;//是否要修改头像URL (修改头像时使用,避免未保存,头像先改了)
+        that.readSaveAvatarUrl = '';
+        
+        if($stateParams.username){
+            if('create' === $stateParams.username){
+                //1.新增用户
+                that.user = {};
+            }else {
+                //2.编辑用户
+                UserService.getUserByUsername($stateParams.username).success(function(res) {
+                    that.user  = res.data;
+                });
+            }
+        }else{
+            //3.个人信息
+            that.user = Authentication.user;
+        }
 
         //更新用户信息
-        $scope.updateUserProfile = function () {
-            $scope.success = $scope.error = null;
-            var data = $scope.user;
+        that.updateUserProfile = function () {
+            that.success = that.error = null;
+            var data = that.user;
             delete  data.roles;
             delete  data.authorities;
 
             //保存前,替换待保存头像URL
-            if($scope.readSaveAvatar){
-                $scope.user.avatar = $scope.readSaveAvatarUrl;
+            if(that.readSaveAvatar){
+                that.user.avatar = that.readSaveAvatarUrl;
             }
-            console.log(data);
 
             UserService.save(data).success(function(res) {
-                $scope.success = true;
-                $scope.user  = res.data;
+                that.success = true;
+                that.user  = res.data;
                 Authentication.user = res.data;
-                $scope.readSaveAvatar = false;
+                that.readSaveAvatar = false;
                 ceUtil.toast('保存成功');
             });
 
@@ -35,21 +49,25 @@ angular.module('user').controller('UserProfileController', [
 
 
         //修改头像
-        $scope.onEditAvatarClick = function (){
+        that.onEditAvatarClick = function (){
             //使用 openModal 打开发布界面
             ceUtil.openModal({route:'usersManage.avatar'}).success(function(res){
                 //未点保存,不应该直接修改user对象 ( 会影响到右上角头像也会更改 )
-                //$scope.user.avatar = res.url();
+                //that.user.avatar = res.url();
 
-                $scope.readSaveAvatar = true;
-                $scope.readSaveAvatarUrl = res.url();
+                that.readSaveAvatar = true;
+                that.readSaveAvatarUrl = res.url();
 
             });
         };
 
+        //返回按钮
+        that.cancel = function () {
+            history.back(-1);
+        };
 
         //录入新标签事件
-        $scope.tagTransform = function (str){
+        that.tagTransform = function (str){
             return {
                 id:null,
                 name:str
@@ -59,11 +77,10 @@ angular.module('user').controller('UserProfileController', [
         //获取所有标签
         function getTageList(){
             UserTagService.getTags().success(function(res){
-                console.log(res);
-                $scope.itemArray = res.data;
+                that.itemArray = res.data;
             });
         }
         getTageList();
-        $scope.itemArray = [];
+        that.itemArray = [];
     }
 ]);

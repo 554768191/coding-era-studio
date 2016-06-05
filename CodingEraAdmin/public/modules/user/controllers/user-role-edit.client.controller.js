@@ -18,7 +18,6 @@ angular.module('user').controller('userRoleEditCtrl', [
 
         //编辑
         if(angular.isUndefined( data.role.role )){
-
             that.item = data.role;
             that.publishedBtnText = '新增';
         }else{
@@ -29,7 +28,8 @@ angular.module('user').controller('userRoleEditCtrl', [
 
         //发布&保存
         that.onSaveClick = function () {
-
+            delete  that.item.checked;
+            delete  that.item.resources;
             RoleService.save(that.item).success(function (res) {
                 ceUtil.toast('发布成功');
                 $uibModalInstance.close(res.data);

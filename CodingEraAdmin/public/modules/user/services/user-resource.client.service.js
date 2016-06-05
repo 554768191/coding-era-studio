@@ -9,15 +9,15 @@ angular.module('user').factory('ResourceService', [
         var service = {};
 
         service.getResources = function (parameters) {
-            return ceAjax.get({url: '/resource', data: parameters});
+            return ceAjax.get({url: '/resources', data: parameters});
         };
 
         service.getResourcesList = function (parameters) {
-            return ceAjax.get({url: '/resource/list', data: parameters});
+            return ceAjax.get({url: '/resources/list', data: parameters});
         };
 
         service.save = function (parameters) {
-            return ceAjax.post({url: '/resource', data: parameters});
+            return ceAjax.post({url: '/resources', data: parameters});
         };
 
 

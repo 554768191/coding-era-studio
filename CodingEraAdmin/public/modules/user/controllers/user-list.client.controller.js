@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('user').controller('usersListCtrl', [
-    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'UserService', 'ceUtil',
-    function ($scope, $log, $state, $stateParams, $location, path, UserService, ceUtil) {
+    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'UserService', 'RoleService', 'ceUtil',
+    function ($scope, $log, $state, $stateParams, $location, path, UserService, RoleService, ceUtil) {
 
 
         //{name: 'displayName', displayName: '昵称', allowCellFocus: true},
@@ -13,9 +13,14 @@ angular.module('user').controller('usersListCtrl', [
         //{name: 'phone', displayName: '手机'},
         //{name: 'enable', displayName: '状态'},
 
+        var that = $scope;
 
-        $scope.jsonData = {};
-        $scope.key = 'title';
+        RoleService.getRolesList().success(function(res){
+            that.roles = res.data;
+        });
+
+        that.jsonData = {};
+        that.key = 'title';
 
         //分页参数
         var searchOptions = ceUtil.initPageParameter({
@@ -25,44 +30,61 @@ angular.module('user').controller('usersListCtrl', [
         });
 
         //搜索
-        $scope.onSearch = function(){
+        that.onSearch = function(){
             UserService.getUsers(searchOptions).success(function(res){
-                $scope.jsonData = res.data;
+                that.jsonData = res.data;
             });
         };
-        $scope.onSearch();
+        that.onSearch();
 
         //编辑记录
-        $scope.onEditClick = function(obj){
-            $state.go('usersManage.edit',{usersId:obj.id});
+        that.onEditUserClick = function(obj){
+            $state.go('usersManage.edit',{
+                username:obj.username
+            });
+        };
+
+        //用户角色编辑
+        that.onEditRolesClick = function(obj){
+            if(obj){
+                ceUtil.openModal({route:'usersManage.roles',
+                    data: {
+                        user:angular.copy(obj),//直接传copy对象,不另外查一次了
+                        roles:that.roles
+                    }
+                }).success(function(res){
+                    //重新加载数据
+                    that.onSearch();
+                });
+            }
         };
 
         //删除记录
-        $scope.onDeleteClick = function(obj){
+        that.onDeleteClick = function(obj){
             ceUtil.confirmMessage('确认删除?').success(function(){
                 //UserService.deleteUsers({id:obj.id}).success(function(){
                 //    ceUtil.toast('删除成功');
-                //    $scope.onSearch();
+                //    that.onSearch();
                 //});
             });
         };
 
         //上一页
-        $scope.previousPage = function(){
+        that.previousPage = function(){
             searchOptions.page -= 1;
-            $scope.onSearch();
+            that.onSearch();
         };
 
         //下一页
-        $scope.nextPage = function(){
+        that.nextPage = function(){
             searchOptions.page += 1;
-            $scope.onSearch();
+            that.onSearch();
 
         };
 
-        $scope.onSearchClick = function(keyWord){
+        that.onSearchClick = function(keyWord){
             searchOptions.keyWord = keyWord;
-            $scope.onSearch();
+            that.onSearch();
         };
         
     }]);

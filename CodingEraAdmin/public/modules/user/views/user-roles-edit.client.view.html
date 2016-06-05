@@ -1,0 +1,37 @@
+    <div class="modal-header">
+        <h3 class="modal-title">
+            <span ng-bind="item.username"></span>用户所属角色
+        </h3>
+    </div>
+    <form name="EditForm">
+        <div class="modal-body">
+            <div class="form-group">
+                <!--<label class="control-label">用户所属角色</label>-->
+                <div class="list-group role-panel">
+                    <div class="checkbox">
+                        <label>
+                            <ce-checkbox key="'user'" status-stored-in="item"></ce-checkbox>
+                            全选
+                        </label>
+                    </div><!--/checkbox-->
+                    <div class="list-group-item ce-animate-list" ng-repeat="role in roles | orderBy:'order'">
+                        <div class="role-group-head">
+                            <div class="checkbox">
+                                <label>
+                                    <ce-checkbox key="'role'" parent="'user'" status-stored-in="item.roles[role.role]"></ce-checkbox>
+                                    <b>{{role.role}}</b>
+                                    <small>{{role.description}}</small>
+                                </label>
+                            </div>
+                        </div><!--/role-group-head-->
+                    </div><!--/list-group-item-->
+                </div><!--/list-group-->
+            </div>
+            <uib-alert>{{item}}</uib-alert>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" validation-submit="EditForm" type="submit" ng-click="onSaveClick()">{{publishedBtnText}}</button>
+            <button class="btn btn-default" type="button" ng-click="onCancelClick()">取消</button>
+        </div>
+    </form>
+

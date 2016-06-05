@@ -9,15 +9,15 @@ angular.module('user').factory('PermissionService', [
         var service = {};
 
         service.getPermissions = function (parameters) {
-            return ceAjax.get({url: '/permission', data: parameters});
+            return ceAjax.get({url: '/permissions', data: parameters});
         };
 
         service.getPermissionsList = function (parameters) {
-            return ceAjax.get({url: '/permission/list', data: parameters});
+            return ceAjax.get({url: '/permissions/list', data: parameters});
         };
 
         service.save = function (parameters) {
-            return ceAjax.post({url: '/permission', data: parameters});
+            return ceAjax.post({url: '/permissions', data: parameters});
         };
 
 

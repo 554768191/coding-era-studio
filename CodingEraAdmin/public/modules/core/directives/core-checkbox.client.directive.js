@@ -37,12 +37,12 @@
                 checkbox = {};
                 key = scope.key;
                 parent = scope.parent;
-                statusObj = scope.statusStoredIn = scope.statusStoredIn || {};
-                statusObj.checked = statusObj.checked || false;
+                statusObj = angular.isDefined(scope.statusStoredIn) ? scope.statusStoredIn : scope.statusStoredIn = {isNew:true};
+                statusObj.checked = angular.isDefined(statusObj.checked) ? statusObj.checked : false;
 
-                  //# if my parent already exists, check its status, follow its status
-                  //# and broadcast my status to my potential children at the end
-                  //# (my scope toggleCheck hasn't been defined yet)
+                // if my parent already exists, check its status, follow its status
+                // and broadcast my status to my potential children at the end
+                // (my scope toggleCheck hasn't been defined yet)
                 if (angular.isDefined(parent)) {
                     if (angular.isDefined(checkboxs[parent])) {
                         pcb = checkboxs[parent];

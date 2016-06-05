@@ -6,17 +6,20 @@ angular.module('user').controller('userRoleListCtrl', [
 
         var that = $scope;
 
-        that.key = 'title';
-        that.jsonData = {};
+        that.init = function() {
+            that.key = 'title';
+            that.jsonData = {};
 
-        // todo 这里的回调还要优化
-        ResourceService.getResourcesList().success(function(res){
-            that.resources = res.data;
-        });
+            // todo 这里的回调还要优化
+            ResourceService.getResourcesList().success(function (res) {
+                that.resources = res.data;
+            });
 
-        PermissionService.getPermissionsList().success(function(res){
-            that.permissions = res.data;
-        });
+            PermissionService.getPermissionsList().success(function (res) {
+                that.permissions = res.data;
+            });
+        };
+        that.init();
 
         //分页参数
         var searchOptions = ceUtil.initPageParameter({
@@ -39,7 +42,7 @@ angular.module('user').controller('userRoleListCtrl', [
                 //$state.go('usersManage.rolesManage.edit',{roleId:obj.role});
                 ceUtil.openModal({route:'usersManage.rolesManage.edit',
                     data: {
-                        role:obj,
+                        role:angular.copy(obj),//直接传copy对象,不另外查一次了
                         resources:that.resources,
                         permissions:that.permissions
                     }
@@ -49,11 +52,13 @@ angular.module('user').controller('userRoleListCtrl', [
                 });
             }
         };
+
+        //角色权限
         that.onEditPermissionsClick = function(obj){
             if(obj){
                 ceUtil.openModal({route:'usersManage.rolesManage.permissions',
                     data: {
-                        role:obj,
+                        role:angular.copy(obj),//直接传copy对象,不另外查一次了
                         resources:that.resources,
                         permissions:that.permissions
                     }
@@ -87,6 +92,7 @@ angular.module('user').controller('userRoleListCtrl', [
 
         };
 
+        //查询事件
         that.onSearchClick = function(keyWord){
             searchOptions.keyWord = keyWord;
             that.onSearch();
