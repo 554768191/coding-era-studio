@@ -24,7 +24,7 @@ import com.codingera.module.user.view.RoleView;
  *
  */
 @RestController
-@RequestMapping("/api/role")
+@RequestMapping("/api/roles")
 public class RoleController {
 
 	@Autowired
@@ -42,17 +42,6 @@ public class RoleController {
 		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
 	}
 	
-	@RequestMapping(path="/permissions", method = RequestMethod.GET)
-	public ActionResult findRolePermissions(String role) {
-		List<RolePermission> result = roleService.findRolePermissions(role);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
-	}
-	@RequestMapping(path="/permissions", method = RequestMethod.POST)
-	public ActionResult saveRolePermissions(@RequestBody RoleView roleView) {
-		List<RolePermission> result = roleService.saveRolePermissions(roleView);
-		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
-	}
-	
 	/**
 	 * 编辑
 	 * 
@@ -62,6 +51,17 @@ public class RoleController {
 	public ActionResult updateRole(@RequestBody Role role) {
 		role = roleService.save(role);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, role);
+	}
+	
+	@RequestMapping(path="/permissions", method = RequestMethod.GET)
+	public ActionResult findRolePermissions(String role) {
+		List<RolePermission> result = roleService.findRolePermissions(role);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
+	}
+	@RequestMapping(path="/permissions", method = RequestMethod.POST)
+	public ActionResult saveRolePermissions(@RequestBody RoleView roleView) {
+		List<RolePermission> result = roleService.saveRolePermissions(roleView);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
 	}
 
 }

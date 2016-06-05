@@ -8,9 +8,11 @@ import javax.persistence.Table;
 
 import com.codingera.module.base.model.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "ce_user_role")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class UserRole extends IdEntity {
 
 	/**

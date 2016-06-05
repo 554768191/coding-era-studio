@@ -49,6 +49,7 @@ public class OAuth2ResourceConfiguration extends ResourceServerConfigurerAdapter
 //			.and()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, "/api/article/*").access("hasPermission('article','write')")
+			.antMatchers(HttpMethod.DELETE, "/api/article/*").access("hasPermission('article','write')")
 			.antMatchers(HttpMethod.GET, "/api/article/**").access("hasPermission('article','read')")
 			.antMatchers(HttpMethod.POST, "/api/demo/*").access("hasPermission('demo','write')")
 			.antMatchers(HttpMethod.GET, "/api/demo/**").access("hasPermission('demo','read')")

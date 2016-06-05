@@ -6,23 +6,18 @@ import java.util.List;
 
 import javax.validation.ValidationException;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.criteria.UserQueryCriteria;
-import com.codingera.module.user.model.Permission;
 import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserResetPasswordToken;
@@ -30,13 +25,17 @@ import com.codingera.module.user.model.UserRole;
 import com.codingera.module.user.repository.RolePermissionRepository;
 import com.codingera.module.user.repository.UserRepository;
 import com.codingera.module.user.repository.UserResetPasswordTokenRepository;
+import com.codingera.module.user.repository.UserRoleRepository;
 import com.codingera.module.user.service.UserService;
+import com.codingera.module.user.view.UserRoleView;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
 
+	@Autowired
+	UserRoleRepository userRoleRepository;
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -233,6 +232,42 @@ public class UserServiceImpl implements UserService {
 		List<String> roles = loadRolesFromUser(user);
 		List<RolePermission> result = rolePermissionRepository.findByRoleInAndResource(roles, resource);
 		return result;
+	}
+
+	@Override
+	public boolean isExistUserName(String userName) {
+		User user = userRepository.findUserByUsername(userName);
+		if(user != null){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public List<UserRole> saveUserRoles(UserRoleView userRoleView) {
+		Assert.notNull(userRoleView.getUserId(), "缺失用户ID");
+		User user = this.getById(userRoleView.getUserId());
+		Assert.notNull(user, "找不到用户");
+		
+		List<UserRole> userRoles = userRoleView.getUserRoles();
+		List<UserRole> saveList = new ArrayList<UserRole>();
+		List<UserRole> deleteList = new ArrayList<UserRole>();
+		for (UserRole userRole : userRoles) {
+			if(userRole.getId() != null && userRole.getRole() == null){
+				deleteList.add(userRole);
+				continue;
+			}
+			userRole.setUser(user);
+			saveList.add(userRole);
+		}
+//		todo Jason 不知为何发送的是Update语句
+		userRoleRepository.delete(deleteList);
+		return (List<UserRole>)userRoleRepository.save(saveList);
+	}
+
+	@Override
+	public List<UserRole> findUserRoles(Long userId) {
+		return userRoleRepository.findByUserId(userId);
 	}
 	
 

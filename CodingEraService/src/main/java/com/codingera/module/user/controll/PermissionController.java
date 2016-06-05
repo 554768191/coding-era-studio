@@ -18,7 +18,7 @@ import com.codingera.module.user.service.PermissionService;
  *
  */
 @RestController
-@RequestMapping("/api/permission")
+@RequestMapping("/api/permissions")
 public class PermissionController {
 
 	@Autowired

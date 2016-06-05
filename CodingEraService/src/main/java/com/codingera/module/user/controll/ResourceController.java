@@ -22,7 +22,7 @@ import com.codingera.module.user.service.ResourceService;
  *
  */
 @RestController
-@RequestMapping("/api/resource")
+@RequestMapping("/api/resources")
 public class ResourceController {
 
 	@Autowired

@@ -50,6 +50,7 @@ class BaseControllerAdvice {
 	@ExceptionHandler(Exception.class)
 	//@ResponseStatus(HttpStatus.BAD_REQUEST)
 	ActionResult exceptionHandler(Exception ex) {
+		LOGGER.info(ex.getMessage());
 		// 返回json
 		return new ActionResult(ActionResult.RESULT_ERROR, ex.getMessage());
 	}

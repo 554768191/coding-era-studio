@@ -6,12 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.codingera.module.api.tag.criteria.TagQueryCriteria;
 import com.codingera.module.user.criteria.UserQueryCriteria;
-import com.codingera.module.user.model.Permission;
 import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserResetPasswordToken;
+import com.codingera.module.user.model.UserRole;
+import com.codingera.module.user.view.UserRoleView;
 
 public interface UserService extends UserDetailsService {
 
@@ -47,6 +47,23 @@ public interface UserService extends UserDetailsService {
 	
 	public List<RolePermission> findUserPermissions(User user);
 	public List<RolePermission> findUserPermissions(User user, String resource);
+
+	/**
+	 * 校验用户名是否存在
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	public boolean isExistUserName(String userName);
+
+	/**
+	 * 保存用户所属角色
+	 * 
+	 * @param userRoleView
+	 * @return
+	 */
+	public List<UserRole> saveUserRoles(UserRoleView userRoleView);
+	public List<UserRole> findUserRoles(Long userId);
 	
 
 }

@@ -60,13 +60,9 @@ public class UserOpenController {
 	 * @return
 	 */
 	@RequestMapping
-	public ActionResult getUser(@RequestParam String userName) {
-		UserView view = null;
-		User user = userService.getUserByUserName(userName);
-		if(user != null){
-			view = new UserView(user);
-		}
-		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
+	public ActionResult isExistUserName(@RequestParam String userName) {
+		boolean result = userService.isExistUserName(userName);
+		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
 	}
 	
 	/**
