@@ -4,7 +4,8 @@
  * 上传文件
  */
 'use strict';
-angular.module('todo').factory('FileUploadService', ['$http', '$log', 'ceConfig', 'Upload', 'Authentication',
+angular.module('todo').factory('FileUploadService', [
+    '$http', '$log', 'ceConfig', 'Upload', 'Authentication',
     function ($http, $log, ceConfig, Upload, Authentication) {
         var service = {
             upload: function (file, task) {

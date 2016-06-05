@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('todo').controller('todoCtrl', [
-    '$scope', '$sce', '$uibModal', '$log',
-    'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'Upload',
-    function ($scope, $sce, $uibModal, $log,
-              uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
+    '$scope', '$sce', '$uibModal', '$log', 'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'Upload',
+    function ($scope, $sce, $uibModal, $log, uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
 
         //$scope.$watch("file", function (val) {
         //    console.log('Jason file watch', val);

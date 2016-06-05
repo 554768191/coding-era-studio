@@ -2,7 +2,8 @@
  * Created by Jason.
  */
 'use strict';
-angular.module('todo').factory('TodoCustomService', ['$rootScope',
+angular.module('todo').factory('TodoCustomService', [
+    '$rootScope',
     function ($rootScope) {
         var service = {
             tasks: [

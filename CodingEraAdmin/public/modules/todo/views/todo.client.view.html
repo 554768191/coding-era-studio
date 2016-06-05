@@ -1,4 +1,4 @@
-<div ng-controller="todoCtrl" class="ce-todo">
+<div class="ce-todo">
 
     <!--测试写法2-->
     <div class="row">
@@ -29,7 +29,7 @@
                 </div>--><!-- /btn-group -->
 
                 <div ce-input-dropdown is-open="false" auto-close="outsideClick" class="task-dropdown" ng-class="{'has-error':form.title.$error.minlength}">
-                    <input type="text"  class="form-control" name="title" aria-label="..." placeholder="{{'TASK.ADD.TXT' | translate}}"
+                    <input type="text"  class="form-control" name="title" aria-label="..." placeholder="{{'TASK.ADD.TXT'}}"
                            ng-minlength="5"
                            ce-input-dropdown-toggle
                            ng-keyup="$event.keyCode == 13 && addTask()"
@@ -138,7 +138,7 @@
                     <span class="input-group-addon">
                         <a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
                     </span>
-                    <input type="text" class="form-control" placeholder="{{'TASK.ADD.TXT' | translate}}"
+                    <input type="text" class="form-control" placeholder="{{'TASK.ADD.TXT'}}"
                            uib-popover popover-placement="bottom" uib-popover-template="dynamicPopover.templateUrl"
                            popover-title="添加描述">
                     <span class="input-group-addon">
@@ -167,7 +167,7 @@
     <script type="text/ng-template" id="memberTemplate.html">
         <div>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' | translate }}" ng-model="keyWord" />
+                <input type="text" class="form-control" placeholder="{{'SYSTEM.APP.QUERY.TEXT' }}" ng-model="keyWord" />
 
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-info" ng-click="onSearchClick()">

@@ -6,27 +6,29 @@ angular.module('demo')
     .run(['Menus',
     function(Menus) {
         //DEMO
-        //var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roules:'demo',route:'demo'});
-        //demoMenu.setOrder(999);
-        //Menus.addMenus(demoMenu.getMenus());
+        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roules:'demo',route:'demoManage'});
+        demoMenu.setOrder(999);
+        Menus.addMenus(demoMenu.getMenus());
     }
 ]).config([
     '$stateProvider',
     function($stateProvider) {
 
         $stateProvider
-            .state('demo', {
+            .state('demoManage', {
                 url: '/demo',
+                templateUrl: 'modules/demo/views/demo-manage.client.view.html',
+                controller:'demoManageCtrl'
+            })
+            .state('demoManage.demo', {
+                url: '/list',
                 templateUrl: 'modules/demo/views/demo.client.view.html',
                 controller:'demoCtrl'
             })
-            .state('widget/panel', {
-                url: '/widget/panel',
-                templateUrl: 'modules/demo/views/demo-widget-panel.client.view.html'
-            })
-            .state('widget/button', {
-                url: '/widget/button',
-                templateUrl: 'modules/demo/views/demo-widget-button.client.view.html'
+            .state('demoManage.edit', {
+                url: '/edit',
+                templateUrl: 'modules/demo/views/demo-edit.client.view.html',
+                controller:'demoEditCtrl'
             });
 
 

@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('todo').controller('fileUploadCtrl', ['$scope', 'Upload', 'uiGridConstants',
-    function ($scope, Upload, uiGridConstants) {
+angular.module('todo').controller('fileUploadCtrl', [
+    '$scope', 'Upload',
+    function ($scope, Upload) {
 
         $scope.file = null;
         $scope.files = null;
@@ -34,26 +35,26 @@ angular.module('todo').controller('fileUploadCtrl', ['$scope', 'Upload', 'uiGrid
         });
 
         //表格 todo Jason GRID尚存问题未解决:1.列头宽度拖拽 2.行高自适应 3.单元格内容怎么显示完整
-        $scope.gridOptions = {
-            data:"demoData",
-            animate:false,
-            enableColumnMenus:false,
-            enableSorting:false,
-            //enableHorizontalScrollbar:uiGridConstants.scrollbars.NEVER,
-            enableVerticalScrollbar:uiGridConstants.scrollbars.NEVER,
-            rowHeight:40,
-            columnDefs: [
-                { name: '$$hashKey',displayName:'ID' },
-                { name: 'name',displayName:'名称' },
-                { name: 'size',displayName:'size' },
-                { name: 'type',displayName:'type' },
-                { name: 'remark',displayName:'备注' },
-                { name: '1',displayName:'Status', cellTemplate: '<span>success</span>'},
-                { name: '2', displayName:'Progress', cellTemplate: ' <uib-progressbar animate="true" value="row.entity.progressPercentage || 0" type="success"><b>{{row.entity.progressPercentage || 0}}%</b></uib-progressbar>'},
-                { name: '3', displayName:'preview', cellTemplate: '<div class="text-center"><img src="" ngf-thumbnail="row.entity || \'modules/todo/images/yan.jpg\'" style="width: 40px;height: 40px;"></div>'},
-                { name: 'ShowScope', displayName:'Actions', cellTemplate:'<button class="btn btn-sm primary" ng-click="grid.appScope.upload(row.entity)">提交</button>' }
-            ]
-        };
+        //$scope.gridOptions = {
+        //    data:"demoData",
+        //    animate:false,
+        //    enableColumnMenus:false,
+        //    enableSorting:false,
+        //    //enableHorizontalScrollbar:uiGridConstants.scrollbars.NEVER,
+        //    enableVerticalScrollbar:uiGridConstants.scrollbars.NEVER,
+        //    rowHeight:40,
+        //    columnDefs: [
+        //        { name: '$$hashKey',displayName:'ID' },
+        //        { name: 'name',displayName:'名称' },
+        //        { name: 'size',displayName:'size' },
+        //        { name: 'type',displayName:'type' },
+        //        { name: 'remark',displayName:'备注' },
+        //        { name: '1',displayName:'Status', cellTemplate: '<span>success</span>'},
+        //        { name: '2', displayName:'Progress', cellTemplate: ' <uib-progressbar animate="true" value="row.entity.progressPercentage || 0" type="success"><b>{{row.entity.progressPercentage || 0}}%</b></uib-progressbar>'},
+        //        { name: '3', displayName:'preview', cellTemplate: '<div class="text-center"><img src="" ngf-thumbnail="row.entity || \'modules/todo/images/yan.jpg\'" style="width: 40px;height: 40px;"></div>'},
+        //        { name: 'ShowScope', displayName:'Actions', cellTemplate:'<button class="btn btn-sm primary" ng-click="grid.appScope.upload(row.entity)">提交</button>' }
+        //    ]
+        //};
 
         // upload later on form submit or something similar
         $scope.submit = function () {
