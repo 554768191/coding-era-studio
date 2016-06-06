@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.criteria.UserQueryCriteria;
@@ -45,34 +46,38 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User create(User user) {
+		Assert.notNull(user.getUsername(), "用户名不能为空");
+		Boolean isExistUserName = this.isExistUserName(user.getUsername());
+		Assert.state(isExistUserName == false, "user name already exist :" + user.getUsername());
 
-		User existUserName = this.getUserByUserName(user.getUsername());
-		
-		Assert.isNull(existUserName, "user name already exist :" + user.getUsername());
-
+		// ******************************************************************************************************************
 		// 生成密码
 		// 以前使用的是md5，Md5PasswordEncoder 和 ShaPasswordEncoder，现在推荐用bcrpt。
 		// bcrypt算法与md5/sha算法有一个很大的区别，Bcrpt中的salt可以是随机的。每次生成的hash值都是不同的，这样暴力猜解起来或许要更困难一些。
 		// Md5PasswordEncoder md5=new Md5PasswordEncoder();
 		// user.setPassword(md5.encodePassword(user.getPassword(), null));
+		// ******************************************************************************************************************
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String password = user.getPassword();
+		String password = StringUtils.isEmpty(user.getPassword()) ? "123456" : user.getPassword();
 		String hashedPassword = passwordEncoder.encode(password);
 		user.setPassword(hashedPassword);
 
-		// 默认角色
+		// 默认角色(默认无任何权限)
 		List<UserRole> userRoles = new ArrayList<UserRole>();
-		UserRole userRole = new UserRole();
-		userRole.setUser(user);
-		userRole.setRole(CeSecurityUtil.ROLE_USER);
-		userRoles.add(userRole);
+//		UserRole userRole = new UserRole();
+//		userRole.setUser(user);
+//		userRole.setRole(CeSecurityUtil.ROLE_USER);
+//		userRoles.add(userRole);
 		user.setRoles(userRoles);
 
 		user.setAccountNonLocked(true);// 锁住用户
 		user.setAccountNonExpired(true);// 过期
 		user.setEnabled(true);// 可用
 		user.setCredentialsNonExpired(true);// 凭证过期
-		user.setDisplayName(user.getUsername());
+		
+		if(StringUtils.isEmpty(user.getDisplayName())){
+			user.setDisplayName(user.getUsername());
+		}
 		return userRepository.save(user);
 	}
 
@@ -107,12 +112,14 @@ public class UserServiceImpl implements UserService {
 		User account = this.getUserByUserName(user.getUsername());
 		Assert.notNull(account, "user info is null :" + user.getUsername());
 		
-		User currentUser = CeSecurityUtil.getCurrentUser();
-		if (!account.getId().equals(currentUser.getId())) {
-//			boolean isAdmin = hasRole(UserRole.Role.ROLE_ADMIN);
-			boolean isAdmin = CeSecurityUtil.hasRole(currentUser, CeSecurityUtil.ROLE_ADMIN);
-			Assert.isTrue(isAdmin, "you have no right to update user info !");
-		}
+		//判断是否ADMIN角色，现在可以统一使用权限表达式配置
+//		User currentUser = CeSecurityUtil.getCurrentUser();
+//		if (!account.getId().equals(currentUser.getId())) {
+//			boolean isAdmin = CeSecurityUtil.hasRole(currentUser, CeSecurityUtil.ROLE_ADMIN);
+//			Assert.isTrue(isAdmin, "you have no right to update user info !");
+//		}
+		
+		//这样是为了防止直接保存user导致一些敏感字段被无意修改了
 		boolean isDirty = false;
 		if (user.getEmail() != null) {
 			account.setEmail(user.getEmail());
@@ -134,12 +141,12 @@ public class UserServiceImpl implements UserService {
 			account.setAvatar(user.getAvatar());
 			isDirty = true;
 		}
-		//不明真相,学上面添加判断..我加了个性签名和简介两个字段....by Yanson
+//		性签名
 		if(user.getIntro() != null){
 			account.setIntro(user.getIntro());
 			isDirty = true;
 		}
-		
+//		简介
 		if(user.getSummary() != null){
 			account.setSummary(user.getSummary());
 			isDirty = true;
@@ -149,7 +156,7 @@ public class UserServiceImpl implements UserService {
 			isDirty = true;
 		}
 		
-		Assert.isTrue(isDirty, "No change to save");
+		Assert.isTrue(isDirty, "没有任何修改无需保存");
 		
 		return userRepository.save(account);
 	}

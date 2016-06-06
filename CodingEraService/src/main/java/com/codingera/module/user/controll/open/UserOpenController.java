@@ -48,7 +48,7 @@ public class UserOpenController {
 	 * @return
 	 */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ActionResult getUser(User user) {
+	public ActionResult getUser(@RequestBody User user) {
 		user = userService.create(user);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
 	}

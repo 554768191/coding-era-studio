@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserRole;
+import com.sun.xml.internal.bind.v2.TODO;
 
 public class CeSecurityUtil {
 
@@ -36,6 +37,8 @@ public class CeSecurityUtil {
 	}
 	
 	public static User castAuthenticationToUser(Authentication authentication) {
+		// TODO 不是通过token请求现在拿不到登录信息,web security配置要优化
+		if(authentication == null) return null;
 		User current;
 		final Object principal = authentication.getPrincipal();
 		if (authentication instanceof OAuth2Authentication && (principal instanceof String || principal instanceof org.springframework.security.core.userdetails.User)) {

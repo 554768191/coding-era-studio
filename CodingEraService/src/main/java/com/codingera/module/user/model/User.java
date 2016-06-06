@@ -34,6 +34,7 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 	@Column(name = "user_name", length = 20, unique = true)
 	private String username;
 
+	@JsonIgnore
 	@Column(name = "password", length = 100)
 	private String password;
 
@@ -113,7 +114,6 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 
 	
 	@Override
-	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
