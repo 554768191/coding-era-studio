@@ -6,8 +6,8 @@ angular.module('demo')
     .run(['Menus',
     function(Menus) {
         //DEMO
-        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roules:'demo',route:'demoManage'});
-        demoMenu.setOrder(999);
+        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roles:'JASON',route:'demoManage'});
+        demoMenu.setOrder(9999);
         Menus.addMenus(demoMenu.getMenus());
     }
 ]).config([

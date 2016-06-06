@@ -12,8 +12,15 @@
     </div>
     <div class="col-sm-9">
         <form name="userForm"    dautocomplete="off">
-                <div class="form-group">
 
+                <div class="form-group">
+                    <label for="displayName">用户名</label>
+                    <input type="text" id="username" name="username" class="form-control "
+                           ng-model="user.username" placeholder="username" ng-disabled="!isCreate">
+                    <span  class="help-block">此「 用户名 」用于登录</span>
+                </div>
+
+                <div class="form-group">
                     <label for="displayName">昵称</label>
                     <input type="text" id="displayName" name="displayName" class="form-control "
                            ng-model="user.displayName" placeholder="Display Name">
@@ -40,7 +47,7 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" class="form-control " ng-model="user.email"
                            placeholder="Email">
-                    <span  class="help-block">填写「 Email 」方便管理员内部联系</span>
+                    <span  class="help-block">填写「 Email 」方便管理员内部联系和重设密码</span>
                 </div>
                 <div class="form-group">
                     <label for="phone">联系电话</label>
@@ -48,7 +55,7 @@
                            placeholder="联系电话">
                     <span  class="help-block">填写「 联系电话 」方便管理员内部联系</span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-if="!isCreate">
                     <label >个性标签</label>
                     <ui-select multiple tagging="tagTransform" tagging-label="(按'回车'录入自定义标签)" theme="bootstrap"  ng-model="user.userProfileTags" sortable="true">
                         <ui-select-match placeholder="请选择标签...">
@@ -59,6 +66,7 @@
                             <i ng-if="item.isTag">{{$select.taggingLabel}}</i>
                         </ui-select-choices>
                     </ui-select>
+                    <span  class="help-block">可以直接输入自定义标签回车</span>
                 </div>
                 <div class="form-group">
                     <label for="summary">个性签名</label>
@@ -66,11 +74,11 @@
                            placeholder="简单介绍下自己"></textarea>
                 </div>
                 <div class="form-group text-center visible-xs" >
-                    <button  class="btn btn-large btn-info"  validation-submit="userForm" ng-click="updateUserProfile()">保存信息</button>
+                    <button  class="btn btn-large btn-info"  validation-submit="userForm" ng-click="onSaveUserClick()">保存信息</button>
                 </div>
                 <div class="form-group hidden-xs">
-                    <button  class="btn btn-large btn-info" validation-submit="userForm" ng-click="updateUserProfile()">保存信息</button>
-                    <button class="btn btn-warning" type="button" ng-click="cancel()">返回</button>
+                    <button  class="btn btn-large btn-info" validation-submit="userForm" ng-click="onSaveUserClick()">保存信息</button>
+                    <button class="btn btn-warning" type="button" ng-click="onCancelClick()">返回</button>
                 </div>
         </form>
     </div>

@@ -6,26 +6,34 @@ angular.module('user').controller('UserProfileController', [
 
         var that = $scope;
 
-        that.readSaveAvatar = false;//是否要修改头像URL (修改头像时使用,避免未保存,头像先改了)
-        that.readSaveAvatarUrl = '';
-        
-        if($stateParams.username){
-            if('create' === $stateParams.username){
-                //1.新增用户
-                that.user = {};
-            }else {
-                //2.编辑用户
-                UserService.getUserByUsername($stateParams.username).success(function(res) {
-                    that.user  = res.data;
-                });
+        that.loadData = function () {
+            if ($stateParams.username) {
+                if ('create' === $stateParams.username) {
+                    //1.新增用户
+                    that.isCreate = true;
+                    that.user  = {};
+                } else {
+                    //2.编辑用户
+                    UserService.getUserByUsername($stateParams.username).success(function (res) {
+                        that.user  = res.data;
+                    });
+                }
+            } else {
+                //3.个人信息
+                that.user  = Authentication.user;
             }
-        }else{
-            //3.个人信息
-            that.user = Authentication.user;
-        }
+        };
+
+        that.init = function () {
+            that.readSaveAvatar = false;//是否要修改头像URL (修改头像时使用,避免未保存,头像先改了)
+            that.readSaveAvatarUrl = '';
+            that.isCreate = false;//是否新增用户
+            that.loadData();
+        };
+        that.init();
 
         //更新用户信息
-        that.updateUserProfile = function () {
+        that.onSaveUserClick = function () {
             that.success = that.error = null;
             var data = that.user;
             delete  data.roles;
@@ -36,17 +44,20 @@ angular.module('user').controller('UserProfileController', [
                 that.user.avatar = that.readSaveAvatarUrl;
             }
 
-            UserService.save(data).success(function(res) {
+            var callback = function(res) {
                 that.success = true;
                 that.user  = res.data;
-                Authentication.user = res.data;
+                //Authentication.user = res.data;
                 that.readSaveAvatar = false;
                 ceUtil.toast('保存成功');
-            });
+            };
+            if(that.isCreate){
+                UserService.create(data).success(callback);
+            }else{
+                UserService.save(data).success(callback);
+            }
 
         };
-
-
 
         //修改头像
         that.onEditAvatarClick = function (){
@@ -62,7 +73,7 @@ angular.module('user').controller('UserProfileController', [
         };
 
         //返回按钮
-        that.cancel = function () {
+        that.onCancelClick = function () {
             history.back(-1);
         };
 
@@ -75,12 +86,12 @@ angular.module('user').controller('UserProfileController', [
         };
 
         //获取所有标签
-        function getTageList(){
+        that.getTageList = function(){
             UserTagService.getTags().success(function(res){
                 that.itemArray = res.data;
             });
-        }
-        getTageList();
+        };
+        that.getTageList();
         that.itemArray = [];
     }
 ]);

@@ -18,6 +18,10 @@ angular.module('user').factory('UserService', ['$log','$http', 'ceAjax',
             return ceAjax.post({url: '/user', data: parameters});
         };
 
+        service.create = function (parameters) {
+            return ceAjax.post({url: '/open/user/signup', data: parameters});
+        };
+
         service.saveUserRoles = function (userRolesView) {
             return ceAjax.post({url: '/user/roles', data: userRolesView});
         };

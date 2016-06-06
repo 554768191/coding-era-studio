@@ -69,6 +69,10 @@ angular.module('user').controller('usersListCtrl', [
             });
         };
 
+        that.onResetPasswordClick = function(obj){
+
+        };
+
         //上一页
         that.previousPage = function(){
             searchOptions.page -= 1;
