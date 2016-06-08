@@ -2,6 +2,7 @@ package com.codingera.module.base.controll;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.base.model.Credentials;
+import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.service.UserService;
 import com.codingera.module.user.view.UserView;
@@ -48,7 +50,12 @@ public class AuthorizationController {
 	@RequestMapping("/api/me")
 	public UserView userInfo() {
 		User current = CeSecurityUtil.getCurrentUser();
+		//获取权限信息
+		List<RolePermission> permissions = userService.findUserPermissions(current);
+		
 		UserView view = new UserView(current);
+		view.setPermissions(permissions);
+		
 		return view;
 	}
 	

@@ -168,9 +168,12 @@ public class UserServiceImpl implements UserService {
 		Assert.notNull(account, "用户名不存在 :" + token.getUsername());
 		
 		UserResetPasswordToken storeToken = this.userResetPasswordTokenRepository.getUserResetPasswordTokenByUsername(token.getUsername());
-		BeanUtils.copyProperties(token, storeToken, "id");
-		
-		userResetPasswordTokenRepository.save(storeToken);
+		if(storeToken!=null){			
+			BeanUtils.copyProperties(token, storeToken, "id");
+			userResetPasswordTokenRepository.save(storeToken);
+		}else{
+			userResetPasswordTokenRepository.save(token);
+		}
 		return account;
 	}
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.codingera.module.user.model.RolePermission;
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserProfileTag;
 import com.codingera.module.user.model.UserRole;
@@ -28,6 +29,7 @@ public class UserView implements Serializable {
 
 	private List<UserRole> roles = new ArrayList<UserRole>();
 	private Collection<? extends GrantedAuthority> authorities;
+	List<RolePermission> permissions;
 
 	public UserView() {
 		super();
@@ -145,8 +147,13 @@ public class UserView implements Serializable {
 		this.userProfileTags = userProfileTags;
 	}
 
-	
-	
-	
+	public List<RolePermission> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<RolePermission> permissions) {
+		this.permissions = permissions;
+	}
+
 
 }
