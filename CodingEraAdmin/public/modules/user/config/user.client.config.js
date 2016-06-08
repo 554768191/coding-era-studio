@@ -4,13 +4,12 @@
 angular.module('user').run([
     'Menus',
     function (Menus) {
-        var userMenu = Menus.genMenu({name: '管理',subTitle:'管理后台设置', icon: 'cog',route: 'usersManage'});
+        var userMenu = Menus.genMenu({name:'管理', subTitle:'管理后台设置', icon:'cog', route: 'usersManage'});
         userMenu.setOrder(99);
-        //userMenu.addNodeMenus(node_users);
         Menus.addMenus(userMenu.getMenus());
     }
-]).config(['$httpProvider', '$stateProvider', '$validationProvider',
-    function ($httpProvider, $stateProvider, $validationProvider) {
+]).config(['$httpProvider', '$stateProvider',
+    function ($httpProvider, $stateProvider) {
 
         // Users state routing
         $stateProvider
@@ -102,6 +101,12 @@ angular.module('user').run([
                 url: '/password/reset/:token',
                 templateUrl: 'modules/user/views/user-reset-password.client.view.html',
                 controller:'PasswordController'
+            })
+
+            // 无访问权限跳转页面
+            .state('unauthorized', {
+                url: '/unauthorized',
+                templateUrl: 'modules/core/views/core-unauthorized.client.view.html'
             });
 
 
@@ -120,7 +125,6 @@ angular.module('user').run([
                             case 401:
                                 // Deauthenticate the global user
                                 Authentication.user = null;
-
                                 // Redirect to signin page
                                 $location.path('signin');
                                 break;
@@ -128,29 +132,10 @@ angular.module('user').run([
                                 // Add unauthorized behaviour
                                 break;
                         }
-
                         return $q.reject(rejection);
                     }
                 };
             }
         ]);
-
-        // Setup `compareTo` validation
-        $validationProvider
-            .setExpression({
-                compareTo: function (value, scope, element, attrs, param) {
-                    return value === attrs.compareTo;
-                    //return $q.all([obj]).then(function () {
-                    //    // ...
-                    //    return true;
-                    //})
-                }
-            })
-            .setDefaultMsg({
-                compareTo: {
-                    error: '两个比较值不一致',
-                    success: 'Thanks!'
-                }
-            });
     }
 ]);

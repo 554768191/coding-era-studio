@@ -125,7 +125,7 @@ angular.module('core')
             var stateParameter = $state.get(options.route);
             // 路由权限访问控制
             var expression = stateParameter.secured;
-            var hasPermission = Authentication.validExpression(expression);
+            var hasPermission = Authentication.checkPermission(expression);
             if(!hasPermission){
                 stateParameter = $state.get('unauthorized');
             }

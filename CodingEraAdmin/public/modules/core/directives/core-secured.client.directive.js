@@ -22,7 +22,7 @@ angular.module('core').directive("ceSecured", [
             link: function (scope, element, attrs) {
                 var expression = attrs.ceSecured;
                 function toggleVisibilityBasedOnPermission() {
-                    var hasPermission = Authentication.validExpression(expression);
+                    var hasPermission = Authentication.checkPermission(expression);
                     if(hasPermission){
                         //element.show();
                     }else{

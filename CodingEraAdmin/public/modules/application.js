@@ -9,7 +9,7 @@ ceApp.run([
 		// 路由权限访问控制
 		$rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
 			var expression = toState.secured;
-			var hasPermission = Authentication.validExpression(expression);
+			var hasPermission = Authentication.checkPermission(expression);
 			if(!hasPermission){
 				// stop current flow
 				event.preventDefault();
@@ -32,7 +32,6 @@ ceApp.run([
 
 		// 关闭 angular-validation 校验成功提示 ( 成功还提示个毛啊? )
 		$validationProvider.showSuccessMessage = false;
-
 		//设置失败时返回 HTML 格式 ( 这里统一使用 bootstrap 的 text-danger 样式 )
 		$validationProvider.setErrorHTML(function (msg, element, attrs) {
 			// remember to return your HTML
@@ -41,7 +40,6 @@ ceApp.run([
 			// eg: return '<p class="invalid">{{"' + msg + '"| lowercase}}</p>';
 			return '<p class="text-danger">'+msg+'</p>';
 		});
-
 		$validationProvider.validCallback = function(element) {
 			var parentFormGroup = $(element).parents('.form-group:first');
 			parentFormGroup.removeClass('has-error').addClass('has-success has-feedback');
@@ -49,15 +47,30 @@ ceApp.run([
 			$(element).before('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
 
 		};
-
 		$validationProvider.invalidCallback = function(element) {
 			var parentFormGroup = $(element).parents('.form-group:first');
 			parentFormGroup.removeClass('has-success').addClass('has-error has-feedback');
 			$(element).prev('.form-control-feedback').remove();
 			$(element).before('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>');
 		};
-
 		$validationProvider.setValidMethod('submit');
+		// Setup `compareTo` validation
+		$validationProvider
+		.setExpression({
+			compareTo: function (value, scope, element, attrs, param) {
+				return value === attrs.compareTo;
+				//return $q.all([obj]).then(function () {
+				//    // ...
+				//    return true;
+				//})
+			}
+		})
+		.setDefaultMsg({
+			compareTo: {
+				error: '两个比较值不一致',
+				success: 'Thanks!'
+			}
+		});
 
 	}]);
 

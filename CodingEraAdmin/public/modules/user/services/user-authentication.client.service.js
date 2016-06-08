@@ -35,11 +35,25 @@ angular.module('user').factory('Authentication', [
 				return  false;
 			});
 		},
-		hasRole: function (role) {
-			// todo Jason hasRole权限表达式未写
-			return  false;
+		hasRole: function (roles) {
+			roles = roles || "*";
+			if (user) {
+				if (!!~(roles.indexOf('*'))) {
+					return true;
+				} else {
+					var roleList = roles.split(",");
+					for (var userRoleIndex in user.authorities) {
+						for (var roleIndex in roleList) {
+							if ("ROLE_"+roleList[roleIndex] === user.authorities[userRoleIndex].authority) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+			return false;
 		},
-		validExpression: function (expression) {
+		checkPermission: function (expression) {
 			//执行权限表达式返回结果,expression可以使hasPermission()或者hasRole()
 			if(angular.isUndefined(expression)){
 				return true;

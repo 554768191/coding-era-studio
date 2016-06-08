@@ -6,7 +6,11 @@ angular.module('demo')
     .run(['Menus',
     function(Menus) {
         //DEMO
-        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',roles:'JASON',route:'demoManage'});
+        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',
+            roles:'JASON',
+            //secured:"hasPermission('article','read')",
+            //secured:"hasRole('JASON')",
+            route:'demoManage'});
         demoMenu.setOrder(9999);
         Menus.addMenus(demoMenu.getMenus());
     }
@@ -19,6 +23,7 @@ angular.module('demo')
                 url: '/demo',
                 templateUrl: 'modules/demo/views/demo-manage.client.view.html',
                 controller:'demoManageCtrl'
+                //secured:"hasPermission('article','read')",
             })
             .state('demoManage.demo', {
                 url: '/list',

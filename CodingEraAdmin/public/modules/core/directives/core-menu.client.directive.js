@@ -5,34 +5,24 @@
 
 angular.module('core')
     .factory('Menus', [
-        function() {
+        'Authentication',
+        function(Authentication) {
             var items=[];
             var service={};
 
             // Define a set of default roles
             this.defaultRoles = ['*'];
 
-            // A private function for rendering decision
-            service.shouldRender = function(user) {
-                //console.log('Jason test shouldRender', this);
-                var roles = this.roles || "*";
-                if (user) {
-                    if (!!~(roles.indexOf('*'))) {
-                        return true;
-                    } else {
-                        var roleList = roles.split(",");
-                        for (var userRoleIndex in user.authorities) {
-                            for (var roleIndex in roleList) {
-                                if ("ROLE_"+roleList[roleIndex] === user.authorities[userRoleIndex].authority) {
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    return this.isPublic || false;
+            // 目录显示权限控制
+            service.shouldRender = function() {
+                if(this.isPublic === true){
+                    return true;
                 }
-                return false;
+                //存在roles属性则优先校验
+                if(this.roles) {
+                    return Authentication.hasRole(this.roles);
+                }
+                return Authentication.checkPermission(this.secured);
             };
 
             service.getMenus=function(){
@@ -100,7 +90,7 @@ angular.module('core')
                 '<div class="ce-menu"  >',
                     '<a ',
                         ' ng-repeat="item in items | orderBy: \'order\' "',
-                        ' data-ng-if="item.shouldRender(authentication.user);"',
+                        ' data-ng-if="item.shouldRender();"',
                         ' ui-sref-active="active"',
                         ' ui-sref="{{item.route}}"',
                         ' ui-sref-opts="{reload:true}"',
@@ -110,9 +100,10 @@ angular.module('core')
                 '</div>',
             ].join(''),
             replace:true,
-            controller:['$scope', '$log', 'Menus', 'Authentication',function($scope, $log, Menus, Authentication) {
-                $scope.authentication=Authentication;
-                $scope.items=Menus.getMenus();
+            controller:[
+                '$scope', '$log', 'Menus',
+                function($scope, $log, Menus) {
+                    $scope.items=Menus.getMenus();
             }],
             link: function(scope, ele) {
                 //引用了 jquery 所有不能使用 jqLite 了
