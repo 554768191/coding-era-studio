@@ -70,7 +70,16 @@ angular.module('user').controller('usersListCtrl', [
         };
 
         that.onResetPasswordClick = function(obj){
-
+            if(obj){
+                ceUtil.openModal({route:'usersManage.resetPassword',
+                    data: {
+                        user:angular.copy(obj)//直接传copy对象,不另外查一次了
+                    }
+                }).success(function(res){
+                    //重新加载数据
+                    that.onSearch();
+                });
+            }
         };
 
         //上一页

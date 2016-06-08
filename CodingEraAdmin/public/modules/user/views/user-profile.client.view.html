@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="col-sm-9">
-        <form name="userForm"    dautocomplete="off">
+        <form name="userForm" autocomplete="off">
 
                 <div class="form-group">
                     <label for="displayName">用户名</label>
@@ -46,6 +46,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" class="form-control " ng-model="user.email"
+                           validator="email" email-error-message="邮箱格式不正确"
                            placeholder="Email">
                     <span  class="help-block">填写「 Email 」方便管理员内部联系和重设密码</span>
                 </div>
@@ -78,7 +79,7 @@
                 </div>
                 <div class="form-group hidden-xs">
                     <button  class="btn btn-large btn-info" validation-submit="userForm" ng-click="onSaveUserClick()">保存信息</button>
-                    <button class="btn btn-warning" type="button" ng-click="onCancelClick()">返回</button>
+                    <button class="btn btn-warning" type="button" ce-on-cancel-click >返回</button>
                 </div>
         </form>
     </div>

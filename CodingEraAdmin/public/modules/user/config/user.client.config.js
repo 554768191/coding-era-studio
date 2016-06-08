@@ -9,8 +9,8 @@ angular.module('user').run([
         //userMenu.addNodeMenus(node_users);
         Menus.addMenus(userMenu.getMenus());
     }
-]).config(['$httpProvider', '$stateProvider',
-    function ($httpProvider, $stateProvider) {
+]).config(['$httpProvider', '$stateProvider', '$validationProvider',
+    function ($httpProvider, $stateProvider, $validationProvider) {
 
         // Users state routing
         $stateProvider
@@ -41,7 +41,7 @@ angular.module('user').run([
                 templateUrl: 'modules/user/views/user-profile-avatar-edit.client.view.html',
                 controller:'SettingsAvatarController'
             })
-            // 用户角色
+            // 用户所属角色管理
             .state('usersManage.roles', {
                 url: '/roles/edit?:userId',
                 templateUrl: 'modules/user/views/user-roles-edit.client.view.html',
@@ -51,80 +51,58 @@ angular.module('user').run([
             // 角色管理
             .state('usersManage.rolesManage', {
                 url: '/role',
-                templateUrl: 'modules/user/views/user-role-list.client.view.html'
+                templateUrl: 'modules/user/views/permission/user-role-list.client.view.html'
             })
             .state('usersManage.rolesManage.edit', {
                 url: '/edit?:roleId',
-                templateUrl: 'modules/user/views/user-role-edit.client.view.html',
+                templateUrl: 'modules/user/views/permission/user-role-edit.client.view.html',
                 controller:'userRoleEditCtrl'
             })
             .state('usersManage.rolesManage.permissions', {
                 url: '/permissions/edit?:roleId',
-                templateUrl: 'modules/user/views/user-role-permissions-edit.client.view.html',
+                templateUrl: 'modules/user/views/permission/user-role-permissions-edit.client.view.html',
                 controller:'userRolePermissionsEditCtrl'
             })
             // 资源管理
             .state('usersManage.resourcesManage', {
                 url: '/resources',
-                templateUrl: 'modules/user/views/user-resource-list.client.view.html'
+                templateUrl: 'modules/user/views/permission/user-resource-list.client.view.html'
             })
             .state('usersManage.resourcesManage.edit', {
                 url: '/edit?:resourceId',
-                templateUrl: 'modules/user/views/user-resource-edit.client.view.html',
+                templateUrl: 'modules/user/views/permission/user-resource-edit.client.view.html',
                 controller:'userResourceEditCtrl'
             })
             // 权限管理
             .state('usersManage.permissionsManage', {
                 url: '/permissions',
-                templateUrl: 'modules/user/views/user-permission-list.client.view.html'
+                templateUrl: 'modules/user/views/permission/user-permission-list.client.view.html'
             })
             .state('usersManage.permissionsManage.edit', {
                 url: '/edit?:permissionId',
-                templateUrl: 'modules/user/views/user-permission-edit.client.view.html',
+                templateUrl: 'modules/user/views/permission/user-permission-edit.client.view.html',
                 controller:'userPermissionEditCtrl'
             })
 
 
-            //下面这堆好像没用,到时问Jason   by Yason
-            .state('password', {
-                url: '/password',
-                templateUrl: 'modules/user/views/user-change-password.client.view.html'
-            })
-            .state('accounts', {
-                url: '/accounts',
-                templateUrl: 'modules/user/views/social-accounts.client.view.html'
-            })
-            .state('signup', {
-                url: '/user/signup',
-                templateUrl: 'modules/user/views/user-signup.client.view.html'
-            })
-            .state('signin', {
-                url: '/user/signin',
-                templateUrl: 'modules/user/views/user-signin.client.view.html'
-            })
-            .state('forgot', {
-                url: '/password/forgot',
-                templateUrl: 'modules/user/views/user-forgot-password.client.view.html'
-            })
-            .state('reset-invalid', {
-                url: '/password/reset/invalid',
-                templateUrl: 'modules/users/views/user-reset-password-invalid.client.view.html'
-            })
-            .state('reset-success', {
-                url: '/password/reset/success',
-                templateUrl: 'modules/user/views/user-reset-password-success.client.view.html'
-            })
-            .state('reset', {
+            //.state('password', {
+            //    url: '/password',
+            //    templateUrl: 'modules/user/views/user-change-password.client.view.html'
+            //})
+            //.state('forgot', {
+            //    url: '/password/forgot',
+            //    templateUrl: 'modules/user/views/user-forgot-password.client.view.html'
+            //})
+            .state('usersManage.resetPassword', {
                 url: '/password/reset/:token',
-                templateUrl: 'modules/user/views/user-reset-password.client.view.html'
+                templateUrl: 'modules/user/views/user-reset-password.client.view.html',
+                controller:'PasswordController'
             });
-            //.state('users', {
-            //    url: '/users',
-            //    templateUrl: 'modules/users/views/users.list.view.html'
-            //});
+
 
         // Set the httpProvider "not authorized" interceptor
-        $httpProvider.interceptors.push(['$q', '$window', '$location', 'Authentication',
+        $httpProvider.interceptors.push([
+            '$q', '$window', '$location', 'Authentication',
             function ($q, $window, $location, Authentication) {
                 return {
                     responseError: function (rejection) {
@@ -151,5 +129,23 @@ angular.module('user').run([
                 };
             }
         ]);
+
+        // Setup `compareTo` validation
+        $validationProvider
+            .setExpression({
+                compareTo: function (value, scope, element, attrs, param) {
+                    return value === attrs.compareTo;
+                    //return $q.all([obj]).then(function () {
+                    //    // ...
+                    //    return true;
+                    //})
+                }
+            })
+            .setDefaultMsg({
+                compareTo: {
+                    error: '两个比较值不一致',
+                    success: 'Thanks!'
+                }
+            });
     }
 ]);

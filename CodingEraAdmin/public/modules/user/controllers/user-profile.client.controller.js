@@ -72,11 +72,6 @@ angular.module('user').controller('UserProfileController', [
             });
         };
 
-        //返回按钮
-        that.onCancelClick = function () {
-            history.back(-1);
-        };
-
         //录入新标签事件
         that.tagTransform = function (str){
             return {

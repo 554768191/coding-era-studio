@@ -1,44 +1,48 @@
 'use strict';
 
 angular.module('user').controller('PasswordController', [
-	'$scope', '$stateParams', '$http', '$location', 'Authentication',
-	function($scope, $stateParams, $http, $location, Authentication) {
-		$scope.authentication = Authentication;
+	'$scope', '$stateParams', '$http', '$location', '$uibModalInstance', 'Authentication', 'data',
+	function($scope, $stateParams, $http, $location, $uibModalInstance, Authentication, data) {
+
+		var that = $scope;
+		that.authentication = Authentication;
+		that.item = data.user;
+		if(angular.isUndefined(that.credentials)){
+			//that.credentials = {username:that.item.username};
+		}
 
 		//If user is signed in then redirect back home
-		if ($scope.authentication.user) $location.path('/');
+		//if (that.authentication.user) $location.path('/');
 
 		// Submit forgotten password account id
-		$scope.askForPasswordReset = function() {
-			$scope.success = $scope.error = null;
+		that.askForPasswordReset = function() {
+			that.success = that.error = null;
 
-			$http.post('/auth/forgot', $scope.credentials).success(function(response) {
+			$http.post('/auth/forgot', that.credentials).success(function(response) {
 				// Show user success message and clear form
-				$scope.credentials = null;
-				$scope.success = response.message;
-
+				//that.credentials = null;
+				that.success = response.message;
 			}).error(function(response) {
 				// Show user error message and clear form
-				$scope.credentials = null;
-				$scope.error = response.message;
+				//that.credentials = null;
+				that.error = response.message;
 			});
 		};
 
 		// Change user password
-		$scope.resetUserPassword = function() {
-			$scope.success = $scope.error = null;
-
-			$http.post('/auth/reset/' + $stateParams.token, $scope.passwordDetails).success(function(response) {
+		that.resetUserPassword = function() {
+			that.success = that.error = null;
+			$http.post('/auth/reset/' + $stateParams.token, that.passwordDetails).success(function(response) {
 				// If successful show success message and clear form
-				$scope.passwordDetails = null;
+				that.passwordDetails = null;
 
 				// Attach user profile
-				Authentication.user = response;
+				//Authentication.user = response;
 
 				// And redirect to the index page
-				$location.path('/password/reset/success');
+				//$location.path('/password/reset/success');
 			}).error(function(response) {
-				$scope.error = response.message;
+				that.error = response.message;
 			});
 		};
 	}
