@@ -20,6 +20,7 @@ var smtpTransport = nodemailer.createTransport(config.mailer.options);
 
 /**
  * Forgot for reset password (forgot POST)
+ * 发送重设密码邮件瀑布流
  */
 exports.forgot = function (req, res, next) {
     async.waterfall([
@@ -54,7 +55,7 @@ exports.forgot = function (req, res, next) {
             }
         },
         function (token, user, done) {
-            if(!!user.email){
+            if(!(!!user.email)){
                 return res.status(400).send({
                     message: '你扑街了,没有邮箱!'
                 });
@@ -102,7 +103,6 @@ exports.validateResetToken = function (req, res) {
         resetToken : req.params.token
     });
     var url = config.codingera.apiURL + '/open/user/password?action=validateToken' + '&' +  contents;
-    console.log('caca', url);
     request.get(url, function (err, result) {
         if(err){
             return res.status(400).send({

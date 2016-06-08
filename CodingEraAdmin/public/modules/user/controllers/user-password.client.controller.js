@@ -8,7 +8,7 @@ angular.module('user').controller('PasswordController', [
 		that.authentication = Authentication;
 		that.item = data.user;
 		if(angular.isUndefined(that.credentials)){
-			//that.credentials = {username:that.item.username};
+			that.credentials = {username:that.item.username};
 		}
 
 		//If user is signed in then redirect back home

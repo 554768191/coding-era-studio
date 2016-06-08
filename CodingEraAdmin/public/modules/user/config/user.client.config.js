@@ -106,7 +106,7 @@ angular.module('user').run([
             // 无访问权限跳转页面
             .state('unauthorized', {
                 url: '/unauthorized',
-                templateUrl: 'modules/core/views/core-unauthorized.client.view.html'
+                templateUrl: 'modules/user/views/user-unauthorized.client.view.html'
             });
 
 
@@ -116,6 +116,7 @@ angular.module('user').run([
             function ($q, $window, $location, Authentication) {
                 return {
                     responseError: function (rejection) {
+                        console.log('rejection.status', rejection);
                         console.log('rejection.status', rejection.status);
                         switch (rejection.status) {
                             case -1:
