@@ -5,8 +5,8 @@
 
 angular.module('core')
     .factory('ceUtil', [
-        '$rootScope','$templateCache','$uibModal','$state','ceConfig',
-        function($rootScope,$templateCache,$uibModal,$state,ceConfig) {
+        '$rootScope','$templateCache','$uibModal','$state','ceConfig','Authentication',
+        function($rootScope,$templateCache,$uibModal,$state,ceConfig,Authentication) {
         var service = {};
 
 
@@ -111,7 +111,7 @@ angular.module('core')
 
         /**
          *
-         * @param
+         * @param:
          * options:{
          *  route : 「 在 config.js 中配置的路由 」,
          *  data : 「 传递到该 modal 中 controller 参数 , controller 使用 data 接收 」
@@ -123,6 +123,13 @@ angular.module('core')
                 throw new Error( errorPrefix + ', 缺失 route 参数!');
             }
             var stateParameter = $state.get(options.route);
+            // 路由权限访问控制
+            var expression = stateParameter.secured;
+            var hasPermission = Authentication.validExpression(expression);
+            if(!hasPermission){
+                stateParameter = $state.get('unauthorized');
+            }
+
             var option = {
                 animation:true,
                 controller:stateParameter.controller,

@@ -5,6 +5,15 @@
 
 angular.module('core').run([
     function() {
-        //ContentHead.setTitle('Dashboard');
+
+    }
+]).config(['$stateProvider',
+    function ($stateProvider) {
+        $stateProvider
+            // 无访问权限跳转页面
+            .state('unauthorized', {
+                url: '/unauthorized',
+                templateUrl: 'modules/core/views/core-unauthorized.client.view.html'
+            });
     }
 ]);

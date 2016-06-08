@@ -54,7 +54,7 @@ exports.forgot = function (req, res, next) {
             }
         },
         function (token, user, done) {
-            if(!user.email){
+            if(!!user.email){
                 return res.status(400).send({
                     message: '你扑街了,没有邮箱!'
                 });

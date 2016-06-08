@@ -7,29 +7,23 @@
  * ce-secured="!hasPermission('article','read')"
  * ce-secured="hasPermission('article','read')"
  * ce-secured="hasPermission('article','write')"
+ *
+ * 参看:
+ * [AngularJS中在前后端分离模式下实现权限控制](http://www.open-open.com/lib/view/open1408084201582.html)
+ * [lodash document](https://lodash.com/docs#matches)
+ *
  */
 "use strict";
 angular.module('core').directive("ceSecured", [
-    '$window','Authentication', '$parse',
-    function ($window, Authentication, $parse) {
+    '$window','Authentication',
+    function ($window, Authentication) {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
-                var _ = $window._;
                 var expression = attrs.ceSecured;
-
-                if(!_.isString(expression))
-                    throw "ceSecured value must be a string";
-
-                expression = _.trim(expression);
-                var notPermissionFlag = expression[0] === '!';
-                if(notPermissionFlag) {
-                    expression = expression.slice(1).trim();
-                }
-
                 function toggleVisibilityBasedOnPermission() {
-                    var hasPermission = $parse(expression)(Authentication);
-                    if(hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag){
+                    var hasPermission = Authentication.validExpression(expression);
+                    if(hasPermission){
                         //element.show();
                     }else{
                         //element.hide();

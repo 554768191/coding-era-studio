@@ -18,7 +18,8 @@ angular.module('user').run([
             .state('usersManage', {
                 url: '/user',
                 templateUrl: 'modules/user/views/user-manage.client.view.html',
-                controller: 'usersManageCtrl'
+                controller: 'usersManageCtrl',
+                secured:"hasPermission('article','read')"
             })
             .state('usersManage.list', {
                 url: '/list?:status',
@@ -33,7 +34,8 @@ angular.module('user').run([
             .state('usersManage.profile', {
                 url: '/profile',
                 templateUrl: 'modules/user/views/user-profile.client.view.html',
-                controller:'UserProfileController'
+                controller:'UserProfileController',
+                secured:"hasPermission('article','read')"
             })
             // 个人信息 -> 修改头像
             .state('usersManage.avatar', {
@@ -51,7 +53,8 @@ angular.module('user').run([
             // 角色管理
             .state('usersManage.rolesManage', {
                 url: '/role',
-                templateUrl: 'modules/user/views/permission/user-role-list.client.view.html'
+                templateUrl: 'modules/user/views/permission/user-role-list.client.view.html',
+                secured:"hasPermission('article','read1')"
             })
             .state('usersManage.rolesManage.edit', {
                 url: '/edit?:roleId',
@@ -76,12 +79,14 @@ angular.module('user').run([
             // 权限管理
             .state('usersManage.permissionsManage', {
                 url: '/permissions',
-                templateUrl: 'modules/user/views/permission/user-permission-list.client.view.html'
+                templateUrl: 'modules/user/views/permission/user-permission-list.client.view.html',
+                secured:"hasPermission('article','read')"
             })
             .state('usersManage.permissionsManage.edit', {
                 url: '/edit?:permissionId',
                 templateUrl: 'modules/user/views/permission/user-permission-edit.client.view.html',
-                controller:'userPermissionEditCtrl'
+                controller:'userPermissionEditCtrl',
+                secured:"hasPermission('article','read1')"
             })
 
 

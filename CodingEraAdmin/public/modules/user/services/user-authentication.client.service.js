@@ -2,8 +2,8 @@
 
 // Authentication service for user variables
 angular.module('user').factory('Authentication', [
-	'$rootScope', '$window', '$log',
-	function($rootScope,$window,$log) {
+	'$rootScope', '$window', '$log', '$parse',
+	function($rootScope,$window,$log, $parse) {
 
 	var user = $window.user || null;
 	//如果头像为空,使用默认头像
@@ -24,8 +24,6 @@ angular.module('user').factory('Authentication', [
 		hasPermission: function (resource, permission) {
 			resource = _.trim(resource);
 			permission = _.trim(permission);
-			console.log(resource);
-			console.log(permission);
 			return _.some(permissionList, function(item) {
 				if(_.isString(item.resource) && _.trim(item.resource) === resource){
 					if(_.isString(item.permission)){
@@ -36,6 +34,28 @@ angular.module('user').factory('Authentication', [
 				}
 				return  false;
 			});
+		},
+		hasRole: function (role) {
+			// todo Jason hasRole权限表达式未写
+			return  false;
+		},
+		validExpression: function (expression) {
+			//执行权限表达式返回结果,expression可以使hasPermission()或者hasRole()
+			if(angular.isUndefined(expression)){
+				return true;
+			}
+
+			if(!_.isString(expression))
+				throw "security expression value must be a string :" + expression;
+
+			expression = _.trim(expression);
+			var notPermissionFlag = expression[0] === '!';
+			if(notPermissionFlag) {
+				expression = expression.slice(1).trim();
+			}
+
+			var hasPermission = $parse(expression)(this);
+			return hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag;
 		}
 	};
 

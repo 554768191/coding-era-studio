@@ -9,7 +9,6 @@ angular.module('user').controller('userPermissionEditCtrl', [
 
         var that = $scope;
 
-        //that.item = {};
         //当前登录用户
         that.currentUser = Authentication.user;
 
@@ -24,22 +23,12 @@ angular.module('user').controller('userPermissionEditCtrl', [
         //}
 
         //发布&保存
-        that.onPublishClick = function () {
-
+        that.onSaveClick = function () {
             PermissionService.save(that.item).success(function (res) {
                 ceUtil.toast('发布成功');
                 $uibModalInstance.close(res.data);
 
             });
-
         };
-
-
-        //窗口点击取消
-        that.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-
-
     }]);
 

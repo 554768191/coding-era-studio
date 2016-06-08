@@ -3,8 +3,22 @@ var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, Appli
 
 //i18n - 国际化配置
 ceApp.run([
-	'$rootScope' ,'$templateCache',
-	function ($rootScope,$templateCache) {
+	'$rootScope', '$state', '$templateCache', '$parse', 'Authentication',
+	function ($rootScope, $state, $templateCache, $parse, Authentication) {
+
+		// 路由权限访问控制
+		$rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+			var expression = toState.secured;
+			var hasPermission = Authentication.validExpression(expression);
+			if(!hasPermission){
+				// stop current flow
+				event.preventDefault();
+
+				// transitionTo() promise will be rejected with a 'transition prevented' error
+				$state.transitionTo("unauthorized", null, {notify:false});
+				$state.go('unauthorized');
+			}
+		});
 
 	}
 ]).config([

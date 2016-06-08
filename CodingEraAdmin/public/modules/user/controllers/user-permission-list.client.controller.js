@@ -25,7 +25,7 @@ angular.module('user').controller('userPermissionListCtrl', [
         that.onSearch();
 
         //编辑记录
-        that.onEditClick = function(obj){
+        that.onEditPermissionClick = function(obj){
             if(obj){
                 //$state.go('usersManage.permissionsManage.edit',{permissionId:obj.permission});
                 ceUtil.openModal({route:'usersManage.permissionsManage.edit', data: obj}).success(function(res){
