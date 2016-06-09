@@ -31,6 +31,7 @@ module.exports = {
 				'public/components/angular-ui-utils/ui-utils.min.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
+				'public/components/angular-cookies/angular-cookies.min.js',
 				'public/components/google-code-prettify/bin/prettify.min.js',
 				'public/components/ng-file-upload/ng-file-upload.min.js',
 				'public/components/ng-img-crop/compile/minified/ng-img-crop.js',
@@ -39,8 +40,6 @@ module.exports = {
 				'public/components/lodash/dist/lodash.min.js',
 				'public/components/ui-select/dist/select.min.js',
 				'public/components/moment/min/moment.min.js',
-
-				// 这里使用 slickgrid 考虑是否不使用 bower 库引用,因为github中并没有压缩包的 (还是脚本也能解决?)
 				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
 				'public/components/slickgrid/slick.core.js',
 				'public/components/slickgrid/slick.grid.js',

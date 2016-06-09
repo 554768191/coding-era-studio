@@ -32,6 +32,8 @@ module.exports = {
 				'public/components/angular-ui-utils/ui-utils.js',
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
+				'public/components/angular-cookies/angular-cookies.min.js',
+
 				'public/components/lodash/dist/lodash.min.js',
 
 				// ngGileUpload 强大的文件上传工具

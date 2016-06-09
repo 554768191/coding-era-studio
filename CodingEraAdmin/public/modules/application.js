@@ -3,8 +3,8 @@ var ceApp = angular.module(ApplicationConfiguration.applicationModuleName, Appli
 
 //i18n - 国际化配置
 ceApp.run([
-	'$rootScope', '$state', '$templateCache', '$parse', 'Authentication',
-	function ($rootScope, $state, $templateCache, $parse, Authentication) {
+	'$rootScope', '$state', '$templateCache', '$cookieStore', '$location', '$log', 'Authentication',
+	function ($rootScope, $state, $templateCache, $cookieStore, $location, $log, Authentication) {
 
 		// 路由权限访问控制
 		$rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
@@ -18,6 +18,12 @@ ceApp.run([
 				$state.transitionTo("unauthorized", null, {notify:false});
 				$state.go('unauthorized');
 			}
+		});
+		// 重新登录后跳转上次的url,存到cookie由后端读取
+		$rootScope.$on('$stateChangeSuccess',function(){
+			var backURL = $location.absUrl();
+			$log.debug('$location.absUrl', backURL);
+			$cookieStore.put('back', $location.absUrl());
 		});
 
 	}

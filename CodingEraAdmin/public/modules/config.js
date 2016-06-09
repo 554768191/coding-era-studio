@@ -3,6 +3,7 @@
 var ApplicationConfiguration = (function() {
 	var applicationModuleName = 'codingEra';
 	var applicationModuleVendorDependencies = [
+		'ngCookies',
 		'ngResource',
 		'ngAnimate',
 		'ui.router',

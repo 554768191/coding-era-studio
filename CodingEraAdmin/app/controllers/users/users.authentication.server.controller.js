@@ -115,8 +115,8 @@ exports.signout = function(req, res) {
 exports.oauthCallback = function(strategy) {
 	return function(req, res, next) {
 		//所有oauth登录的回到
-		passport.authenticate(strategy, function(err, user, redirectURL) {
-			console.log("oauthCallback err", err);
+		passport.authenticate(strategy, function(err, user) {
+			//console.log("oauthCallback err", err);
 			if (err || !user) {
 				return res.redirect('/#!/signin');
 			}
@@ -124,7 +124,10 @@ exports.oauthCallback = function(strategy) {
 				if (err) {
 					return res.redirect('/#!/signin');
 				}
-				return res.redirect(redirectURL || '/');
+				var backURL = req.cookies.back.replace(/"/g,'');
+				res.redirect(backURL || '/');
+				//res.redirect(redirectURL || '/');
+				//next();
 			});
 		})(req, res, next);
 	};
@@ -135,8 +138,8 @@ exports.oauthCallback = function(strategy) {
  */
 exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 	//第三方登录时(github)要保存第三方用户信息
-	console.log("providerUserProfile", providerUserProfile);
-	console.log('req.user', req.user);
+	//console.log("providerUserProfile", providerUserProfile);
+	//console.log('req.user', req.user);
 	if (!req.user) {
 		// Define a search query fields
 		var searchMainProviderIdentifierField = 'providerData.' + providerUserProfile.providerIdentifierField;
@@ -184,13 +187,10 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 				} else {
 					var err = null;
 					// 登录后跳转的路径
-					console.log('jason------', req);
+					//console.log('jason------', req);
 					req.session.url = '/awesome';
-					console.log('jason------', req.session);
-
-
-					var url = "/#!/article/list?status=PUBLISHED";
-					return done(err, user, url);
+					//console.log('jason------', req.session);
+					return done(err, user);
 				}
 			//}
 		//});
