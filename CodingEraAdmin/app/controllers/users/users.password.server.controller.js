@@ -41,12 +41,9 @@ exports.forgot = function (req, res, next) {
                 };
                 var url = config.codingera.apiURL + '/open/user/password?action=saveToken';
                 request.post(url, data, function (err, result) {
-                    if(err){
-                        return res.status(400).send({
-                            message: err
-                        });
+                    if(errorHandler.apiErrorHandle(err, result, res)) {
+                        done(err, token, result.data);
                     }
-                    done(err, token, result.data);
                 });
             } else {
                 return res.status(400).send({
@@ -104,15 +101,12 @@ exports.validateResetToken = function (req, res) {
     });
     var url = config.codingera.apiURL + '/open/user/password?action=validateToken' + '&' +  contents;
     request.get(url, function (err, result) {
-        if(err){
-            return res.status(400).send({
-                message: err
-            });
+        if(errorHandler.apiErrorHandle(err, result, res)){
+            if (!result.data) {
+                return res.redirect('/#!/password/reset/invalid');
+            }
+            res.redirect('/#!/password/reset/' + req.params.token);
         }
-        if (!result.data) {
-            return res.redirect('/#!/password/reset/invalid');
-        }
-        res.redirect('/#!/password/reset/' + req.params.token);
     });
 };
 
@@ -124,59 +118,34 @@ exports.reset = function (req, res, next) {
     var passwordDetails = req.body;
 
     async.waterfall([
-
         function (done) {
-            //User.findOne({
-            //    resetPasswordToken: req.params.token,
-            //    resetPasswordExpires: {
-            //        $gt: Date.now()
-            //    }
-            //}, function (err, user) {
-            var user = req.user;
-            var err = null;
-                if (!err && user) {
-                    if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
-                        user.password = passwordDetails.newPassword;
-                        user.resetPasswordToken = undefined;
-                        user.resetPasswordExpires = undefined;
-
-                        //user.save(function (err) {
-                        //    if (err) {
-                        //        return res.status(400).send({
-                        //            message: errorHandler.getErrorMessage(err)
-                        //        });
-                        //    } else {
-                        //        req.login(user, function (err) {
-                        //            if (err) {
-                        //                res.status(400).send(err);
-                        //            } else {
-                        //                // Return authenticated user
-                        //                res.json(user);
-                        //
-                                        done(err, user);
-                        //            }
-                        //        });
-                        //    }
-                        //});
-                    } else {
-                        return res.status(400).send({
-                            message: 'Passwords do not match'
-                        });
+            if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
+                var data = {
+                    newPassword:passwordDetails.newPassword,
+                    verifyPassword:passwordDetails.verifyPassword,
+                    resetToken : req.params.token
+                };
+                var url = config.codingera.apiURL + '/open/user/password?action=reset';
+                request.post(url, data, function (err, result) {
+                    if(errorHandler.apiErrorHandle(err, result, res)){
+                        done(err, result.data);
                     }
-                } else {
-                    return res.status(400).send({
-                        message: 'Password reset token is invalid or has expired.'
-                    });
-                }
-            //});
+                });
+            } else {
+                return res.status(400).send({
+                    message: 'Passwords do not match'
+                });
+            }
         },
         function (user, done) {
-            res.render('templates/reset-password-confirm-email', {
-                name: user.displayName,
-                appName: config.app.title
-            }, function (err, emailHTML) {
-                done(err, emailHTML, user);
-            });
+            if(user){
+                res.render('templates/reset-password-confirm-email', {
+                    name: user.displayName,
+                    appName: config.app.title
+                }, function (err, emailHTML) {
+                    done(err, emailHTML, user);
+                });
+            }
         },
         // If valid email, send reset email using service
         function (emailHTML, user, done) {
@@ -188,6 +157,15 @@ exports.reset = function (req, res, next) {
             };
 
             smtpTransport.sendMail(mailOptions, function (err) {
+                if (!err) {
+                    res.send({
+                        message: 'Your password has been changed.'
+                    });
+                } else {
+                    return res.status(400).send({
+                        message: 'Failure sending email'
+                    });
+                }
                 done(err, 'done');
             });
         }

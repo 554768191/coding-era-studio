@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * Get unique error field name
  */
@@ -39,4 +40,27 @@ exports.getErrorMessage = function(err) {
 	}
 
 	return message;
+};
+
+
+/**
+ * api请求错误信息处理
+ *
+ * { "result" : "fail", "data" : "不允许访问" }
+ *
+ */
+exports.apiErrorHandle = function(err, result, res) {
+	if(err){
+		res.status(400).send({
+			message: err
+		});
+		return false;
+	}
+	if(result && result.result === 'fail'){
+		res.status(400).send({
+			message: result.data
+		});
+		return false;
+	}
+	return true;
 };

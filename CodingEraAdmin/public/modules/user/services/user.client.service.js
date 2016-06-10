@@ -75,6 +75,10 @@ angular.module('user').factory('UserService', ['$log','$http', 'ceAjax',
         };
 
 
+        service.resetUserPassword = function (parameters) {
+            return ceAjax.post({url: '/user/password?action=reset', data: parameters});
+        };
+
         return service;
     }
 ]);

@@ -5,8 +5,8 @@
 
 angular.module('core')
     .factory('ceAjax', [
-        '$rootScope','$http','Authentication','ceUtil',
-        function($rootScope,$http,Authentication,ceUtil) {
+        '$rootScope','$http','$log','Authentication','ceUtil',
+        function($rootScope,$http,$log,Authentication,ceUtil) {
         var ceAjaxService = {};
         var token = Authentication.user.accessToken || "none";
 
@@ -36,9 +36,9 @@ angular.module('core')
             angular.extend(options,{url:Authentication.apiURL+options.url});
             ceUtil.loading();
             $http(options).success(function(res){
-                console.log('request api success return:', res);
+                $log.debug('request api success return:', res);
                 ceUtil.loading();
-                if(res.result==='success'){
+                if(res && res.result==='success'){
                     if(angular.isArray(res.data)){
                         selfService.values = [];
                         angular.extend(selfService.values,res.data);
@@ -48,19 +48,22 @@ angular.module('core')
                     if(angular.isFunction(selfService.successCallback)){
                         selfService.successCallback(res);
                     }
-                }else if(res.result==='fail'){
-                    ceUtil.toast(res.data);
-                }else{
-                    if(typeof selfService.errorCallback !== 'undefined'){
-                        if(angular.isFunction(selfService.errorCallback)){
-                            selfService.errorCallback(res);
-                        }
-                    }else{
-                        ceUtil.toast(res.message);
-                    }
+                    return;
                 }
+                if(res && res.result==='fail'){
+                    ceUtil.toast(res.data);
+                    return;
+                }
+                if(typeof selfService.errorCallback !== 'undefined'){
+                    if(angular.isFunction(selfService.errorCallback)){
+                        selfService.errorCallback(res);
+                    }
+                }else{
+                    ceUtil.toast(res.message);
+                }
+                ceUtil.toast('提交失败');
             }).error(function(res){
-                console.log('request api error return:', res);
+                $log.debug('request api error return:', res);
                 ceUtil.loading();
                 if(res){
                     if(res.data){
