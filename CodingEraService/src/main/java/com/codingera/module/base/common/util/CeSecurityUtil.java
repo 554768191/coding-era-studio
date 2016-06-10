@@ -66,8 +66,11 @@ public class CeSecurityUtil {
 	 * @param role
 	 * @return
 	 */
-	public static boolean hasRole(User currentUser, String role) {
-		Assert.notNull(currentUser, "user is null");
+	public static boolean hasRole(String role) {
+		User currentUser = getCurrentUser();
+		if(currentUser == null){
+			return false;
+		}
 		List<UserRole> hasRoles = currentUser.getRoles();
 		for (UserRole userRole : hasRoles) {
 			if (role.equals(userRole.getRole())) {

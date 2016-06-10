@@ -96,7 +96,7 @@ public class UserOpenController {
 	 * @return
 	 */
 	@RequestMapping(value = "/password", params="action=reset", method = RequestMethod.POST)
-	public ActionResult resetPassword(UserResetPasswordToken resetToken) {
+	public ActionResult resetPassword(@RequestBody UserResetPasswordToken resetToken) {
 		UserView view = null;
 		User user = userService.resetPassword(resetToken);
 		if(user != null){

@@ -44,12 +44,13 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserResetPasswordTokenRepository userResetPasswordTokenRepository;
 
-	@Override
-	public User create(User user) {
-		Assert.notNull(user.getUsername(), "用户名不能为空");
-		Boolean isExistUserName = this.isExistUserName(user.getUsername());
-		Assert.state(isExistUserName == false, "user name already exist :" + user.getUsername());
-
+	/**
+	 * 生成密码
+	 * 
+	 * @param password
+	 * @return
+	 */
+	private String encodePassword(String password){
 		// ******************************************************************************************************************
 		// 生成密码
 		// 以前使用的是md5，Md5PasswordEncoder 和 ShaPasswordEncoder，现在推荐用bcrpt。
@@ -58,9 +59,18 @@ public class UserServiceImpl implements UserService {
 		// user.setPassword(md5.encodePassword(user.getPassword(), null));
 		// ******************************************************************************************************************
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String password = StringUtils.isEmpty(user.getPassword()) ? "123456" : user.getPassword();
+		password = StringUtils.isEmpty(password) ? "123456" : password;
 		String hashedPassword = passwordEncoder.encode(password);
-		user.setPassword(hashedPassword);
+		return hashedPassword; 
+	}
+	
+	@Override
+	public User create(User user) {
+		Assert.notNull(user.getUsername(), "用户名不能为空");
+		Boolean isExistUserName = this.isExistUserName(user.getUsername());
+		Assert.state(isExistUserName == false, "user name already exist :" + user.getUsername());
+
+		user.setPassword(encodePassword(user.getPassword()));
 
 		// 默认角色(默认无任何权限)
 		List<UserRole> userRoles = new ArrayList<UserRole>();
@@ -197,17 +207,25 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User resetPassword(UserResetPasswordToken resetToken) {
-		if(resetToken.getNewPassword() == null || resetToken.getVerifyPassword() == null){
-			throw new ValidationException("密码为空");	
+		Assert.state(!(StringUtils.isEmpty(resetToken.getNewPassword()) || StringUtils.isEmpty(resetToken.getVerifyPassword())), 
+				"密码为空");
+		Assert.state(resetToken.getNewPassword().equals(resetToken.getVerifyPassword()), 
+				"密码不一致");
+		
+		String username;
+		// 不是管理员才校验token
+		if(CeSecurityUtil.hasRole(CeSecurityUtil.ROLE_ADMIN)){			
+			username = resetToken.getUsername();
+		}else{
+			UserResetPasswordToken storeToken = getUserResetPasswordToken(resetToken.getToken());
+			Assert.notNull(storeToken, "重置密码的token无效或者过期了");
+			username = storeToken.getUsername();
 		}
-		if(!resetToken.getNewPassword().equals(resetToken.getVerifyPassword())){
-			throw new ValidationException("密码不一致");
-		}
-		UserResetPasswordToken storeToken = getUserResetPasswordToken(resetToken.getToken());
-		if(storeToken != null){
-			return this.getUserByUserName(storeToken.getUsername());
-		}
-		return null;
+		Assert.hasText(username, "用户名为空");
+		User user = this.getUserByUserName(username);
+		Assert.notNull(user, "找不到用户名：" + username);
+		user.setPassword(encodePassword(user.getPassword()));
+		return userRepository.save(user);
 	}
 
 	private List<String> loadRolesFromUser(User user){

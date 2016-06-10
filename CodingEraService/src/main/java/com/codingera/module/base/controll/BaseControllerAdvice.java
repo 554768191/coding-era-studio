@@ -48,7 +48,7 @@ class BaseControllerAdvice {
 	 */
 	@ResponseBody
 	@ExceptionHandler(Exception.class)
-	//@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	ActionResult exceptionHandler(Exception ex) {
 		LOGGER.info(ex.getLocalizedMessage());
 		// 返回json

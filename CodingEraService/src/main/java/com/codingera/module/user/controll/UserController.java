@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codingera.module.base.controll.ActionResult;
 import com.codingera.module.user.criteria.UserQueryCriteria;
 import com.codingera.module.user.model.User;
+import com.codingera.module.user.model.UserResetPasswordToken;
 import com.codingera.module.user.model.UserRole;
 import com.codingera.module.user.service.UserService;
 import com.codingera.module.user.view.UserRoleView;
@@ -90,6 +91,22 @@ public class UserController {
 	public ActionResult findUserRoles(Long userId) {
 		List<UserRole> result = userService.findUserRoles(userId);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, result);
+	}
+	
+	/**
+	 * 重设密码
+	 * 
+	 * @param resetToken
+	 * @return
+	 */
+	@RequestMapping(value = "/password", params="action=reset", method = RequestMethod.POST)
+	public ActionResult resetPassword(@RequestBody UserResetPasswordToken resetToken) {
+		UserView view = null;
+		User user = userService.resetPassword(resetToken);
+		if(user != null){
+			view = new UserView(user);
+		}
+		return new ActionResult(ActionResult.RESULT_SUCCESS, view);
 	}
 	
 }
