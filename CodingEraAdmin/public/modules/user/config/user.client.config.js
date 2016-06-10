@@ -112,15 +112,16 @@ angular.module('user').run([
 
         // Set the httpProvider "not authorized" interceptor
         $httpProvider.interceptors.push([
-            '$q', '$window', '$location', 'Authentication',
-            function ($q, $window, $location, Authentication) {
+            '$q', '$window', '$location','$log', 'Authentication',
+            function ($q, $window, $location,$log, Authentication) {
                 return {
                     responseError: function (rejection) {
-                        console.log('rejection.status', rejection);
-                        console.log('rejection.status', rejection.status);
+                        //TODO JASON 浏览器报 No 'Access-Control-Allow-Origin' header is present on the requested resource. 的时候获取不到status状态
+                        $log.debug('rejection.status', rejection);
+                        $log.debug('rejection.status', rejection.status);
                         switch (rejection.status) {
                             case -1:
-                                $window.location.href = '/auth/provider/refreshToken';
+                                //$window.location.href = '/auth/provider/refreshToken';
                                 Authentication.user = null;
                                 break;
                             case 401:

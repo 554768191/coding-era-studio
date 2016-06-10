@@ -63,7 +63,7 @@ angular.module('core').config([
             var prefix=syntax[actionName].prefix;
             var postfix=syntax[actionName].postfix;
             texts.forEach(function(text){
-                console.log('text',text);
+                //console.log('text',text);
                 if( text.length>=prefix.length+postfix.length &&
                     text.startWith(prefix,canStartWithSpace) &&
                     text.endWith(postfix)){

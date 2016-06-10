@@ -16,7 +16,6 @@ angular.module('user').controller('userResourceEditCtrl', [
         //编辑
         //if(angular.isUndefined( data.resource )){
 
-        console.log('jason hehe ',data);
             that.item = data;
             //that.publishedBtnText = '新增';
         //}else{

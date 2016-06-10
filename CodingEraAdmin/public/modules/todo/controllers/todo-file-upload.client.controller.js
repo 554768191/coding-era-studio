@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('todo').controller('fileUploadCtrl', [
-    '$scope', 'Upload',
-    function ($scope, Upload) {
+    '$scope', '$log', 'Upload',
+    function ($scope, $log, Upload) {
 
         $scope.file = null;
         $scope.files = null;
@@ -11,7 +11,7 @@ angular.module('todo').controller('fileUploadCtrl', [
         $scope.demoData = [
         ];
         $scope.$watch("file", function (val) {
-            console.log('Jason file watch', val);
+            $log.debug('Jason file watch', val);
             $scope.progressPercentage = 0;
             if(val){
                 //单文件上传
@@ -19,7 +19,7 @@ angular.module('todo').controller('fileUploadCtrl', [
             }
         });
         $scope.$watch("files", function (val) {
-            console.log('Jason files watch', val);
+            $log.debug('Jason files watch', val);
             $scope.progressPercentage = 0;
             if(val){
                 if(angular.isArray(val)){
@@ -59,13 +59,13 @@ angular.module('todo').controller('fileUploadCtrl', [
         // upload later on form submit or something similar
         $scope.submit = function () {
             $scope.progressPercentage = 0;
-            console.log('Jason test', $scope.file);
+            $log.debug('Jason test', $scope.file);
             //if (form.file.$valid && $scope.file) {
             $scope.upload($scope.file);
             //}
         };
         $scope.submits = function () {
-            console.log('Jason $scope.files',$scope.files);
+            $log.debug('Jason $scope.files',$scope.files);
             //if (form.file.$valid && $scope.files) {
             $scope.uploadFiles($scope.files);
             //}
@@ -78,16 +78,16 @@ angular.module('todo').controller('fileUploadCtrl', [
                     url: 'http://localhost:8999/api/fileUpload/uploadImage',
                     data: {'file': file, 'username': $scope.username}
                 }).then(function (resp) {
-                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                    $log.debug('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                     file.status = "Success";
                 }, function (resp) {
-                    console.log('Error status: ' + resp.status);
+                    $log.debug('Error status: ' + resp.status);
                     file.status = resp.status;
                 }, function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     file.progressPercentage = progressPercentage;
                     $scope.progressPercentage = progressPercentage;
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $log.debug('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                 });
             }
         };
@@ -103,14 +103,14 @@ angular.module('todo').controller('fileUploadCtrl', [
                 //    url: 'http://localhost:8999/api/fileUpload/uploadImages',
                 //    data: {file:files}
                 //}).then(function (resp) {
-                //    //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-                //    console.log('Jason multi test', resp);
+                //    //$log.debug('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                //    $log.debug('Jason multi test', resp);
                 //}, function (resp) {
-                //    console.log('Error status: ' + resp.status);
+                //    $log.debug('Error status: ' + resp.status);
                 //}, function (evt) {
-                //    console.log('progress', evt);
+                //    $log.debug('progress', evt);
                 //    //var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                //    //console.log('progress: ' + progressPercentage + '% ');
+                //    //$log.debug('progress: ' + progressPercentage + '% ');
                 //});
             }
         };

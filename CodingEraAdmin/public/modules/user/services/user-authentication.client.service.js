@@ -5,14 +5,16 @@ angular.module('user').factory('Authentication', [
 	'$rootScope', '$window', '$log', '$parse',
 	function($rootScope,$window,$log, $parse) {
 
+	var _ = window._;
+	var	permissionList;
 	var user = $window.user || null;
 	//如果头像为空,使用默认头像
-	if(user.avatar === null || user.avatar === ''){
-		user.avatar = '/modules/core/img/avatar.png';
+	if(user){
+		if(user.avatar === null || user.avatar === ''){
+			user.avatar = '/modules/core/img/avatar.png';
+		}
+		permissionList = user.permissions;
 	}
-
-	var	permissionList = user.permissions;
-	var _ = window._;
 
 	var auth = {
 		user: user,

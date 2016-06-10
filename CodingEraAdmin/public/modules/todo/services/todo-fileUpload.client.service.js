@@ -15,7 +15,7 @@ angular.module('todo').factory('FileUploadService', [
                         url: Authentication.apiURL + '/fileUpload/uploadImage?access_token=' + token,
                         data: {'file': file}
                     }).then(function (resp) {
-                        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                        $log.debug('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                         file.status = "Success";
 
                         //返回markdown格式:
@@ -23,13 +23,13 @@ angular.module('todo').factory('FileUploadService', [
 
                         task.content += '![图片](' + Authentication.apiURL.replace("/api","") + resp.data.data.path + ')';
                     }, function (resp) {
-                        console.log('Error status: ' + resp.status);
+                        $log.debug('Error status: ' + resp.status);
                         file.status = resp.status;
                     }, function (evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                         file.progressPercentage = progressPercentage;
                         //$scope.progressPercentage = progressPercentage;
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                        $log.debug('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                     });
                 }
             }

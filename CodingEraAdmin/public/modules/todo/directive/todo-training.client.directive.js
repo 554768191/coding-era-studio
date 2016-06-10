@@ -26,7 +26,8 @@ angular.module('todo').directive('uiBackdrop', ['$document',
              }*/
         };
     }])
-    .directive('trainningStep', ['$timeout', '$http', '$templateCache', '$compile', '$uibPosition', '$injector', '$window', '$q', '$controller',
+    .directive('trainningStep', [
+        '$timeout', '$http', '$templateCache', '$compile', '$uibPosition', '$injector', '$window', '$q', '$controller',
         function ($timeout, $http, $templateCache, $compile, $position, $injector, $window, $q, $controller) {
         return {
             restrict: 'EA',

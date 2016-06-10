@@ -13,7 +13,6 @@ angular.module('login', [])
                 } : {};
 
                 $http.get('http://localhost:8080/user', {headers : headers}).then(function(response){
-                    console.log('Jason ', response);
                     if (response.data.name) {
                         $rootScope.authenticated = true;
                     } else {
@@ -31,8 +30,6 @@ angular.module('login', [])
 
             self.credentials = {};
             self.login = function () {
-
-                console.log('jason ');
                 authenticate(self.credentials, function () {
                     if ($rootScope.authenticated) {
                         //$location.path("/");

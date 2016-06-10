@@ -16,10 +16,11 @@ angular.module('todo')
             return a;
         };
     }])
-    .controller('StepPanelController', ['currentStep', 'trainnings', 'trainningInstance',
-        function(currentStep, trainnings, trainningInstance) {
-            console.log('Jason test trainnings', trainnings);
-            console.log('Jason test trainningInstance', trainningInstance);
+    .controller('StepPanelController', [
+        '$log','currentStep', 'trainnings', 'trainningInstance',
+        function($log, currentStep, trainnings, trainningInstance) {
+            $log.debug('Jason test trainnings', trainnings);
+            $log.debug('Jason test trainningInstance', trainningInstance);
         var vm = this;
         vm.currentStep = currentStep;
         vm.trainnings = trainnings;

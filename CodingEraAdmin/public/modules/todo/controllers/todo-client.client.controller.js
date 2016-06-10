@@ -5,7 +5,7 @@ angular.module('todo').controller('todoCtrl', [
     function ($scope, $sce, $uibModal, $log, uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
 
         //$scope.$watch("file", function (val) {
-        //    console.log('Jason file watch', val);
+        //    $log.debug('Jason file watch', val);
         //});
 
         //markdown
@@ -48,7 +48,7 @@ angular.module('todo').controller('todoCtrl', [
         $scope.upload = function (files, task) {
             for (var index in files) {
                 var file = files[index];
-                console.log('Jason file', file);
+                $log.debug('Jason file', file);
                 FileUploadService.upload(file, task);
             }
         };
@@ -96,7 +96,7 @@ angular.module('todo').controller('todoCtrl', [
             TodoCustomService.toggleTaskStatus(task);
         };
         $scope.onEditTask = function (task) {
-            console.log('Jason test', task);
+            $log.debug('Jason test', task);
             alert("别紧张,测试而已");
         };
 
@@ -123,7 +123,7 @@ angular.module('todo').controller('todoCtrl', [
         //任务详情下拉标识
         $scope.isCollapsed = true;
         $scope.toggleDetail = function (isCollapsed, task) {
-            console.log('Jason test', isCollapsed);
+            $log.debug('Jason test', isCollapsed);
             if (angular.isUndefined(task.content)) {
                 return;
             }

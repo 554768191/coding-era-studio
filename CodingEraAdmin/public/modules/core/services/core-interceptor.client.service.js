@@ -4,8 +4,8 @@
 "use strict";
 
 angular.module('core').factory('ceInterceptor', [
-    '$rootScope', '$q', '$injector', 'Authentication',
-    function($rootScope,$q, $injector,Authentication) {
+    '$rootScope', '$q', '$injector', '$log', 'Authentication',
+    function($rootScope,$q, $injector, $log, Authentication) {
     var httpInterceptor = {
         'responseError' : function(response) {
             //GeekUtil.closeLoading();
@@ -27,7 +27,7 @@ angular.module('core').factory('ceInterceptor', [
             var url = config.url;
             if(!angular.isDefined(url)){
                 //todo 这里最好是弹窗提示,让开发地知道出现问题的原因
-                console.log('找不到要请求的URL');
+                $log.debug('找不到要请求的URL');
                 return;
             }
             if(url.indexOf(Authentication.apiURL)>=0){
