@@ -1,0 +1,37 @@
+{% extends 'layout-open.server.view.html' %}
+
+{% block content %}
+<!-- START ce-head -->
+<div class="ce-head-container container-fluid hidden-xs">
+	<div class="row">
+
+
+		<div class="col-sm-12 text-center">
+			<!--<script type="text/ng-template" id="logoText.html">-->
+				<!--<div class="logo-tip">Coding Era Studio</div>-->
+			<!--</script>-->
+			<!--<ce-content-head></ce-content-head>-->
+			<img src="/modules/core/img/logo_64X64_transparent.png" class="img-circle" style="width: 100px;height: 100px;">
+		</div>
+
+
+	</div>
+</div>
+<!-- END ce-head -->
+
+<!-- START ce-content -->
+<div class="ce-content container-fluid">
+	<div class="row">
+		<div class=" col-sm-12">
+			<div class="row">
+				<div  ui-view  ></div>
+			</div>
+		</div>
+	</div>
+</div><!-- END ce-content -->
+
+<!--&lt;!&ndash; START ce-loading-bar &ndash;&gt;-->
+<!--<ce-loading-bar>-->
+<!--</ce-loading-bar>&lt;!&ndash; END ce-loading-bar &ndash;&gt;-->
+
+{% endblock %}

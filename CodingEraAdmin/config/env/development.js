@@ -72,6 +72,20 @@ module.exports = {
 			'public/modules/*/*.js',
 			'public/modules/*/*[!tests]*/*.js'
 		],
+		open:{
+			css: [
+				'public/modules/core/css/*.css',
+				'public/modules/user/css/*.css'
+			],
+			js: [
+				'public/modules/config.js',
+				'public/modules/application.js',
+				'public/modules/core/*.js',
+				'public/modules/user/*.js',
+				'public/modules/core/*[!tests]*/*.js',
+				'public/modules/user/*[!tests]*/*.js'
+			]
+		},
 		tests: [
 			'public/components/angular-mocks/angular-mocks.js',
 			'public/modules/*/tests/*.js'

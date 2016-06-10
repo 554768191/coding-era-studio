@@ -31,6 +31,8 @@ module.exports = function() {
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
 	app.locals.leanCloud = config.leanCloud;
+	app.locals.openJsFiles = config.getOpenJavaScriptAssets();
+	app.locals.openCssFiles = config.getOpenCSSAssets();
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {

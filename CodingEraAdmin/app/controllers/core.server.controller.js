@@ -6,8 +6,12 @@
  */
 var config = require('../../config/config');
 
+exports.indexOpen = function(req, res) {
+	res.render('index-open', {});
+};
+
 exports.index = function(req, res) {
-	//req.user:调用passport的login之后才有值
+	//req.user在调用passport的login之后才有值
 	var user = req.user || null;
 	var apiURL = config.codingera.apiURL;
 	if(user){

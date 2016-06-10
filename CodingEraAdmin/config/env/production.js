@@ -49,6 +49,10 @@ module.exports = {
 		},
 		css: ['public/dist/css/all.min.css'],
 		js: ['public/dist/js/all.js'],
+		open:{
+			css: ['public/dist/css/all.min.css'],
+			js: ['public/dist/js/all.js']
+		},
 		tests: [
 			'public/components/angular-mocks/angular-mocks.js',
 			'public/modules/*/tests/*.js'

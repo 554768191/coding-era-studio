@@ -88,25 +88,25 @@ angular.module('user').run([
                 secured:"hasPermission('article','read1')"
             })
 
-
-            //.state('password', {
-            //    url: '/password',
-            //    templateUrl: 'modules/user/views/user-change-password.client.view.html'
-            //})
-            //.state('forgot', {
-            //    url: '/password/forgot',
-            //    templateUrl: 'modules/user/views/user-forgot-password.client.view.html'
-            //})
+            // 重置密码
             .state('usersManage.resetPassword', {
                 url: '/password/reset/:token',
-                templateUrl: 'modules/user/views/user-reset-password.client.view.html',
+                templateUrl: '/modules/user/views/user-reset-password.client.view.html',
                 controller:'PasswordController'
             })
 
+            //公众页面 重置密码
+            .state('resetPassword', {
+                url: '/password/reset/:token',
+                templateUrl: '/modules/user/views/open/user-reset-password.client.view.html',
+                controller:'OpenPasswordController'
+            })
+
             // 无访问权限跳转页面
+            // 注意:templateUrl前加上/,使http://localhost:3000/open/#!/页面也可以读取该页面
             .state('unauthorized', {
                 url: '/unauthorized',
-                templateUrl: 'modules/user/views/user-unauthorized.client.view.html'
+                templateUrl: '/modules/user/views/user-unauthorized.client.view.html'
             });
 
 

@@ -88,3 +88,18 @@ module.exports.getCSSAssets = function() {
 	var output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.css), 'public/');
 	return output;
 };
+
+/**
+ * 对外开放js文件
+ */
+ module.exports.getOpenJavaScriptAssets = function() {
+	var output = this.getGlobbedFiles(this.assets.lib.js.concat(this.assets.open.js), 'public/');
+	return output;
+};
+/**
+ * 对外开放css文件
+ */
+module.exports.getOpenCSSAssets = function() {
+	var output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.open.css), 'public/');
+	return output;
+};
