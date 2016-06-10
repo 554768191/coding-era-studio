@@ -48,6 +48,9 @@ $ gulp
 ```
 
 ## 4.生产
-NODE_ENV=production node server.js
+$ npm install --production
+$ bower install -allow-root
+
+$ NODE_ENV=production node server.js &
 
 >暂时这样吧..其它的慢慢研究

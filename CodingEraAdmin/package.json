@@ -32,7 +32,6 @@
     "lodash": "^4.6.1",
     "method-override": "~2.3.0",
     "morgan": "~1.4.1",
-    "node-sass": "^3.4.2",
     "nodemailer": "^2.3.0",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
@@ -40,10 +39,11 @@
     "passport-oauth2": "^1.2.0",
     "passport-oauth2-refresh": "^1.0.0",
     "request": "^2.69.0",
-    "swig": "~1.4.1",
-    "yo": "^1.5.0"
+    "swig": "~1.4.1"
   },
   "devDependencies": {
+    "yo": "^1.5.0",
+    "node-sass": "^3.4.2",
     "asserts": "^4.0.2",
     "browser-sync": "^2.10.0",
     "gulp": "^3.9.0",
