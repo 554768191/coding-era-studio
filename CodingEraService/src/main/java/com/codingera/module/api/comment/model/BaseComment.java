@@ -56,7 +56,7 @@ public abstract class BaseComment extends IdEntity {
 	private Long parentId;
 
 	// 状态：删除-1 置顶2 审核通过1 未审核0
-	@Column(name = "STATUS", length = 1)
+	@Column(name = "STATUS", length = 10)
 	@Enumerated(EnumType.STRING)
 	private Status status;
 

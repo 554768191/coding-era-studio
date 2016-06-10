@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.util.Assert;
 
 import com.codingera.module.user.model.User;
 import com.codingera.module.user.model.UserRole;
-import com.sun.xml.internal.bind.v2.TODO;
 
 public class CeSecurityUtil {
 

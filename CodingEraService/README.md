@@ -185,5 +185,5 @@ java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=applicati
 #TODO
 1.building_a_hateoas_rest_service
 2.PART 4: INTERNATIONALIZATION IN SPRING BOOT
-3.File Upload
+3.File Upload (done!)
 4.CacheService
