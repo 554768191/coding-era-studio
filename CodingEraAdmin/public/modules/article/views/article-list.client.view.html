@@ -12,7 +12,8 @@
         </h2>
         <small>发表于<span ce-friendly-time="item.createdTime"></span></small>
         <div class="article-list-content">
-            <p ng-bind-html="item.content | markdown"></p></td></tr>
+            <!--<p ng-bind-html="item.content | markdown"></p>-->
+            <p marked="item.content"></p>
         </div>
     </ce-data-custom>
     <ce-data-toolbar status-key="status" >

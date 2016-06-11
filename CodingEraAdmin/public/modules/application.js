@@ -28,8 +28,8 @@ ceApp.run([
 
 	}
 ]).config([
-	'$locationProvider','$httpProvider','$logProvider','$validationProvider',
-	function($locationProvider,$httpProvider,$logProvider,$validationProvider) {
+	'$locationProvider','$httpProvider','$logProvider','$validationProvider','markedProvider',
+	function($locationProvider,$httpProvider,$logProvider,$validationProvider,markedProvider) {
 		//日志输出模式
 		$logProvider.debugEnabled(true);
 
@@ -75,6 +75,22 @@ ceApp.run([
 			compareTo: {
 				error: '两个比较值不一致',
 				success: 'Thanks!'
+			}
+		});
+
+		// marked
+		markedProvider.setOptions({
+			gfm: true,
+			tables: true,
+			breaks: false,
+			pedantic: false,
+			sanitize: true,
+			smartLists: true,
+			smartypants: false
+		});
+		markedProvider.setRenderer({
+			link: function(href, title, text) {
+				return "<a href='" + href + "'" + (title ? " title='" + title + "'" : '') + " target='_blank'>" + text + "</a>";
 			}
 		});
 

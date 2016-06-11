@@ -14,7 +14,8 @@ var ApplicationConfiguration = (function() {
 		'ngSanitize',
 		'ngImgCrop',
 		'validation',
-		'validation.rule'
+		'validation.rule',
+		'hc.marked'
 	];
 
 	var registerModule = function(moduleName, dependencies) {

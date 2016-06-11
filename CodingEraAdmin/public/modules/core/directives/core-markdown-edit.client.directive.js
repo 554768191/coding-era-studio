@@ -151,7 +151,8 @@ angular.module('core').config([
                         '</div>',
                       '</div>',
                       '<textarea class="ce-textarea" ngf-drop="uploadImage($files)" ngf-pattern="\'image/*\'"  ng-show="!preview" ></textarea class>',
-                      '<div class="ce-preview" ng-bind-html="text | markdown" ng-show="preview"></div>',
+                      //'<div class="ce-preview" ng-bind-html="text | markdown" ng-show="preview"></div>',
+                      '<div class="ce-preview" marked="text" ng-show="preview"></div>',
                       '</div>',
                         ].join(''),
             compile:function(tElm,tAttrs) {

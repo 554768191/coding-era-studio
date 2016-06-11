@@ -38,8 +38,9 @@ module.exports = {
 				'public/components/ng-img-crop/compile/minified/ng-img-crop.js',
 				'public/components/ui-select/dist/select.min.js',
 				'public/components/moment/min/moment.min.js',
-				'public/components/marked/lib/marked.min.js',
+				'public/components/marked/lib/marked.js',
 				'public/components/codemirror/lib/codemirror.js',
+				'public/components/angular-marked/dist/angular-marked.min.js',
 				'public/components/jquery/dist/jquery.min.js',
 				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
 				'public/components/slickgrid/slick.core.js',
@@ -73,6 +74,7 @@ module.exports = {
 		callbackURL: '/auth/github/callback'
 	},
 	codingera: {
+		//prod
 		apiURL: 'http://www.codingera.com:8080/api',
 		authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
 		tokenURL: 'http://www.codingera.com:8080/oauth/token',
@@ -80,7 +82,17 @@ module.exports = {
 		clientSecret: 'api',
 		callbackURL: "http://www.codingera.com:3000/auth/provider/callback",
 		userInfoURL:"http://www.codingera.com:8080/api/me",
-		logoutURL:"http://www.codingera.com:8080/auth/logout?next=www.codingera.com:3000"
+		logoutURL:"http://www.codingera.com:8080/oauth/logout?next=www.codingera.com:3000"
+
+		// test remote api
+		//apiURL: 'http://www.codingera.com:8080/api',
+		//authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
+		//tokenURL: 'http://www.codingera.com:8080/oauth/token',
+		//clientID: 'api-client',
+		//clientSecret: 'api',
+		//callbackURL: "http://localhost:3000/auth/provider/callback",
+		//userInfoURL:"http://www.codingera.com:8080/api/me",
+		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://localhost:3000"
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || '1132075350@qq.com',

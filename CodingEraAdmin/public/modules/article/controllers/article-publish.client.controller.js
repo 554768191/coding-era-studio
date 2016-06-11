@@ -1,13 +1,16 @@
 'use strict';
 
-angular.module('article').controller('articlePublishCtrl',['$scope','$log','$state','$stateParams','ArticleService', 'ceUtil','TagService','$resource',
+angular.module('article').controller('articlePublishCtrl',[
+    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil','TagService','$resource',
 function ($scope, $log,$state,$stateParams,ArticleService,ceUtil,TagService,$resource){
 
 
     $scope.article = {};
 
     if(!angular.isUndefined($stateParams.articleId)){
-        $scope.article = ArticleService.getArticleById($stateParams.articleId);
+        ArticleService.getArticleById($stateParams.articleId).success(function(res){
+            $scope.article = res.data;
+        });
     }
 
     //发布&保存

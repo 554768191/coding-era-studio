@@ -1,31 +1,12 @@
 'use strict';
 
 angular.module('todo').controller('todoCtrl', [
-    '$scope', '$sce', '$uibModal', '$log', 'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'Upload',
-    function ($scope, $sce, $uibModal, $log, uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, Upload) {
+    '$scope', '$sce', '$uibModal', '$log', 'uibDatepickerPopupConfig', 'TodoService', 'TodoCustomService', 'FileUploadService', 'marked',
+    function ($scope, $sce, $uibModal, $log, uibDatepickerPopupConfig, TodoService, TodoCustomService, FileUploadService, marked) {
 
         //$scope.$watch("file", function (val) {
         //    $log.debug('Jason file watch', val);
         //});
-
-        //markdown
-        window.marked.setOptions({
-            renderer: new window.marked.Renderer(),
-            gfm: true,
-            tables: true,
-            breaks: false,
-            pedantic: false,
-            sanitize: false,
-            smartLists: true,
-            smartypants: false,
-            highlight: function (code) {
-                //todo Jason highlight 无效
-                //return window.hljs.highlightAuto(code).value;
-
-                //google-code-prettify
-                return window.prettyPrintOne(code, 'HTML', true);
-            }
-        });
 
         //预览
         $scope.previewed = false;
@@ -38,7 +19,8 @@ angular.module('todo').controller('todoCtrl', [
                 return;
             }
             if ($scope.previewed === true) {
-                $scope.previewedContent = $sce.trustAsHtml(window.marked(text));
+                //$scope.previewedContent = $sce.trustAsHtml(window.marked(text));
+                $scope.previewedContent = $sce.trustAsHtml(marked(text));
             } else {
                 //这里不能马上清空元素,因为关闭下拉的判断会失效(element.contains(event.target))
                 //$scope.previewedContent = "";
