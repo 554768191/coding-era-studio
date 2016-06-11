@@ -174,13 +174,41 @@ curl -k -X get https://localhost:8080/api/demo/page\?access_token\=dcb3c222-70db
 ##目录结构
 
 ##生产启动
-cd /usr/CodingEra/service
-nohup java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties > logs/production.log 2> logs/production.err &
+### 【生产配置】
+上传jar或者war包
+在同级目录创建目录configuration
 
+#### 1.application-prod.properties
+更改服务地址：
+server.address=123.57.56.53
+
+配置freemarker模板（如果build的是war包请忽视）：
+spring.freemarker.template-loader-path=file:/usr/CodingEraStudio/CodingEraService/views/
+把本地/CodingEraService/src/main/webapp/WEB-INF/views下的模板上传到配置的路径
+
+#### 2.attachments文件夹
+把相关的静态文件上传
+
+#### 3.h2数据文件
+coding_era_db.trace.db
+
+### 【查看端口】
+lsof -i:8888
+netstat -ap | grep 8080
 ps -ef|grep java
 kill [pid]
+
+### 【启动服务】
+cd /usr/CodingEra/service
+nohup java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties > logs/production.log 2> logs/production.err &
+或者
 cd /usr/CodingEra/service/
-java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties
+java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=configuration/application.properties
+
+### 【数据库端口】
+h2
+8082
+9092
 
 #TODO
 1.building_a_hateoas_rest_service
