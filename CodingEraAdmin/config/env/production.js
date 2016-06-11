@@ -20,7 +20,8 @@ module.exports = {
 				'public/components/bootstrap-wysiwyg/index.min.css',
 				'public/components/codemirror/lib/codemirror.css',
 				'public/components/ui-select/dist/select.min.css',
-				'public/components/ng-img-crop/compile/minified/ng-img-crop.css'
+				'public/components/ng-img-crop/compile/minified/ng-img-crop.css',
+				'public/components/slickgrid/slick.grid.css'
 			],
 			js: [
 				'public/components/angular/angular.min.js',
@@ -32,14 +33,14 @@ module.exports = {
 				'public/components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 				'public/components/angular-sanitize/angular-sanitize.min.js',
 				'public/components/angular-cookies/angular-cookies.min.js',
-				'public/components/google-code-prettify/bin/prettify.min.js',
+				'public/components/lodash/dist/lodash.min.js',
 				'public/components/ng-file-upload/ng-file-upload.min.js',
 				'public/components/ng-img-crop/compile/minified/ng-img-crop.js',
-				'public/components/marked/marked.min.js',
-				'public/components/codemirror/lib/codemirror.js',
-				'public/components/lodash/dist/lodash.min.js',
 				'public/components/ui-select/dist/select.min.js',
 				'public/components/moment/min/moment.min.js',
+				'public/components/marked/lib/marked.min.js',
+				'public/components/codemirror/lib/codemirror.js',
+				'public/components/jquery/dist/jquery.min.js',
 				'public/components/slickgrid/lib/jquery.event.drag-2.2.js',
 				'public/components/slickgrid/slick.core.js',
 				'public/components/slickgrid/slick.grid.js',

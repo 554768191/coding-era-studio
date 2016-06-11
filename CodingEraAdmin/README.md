@@ -48,6 +48,18 @@ $ gulp
 ```
 
 ## 4.生产
+app目录:
+上传CodingEraAdmin/app所有
+config目录:
+不要CodingEraAdmin/config/env下的development.js和test.js
+不要CodingEraAdmin/config/gulp
+public目录:
+上传CodingEraAdmin/public/dist所有
+创建空文件夹modules,被dist/html下全部文件移到modules下
+其他:
+不要test目录
+不要gulpfile.js
+
 $ npm install --production
 $ bower install -allow-root
 
