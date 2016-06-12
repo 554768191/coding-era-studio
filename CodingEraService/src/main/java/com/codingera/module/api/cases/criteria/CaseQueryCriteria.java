@@ -6,6 +6,8 @@ public class CaseQueryCriteria {
 
 	private String keyWord;
 	
+	private Long tagId;
+	
 	private Status status = Status.PUBLISHED;
 
 	public String getKeyWord() {
@@ -22,6 +24,14 @@ public class CaseQueryCriteria {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Long getTagId() {
+		return tagId;
+	}
+
+	public void setTagId(Long tagId) {
+		this.tagId = tagId;
 	}
 
 	

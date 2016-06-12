@@ -1,5 +1,7 @@
 package com.codingera.module.api.cases.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,4 +17,6 @@ public interface CaseService {
 	Case save(Case ceCase) ;
 	
 	Page<Case> findCaseByCriteria(Pageable pr, CaseQueryCriteria criteria);
+	
+	List<Case> findCaseByTagId(Long tagId);
 }

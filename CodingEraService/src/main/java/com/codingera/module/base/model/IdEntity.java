@@ -6,7 +6,10 @@
 package com.codingera.module.base.model;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
@@ -17,12 +20,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
+import javax.persistence.Transient;
 import javax.persistence.Version;
+
+import org.apache.commons.beanutils.PropertyUtils;
+import org.springframework.beans.BeanUtils;
 
 import com.codingera.module.base.common.util.CeSecurityUtil;
 import com.codingera.module.user.model.User;
+import com.codingera.module.user.model.UserProfileTag;
+import com.codingera.module.user.model.UserRole;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * 统一定义id的entity基类.
@@ -54,6 +66,37 @@ public abstract class IdEntity implements Serializable {
 
 	@Version
 	private long version;
+	
+	@Transient
+	@JsonProperty("createdUser")
+	private User createdBy;
+	
+	//为了json嵌套循环使用的
+	public User getCreatedBy() {
+		if( this.createdUser != null){
+			this.createdBy = new User();
+			try {
+				PropertyUtils.copyProperties(createdBy, this.createdUser);
+				
+				List<UserRole> roles = new ArrayList<UserRole>();
+				List<UserProfileTag> userProfileTags = new ArrayList<UserProfileTag>();
+				this.createdBy.setRoles(roles);
+				this.createdBy.setUserProfileTags(userProfileTags);
+			} catch (Exception e) {
+				//忽略异常
+			}
+		}
+		
+		return createdBy;
+	}
+	
+	
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -86,6 +129,9 @@ public abstract class IdEntity implements Serializable {
 	public void setVersion(long version) {
 		this.version = version;
 	}
+	
+	
+	
 
 	@PrePersist
 	public void prePersist() {

@@ -2,6 +2,7 @@ package com.codingera.module.api.cases.service.impl;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class CaseServiceImpl implements CaseService {
 		Case ceCase = caseRepository.findOne(id);
 		Hibernate.initialize(ceCase.getTags());
 		return ceCase;
+	}
+
+	@Override
+	public List<Case> findCaseByTagId(Long tagId) {
+		return caseRepository.getCaseByTagId(tagId);
 	}
 
 

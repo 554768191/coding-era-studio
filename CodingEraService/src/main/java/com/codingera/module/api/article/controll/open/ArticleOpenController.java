@@ -35,7 +35,7 @@ public class ArticleOpenController {
 	@RequestMapping(value="/{key}",method = RequestMethod.GET)
 	@ResponseBody
 	public ActionResult getArticle(@PathVariable String key) {
-		Article article = ArticleService.getByKey(key);
+		Article article = ArticleService.getByTarget(key);
 		try {
 			String htmlContent = new Markdown4jProcessor().process(article.getContent());
 			article.setHtmlContent(htmlContent);

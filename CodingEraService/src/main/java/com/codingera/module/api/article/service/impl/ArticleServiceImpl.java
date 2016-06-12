@@ -49,7 +49,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public Article getByKey(String key) {
+	public Article getByTarget(String key) {
 		return articleRepository.getByTarget(key);
 	}
 

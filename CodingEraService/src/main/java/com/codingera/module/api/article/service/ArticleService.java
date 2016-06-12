@@ -10,7 +10,7 @@ public interface ArticleService {
 	
 	Article getById(Long id);
 	
-	Article getByKey(String key);
+	Article getByTarget(String key);
 
 	void deleteById(Long id);
 	

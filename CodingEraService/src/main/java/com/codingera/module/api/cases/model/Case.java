@@ -16,6 +16,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.codingera.module.api.comment.model.Comment;
 import com.codingera.module.api.tag.model.Tag;
@@ -66,6 +67,9 @@ public class Case extends IdEntity {
 	
 	@OneToMany(mappedBy = "ceCase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
+	
+	@Transient
+	public String htmlContent;
 
 	
 	public String getTitle() {
@@ -129,6 +133,14 @@ public class Case extends IdEntity {
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public String getHtmlContent() {
+		return htmlContent;
+	}
+
+	public void setHtmlContent(String htmlContent) {
+		this.htmlContent = htmlContent;
 	}
 	
 	

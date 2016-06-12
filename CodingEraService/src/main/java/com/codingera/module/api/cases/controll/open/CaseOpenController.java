@@ -1,8 +1,13 @@
 package com.codingera.module.api.cases.controll.open;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.hibernate.Hibernate;
+import org.markdown4j.Markdown4jProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +39,16 @@ public class CaseOpenController {
 	@ResponseBody
 	public ActionResult getCase(@PathVariable Long caseId) {
 		Case ceCase = CaseService.getById(caseId);
+		
+		
+		try {
+			String htmlContent = new Markdown4jProcessor().process(ceCase.getContent());
+			ceCase.setHtmlContent(htmlContent);
+		} catch (IOException e) {
+			//报错的话,不转义了,直接输出
+			ceCase.setHtmlContent(ceCase.getContent());
+		}
+		
 		return new ActionResult(ActionResult.RESULT_SUCCESS, ceCase);
 	}
 	
@@ -47,7 +62,15 @@ public class CaseOpenController {
 	@RequestMapping(value="/list",method = RequestMethod.GET)
 	@ResponseBody
 	public ActionResult findCases(Pageable pr, @ModelAttribute CaseQueryCriteria criteria) {
-		Page<Case> pages = CaseService.findCaseByCriteria(pr, criteria);
+		Page<Case> pages = null;
+		if(criteria.getTagId() == null){
+			pages = CaseService.findCaseByCriteria(pr, criteria);
+		}else{
+			//由于多对多JPA不熟悉,这里先用HQL解决
+			//TODO v1.1以后务必使用JPA解决
+			List<Case> cases = CaseService.findCaseByTagId(criteria.getTagId());
+			pages = new PageImpl<Case>(cases);
+		}
 		for(Case ceCase: pages.getContent()){
 			Hibernate.initialize(ceCase.getTags());
 		}
