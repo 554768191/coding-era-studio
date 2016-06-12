@@ -20,8 +20,8 @@ import com.codingera.module.user.service.UserService;
 @Configuration
 class AuthenticationManagerConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
-	@Autowired
-	private DataSource dataSource;
+//	@Autowired
+//	private DataSource dataSource;
 	@Autowired
 	private UserService userService;
 

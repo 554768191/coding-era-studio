@@ -2,15 +2,21 @@ package com.codingera.module.base.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.codingera.module.base.converter.HibernateAwareObjectMapper;
 import com.codingera.module.base.converter.LocalTimeConverter;
@@ -79,6 +85,28 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
          .addResourceLocations("file:./configuration/attachments/");
 	}
 	
+	/**
+	 * 国际化
+	 */
+	@Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 	
+	@Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+//        slr.setDefaultLocale(Locale.US);
+        slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
+        return slr;
+    }
+ 
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
+    }
 
+    
 }

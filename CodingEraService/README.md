@@ -1,7 +1,7 @@
-#Coding Era编码时代
+# Coding Era编码时代
 
-##0.环境要求
-###0.1 git教程
+## 0.环境要求
+### 0.1 git教程
 [git完美教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
 ```
 术语：
@@ -36,7 +36,8 @@ git relog
 git log
 
 ```
-###0.2 开发环境
+
+### 0.2 开发环境
 ```
 mac os x
 Apache Maven 3.0
@@ -44,7 +45,7 @@ Java version 1.7
 
 ```
 
-##1.部署项目
+## 1.部署项目
 ```
 //首先进入到相应的pom.xml目录中，执行命令
 mvn clean install -Dmaven.test.skip=true
@@ -60,7 +61,7 @@ mvn eclipse:eclipse
 
 ```
 
-##2.跑起来比公司简单
+## 2.跑起来比公司简单
 ```
 //修改配置文件：端口，数据库配置等等
 /CodingeraBoot/src/main/resources/application.properties
@@ -75,7 +76,7 @@ com.codingera.CodingeraBootApplication
 [可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)
 
 
-##3.sql脚本
+## 3.sql脚本
 ```
 配置文件设置spring.datasource.initialize=true：
 启动服务自动执行sql脚本。
@@ -96,15 +97,15 @@ hibernate的ddl-auto机制：
 spring.datasource.initialize=false
 ```
 
-##4.test
+## 4.test
 ```
 测试驱动开发，你懂得！
 mvn clean install
 ```
 
-#技术点
+# 技术点
 
-##Oauth2
+## Oauth2
 ```
 //请求示例
 
@@ -144,7 +145,7 @@ mvn clean install
 
 ```
 
-##CORS
+## CORS
 ```
 目前使用全局配置，参考CorsConfiguration.java
 其他配置方式：
@@ -156,7 +157,7 @@ mvn clean install
 
 ```
 
-##SSL加密（https）
+## SSL加密（https）
 ```
 生成秘钥方式命令：
 $ keytool -genkey -alias codingera -keyalg RSA -keystore src/main/resources/codingera.keystore
@@ -171,9 +172,47 @@ curl -k -X get https://localhost:8080/api/demo/page\?access_token\=dcb3c222-70db
 使用-k，是不对服务器的证书进行检查，这样就不必关心服务器证书的导出问题了。
 ```
 
-##目录结构
+## 数据库配置加密
+把application.properties的spring.datasource.password使用Jasypt加密
+参看EncypterTest.java
+配置DataSourceConfiguration.java
 
-##生产启动
+## 国际化
+配置：
+1.application.properties加上配置
+spring.messages.basename=message #指定默认文件message.properties和前缀
+spring.messages.cache-seconds=-1
+spring.messages.encoding=UTF-8
+2.WebMvcConfiguration.java
+SessionLocaleResolver设置默认资源文件为message_en_US.properties
+LocaleChangeInterceptor设置方言参数为lang
+
+demo请参考DemoOpenController.java：
+```java
+	// 从后台代码获取国际化信息
+	//方式一
+	RequestContext requestContext = new RequestContext(request);
+	String message = requestContext.getMessage(key);
+	//方式二
+	String message = MessageUtil.getMessage(key);
+```
+如果可以接收到request的话建议使用方式一，因为方式二目前只支持中文
+➜  ~ curl http://localhost:8080/api/open/demo/test
+
+{
+  "result" : "success",
+  "data" : "好极了(from message_zh_CN.properties)"
+}%                                                                                                                                                                          ➜  ~ curl http://localhost:8080/api/open/demo/test\?lang\=en_US
+
+{
+  "result" : "success",
+  "data" : "good(from message_en_US.properties)"
+}%
+
+
+## 目录结构
+
+## 生产启动
 ### 【生产配置】
 上传jar或者war包
 在同级目录创建目录configuration
@@ -192,26 +231,26 @@ spring.freemarker.template-loader-path=file:/usr/CodingEraStudio/CodingEraServic
 #### 3.h2数据文件
 coding_era_db.trace.db
 
-### 【查看端口】
+###【查看端口】
 lsof -i:8888
 netstat -ap | grep 8080
 ps -ef|grep java
 kill [pid]
 
-### 【启动服务】
+###【启动服务】
 cd /usr/CodingEra/service
 nohup java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=application.properties > logs/production.log 2> logs/production.err &
 或者
 cd /usr/CodingEra/service/
 java -jar CodingEraService-0.0.1-SNAPSHOT.jar --spring.config.location=configuration/application.properties
 
-### 【数据库端口】
+###【数据库端口】
 h2
 8082
 9092
 
-#TODO
-1.building_a_hateoas_rest_service
-2.PART 4: INTERNATIONALIZATION IN SPRING BOOT
+# TODO
+1.building_a_hateoas_rest_service (50%)
+2.PART 4: INTERNATIONALIZATION IN SPRING BOOT (done!)
 3.File Upload (done!)
-4.CacheService
+4.CacheService (0%)
