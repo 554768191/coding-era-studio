@@ -71,6 +71,13 @@ $case-color-border:rgba(44,151,232,.1);
             width:100%;
             border-radius:2px;
           }
+
+        }
+        a{
+          color:#666;
+          &:hover{
+            text-decoration: none;
+          }
         }
         .summary{
           padding:10px 0;
@@ -154,10 +161,35 @@ $case-color-border:rgba(44,151,232,.1);
   }
 }
 
+.case-navi{
+  margin-top: -35px;
+  .breadcrumb{
+    a{
+      color: $case-color;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    margin-bottom:0;
+    background:none;
+    border:0;
+    border-radius: 2px;
+    padding-left:5px;
+    color: #777;
+  }
+}
 
 //明细
 .case-detail{
-  @include cardStyle();
+
+
+
+  background:$ce-card-background;
+  border:1px solid $case-color-border;
+  border-radius: 2px;
+  h1,h2,h3,h4,h5,h6{
+    color: $case-color;
+  }
   &-padding{
     padding:0 20px 20px 20px;
     .detail-subtitle{
@@ -165,9 +197,7 @@ $case-color-border:rgba(44,151,232,.1);
     }
 
     .detail-content{
-      h1,h2,h3,h4,h5,h6{
-        color: $case-color;
-      }
+
       img{
         width:100%;
         margin:10px 0;
@@ -177,7 +207,7 @@ $case-color-border:rgba(44,151,232,.1);
   }
 
   .detail-bottom{
-    border-top:1px solid #eee;
+    border-top:1px solid $case-color-border;
     height:40px;
     display: -moz-box;
     display: -webkit-box;

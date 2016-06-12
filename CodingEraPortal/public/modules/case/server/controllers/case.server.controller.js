@@ -14,9 +14,25 @@ var request = commonUtil.getRequest();
  * @param res
  */
 exports.getCases = function(req, res, next) {
-    request.get('/case/list', function (body) {
+
+
+    var tagId ='';
+    if(typeof req.query.tagId != 'undefined'){
+        tagId = '?tagId=' + req.query.tagId;
+    }
+    
+    request.get('/case/list' + tagId, function (body) {
         res.render('case/client/views/case',{resultData:body});
-        //res.render('case/view/case',{resultData:body});
+    });
+
+};
+
+exports.getCaseDetail = function(req, res, next) {
+    var caseId = req.params.id;
+    console.log('caseId',caseId);
+    request.get('/case/'+caseId, function (body) {
+        console.log('/case/:id,request',body);
+        res.render('case/client/views/case-detail',{resultData:body});
     });
 
 };

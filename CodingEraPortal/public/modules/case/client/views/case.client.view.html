@@ -26,8 +26,10 @@
                     <div class="case-padding">
                         <div class="top">
                             <div class="title"><a href="/case/detail">
+                                <a href="/case/{{caseObject.id}}">
                                 <h2 class="hidden-xs">{{caseObject.title}}</h2>
                                 <h4 class="visible-xs-block">{{caseObject.title}}</h4>
+                                </a>
                             </a></div>
                             <div class="subtitle">
                                 {% for tags in caseObject.tags %}
@@ -36,15 +38,17 @@
                             </div>
                         </div>
                         <div class="content">
-                            <div class="pic"><img src="{{caseObject.bannerUrl}}"></div>
-                            <div class="summary">{{caseObject.summary | default(' (╯﹏╰）文案准备中...')}}</div>
+                            <div class="pic"><a href="/case/{{caseObject.id}}"><img src="{{caseObject.bannerUrl}}"></a></div>
+                            <div class="summary"><a href="/case/{{caseObject.id}}">{{caseObject.summary | default(' (╯﹏╰）文案准备中...')}}</a></div>
                         </div>
                     </div>
+                    <!-- v1.1 完成
                     <div class="bottom">
                         <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
                         <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
                         <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
                     </div>
+                    -->
                 </div><!-- case-card -->
                 {% endfor %}
 
