@@ -24,13 +24,17 @@
                 </div>
             </div>
         </ce-data-custom>
-        <ce-data-toolbar status-key="status" >
-            <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditUserClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
+        <span ce-secured="hasPermission('user','write')">
+        <ce-data-toolbar status-key="status">
+            <!--<span ce-secured="hasPermission('user','write')">-->
+                <ce-data-toolbar-btn icon="glyphicon-edit" title="编辑" ng-click="onEditUserClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
+            <!--</span>-->
             <ce-data-toolbar-btn icon="glyphicon-lock" title="重置密码" ng-click="onResetPasswordClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
             <ce-data-toolbar-btn icon="glyphicon-user" title="角色" ng-click="onEditRolesClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>
             <!--<ce-data-toolbar-btn icon="glyphicon-ok" title="通过" ng-click="onEditClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>-->
             <!--<ce-data-toolbar-btn icon="glyphicon-trash" title="禁用" ng-click="onDeleteClick( item );" status-equals="'WAITING','PASSED','SKETCH'"></ce-data-toolbar-btn>-->
         </ce-data-toolbar>
+        </span>
     </ce-data-list>
 
 </div>
