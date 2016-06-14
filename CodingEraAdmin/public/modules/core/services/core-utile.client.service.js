@@ -5,12 +5,10 @@
 
 angular.module('core')
     .factory('ceUtil', [
-        '$rootScope','$templateCache','$uibModal','$state','ceConfig','Authentication',
-        function($rootScope,$templateCache,$uibModal,$state,ceConfig,Authentication) {
+        '$rootScope', '$q', '$templateCache', '$uibModal', '$state', 'ceConfig', 'Authentication',
+        function ($rootScope, $q, $templateCache, $uibModal, $state, ceConfig, Authentication) {
+
         var service = {};
-
-
-
 
         //弹出消息(默认5秒自动关闭)
         service.toast = function (message){
@@ -18,9 +16,6 @@ angular.module('core')
             $rootScope.$emit("showToast",message);
 
         };
-
-
-
 
         //模态消息对话框(确认,取消)
         service.confirmMessage = function(message){
@@ -50,9 +45,6 @@ angular.module('core')
                     }
                 ]
             });
-
-
-
             return selfService;
         };
 
@@ -123,6 +115,7 @@ angular.module('core')
                 throw new Error( errorPrefix + ', 缺失 route 参数!');
             }
             var stateParameter = $state.get(options.route);
+
             // 路由权限访问控制
             var expression = stateParameter.secured;
             var hasPermission = Authentication.checkPermission(expression);
@@ -141,32 +134,24 @@ angular.module('core')
                 }
             };
             angular.extend(option,options);
-
             var modalInstance = $uibModal.open(option);
 
-            var successCallback = null;
-            var cancelCallback = null;
-            var selfService ={};
-            selfService.success = function(callback){
-                successCallback =callback;
-                return selfService;
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+            promise.success = function(func){
+                promise.then(func);
+                return promise;
             };
-            selfService.cancel = function(callback){
-                cancelCallback =callback;
-                return selfService;
+            promise.cancel = function(func){
+                promise.then(null, func);
+                return promise;
             };
-
             modalInstance.result.then(function (res) {
-                if ( successCallback !== null ) {
-                    successCallback(res);
-                }
-            }, function () {
-                if ( cancelCallback !== null ) {
-                    cancelCallback();
-                }
+                deferred.resolve(res);
+            }, function (res) {
+                deferred.reject(res);
             });
-
-            return selfService;
+            return promise;
         };
 
     return service;
