@@ -15,7 +15,9 @@ angular.module('dynamic').controller('dynamicEditCtrl', [
 
         //编辑
         if(!angular.isUndefined( data.id )){
-            $scope.dynamic = DynamicService.getDynamicById(data.id);
+             DynamicService.getDynamicById(data.id).success(function (res) {
+                 $scope.dynamic = res.data;
+            });
             $scope.publishedBtnText = '保存';
         }
 

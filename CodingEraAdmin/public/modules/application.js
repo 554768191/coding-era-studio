@@ -22,7 +22,7 @@ ceApp.run([
 		// 重新登录后跳转上次的url,存到cookie由后端读取
 		$rootScope.$on('$stateChangeSuccess',function(){
 			var backURL = $location.absUrl();
-			$log.debug('$location.absUrl', backURL);
+			//$log.debug('$location.absUrl', backURL);
 			$cookieStore.put('back', $location.absUrl());
 		});
 

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('user').controller('userRoleListCtrl', [
-    '$scope', '$log', '$state', '$stateParams', '$location', 'path', 'RoleService', 'ResourceService', 'PermissionService', 'ceUtil',
-    function ($scope, $log, $state, $stateParams, $location, path, RoleService, ResourceService, PermissionService, ceUtil) {
+    '$scope', '$q', '$log', '$state', '$stateParams', '$location', 'path', 'RoleService', 'ResourceService', 'PermissionService', 'ceUtil',
+    function ($scope, $q, $log, $state, $stateParams, $location, path, RoleService, ResourceService, PermissionService, ceUtil) {
 
         var that = $scope;
 
@@ -10,14 +10,22 @@ angular.module('user').controller('userRoleListCtrl', [
             that.key = 'title';
             that.jsonData = {};
 
-            // todo 这里的回调还要优化
-            ResourceService.getResourcesList().success(function (res) {
-                that.resources = res.data;
+            //性能优化:多个异步任务的并行处理
+            $q.all([
+                ResourceService.getResourcesList(),
+                PermissionService.getPermissionsList()
+            ])
+            .then(function (results) {
+                that.resources = results[0].data;
+                that.permissions = results[1].data;
             });
-
-            PermissionService.getPermissionsList().success(function (res) {
-                that.permissions = res.data;
-            });
+            //反面教材展示,等同上面代码
+            //ResourceService.getResourcesList().success(function (res) {
+            //    that.resources = res.data;
+            //});
+            //PermissionService.getPermissionsList().success(function (res) {
+            //    that.permissions = res.data;
+            //});
         };
         that.init();
 
@@ -40,7 +48,8 @@ angular.module('user').controller('userRoleListCtrl', [
         that.onEditClick = function(obj){
             if(obj){
                 //$state.go('usersManage.rolesManage.edit',{roleId:obj.role});
-                ceUtil.openModal({route:'usersManage.rolesManage.edit',
+                ceUtil.openModal({
+                    route:'usersManage.rolesManage.edit',
                     data: {
                         role:angular.copy(obj),//直接传copy对象,不另外查一次了
                         resources:that.resources,
@@ -56,7 +65,8 @@ angular.module('user').controller('userRoleListCtrl', [
         //角色权限
         that.onEditPermissionsClick = function(obj){
             if(obj){
-                ceUtil.openModal({route:'usersManage.rolesManage.permissions',
+                ceUtil.openModal({
+                    route:'usersManage.rolesManage.permissions',
                     data: {
                         role:angular.copy(obj),//直接传copy对象,不另外查一次了
                         resources:that.resources,
