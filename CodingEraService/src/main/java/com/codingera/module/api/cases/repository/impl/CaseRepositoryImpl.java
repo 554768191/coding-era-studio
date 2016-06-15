@@ -25,7 +25,7 @@ public class CaseRepositoryImpl implements CaseRepositoryCustom {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Page<Case> findCaseByCriteria(Pageable pg, CaseQueryCriteria criteria) {
-		JpaCriteria s = new JpaCriteria("Case c join c.tags t");
+		JpaCriteria s = new JpaCriteria("Case c");
 		s.add(new OrCriterion(CriterionUtils.contains("c.title", criteria.getKeyWord(), true)));
 		s.add(CriterionUtils.equals("c.status", criteria.getStatus(), false));
 		s.setSortBy("c.createdTime desc");
