@@ -134,10 +134,18 @@
 			<div class="col-sm-12">
 				<div class="login-container">
 					<div class="title"><img src="/temp/logo_64X64_transparent.png" />&nbsp;&nbsp;Coding Era</div>
-					<div class="wrapper text-center">
-				      <strong>${error!''}</strong>
-				    </div>
-					<div class="info">${logout!''}</div>
+					<#if RequestParameters['error']??>
+						<div class="alert alert-danger">
+							无效的登录名或者密码!请重试。
+							<!-- ${error!''} -->
+						</div>
+					</#if>
+					<#if RequestParameters['logout']??>
+						<div class="alert alert-success">
+							您已经成功退出登录！
+							<!-- ${logout!''} -->
+						</div>
+					</#if>
 					<form role="form" action="login" method="post" >
 						
 						<div class="list-group list-group-sm">
@@ -155,7 +163,7 @@
 					        <input type="checkbox" name="remember-me" id="remember-me"/>
 					    </div> -->
 					    
-					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					    <input type="hidden" id="csrf_token" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<button class="btn  login-btn btn-lg" type="submit" >登录</button>
 					</form>
 					

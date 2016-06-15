@@ -35,14 +35,11 @@ git relog
 7查看提交记录
 git log
 
-```
 
 ### 0.2 开发环境
-```
 mac os x
 Apache Maven 3.0
 Java version 1.7
-
 ```
 
 ## 1.部署项目
@@ -71,10 +68,10 @@ com.codingera.CodingeraBootApplication
 
 //启动配置program argument
 --spring.config.location=file:./configuration/application.properties
-``` 
+
 ### 2.1 可以参考官方配置大全链接
 [可以参考官方配置大全](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#common-application-properties)
-
+``` 
 
 ## 3.sql脚本
 ```
@@ -109,40 +106,39 @@ mvn clean install
 ```
 //请求示例
 
-1.get token
-1.1.password
-	curl -X post -vu mobile-client:123456 http://localhost:8080/oauth/token -d "password=admin&username=user&grant_type=password&scope=write&client_secret=123456&client_id=mobile-client" 
-	or
-	curl -X post -u mobile-client:123456 http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=123456\&grant_type\=password\&scope\=write\&username\=user\&password\=admin
-	or
+### 1.get token
+#### 1.1.password
+	curl -X post -vu mobile-client:mobile http://localhost:8080/oauth/token -d "password=jason&username=jason&grant_type=password&scope=write&client_secret=mobile&client_id=mobile-client" 
+	OR
 	curl mobile-client:mobile@localhost:8080/oauth/token -d grant_type=password -d username=user -d password=admin
+	SSL
+	curl -X post -vku mobile-client:mobile https://localhost:8443/oauth/token -d "password=jason&username=jason&grant_type=password&scope=write&client_secret=mobile&client_id=mobile-client"
 
-1.2.client_credentials
+#### 1.2.client_credentials
 	curl mobile-client:mobile@localhost:8080/oauth/token -d grant_type=client_credentials
 
-1.3.authorization_code
+#### 1.3.authorization_code
 	see https://github.com/nicodewet/template-spring-boot-oauth-server
 	In your browser,
 	http://localhost:8080/oauth/authorize?response_type=code&client_id=api-client&redirect_uri=http://example.com
 	If your grant access, you will be redirected to: http://example.com/?code=OivfyQ
 	curl api-client:api@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=api-client -d redirect_uri=http://example.com -d code=YUQWLH
 
-2.refresh token
+### 2.refresh token
 	curl -X post -u mobile-client:123456 http://localhost:8080/oauth/token\?client_id\=mobile-client\&client_secret\=mobile\&grant_type\=refresh_token\&refresh_token\=a01ea2e2-4af6-4235-9075-c44770ec7bec
 
-3.request resource
+### 3.request resource
 	curl -X get  http://localhost:8080/api/demo\?access_token\=1389178a-db21-43b7-8621-1ef846cb94bb
 	or
 	curl -H "Authorization: bearer [access_token]" localhost:8080/api/demo/1
-	
-4.logout
+
+### 4.logout
 	this request will remove access_token, redirected to http://your.com:
 	curl -H "Authorization: bearer [access_token]" localhost:8080/oauth/logout?next=http://your.com
-		
-5.others
+	
+### 5.others
 	多个scope使用+号
 	scope\=read+write
-
 ```
 
 ## CORS
@@ -160,7 +156,7 @@ mvn clean install
 ## SSL加密（https）
 ```
 生成秘钥方式命令：
-$ keytool -genkey -alias codingera -keyalg RSA -keystore src/main/resources/codingera.keystore
+$ keytool -genkey -alias codingera -keyalg RSA -keystore codingera.keystore
 Enter keystore password: password
 Re-enter new password: password
 
@@ -170,6 +166,20 @@ codingera 公钥；codingera.keystore私钥。
 请求：
 curl -k -X get https://localhost:8080/api/demo/page\?access_token\=dcb3c222-70db-472d-95ad-1645bbb39c24
 使用-k，是不对服务器的证书进行检查，这样就不必关心服务器证书的导出问题了。
+
+配置
+server.port=8443 
+server.ssl.enabled=true
+server.ssl.key-store=classpath:codingera.jwt
+server.ssl.key-store-password=password
+server.ssl.key-password=password
+
+注意：
+1.使用https后端口将改为8443，不再支持http的8080
+2.目前秘钥文件还是放在src/main/resources嵌入jar包，虽然官方不建议这么做，以后再修正！
+3.如果nodejs请求时返回“DEPTH_ZERO_SELF_SIGNED_CERT”记得加上如下参数：
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" 
+// Avoids DEPTH_ZERO_SELF_SIGNED_CERT error for self-signed certs
 ```
 
 ## 数据库配置加密
@@ -209,6 +219,21 @@ demo请参考DemoOpenController.java：
   "data" : "good(from message_en_US.properties)"
 }%
 
+## 权限控制
+### 1 方法认证注解
+配置类 GlobalMethodAuthConfiguration.java
+
+### 2 url访问权限
+配置类 OAuth2CustomResourceConfiguration.java 或者 OAuth2ResourceConfiguration.java
+经测试，在WebSecurityConfiguration.java配置是无效的。
+
+### 3 自定义hasPermission权限表达式
+CustomPermissionEvaluator.java
+在需要使用该表达式的地方配置
+// hasPermission enable
+OAuth2WebSecurityExpressionHandler expressionHandler = new OAuth2WebSecurityExpressionHandler();
+expressionHandler.setPermissionEvaluator(customPermissionEvaluator);
+[httpSecurity].expressionHandler(expressionHandler);
 
 ## 目录结构
 
