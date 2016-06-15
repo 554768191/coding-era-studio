@@ -15,7 +15,7 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
     //搜索
     $scope.onSearch = function(){
         CaseService.getCases(searchOptions).success(function(res){
-             $scope.caseData = res.data;
+            $scope.caseData = res.data;
         });
     };
     $scope.onSearch();

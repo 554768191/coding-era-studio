@@ -8,7 +8,9 @@ angular.module('case').controller('casePublishCtrl',[
         $scope.case = {};
 
         if(!angular.isUndefined($stateParams.caseId)){
-            $scope.case = CaseService.getCaseById($stateParams.caseId);
+             CaseService.getCaseById($stateParams.caseId).success(function (res) {
+                $scope.case = res.data;
+             });
         }
 
         //发布&保存
