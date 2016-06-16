@@ -125,6 +125,16 @@ module.exports = {
 		//callbackURL: "http://localhost:3000/auth/provider/callback",
 		//userInfoURL:"http://www.codingera.com:8080/api/me",
 		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://localhost:3000"
+
+		//test SSL
+		//apiURL: 'https://127.0.0.1:8443/api',
+		//authorizationURL: 'https://127.0.0.1:8443/oauth/authorize',
+		//tokenURL: 'https://127.0.0.1:8443/oauth/token',
+		//clientID: 'api-client',
+		//clientSecret: 'api',
+		//callbackURL: "http://localhost:3000/auth/provider/callback",
+		//userInfoURL:"https://127.0.0.1:8443/api/me",
+		//logoutURL:"https://127.0.0.1:8443/oauth/logout?next=http://localhost:3000"
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || '1132075350@qq.com',
