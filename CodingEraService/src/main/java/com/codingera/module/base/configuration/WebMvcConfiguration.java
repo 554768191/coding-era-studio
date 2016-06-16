@@ -10,10 +10,12 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -31,7 +33,12 @@ import com.codingera.module.base.converter.LocalTimeConverter;
 @Configuration
 //@EnableWebMvc
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
-
+	
+//	@Override
+//	public void addViewControllers(ViewControllerRegistry registry) {
+//		registry.addViewController("/login").setViewName("login");
+//		registry.addViewController("/oauth/confirm_access").setViewName("authorize");
+//	}
 	/**
 	 * Global CORS configuration
 	 * 
@@ -42,10 +49,12 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/api/**")
-				.allowedOrigins("*")
-				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-				.allowedHeaders("Access-Control-Allow-Origin","Authorization", "Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers")
-				.exposedHeaders("Authorization", "Accept").allowCredentials(true).maxAge(3600);
+				.allowedOrigins(CorsConfiguration.ALL)
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+//				.allowedHeaders("Authorization")
+//				.allowedHeaders("Access-Control-Allow-Origin","Authorization", "Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers")
+//				.exposedHeaders("Authorization", "Accept")
+//				.allowCredentials(true).maxAge(3600);
 	}
 
 	/**

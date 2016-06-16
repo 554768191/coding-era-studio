@@ -72,7 +72,7 @@ public class Oauth2MethodAuthTests implements RestTemplateHolder {
 				System.out.println(e.getMessage());
 			}
 	}
-	@Test
+	//@Test
 	@OAuth2ContextConfiguration(MyDetails11.class)
 	public void testHelloOAuth2WithRole2() {
 		ResponseEntity<String> entity = getRestTemplate().getForEntity(host + "/api/article/list", String.class);

@@ -134,6 +134,7 @@
 			<div class="col-sm-12">
 				<div class="login-container">
 					<div class="title"><img src="/temp/logo_64X64_transparent.png" />&nbsp;&nbsp;Coding Era</div>
+					<div class="wrapper">
 					<#if RequestParameters['error']??>
 						<div class="alert alert-danger">
 							无效的登录名或者密码!请重试。
@@ -146,6 +147,7 @@
 							<!-- ${logout!''} -->
 						</div>
 					</#if>
+					</div>
 					<form role="form" action="login" method="post" >
 						
 						<div class="list-group list-group-sm">
