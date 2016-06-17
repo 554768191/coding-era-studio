@@ -111,7 +111,7 @@ angular.module('core')
                 'method':'get',
                 'params':options.data || {}
             };
-            //angular.extend(getOptions.params, {access_token1: token});
+            //angular.extend(getOptions.params, {access_token: token});
             httpHandler(promise,getOptions);
             return promise;
         };

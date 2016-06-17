@@ -1,7 +1,7 @@
 'use strict';
 
 // Authentication service for user variables
-angular.module('user').factory('Authentication', [
+angular.module('core').factory('Authentication', [
 	'$rootScope', '$window', '$log', '$parse',
 	function($rootScope,$window,$log, $parse) {
 
@@ -75,6 +75,6 @@ angular.module('user').factory('Authentication', [
 		}
 	};
 
-	$log.debug("login user", auth);
+	$log.debug("login user", auth.user);
 	return auth;
 }]);
