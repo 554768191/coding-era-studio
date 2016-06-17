@@ -35,9 +35,9 @@ import com.codingera.module.user.service.UserService;
  *
  */
 @Configuration
-//@EnableAuthorizationServer
+@EnableAuthorizationServer
 //@EnableResourceServer
-@Import({AuthorizationServerEndpointsConfiguration.class, OAuth2CustomAuthConfiguration.class, OAuth2CustomResourceConfiguration.class})
+//@Import({AuthorizationServerEndpointsConfiguration.class, OAuth2CustomAuthConfiguration.class, OAuth2CustomResourceConfiguration.class})
 class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
@@ -136,8 +136,8 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 		
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 		
-		//security.allowFormAuthenticationForClients();
-		// security.authenticationEntryPoint(customAuthenticationEntryPoint);
+		// security.allowFormAuthenticationForClients();
+		security.authenticationEntryPoint(customAuthenticationEntryPoint);
 	}
 	
 

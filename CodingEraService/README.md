@@ -93,6 +93,67 @@
 
 # 技术点
 
+## URL
+>服务器对于不同的url请求会有不同的反馈，同一个url使用不同方式请求也会得到不同的结果
+
+WebSecurityConfiguration.java配置
+	1."/", "/user", "/browser/**", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access"
+	浏览器直接访问：
+		以上这些请求会直接跳转登录页面
+	curl测试
+		curl http://localhost:8080/user
+		无任何响应
+	2."/temp/**", "/api/open/**", "/h2-console/**"
+	浏览器直接访问
+	可以直接访问
+	curl测试
+	curl http://localhost:8080/api/open/demo
+	可以直接访问
+	登录状态
+	可以直接访问
+	
+OAuth2ResourceConfiguration.java配置
+	3.“/api/**”
+	浏览器直接访问：
+	无token访问：~xml:Full authentication is required to access this resource~跳转Not Authorized页面
+	无效token访问：~xml:Invalid access token: 0aed7f10-47a2-4216-b39f-631e6754703b~跳转Not Authorized页面
+	curl
+	无token访问：~{"error":"unauthorized","error_description":"Full authentication is required to access this resource"}%~ 	{"result":"fail","data":"Not found"}%
+	无效token访问：~{"error":"invalid_token","error_description":"Invalid access token: 1"}%~ {"result":"fail","data":"Not found"}%
+	
+4.无任何匹配的URL	
+	浏览器直接访问
+	无token访问：~xml:Full authentication is required to access this resource~跳转Not Authorized页面
+	无效token访问：~xml:Invalid access token: 0aed7f10-47a2-4216-b39f-631e6754703b~跳转Not Authorized页面
+	有效token访问：跳转Not found页面
+	curl测试
+	curl http://localhost:8080/api/open/no-this-url
+	无token访问：~{"error":"unauthorized","error_description":"Full authentication is required to access this resource"}%	~ {"result":"fail","data":"Not found"}%
+	无效token访问：~{"error":"invalid_token","error_description":"Invalid access token: 1"}%~ {"result":"fail","data":"Not found"}%
+	有效token访问：~返回Not found页面的代码~ {"result":"fail","data":"Access Denied"}%
+todo
+	oauth返回错误信息格式化（暂时使用customAuthenticationEntryPoint返回一致的信息）
+	oauth返回错误可以根据请求端返回json或者页面 (DONE!)
+	Not found页面可以根据请求端返回json或者页面 (DONE!)
+
+url管理机制解析
+	1.目前的配置是这样的：
+	开放状态
+	"/temp/**", "/api/open/**", "/h2-console/**"
+	WebSecurity	
+	只处理"/", "/user", "/browser/**", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access" 未登录跳转登录页面
+	OAuth2Security	
+	处理剩下所有的请求  无效token：{"result":"fail","data":"Access Denied"}% 
+	2.启用OAuth2ResourceConfiguration.java的OAuthRequestedMatcher
+	开放状态
+	"/temp/**", "/api/open/**", "/h2-console/**"
+	OAuth2Security
+	只处理带token的请求
+	WebSecurity
+	处理剩下所有的请求，如果没有注释"/", "/user", "/browser/**", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access"，
+	将会只处理配置的请求，也就是剩下的请求将处于无认证状态
+	
+		
 ## Oauth2
 
 >请求示例
@@ -192,6 +253,17 @@
 	
 	配置
 	security.oauth2.resource.jwt.key-value=（ a symmetric secret or PEM-encoded RSA public key）
+	
+	返回示例
+	{
+	  "access_token" : "eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0NjYxMTg5MTIsInVzZXJfbmFtZSI6Imphc29uIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImF1dGhvcml0aWVzIjpbIlJPTEVfSkFTT04iLCJST0xFX1VTRVIiXSwiYXVkIjpbIm1vYmlsZS1yZXNvdXJjZSJdLCJqdGkiOiI5MTZhYjIxMS1lNTQ2LTQzNzktODRlYi01OWIyMGUwNzJkYzUiLCJjbGllbnRfaWQiOiJtb2JpbGUtY2xpZW50In0.AiczyRxUAlMHzMXdW3LW9686taus0Fy7VMW8CAMih39gq6JHG9glabqyZ7C6kbCiGiA32KQxSNZw6Hd8_71h97t7OfPr_tkiWoc1VMGcx51aBa_6dYmKFbp4GVgMEPBnQfmHHZnSeVtvYeJx8mKgeeBuVkawX81cPSZYPQ6kS6E",
+	  "token_type" : "bearer",
+	  "refresh_token" : "eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0Njg2Njc3MTIsInVzZXJfbmFtZSI6Imphc29uIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImF1dGhvcml0aWVzIjpbIlJPTEVfSkFTT04iLCJST0xFX1VTRVIiXSwiYXVkIjpbIm1vYmlsZS1yZXNvdXJjZSJdLCJqdGkiOiIyZjRhYzdiOC1iMThhLTRiYTMtOWMzYS0yNjA0YzI1ODUxZTkiLCJjbGllbnRfaWQiOiJtb2JpbGUtY2xpZW50IiwiYXRpIjoiOTE2YWIyMTEtZTU0Ni00Mzc5LTg0ZWItNTliMjBlMDcyZGM1In0.RD8-ddQGLYi92N0g1-Oevou3sq-4MVQciqYuzeL0JhEencoFpbPANUg98qzvZPHk0zZ2aqcr0PtFSUxflJDP6xf_arZLD9TTP15ws16ocgT27omMCP5IODpkaNdTk3Yy1oEGnstvHWEV7mEUvv_YIvLYKrE0tcVFikRvb9Q47NE",
+	  "expires_in" : 43199,
+	  "scope" : "read write",
+	  "jti" : "916ab211-e546-4379-84eb-59b20e072dc5"
+	}%
+	其中jti是该jwt的唯一标识，用于防代入攻击
 
 ## 数据库配置加密
 	把application.properties的spring.datasource.password使用Jasypt加密

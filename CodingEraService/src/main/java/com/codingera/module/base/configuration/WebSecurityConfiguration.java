@@ -16,6 +16,7 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.codingera.module.base.filter.CsrfHeaderFilter;
+import com.codingera.module.base.handler.CustomAuthenticationEntryPoint;
 import com.codingera.module.base.handler.CustomLogoutSuccessHandler;
 import com.codingera.module.user.service.UserService;
 
@@ -25,6 +26,8 @@ import com.codingera.module.user.service.UserService;
 //@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 	@Autowired
 	private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 	@Autowired
@@ -48,21 +51,18 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/oauth/logout"))
 			.logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
 			
+			//这里配置的url要登录认证,即跳转登录页面,无token认证
 		.and()
 			.requestMatchers()
-			
-			//这里配置的url要登录认证,即跳转登录页面,无token认证
 			.antMatchers("/", "/user", "/browser/**", "/login", "/oauth/logout", "/oauth/authorize", "/oauth/confirm_access")
 			.and()
 			.authorizeRequests()
-			
 			// ******************************************************************************************************************
 			// Some browsers like Chrome like to send OPTIONS request to
 			// look for CORS before making AJAX call. Therefore, it is
 			// better to always allow OPTIONS requests.
 			// ******************************************************************************************************************
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
-			
 			.anyRequest().authenticated()
 			
 			//之前加了httpBasic会导致oauth2出错，现在又可以了，暂时不知原因
@@ -74,6 +74,9 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
 			.csrf()
 			.csrfTokenRepository(csrfTokenRepository());
+//		.and()
+//			.exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint);
+		
 	}
 	
 	private CsrfTokenRepository csrfTokenRepository() {
