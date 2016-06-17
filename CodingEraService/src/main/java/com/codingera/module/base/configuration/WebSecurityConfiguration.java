@@ -101,39 +101,5 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-	// ******************************************************************************************************************
-	// WebSecurity认证配置,当前采用的全局认证配置，这段配置暂时保留
-	// ******************************************************************************************************************
-//	@Override
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		// auth.inMemoryAuthentication()
-//		// .withUser("admin").password("admin").roles("ADMIN", "USER")
-//		// .and().withUser("user").password("user").roles("USER");
-//
-//		//auth.parentAuthenticationManager(authenticationManager);
-//		
-//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//	  	auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder);
-//	}
-	
-	// ******************************************************************************************************************
-	// 全局认证配置，目前放到了GlobalAuthConfiguration.java，这段配置暂时保留
-	// ******************************************************************************************************************
-//	@Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder);
-//    }
-	
-	// ******************************************************************************************************************
-	// 全局方法配置，目前放到了GlobalMethodAuthConfiguration.java，这段配置暂时保留
-	// ******************************************************************************************************************
-//	@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true,securedEnabled = true)
-//    public static class GlobalSecurityConfiguration extends GlobalMethodSecurityConfiguration {
-//        @Override
-//        protected MethodSecurityExpressionHandler createExpressionHandler() {
-//            return new OAuth2MethodSecurityExpressionHandler();
-//        }
-//    }
 	
 }

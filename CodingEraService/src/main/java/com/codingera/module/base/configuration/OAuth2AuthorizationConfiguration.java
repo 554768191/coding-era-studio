@@ -66,14 +66,7 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 		jwt.setVerifierKey(key("rsa_public_key.pem"));
 		jwt.afterPropertiesSet();
 		return jwt;
-		
-		//另一种配置方法
-//		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//		KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("codingera.jwt"), "password".toCharArray())
-//				.getKeyPair("codingera");
-//		converter.setKeyPair(keyPair);
-//		return converter;
-		
+
 		//不使用自定义的秘钥也可以
 //		return new JwtAccessTokenConverter();
 	}
@@ -119,12 +112,6 @@ class OAuth2AuthorizationConfiguration extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		// 1.直接在内存配置资源信息
-		// clients.inMemory().withClient(applicationName + "-client")
-		// .authorizedGrantTypes("password", "authorization_code",
-		// "refresh_token")
-		// .authorities("ROLE_USER").scopes("write").resourceIds(applicationName)
-		// .secret("123456");
 
 		// 2.从数据库读取资源信息
 		clients.jdbc(dataSource);
