@@ -21,7 +21,7 @@ angular.module('core').run([
 
         // 将服务注册到拦截器链中
         $httpProvider.interceptors.push('myHttpInterceptor');
-        // 注册一个拦截器服务
+        // 注册一个全局拦截器服务
         $provide.factory('myHttpInterceptor', [
             '$q', '$log', 'Authentication',
             function($q, $log, Authentication) {
@@ -51,21 +51,22 @@ angular.module('core').run([
                         //浏览器报 No 'Access-Control-Allow-Origin' header is present on the requested resource. 的时候获取不到status状态
                         //已经修复,原因是Chrome浏览器在AJAX请求前，会发送OPTIONS请求测试服务器的CORS.已经修改服务器配置
                         // Set the httpProvider "not authorized" interceptor
-                        //                switch (rejection.status) {
-                        //                    case -1:
-                        //                        //$window.location.href = '/auth/provider/refreshToken';
-                        //                        Authentication.user = null;
-                        //                        break;
-                        //                    case 401:
-                        //                        // Deauthenticate the global user
-                        //                        Authentication.user = null;
-                        //                        // Redirect to signin page
-                        //                        $location.path('signin');
-                        //                        break;
-                        //                    case 403:
-                        //                        // Add unauthorized behaviour
-                        //                        break;
-                        //                }
+                        switch (rejection.status) {
+                            case -1:
+                                //$window.location.href = '/auth/provider/refreshToken';
+                                Authentication.user = null;
+                                break;
+                            case 401:
+                                // Deauthenticate the global user
+                                //Authentication.user = null;
+                                // Redirect to signin page
+                                //$location.path('signin');
+
+                                break;
+                            case 403:
+                                // Add unauthorized behaviour
+                                break;
+                        }
                         return $q.reject(rejection);
                     }
                 };

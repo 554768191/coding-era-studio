@@ -10,7 +10,7 @@ angular.module('core')
 
         var SUCCESS = 'success',
             FAIL = 'fail',
-            ceAjaxService = {},
+            ceHttpService = {},
             token = Authentication.user.accessToken || "none";
 
         //异步
@@ -34,25 +34,6 @@ angular.module('core')
                 deferred.reject(res);
             };
             return promise;
-
-            //之前Yan写的low方法,作为反面教材展示
-            //var selfService ={};
-            //selfService.successCallback = null;
-            //selfService.success = function(callback){
-            //    selfService.successCallback =callback;
-            //    return selfService;
-            //};
-            //selfService.errorCallback = null;
-            //selfService.error = function(callback){
-            //    selfService.errorCallback = callback;
-            //    return selfService;
-            //};
-            //selfService.completeCallback = null;
-            //selfService.complete = function(callback){
-            //    selfService.completeCallback = callback;
-            //    return selfService;
-            //};
-            //return selfService;
         };
 
         //$http统一管理方法(post,get等共同调用)
@@ -64,47 +45,29 @@ angular.module('core')
                 //$log.debug('request api success return:', res);
                 ceUtil.loading();
                 if(res && res.result===SUCCESS){
-                    //if(angular.isArray(res.data)){
-                    //    promise.values = [];
-                    //    angular.extend(promise.values,res.data);
-                    //}else{
-                    //    angular.extend(promise,res.data);
-                    //}
-                    //if(angular.isFunction(promise.successCallback)){
-                        return promise.successCallback(res);
-                    //}
+                    return promise.successCallback(res);
                 }
                 if(res && res.result===FAIL){
                     ceUtil.toast(res.data);
                 }
-                //if(typeof promise.errorCallback !== 'undefined'){
-                //    if(angular.isFunction(promise.errorCallback)){
-                        promise.errorCallback(res);
-                //    }
-                //}else{
-                //    ceUtil.toast(res.message);
-                //}
-                //ceUtil.toast('提交失败');
-            }).error(function(res){
-                $log.debug('request api error return:', res);
+                promise.errorCallback(res);
+                ceUtil.toast('提交失败');
+            }).error(function(res, status){
+                $log.debug('request api error return:' + status, res);
                 ceUtil.loading();
-                if(res){
-                    if(res.data){
-                        ceUtil.toast(res.data);
-                        return;
-                    }
-                    if(res.message){
-                        ceUtil.toast(res.message);
-                        return;
-                    }
+                if(res && res.data){
+                    ceUtil.toast(res.data);
+                    return;
+                }
+                if(res && res.message){
+                    ceUtil.toast(res.message);
+                    return;
                 }
                 ceUtil.toast('token过期,或者网络连接异常');//暂时这么写着
             });
         };
 
-
-
-        ceAjaxService.get = function(options){
+        ceHttpService.get = function(options){
             var promise = asyncService();
             var getOptions = {
                 'url':options.url,
@@ -116,7 +79,7 @@ angular.module('core')
             return promise;
         };
 
-        ceAjaxService.post = function(options){
+        ceHttpService.post = function(options){
             var promise = asyncService();
             angular.extend(options, {method:'post'});
             //options.params = {
@@ -126,7 +89,7 @@ angular.module('core')
             return promise;
         };
 
-        ceAjaxService.delete = function(options){
+        ceHttpService.delete = function(options){
             var promise = asyncService();
             var getOptions = {
                 'url':options.url,
@@ -139,5 +102,5 @@ angular.module('core')
         };
 
 
-    return ceAjaxService;
+    return ceHttpService;
 } ]);
