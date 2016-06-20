@@ -1,4 +1,14 @@
 /*By Yan*/
+.about-btn {
+  color: #fff;
+  background: #2c97e8;
+  border-color: #2c97e8;
+  border-radius: 40px;
+  padding: 10px 28px; }
+  .about-btn:hover {
+    background: #43a2eb;
+    border-color: #2c97e8; }
+
 .section-header {
   width: 100%;
   background-size: cover;
@@ -30,3 +40,18 @@
   color: #2c97e8; }
   .section-header-title h1 {
     font-size: 450%; }
+
+.ce-section {
+  padding: 80px 0; }
+  .ce-section .text-detail h2 {
+    font-size: 26px;
+    margin: 0 0 20px -2px;
+    font-weight: 300; }
+  .ce-section .text-detail p {
+    line-height: 50px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 300; }
+  .ce-section .text-icon {
+    font-size: 1600%;
+    line-height: 50px; }

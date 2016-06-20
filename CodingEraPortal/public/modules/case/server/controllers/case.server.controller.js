@@ -20,7 +20,7 @@ exports.getCases = function(req, res, next) {
     if(typeof req.query.tagId != 'undefined'){
         tagId = '?tagId=' + req.query.tagId;
     }
-    
+
     request.get('/case/list' + tagId, function (body) {
         res.render('case/client/views/case',{resultData:body});
     });
