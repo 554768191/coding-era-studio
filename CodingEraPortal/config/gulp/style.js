@@ -9,9 +9,10 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var path = require('path');
 var $ = require('gulp-load-plugins')();
-//var browserSync = require('browser-sync');
-var allAssets = require('./../allAssets');
 var plumber = require('gulp-plumber');
+var config = require('../config');
+var allAssets = config.getAllAssets();
+
 
 //编译sass
 gulp.task('sass', function () {

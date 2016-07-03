@@ -15,7 +15,7 @@
   left: 16px; }
 
 .ce-navbar-main {
-  background: rgba(230, 246, 255, 0.2);
+  background: #E6F6FF;
   border: 0;
   border-bottom: 1px solid rgba(44, 151, 232, 0.1); }
   .ce-navbar-main .navbar-brand {
@@ -29,7 +29,7 @@
   .ce-navbar-main .navbar-toggle:hover {
     background: none; }
   .ce-navbar-main .navbar-collapse {
-    border-color: rgba(210, 226, 235, 0.2); }
+    border-color: #d2e2eb; }
   .ce-navbar-main .navbar-toggle:focus {
     background: none; }
   .ce-navbar-main .navbar-nav > li > a:hover {
@@ -39,8 +39,33 @@
   .ce-navbar-main .navbar-brand:hover {
     color: #2c97e8; }
 
+.ce-navbar-blue {
+  background: #F8FCFF;
+  border: 0;
+  border-bottom: 1px solid rgba(44, 151, 232, 0.1); }
+  .ce-navbar-blue .navbar-brand {
+    color: #2c97e8; }
+  .ce-navbar-blue .navbar-toggle {
+    border-color: #2c97e8; }
+  .ce-navbar-blue .navbar-nav > li > a {
+    color: #2c97e8; }
+  .ce-navbar-blue .navbar-toggle .icon-bar {
+    background-color: #2c97e8; }
+  .ce-navbar-blue .navbar-toggle:hover {
+    background: none; }
+  .ce-navbar-blue .navbar-collapse {
+    border-color: #e4e8eb; }
+  .ce-navbar-blue .navbar-toggle:focus {
+    background: none; }
+  .ce-navbar-blue .navbar-nav > li > a:hover {
+    color: #2c97e8; }
+  .ce-navbar-blue .navbar-nav > li > a:focus {
+    color: #2c97e8; }
+  .ce-navbar-blue .navbar-brand:hover {
+    color: #2c97e8; }
+
 .ce-navbar-green {
-  background: rgba(237, 255, 248, 0.2);
+  background: #FAFFFD;
   border: 0;
   border-bottom: 1px solid rgba(32, 175, 116, 0.1); }
   .ce-navbar-green .navbar-brand {
@@ -54,7 +79,7 @@
   .ce-navbar-green .navbar-toggle:hover {
     background: none; }
   .ce-navbar-green .navbar-collapse {
-    border-color: rgba(217, 235, 228, 0.2); }
+    border-color: #e6ebe9; }
   .ce-navbar-green .navbar-toggle:focus {
     background: none; }
   .ce-navbar-green .navbar-nav > li > a:hover {
@@ -65,7 +90,7 @@
     color: #00B170; }
 
 .ce-navbar-orange {
-  background: rgba(255, 250, 232, 0.2);
+  background: #FFFEFA;
   border: 0;
   border-bottom: 1px solid rgba(243, 157, 28, 0.1); }
   .ce-navbar-orange .navbar-brand {
@@ -79,7 +104,7 @@
   .ce-navbar-orange .navbar-toggle:hover {
     background: none; }
   .ce-navbar-orange .navbar-collapse {
-    border-color: rgba(235, 230, 212, 0.2); }
+    border-color: #ebeae6; }
   .ce-navbar-orange .navbar-toggle:focus {
     background: none; }
   .ce-navbar-orange .navbar-nav > li > a:hover {

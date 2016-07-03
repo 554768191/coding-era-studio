@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-var allAssets = require('./config/allAssets'),
+var allAssets = require('./config/env/allAssets'),
 	chalk = require('chalk');
 
 
@@ -16,11 +16,11 @@ app.listen(allAssets.port);
 //exports = module.exports = app;
 
 // Logging initialization
-console.log('--');
-console.log(chalk.green(' application started'));
+console.log('--------------------------------------------------');
+console.log(chalk.green('Coding Era Portal application started'));
 console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
 console.log(chalk.green('Port:\t\t\t\t' + allAssets.port));
 if (process.env.NODE_ENV === 'secure') {
 	console.log(chalk.green('HTTPs:\t\t\t\ton'));
 }
-console.log('--');
+console.log('--------------------------------------------------');
