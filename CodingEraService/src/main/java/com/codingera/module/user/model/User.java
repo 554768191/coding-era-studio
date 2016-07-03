@@ -65,6 +65,10 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 	
 	@Column(name = "display_name", length = 50)
 	private String displayName;
+	
+	//是否展示到门户
+	@Column(name = "display_portal", length = 50)
+	private Boolean displayPortal;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER)
@@ -258,6 +262,14 @@ public class User extends IdEntity implements UserDetails, Comparable<User> {
 
 	public void setWechat(String wechat) {
 		this.wechat = wechat;
+	}
+
+	public Boolean getDisplayPortal() {
+		return displayPortal;
+	}
+
+	public void setDisplayPortal(Boolean displayPortal) {
+		this.displayPortal = displayPortal;
 	}
 	
 	
