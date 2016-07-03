@@ -6,9 +6,10 @@ var lr = require('tiny-lr');
 var server = lr();
 var $ = require('gulp-load-plugins')();
 var connect = require('gulp-connect');
-
+var plumber = require('gulp-plumber');
 gulp.task('reload-file', function () {
     gulp.src(allAssets.assets.server.views)
+        .pipe(plumber())
         .pipe(connect.reload());
     gulp.watch(allAssets.assets.server.allJs).on('change',function(e){
 

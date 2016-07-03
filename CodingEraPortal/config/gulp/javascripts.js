@@ -7,12 +7,14 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var $ = require('gulp-load-plugins')();
 var allAssets = require('./../allAssets');
+var plumber = require('gulp-plumber');
 
 var assets = _.union(
     allAssets.assets.js
 );
 function buildScripts() {
     return gulp.src(assets) // 要压缩的js文件
+        .pipe(plumber())
         .pipe($.eslint())   // 校验
         .pipe($.eslint.format());
 }
@@ -26,6 +28,7 @@ function buildScripts() {
 gulp.task('scripts-min', function () {
     del(['public/dist/js/*']);// 清空旧文件
     return buildScripts()
+        .pipe(plumber())
         .pipe($.concat('all.js'))
         .pipe($.uglify()) // 压缩
         //.pipe($.rename(function (file) {
@@ -37,6 +40,7 @@ gulp.task('scripts-min', function () {
 //js校验
 gulp.task('jshint', function () {
     return gulp.src(assets)
+        .pipe(plumber())
         .pipe($.jshint())
         .pipe($.jshint.reporter('default'))
         .pipe($.jshint.reporter('fail'));
