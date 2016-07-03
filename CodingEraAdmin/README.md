@@ -80,6 +80,21 @@
     前端使用chrome调试
     不解释
 
+## npm脚本
+    ### npm scripts
+    "scripts": {
+        "start": "NODE_ENV=production node index.js &",
+        "intall-prod":"echo \"npm install --production\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      }
+   使用npm scripts可以自定义简单指令:
+   如上面的"intall-prod"就是自定义的,使用自定义指令方法:# npm run intall-prod
+   "start"是node默认就有的指令,当然也可以像上面一样覆盖,使用的时候简单的:# npm start 就行.
+
+   ### npm install
+   生产上执行需要带上参数--production,如# npm install --production
+   这样就下载package.json的全部依赖,只会下载dependencies的依赖
+
 ## 参考
 
 >END
