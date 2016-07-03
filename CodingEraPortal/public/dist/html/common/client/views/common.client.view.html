@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="description" content="{{description}}">
+
+
+    <!-- Fav Icon -->
+    <link href="/static/image/logo_blue_32X32.ico?v=1.2" rel="shortcut icon" type="image/x-icon">
+
+    <!--Application CSS Files-->
+    {% for cssFile in cssFiles %}
+    <link rel="stylesheet" href="{{cssFile}}">
+    {% endfor %}
+    <script>
+        window.apiURL = '{{apiURL}}';
+    </script>
+</head>
+
+<body class="ce-wrapper-body">
+
+
+
+<!-- content -->
+{% block content %}{% endblock %}
+
+
+
+
+{% for jsFile in jsFiles %}
+<script type="text/javascript" src="{{jsFile}}"></script>
+{% endfor %}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-main',logo:'logo_blue_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron = {title:'Case Detail',subtitle:'作品明细',category:'case'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+<!-- START background -->
+{%set background = {color:'blue2',overlay:true} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+
+<div class="container case-content">
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="case-navi">
+                <ol class="breadcrumb">
+                    <li>当前位置 : <a href="/case">作品列表</a></li>
+                    <li class="active">浏览作品</li>
+                </ol>
+            </div>
+
+            <div class="case-detail">
+
+                <div class="case-detail-padding">
+                    {% if resultData.result != 'success' %}
+                        <div class="server-error-msg text-center"><h4>{{resultData.message}}</h4></div>
+                    {% else %}
+                        <div class="page-header detail-title">
+                            <h2 class="hidden-xs">{{resultData.data.title}}</h2>
+                            <h5 class="visible-xs-block">{{resultData.data.title}}</h5>
+                            <div class="detail-subtitle">
+                                发布日期:{{resultData.data.createdTime | date('Y-m-d')}} 标签:
+                                {% for tags in resultData.data.tags %}
+                                {{tags.name}} {% if !loop.last %},{% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="detail-content">
+                            {% autoescape %}
+                            {{resultData.data.htmlContent}}
+                            {% endautoescape %}
+                        </div>
+                    {% endif %}
+
+                </div>
+                <!-- v1.1 完成
+                <div class="detail-bottom">
+                    <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
+                    <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+
+        <div class="col-md-4 hidden-xs" >
+            <div class="case-tags">
+                <h4>标签</h4>
+                <div class="tags">
+                    <div class="tag-loading">
+                        <span class="glyphicon glyphicon-refresh auto-rotate" aria-hidden="true"></span>
+                    </div>
+                    <ul>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<!-- START footer -->
+{%set footer ={color:'blue'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+{% endblock %}

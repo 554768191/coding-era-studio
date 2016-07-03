@@ -1,0 +1,104 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-main',logo:'logo_blue_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron = {title:'Case',subtitle:'作品展示',category:'case'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+<!-- START background -->
+{%set background = {color:'blue2',overlay:true} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+
+<div class="container case-content">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+
+            {% if resultData.result == 'success' %}
+                {% for caseObject in resultData.data.content %}
+                <div class="case-card"> <!-- case-card -->
+                    <div class="case-padding">
+                        <div class="top">
+                            <div class="title"><a href="/case/detail">
+                                <a href="/case/{{caseObject.id}}">
+                                <h2 class="hidden-xs">{{caseObject.title}}</h2>
+                                <h4 class="visible-xs-block">{{caseObject.title}}</h4>
+                                </a>
+                            </a></div>
+                            <div class="subtitle">
+                                {% for tags in caseObject.tags %}
+                                {{tags.name}} {% if !loop.last %},{% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="pic"><a href="/case/{{caseObject.id}}"><img src="{{caseObject.bannerUrl}}"></a></div>
+                            <div class="summary"><a href="/case/{{caseObject.id}}">{{caseObject.summary | default(' (╯﹏╰）文案准备中...')}}</a></div>
+                        </div>
+                    </div>
+                    <!-- v1.1 完成
+                    <div class="bottom">
+                        <div class="bottom-card"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 340 </div>
+                        <div class="bottom-card"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52 </div>
+                        <div class="bottom-card"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 255 </div>
+                    </div>
+                    -->
+                </div><!-- case-card -->
+                {% endfor %}
+
+            <div class="case-page">
+                <nav>
+                    <ul class="pager">
+                        {% if !resultData.data.first %}
+                            <li class="previous page-btn"><a href="#">上一页</a></li>
+                        {% endif %}
+                        {% if !resultData.data.last %}
+                            <li class="next page-btn"><a href="#">下一页</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+            {% endif %}
+            {% if resultData.result != 'success' %}
+            <div class="server-error-msg text-center"><h4>{{resultData.message}}</h4></div>
+            {% endif %}
+
+
+
+
+
+
+        </div>
+
+        <div class="col-md-4 hidden-xs" >
+            <div class="case-tags">
+                <h4>标签</h4>
+                <div class="tags">
+                    <div class="tag-loading">
+                        <span class="glyphicon glyphicon-refresh auto-rotate" aria-hidden="true"></span>
+                    </div>
+                    <ul>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'blue'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+{% endblock %}

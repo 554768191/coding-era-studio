@@ -1,0 +1,95 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-orange',logo:'logo_org_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron = {title:'Contact',subtitle:'联系我们',category:'contact'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+<!-- START background -->
+{%set background = {color:'orange',overlay:true} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+<div class="container contact-content">
+    <div class="row">
+
+        {% if resultData.result == 'success' %}
+        {% for userObject in resultData.data.content %}
+        <div class="col-xs-12 col-md-6">
+            <div class="contact-card"><!-- contact-card -->
+                <div class="contact-padding">
+                    <div class="top">
+                        <div class="avatar"><img src="{{userObject.avatar | default('/static/image/logo_64X64.png') }}" /></div>
+                        <div class="name">{{userObject.displayName}}</div>
+                        <div class="stateMessage">{{userObject.intro | default('这家伙很懒,什么都没留下 ! ')}}</div>
+                    </div>
+                    <div class="center">
+                        <h6>简介</h6>
+                        <div class="detail">
+                            <p>{{userObject.summary | default('这家伙很懒,什么都没留下 ! ')}}</p>
+                        </div>
+                    </div>
+                    <div class="bottom hidden-xs">
+                        <div class="tag">
+                            <h6>Tag</h6>
+                            <div class="tags">
+                                <ul>
+                                {% if userObject.userProfileTags.length > 0 %}
+                                    {% for tags in userObject.userProfileTags %}
+                                    <li>{{tags.name}}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>无标签</li>
+                                {% endif %}
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="contact">
+                   <div class="contacts"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{userObject.email | default('保密')}} </div>
+                   <div class="contacts"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{userObject.phone | default('保密')}} </div>
+                </div>
+
+            </div><!-- contact-card -->
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if resultData.result != 'success' %}
+        <div class="server-error-msg text-center"><h4>{{resultData.message}}</h4></div>
+        {% endif %}
+
+        <div class="col-xs-12 col-md-6">
+            <div class="contact-card"><!-- contact-card -->
+                <div class="contact-padding">
+                   <div class="welcome-msg">
+                       <span class="glyphicon glyphicon-envelope question" aria-hidden="true"></span>
+                       追求技术的你 ! 欢迎加入我们 !
+                   </div>
+                </div>
+                <div class="contact">
+                    <div class="contacts"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> CodingEraStudio@foxmail.com </div>
+                </div>
+
+            </div><!-- contact-card -->
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'orange'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+{% endblock %}

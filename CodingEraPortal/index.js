@@ -17,7 +17,7 @@ app.listen(allAssets.port);
 
 // Logging initialization
 console.log('--');
-console.log(chalk.green(allAssets.app.title + ' application started'));
+console.log(chalk.green(' application started'));
 console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
 console.log(chalk.green('Port:\t\t\t\t' + allAssets.port));
 if (process.env.NODE_ENV === 'secure') {
