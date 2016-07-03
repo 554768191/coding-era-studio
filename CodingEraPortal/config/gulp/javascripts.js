@@ -6,14 +6,18 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var del = require('del');
 var $ = require('gulp-load-plugins')();
-var config = require('../config');
 var plumber = require('gulp-plumber');
 
-var assets = _.union(
-    config.getJavaScriptAssets(),
-    config.getCSSAssets()
+var allAssets = _.extend(
+    require('../env/development')
 );
+
+var assets = _.union(
+    allAssets.assets.js
+);
+
 function buildScripts() {
+    console.log('assets',assets);
     return gulp.src(assets) // 要压缩的js文件
         .pipe(plumber())
         .pipe($.eslint())   // 校验
@@ -28,6 +32,7 @@ gulp.task('scripts-min', function () {
         .pipe(plumber())
         .pipe($.concat('all.js'))
         .pipe($.uglify()) // 压缩
+        .pipe($.rename({suffix: '.min'}))
         .pipe(gulp.dest('public/dist/js')); //压缩后的路径
 });
 
