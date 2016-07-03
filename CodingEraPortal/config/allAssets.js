@@ -29,6 +29,8 @@ module.exports = {
         },
         sass:['public/modules/**/client/scss/*.scss'],
         css: ['public/modules/**/client/css/*.css'],
+        //生成上使用
+        //css: ['public/dist/css/*.css'],
         js: [
             'public/modules/**/client/controllers/*.js',
             'public/modules/*/*[!tests]*/*.js'
