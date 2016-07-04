@@ -95,6 +95,53 @@
    生产上执行需要带上参数--production,如# npm install --production
    这样就下载package.json的全部依赖,只会下载dependencies的依赖
 
+## ceAdmin权限指令
+    ### 1.UI控件显示控制
+    #### 1.1 指令控制
+        <li ce-secured="hasPermission('article','read')">1111</li>
+        <li ce-secured="!hasPermission('article','read')">2222</li>
+
+    #### 1.2目录显示控制
+        angular.module('demo')
+        .run(['Menus',
+        function(Menus) {
+        //DEMO
+        var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',
+        roles:'JASON',
+        //secured:"hasPermission('article','read')",
+        //secured:"hasRole('JASON')",
+        route:'demoManage'});
+        demoMenu.setOrder(9999);
+        Menus.addMenus(demoMenu.getMenus());
+        }
+        ])；
+
+    ### 2. 路由上的权限访问控制
+        $stateProvider
+        .state('usersManage', {
+        url: '/user',
+        templateUrl: 'modules/user/views/user-manage.client.view.html',
+        controller: 'usersManageCtrl',
+        secured:"hasPermission('article','read')"
+        })
+
+>参看：http://www.open-open.com/lib/view/open1408084201582.html
+
+    ### 3.代码判断
+        var hasPermission = Authentication.checkPermission(expression);
+        if(hasPermission){
+            element.show();
+        }else{
+            element.remove();
+        }
+        权限判断的代码都统一在core-authentication.client.service.js管理
+
+## 指令
+    ### 返回按钮指令
+    如果是弹窗的会就会关闭弹窗
+    如果是ui-view的话就是返回上一页
+    用法:<button class="btn btn-default" type="button" ce-on-cancel-click>确定</button>
+
 ## 参考
 
 >END
