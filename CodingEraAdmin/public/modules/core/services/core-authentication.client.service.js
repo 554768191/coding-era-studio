@@ -106,7 +106,6 @@ angular.module('core').factory('Authentication', [
 						};
 						$scope.ok = function(){
 							$uibModalInstance.close();
-							successCallback();
 						};
 					}
 				]
