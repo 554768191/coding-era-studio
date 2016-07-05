@@ -23,8 +23,9 @@
                 <div class="form-group">
                     <label for="displayName">昵称</label>
                     <input type="text" id="displayName" name="displayName" class="form-control "
-                           ng-model="user.displayName" placeholder="Display Name">
+                           ng-model="user.displayName" placeholder="Display Name" ng-disabled="isGuest">
                     <span  class="help-block">此「 昵称 」将会使用在文章,作品等地方展示</span>
+                    <span  class="help-block" ng-show="isGuest"><p class="text-danger">体验用户,除了「 昵称,标签 」不能改,其余都可以</p></span>
                 </div>
 
                 <div class="form-group">
@@ -58,7 +59,7 @@
                 </div>
                 <div class="form-group" ng-if="!isCreate">
                     <label >个性标签</label>
-                    <ui-select multiple tagging="tagTransform" tagging-label="(按'回车'录入自定义标签)" theme="bootstrap"  ng-model="user.userProfileTags" sortable="true">
+                    <ui-select multiple tagging="tagTransform" tagging-label="(按'回车'录入自定义标签)" theme="bootstrap"  ng-model="user.userProfileTags" sortable="true" ng-disabled="isGuest">
                         <ui-select-match placeholder="请选择标签...">
                             {{$item.name}}
                         </ui-select-match>
@@ -68,6 +69,7 @@
                         </ui-select-choices>
                     </ui-select>
                     <span  class="help-block">可以直接输入自定义标签回车</span>
+                    <span  class="help-block" ng-show="isGuest"><p class="text-danger">体验用户,除了「 昵称,标签 」不能改,其余都可以</p></span>
                 </div>
                 <div class="form-group">
                     <label for="summary">个性签名</label>

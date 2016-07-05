@@ -4,9 +4,8 @@
 "use strict";
 
 angular.module('core')
-    .factory('Menus', [
-        'Authentication',
-        function(Authentication) {
+    .factory('Menus', ['$injector',
+        function($injector) {
             var items=[];
             var service={};
 
@@ -19,6 +18,7 @@ angular.module('core')
                     return true;
                 }
                 //存在roles属性则优先校验
+                var Authentication = $injector.get("Authentication");
                 if(this.roles) {
                     return Authentication.hasRole(this.roles);
                 }

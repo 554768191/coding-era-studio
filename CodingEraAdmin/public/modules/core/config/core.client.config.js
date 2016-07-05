@@ -23,14 +23,15 @@ angular.module('core').run([
         $httpProvider.interceptors.push('myHttpInterceptor');
         // 注册一个全局拦截器服务
         $provide.factory('myHttpInterceptor', [
-            '$q', '$log', 'Authentication',
-            function($q, $log, Authentication) {
+            '$q', '$log','$injector',
+            function($q, $log,$injector) {
                 return {
                     'request': function(config) {
                         //$log.debug('request', config);
                         // 请求成功后处理
 
                         //TODO Jason 还没有加弹性配置token
+                        var Authentication = $injector.get('Authentication');
                         var token = Authentication.user.accessToken || "none";
                         config.headers.Authorization = 'Bearer ' + token;
                         return config;
@@ -54,6 +55,7 @@ angular.module('core').run([
                         switch (rejection.status) {
                             case -1:
                                 //$window.location.href = '/auth/provider/refreshToken';
+                                var Authentication = $injector.get('Authentication');
                                 Authentication.user = null;
                                 break;
                             case 401:

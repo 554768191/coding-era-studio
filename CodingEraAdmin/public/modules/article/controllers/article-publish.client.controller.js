@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('article').controller('articlePublishCtrl',[
-    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil','TagService','$resource',
-function ($scope, $log,$state,$stateParams,ArticleService,ceUtil,TagService,$resource){
+    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil','TagService','Authentication',
+function ($scope, $log,$state,$stateParams,ArticleService,ceUtil,TagService,Authentication){
 
 
     $scope.article = {};
@@ -16,9 +16,13 @@ function ($scope, $log,$state,$stateParams,ArticleService,ceUtil,TagService,$res
     //发布&保存
     $scope.onPublishClick = function(status){
         $scope.article.status = status;
-        ArticleService.saveArticle($scope.article).success(function(res){
-            ceUtil.toast('发布成功');
-            $state.go('articleManage.list',{status:status});
+
+        //如果是体验用户,提示用户没有权限,不隐藏按钮(一切为了展示)
+        Authentication.isNotGuest(function(){
+            ArticleService.saveArticle($scope.article).success(function(res){
+                ceUtil.toast('发布成功');
+                $state.go('articleManage.list',{status:status});
+            });
         });
     };
 

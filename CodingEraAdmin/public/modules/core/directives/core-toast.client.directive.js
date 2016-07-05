@@ -11,7 +11,6 @@ angular.module('core')
             replace:true,
             scope:true,
             link: function(scope, el, attrs) {
-                //菜单宽度
 
                 $rootScope.$on('showToast', function(event,message) {
                     scope.message = message;

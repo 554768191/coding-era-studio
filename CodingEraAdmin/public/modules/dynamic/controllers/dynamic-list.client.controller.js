@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('dynamic').controller('dynamicListCtrl', [
-    '$scope', '$log','$state','$stateParams', 'DynamicService', 'ceUtil',
-    function ($scope, $log,$state,$stateParams, DynamicService, ceUtil) {
+    '$scope', '$log','$state','$stateParams', 'DynamicService', 'ceUtil','Authentication',
+    function ($scope, $log,$state,$stateParams, DynamicService, ceUtil,Authentication) {
 
         $scope.dynamicData = {};
         $scope.status = $stateParams.status;
@@ -34,9 +34,11 @@ angular.module('dynamic').controller('dynamicListCtrl', [
         //删除记录
         $scope.onDeleteClick = function(obj){
             ceUtil.confirmMessage('确认删除?').success(function(){
-                DynamicService.deleteDynamic({id:obj.id}).success(function(){
-                    ceUtil.toast('删除成功');
-                    $scope.onSearch();
+                Authentication.isNotGuest(function(){
+                    DynamicService.deleteDynamic({id:obj.id}).success(function(){
+                        ceUtil.toast('删除成功');
+                        $scope.onSearch();
+                    });
                 });
             });
         };

@@ -7,9 +7,10 @@ angular.module('demo')
     function(Menus) {
         //DEMO
         var demoMenu=Menus.genMenu({name:'DEMO',subTitle:'Coding Era Studio 各种指令展示',icon:'sunglasses',
-            roles:'JASON',
+            //roles:'JASON',
             //secured:"hasPermission('article','read')",
             //secured:"hasRole('JASON')",
+            secured:"hasPermission('demo','read')",
             route:'demoManage'});
         demoMenu.setOrder(9999);
         Menus.addMenus(demoMenu.getMenus());

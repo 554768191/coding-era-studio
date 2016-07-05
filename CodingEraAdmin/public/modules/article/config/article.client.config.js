@@ -5,7 +5,13 @@
 angular.module('case')
     .run(['Menus',
     function(Menus) {
-        var articleMenu = Menus.genMenu({name: '文章',subTitle:'网站的所有文案管理', icon: 'file',route:'articleManage'});
+        var articleMenu = Menus.genMenu({
+            name: '文章',
+            subTitle:'网站的所有文案管理',
+            icon: 'file',
+            route:'articleManage',
+            secured:'hasPermission("article","read")'
+        });
         articleMenu.setOrder(1);
         Menus.addMenus(articleMenu.getMenus());
     }
@@ -17,17 +23,20 @@ angular.module('case')
             .state('articleManage', {
                 url: '/article',
                 templateUrl: 'modules/article/views/article-manage.client.view.html',
-                controller:'articleManageCtrl'
+                controller:'articleManageCtrl',
+                secured:'hasPermission("article","read")'
             })
             .state('articleManage.list', {
                 url: '/list?:status',
                 templateUrl: 'modules/article/views/article-list.client.view.html',
-                controller:'articleListCtrl'
+                controller:'articleListCtrl',
+                secured:'hasPermission("article","read")'
             })
             .state('articleManage.publish', {
                 url: '/publish?:articleId',
                 templateUrl: 'modules/article/views/article-publish.client.view.html',
-                controller:'articlePublishCtrl'
+                controller:'articlePublishCtrl',
+                secured:'hasPermission("article","read")'
             });
 
     }

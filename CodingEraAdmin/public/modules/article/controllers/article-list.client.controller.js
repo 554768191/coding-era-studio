@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('article').controller('articleListCtrl',[
-    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil',
-function ($scope, $log,$state,$stateParams,ArticleService,ceUtil){
+    '$scope','$log','$state','$stateParams','ArticleService', 'ceUtil','Authentication',
+function ($scope, $log,$state,$stateParams,ArticleService,ceUtil,Authentication){
 
 
     $scope.articleData = {};
@@ -30,12 +30,18 @@ function ($scope, $log,$state,$stateParams,ArticleService,ceUtil){
 
     //删除记录
     $scope.onDeleteClick = function(obj){
+        var isGuest = Authentication.isGuest();
+
         ceUtil.confirmMessage('确认删除?').success(function(){
-            ArticleService.deleteArticle({id:obj.id}).success(function(){
-                ceUtil.toast('删除成功');
-                $scope.onSearch();
+            Authentication.isNotGuest(function(){
+                ArticleService.deleteArticle({id:obj.id}).success(function(){
+                    ceUtil.toast('删除成功');
+                    $scope.onSearch();
+                });
             });
         });
+
+
     };
 
     //上一页

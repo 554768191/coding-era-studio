@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('case').controller('tagListCtrl', [
-    '$scope', '$log', '$state', '$stateParams', '$uibModal', 'path', 'TagService', 'ceUtil',
-    function ($scope, $log, $state, $stateParams, $uibModal, path, TagService, ceUtil) {
+    '$scope', '$log', '$state', '$stateParams', '$uibModal', 'path', 'TagService', 'ceUtil','Authentication',
+    function ($scope, $log, $state, $stateParams, $uibModal, path, TagService, ceUtil,Authentication) {
 
         $scope.jsonData = {};
         $scope.key = 'title';
@@ -50,20 +50,22 @@ angular.module('case').controller('tagListCtrl', [
         $scope.onDeleteClick = function (obj,$event) {
             $event.stopPropagation();
             ceUtil.confirmMessage('确认删除?').success(function () {
-                TagService.deleteTag({id: obj.id}).success(function () {
-                    ceUtil.toast('删除成功');
-                    angular.forEach($scope.jsonData.content,function(data,index){
-                        if(data.id === obj.id){
-                            $scope.jsonData.content.splice(index,1);
-                        }
-                    });
-                    //fix 删除分页的bug,删一个 load 一个出来 (其实是load之前所加载所有数据)
-                    var size = ((searchOptions.page +1) * searchOptions.size);
-                    TagService.getTags({page:0,size:size ,status:$stateParams.status}).success(function (res) {
-                        angular.extend($scope.jsonData.content,res.data.content);
-                        $scope.jsonData.last = res.data.last;
-                    });
+                Authentication.isNotGuest(function(){
+                    TagService.deleteTag({id: obj.id}).success(function () {
+                        ceUtil.toast('删除成功');
+                        angular.forEach($scope.jsonData.content,function(data,index){
+                            if(data.id === obj.id){
+                                $scope.jsonData.content.splice(index,1);
+                            }
+                        });
+                        //fix 删除分页的bug,删一个 load 一个出来 (其实是load之前所加载所有数据)
+                        var size = ((searchOptions.page +1) * searchOptions.size);
+                        TagService.getTags({page:0,size:size ,status:$stateParams.status}).success(function (res) {
+                            angular.extend($scope.jsonData.content,res.data.content);
+                            $scope.jsonData.last = res.data.last;
+                        });
 
+                    });
                 });
             });
         };

@@ -5,10 +5,12 @@
 
 angular.module('core')
     .factory('ceUtil', [
-        '$rootScope', '$q', '$templateCache', '$uibModal', '$state', 'ceConfig', 'Authentication',
-        function ($rootScope, $q, $templateCache, $uibModal, $state, ceConfig, Authentication) {
+        '$rootScope', '$q', '$templateCache'  ,'$injector', 'ceConfig',
+        function ($rootScope, $q, $templateCache,$injector, ceConfig) {
 
         var service = {};
+
+
 
         //弹出消息(默认5秒自动关闭)
         service.toast = function (message){
@@ -26,7 +28,7 @@ angular.module('core')
                 successCallback =callback;
                 return self;
             };
-
+            var $uibModal = $injector.get('$uibModal');
             var modalInstance = $uibModal.open({
                 animation: true,
                 size:'sm',
@@ -114,10 +116,12 @@ angular.module('core')
             if(angular.isUndefined(options.route)){
                 throw new Error( errorPrefix + ', 缺失 route 参数!');
             }
+            var $state = $injector.get('$state');
             var stateParameter = $state.get(options.route);
 
             // 路由权限访问控制
             var expression = stateParameter.secured;
+            var Authentication = $injector.get('Authentication');
             var hasPermission = Authentication.checkPermission(expression);
             if(!hasPermission){
                 stateParameter = $state.get('unauthorized');
@@ -134,6 +138,7 @@ angular.module('core')
                 }
             };
             angular.extend(option,options);
+            var $uibModal = $injector.get('$uibModal');
             var modalInstance = $uibModal.open(option);
 
             var deferred = $q.defer();

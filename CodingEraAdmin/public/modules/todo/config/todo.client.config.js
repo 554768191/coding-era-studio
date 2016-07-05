@@ -5,7 +5,13 @@
 angular.module('todo').run(['Menus',
     function (Menus) {
         // Menus.addMenus();
-        var parentMenus = Menus.genMenu({name:'JASON的基地', icon:'check', isPublic:false, roles:'JASON',route:"jason"});
+        var parentMenus = Menus.genMenu({
+            name:'JASON的基地',
+            icon:'check',
+            isPublic:false,
+            route:"jason",
+            secured:"hasPermission('demo','read')",
+        });
         //var jason1 = Menus.genNodeMenus({name:'TODO', icon:'tasks', route:'todo', isPublic:true});
         //var jason2 = Menus.genNodeMenus({name:'GitHub Search', icon:'search', route:'search'});
         //var jason3 = Menus.genNodeMenus({name:'计时器', icon:'time', route:'timer'});

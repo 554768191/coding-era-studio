@@ -6,7 +6,13 @@ angular.module('dynamic')
     .run(['Menus',
     function(Menus) {
 
-        var dynamicMenu = Menus.genMenu({name: '动态',subTitle: '发布 Coding Era Studio 编码时代工作室动态', icon: 'globe', route: 'dynamicManage'});
+        var dynamicMenu = Menus.genMenu({
+            name: '动态',
+            subTitle: '发布 Coding Era Studio 编码时代工作室动态',
+            icon: 'globe',
+            route: 'dynamicManage',
+            secured:'hasPermission("dynamic","read")'
+        });
         dynamicMenu.setOrder(4);
         Menus.addMenus(dynamicMenu.getMenus());
     }
@@ -18,17 +24,20 @@ angular.module('dynamic')
             .state('dynamicManage', {
                 url: '/dynamic',
                 templateUrl: 'modules/dynamic/views/dynamic-manage.client.view.html',
-                controller:'dynamicManageCtrl'
+                controller:'dynamicManageCtrl',
+                secured:'hasPermission("dynamic","read")'
             })
             .state('dynamicManage.edit', {
                 url: '/edit?:dynamicId',
                 templateUrl: 'modules/dynamic/views/dynamic-edit.client.view.html',
-                controller:'dynamicEditCtrl'
+                controller:'dynamicEditCtrl',
+                secured:'hasPermission("dynamic","read")'
             })
             .state('dynamicManage.list', {
                 url: '/list?:status',
                 templateUrl: 'modules/dynamic/views/dynamic-list.client.view.html',
-                controller:'dynamicListCtrl'
+                controller:'dynamicListCtrl',
+                secured:'hasPermission("dynamic","read")'
             });
 
     }
