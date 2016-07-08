@@ -38,14 +38,14 @@ public class CommentRepositoryImpl implements CommentRepositoryCustom {
 
 	@Override
 	public List<Comment> findCommentsByCriteria(CommentQueryCriteria criteria) {
-		
+
 		JpaCriteria jpaCriteria = new JpaCriteria("Comment d");
 //		jpaCriteria.add(new OrCriterion(
-//				CriterionUtils.contains("d.name", criteria.getKeyWord(), true), 
+//				CriterionUtils.contains("d.name", criteria.getKeyWord(), true),
 //				CriterionUtils.contains("d.remark", criteria.getKeyWord(), true)));
 		jpaCriteria.setSortBy("d.id desc");
-		QueryResult queryResult = JpaQueryUtils.query(em, jpaCriteria, criteria);
-		return queryResult.getResultObject();
+		QueryResult<?> queryResult = JpaQueryUtils.query(em, jpaCriteria, criteria);
+		return (List<Comment>) queryResult.getResultObject();
 	}
 
 }
