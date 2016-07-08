@@ -66,7 +66,7 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated()
 			
 			//之前加了httpBasic会导致oauth2出错，现在又可以了，暂时不知原因
-		.and().httpBasic()
+//		.and().httpBasic()
 		
 			// 后台只是提供简单的API服务，没有jsp之类的，如果不是有个login页面，csrf可以禁用的
 			// .and().csrf().disable();
