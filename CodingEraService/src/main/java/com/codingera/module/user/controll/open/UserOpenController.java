@@ -77,7 +77,7 @@ public class UserOpenController {
 		return new ActionResult(ActionResult.RESULT_SUCCESS, user);
 	}
 	@RequestMapping(value = "/password", params="action=saveToken", method = RequestMethod.POST)
-	public ActionResult saveUserResetPasswordToken(UserResetPasswordToken resetToken) {
+	public ActionResult saveUserResetPasswordToken(@ModelAttribute UserResetPasswordToken resetToken) {
 		UserView view = null;
 		User user = userService.saveUserResetPasswordToken(resetToken);
 		if(user != null){

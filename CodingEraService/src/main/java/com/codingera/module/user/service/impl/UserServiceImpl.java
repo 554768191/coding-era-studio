@@ -224,7 +224,7 @@ public class UserServiceImpl implements UserService {
 		Assert.hasText(username, "用户名为空");
 		User user = this.getUserByUserName(username);
 		Assert.notNull(user, "找不到用户名：" + username);
-		user.setPassword(encodePassword(user.getPassword()));
+		user.setPassword(encodePassword(resetToken.getNewPassword()));
 		return userRepository.save(user);
 	}
 
