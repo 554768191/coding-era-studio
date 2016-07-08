@@ -145,5 +145,7 @@
     用法:<button class="btn btn-default" type="button" ce-on-cancel-click>确定</button>
 
 ## 参考
+   [SlickGrid emo] https://github.com/mleibman/SlickGrid/wiki/Examples
+   [icons] http://fontawesome.io/icons/
 
 >END
