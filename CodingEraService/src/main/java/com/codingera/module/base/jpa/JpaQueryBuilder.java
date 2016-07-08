@@ -12,7 +12,7 @@ public class JpaQueryBuilder {
 
 	private StringBuffer queryBuffer = new StringBuffer();
 	
-	private List parameters = new ArrayList();
+	private List<Object> parameters = new ArrayList<Object>();
 	
 	private boolean whereStarted = false;
 	
@@ -49,7 +49,7 @@ public class JpaQueryBuilder {
 				parameters.add(Array.get(parameter, i));
 			}
 		}else if(parameter instanceof Collection) {
-			for(Object p : ((Collection)parameter)) {
+			for(Object p : ((Collection<?>)parameter)) {
 				parameters.add(p);
 			}
 		}else {

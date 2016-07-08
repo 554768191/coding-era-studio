@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public class QueryResult<T extends List> implements Serializable {
+public class QueryResult<T extends List<?>> implements Serializable {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 560557210261222313L;
 
 	private QueryCriteria queryCriteria;
 	

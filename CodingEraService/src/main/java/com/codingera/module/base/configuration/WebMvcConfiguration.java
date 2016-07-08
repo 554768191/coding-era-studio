@@ -10,7 +10,10 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -24,13 +27,32 @@ import com.codingera.module.base.converter.LocalTimeConverter;
  * 
  * @author JasonWoo
  * 
- * 请注意：开启注解@EnableWebMvc后，WebMvcAutoConfiguration中配置就不会生效，你需要自己来配置需要的每一项。
+ * 请注意：
+ * 开启注解@EnableWebMvc后，WebMvcAutoConfiguration中配置就不会生效，你需要自己来配置需要的每一项。
  * 
  */
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
+	/**
+	 * Global CORS configuration
+	 * 
+	 * As of version 4.2, Spring MVC supports CORS out of the box. Using
+	 * controller method CORS configuration with @CrossOrigin annotations in
+	 * your Spring Boot application does not require any specific configuration.
+	 */
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/api/**")
+				.allowedOrigins(CorsConfiguration.ALL)
+				.allowedMethods("*")
+//				.allowedHeaders("Authorization")
+				.allowedHeaders("Access-Control-Allow-Origin","Authorization", "Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers")
+//				.exposedHeaders("Authorization", "Accept")
+				.allowCredentials(true).maxAge(3600);
+	}
+	
 	/**
 	 * @see http 
 	 *      ://www.petrikainulainen.net/programming/spring-framework/spring-from
