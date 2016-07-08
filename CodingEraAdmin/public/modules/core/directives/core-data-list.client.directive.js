@@ -21,7 +21,7 @@ angular.module('core')
 
                                 '<div class="ce-data-data-empty" ng-if="ceData.totalElements == 0"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 目前没有数据  </div>',
                                 '<div class="row data-row-container" >',
-                                    '<div class="col-xs-12"  ng-class="{\'col-sm-12\':!smallSize,\'col-sm-6\':smallSize}" ng-repeat="item in ceData.content">',
+                                    '<div class="col-xs-12"  ng-class="{\'col-md-12\':!smallSize,\'col-md-6\':smallSize}" ng-repeat="item in ceData.content">',
                                         '<div class="ce-data-preview" ce-index="$index" ng-model="item" ng-transclude>',
                                         '</div>',
                                     '</div>',

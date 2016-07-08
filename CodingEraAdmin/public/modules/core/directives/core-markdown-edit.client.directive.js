@@ -187,6 +187,8 @@ angular.module('core').config([
 
                     //粘贴图片
                     $scope.uploadImage = function($files){
+                        console.log($files);
+
                         readBlobAsDataURL($files[0], function (dataurl){
 
                             var replacements=[];
