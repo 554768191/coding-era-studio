@@ -23,13 +23,13 @@ angular.module('dynamic').controller('dynamicEditCtrl', [
 
         //发布&保存
         $scope.onPublishClick = function () {
+            Authentication.isNotGuest(function(){
+                DynamicService.save($scope.dynamic).success(function (res) {
+                    ceUtil.toast('发布成功');
+                    $uibModalInstance.close(res.data);
 
-            DynamicService.save($scope.dynamic).success(function (res) {
-                ceUtil.toast('发布成功');
-                $uibModalInstance.close(res.data);
-
+                });
             });
-
         };
 
 

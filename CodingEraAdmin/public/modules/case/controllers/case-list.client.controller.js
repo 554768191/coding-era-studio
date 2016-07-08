@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('case').controller('caseListCtrl',[
-    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil',
-function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
+    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil','Authentication',
+function ($scope, $log,$state,$stateParams,CaseService,ceUtil,Authentication){
 
 
     $scope.caseData = {};
@@ -27,10 +27,13 @@ function ($scope, $log,$state,$stateParams,CaseService,ceUtil){
 
     //删除记录
     $scope.onDeleteClick = function(obj){
+        var isGuest = Authentication.isGuest();
         ceUtil.confirmMessage('确认删除?').success(function(){
-            CaseService.deleteCase({id:obj.id}).success(function(){
-                ceUtil.toast('删除成功');
-                $scope.onSearch();
+            Authentication.isNotGuest(function(){
+                CaseService.deleteCase({id:obj.id}).success(function(){
+                    ceUtil.toast('删除成功');
+                    $scope.onSearch();
+                });
             });
         });
     };

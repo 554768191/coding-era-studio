@@ -1,0 +1,126 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-green',logo:'logo_green_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron ={title:'Dynamic',subtitle:'Coding Era Studio 最新动态',category:'dynamic'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+
+<!-- START background -->
+{%set background = {color:'green',overlay:true} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+
+
+<div class="container dynamic-content">
+    <div class="dynamic-line">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-8">
+                <div class="point-container"><!-- dynamic-card -->
+                    <div class="point-start">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    </div>
+                </div><!-- dynamic-card -->
+
+
+                {% if resultData.result == 'success' %}
+                    {% for dynamic in resultData.data.content %}
+
+
+                        <div class="dynamic-card"><!-- dynamic-card -->
+                            <div class="point"></div>
+                            <div class="triangle-left-border"></div>
+                            <div class="triangle-left"></div>
+                            <div class="card-detail">
+                                <div class="top">
+                                    <div class="avatar"><img src="{{dynamic.createdUser.avatar}}" /></div>
+                                    <div class="name">{{dynamic.createdUser.displayName | default('管理员')}}</div>
+                                    <div class="time" name="dynamic-time-{{dynamic.id}}" data-timer="0" data-time="{{dynamic.createdTime}}"></div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="content">
+                                        {{dynamic.content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- dynamic-card -->
+
+                    {% endfor %}
+                {% endif %}
+
+                {% if resultData.result != 'success' %}
+                    <div class="dynamic-card"><!-- dynamic-card -->
+                        <div class="point-start"></div>
+                        <div class="triangle-left-border"></div>
+                        <div class="triangle-left"></div>
+                        <div class="card-detail">
+                            <div class="top">
+                                <div class="avatar"><img src="/static/image/logo_64X64.png" /></div>
+                                <div class="name">管理员</div>
+                                <div class="time">现在</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="content">
+                                    Sorry,服务器失联了,请稍后再试 o(╯□╰)o
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- dynamic-card -->
+                {% endif %}
+
+
+                <div class="point-container point-end-container"><!-- dynamic-card -->
+                    <input type="hidden" id="dynamic-size" value="{{resultData.data.size}}">
+                    {% if !resultData.data.last %}
+                    <div class="point-end hand" data-page="{{resultData.data.number}}">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </div>
+                    {% endif %}
+                    {% if resultData.data.last %}
+                    <div class="point-end">
+                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                    </div>
+                    {% endif %}
+                </div><!-- dynamic-card -->
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script id="dynamic-card-template" type="text/html">
+    <div class="dynamic-card"><!-- dynamic-card -->
+        <div class="point"></div>
+        <div class="triangle-left-border"></div>
+        <div class="triangle-left"></div>
+        <div class="card-detail">
+        <div class="top">
+        <div class="avatar"><img src="<%= dynamic.createdUser.avatar %>" /></div>
+        <div class="name"><%= dynamic.createdUser.username %></div>
+        <div class="time" name="dynamic-time-<%= dynamic.id %>" data-timer="0" data-time="<%= dynamic.createdTime %>"></div>
+        </div>
+        <div class="bottom">
+                <div class="content">
+                    <%= dynamic.content %>
+        </div>
+        </div>
+        </div>
+    </div><!-- dynamic-card -->
+</script>
+
+<!-- START footer -->
+{%set footer ={color:'green'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+
+{% endblock %}

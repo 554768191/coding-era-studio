@@ -12,9 +12,9 @@ var glob = require('glob');
 
 var resolvingConfig = function() {
     var conf = {};
-
     conf = _.extend(
-        require('./allAssets')
+        require('./env/allAssets'),
+        require('./env/' + process.env.NODE_ENV) || {}
     );
 
     return conf;
@@ -77,3 +77,7 @@ module.exports.getCSSAssets = function() {
     var output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.css), 'public');
     return output;
 };
+
+module.exports.getAllAssets = function(){
+    return this;
+}

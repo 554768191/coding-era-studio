@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('case').controller('casePublishCtrl',[
-    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil','TagService','$resource',
-    function ($scope, $log,$state,$stateParams,CaseService,ceUtil,TagService,$resource){
+    '$scope','$log','$state','$stateParams','CaseService', 'ceUtil','TagService','Authentication',
+    function ($scope, $log,$state,$stateParams,CaseService,ceUtil,TagService,Authentication){
 
 
         $scope.case = {};
@@ -16,10 +16,13 @@ angular.module('case').controller('casePublishCtrl',[
         //发布&保存
         $scope.onPublishClick = function(status){
             $scope.case.status = status;
-            CaseService.saveCase($scope.case).success(function(res){
-                ceUtil.toast('发布成功');
-                $state.go('caseManage.list',{status:status});
+            Authentication.isNotGuest(function(){
+                CaseService.saveCase($scope.case).success(function(res){
+                    ceUtil.toast('发布成功');
+                    $state.go('caseManage.list',{status:status});
+                });
             });
+
         };
 
         //录入新标签事件

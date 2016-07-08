@@ -1,0 +1,120 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-main',logo:'logo_blue_ts_64.png'} only %}
+<!-- END   navi -->
+
+<div class="ce-blue-background">
+    <div class="gearbox">
+        <div class="gear one">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="gear two">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="gear three">
+            <div class="gear-inner">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-header">
+    <div class="container">
+        <!-- 大标题 -->
+        <div class="row">
+            <div class="col-xs-12 visible-xs-block">
+                <div class="section-header-sm-title">
+                    <h1> Coding Era </h1>
+                </div>
+            </div>
+            <div class="col-xs-12 hidden-xs">
+                <div class="section-header-title">
+                    <h1> Coding Era </h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="section-header-subTitle">
+                    以创新、技术和时尚为生命意义的工作室，专研尖端技术和世界时尚风潮的前线!
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="section-header-button">
+                    <a href="/about" class="btn btn-primary btn-lg about-btn"> 了解我们 </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-team ">
+    <div class="container">
+        <!-- 大标题 -->
+        <div class="row ce-section">
+            <div class="col-sm-5 col-md-offset-1">
+                <div class="text-detail">
+                    <h2>不同平台,同样精彩</h2>
+                    <p>
+                    <p>触及视觉灵魂的设计趋势、精心布局的用户体验、毫无顾忌地通过任何终端、呈现在客户的眼前、Html5 + CSS3 响应式布局，因为高端，所以出众 !
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 text-icon text-center">
+                <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+            </div>
+        </div>
+
+        <div class="row ce-section">
+            <div class="col-sm-5 col-md-offset-1 text-icon text-center">
+                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+            </div>
+            <div class="col-sm-6">
+                <div class="text-detail">
+                    <h2>省事、省时、省力</h2>
+                    <p>
+                        我们提供完整的开发文档，各种新潮技术集成，即可拥有一个成熟、稳定的后端系统。超出想象的工具，大幅降低你的开发和运维成本，助你打造更好的用户体验，在市场竞争中快人一步。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ce-section">
+            <div class="col-sm-5 col-md-offset-1">
+                <div class="text-detail">
+                    <h2>编码时代工作室</h2>
+                    <p>
+                    <p>登上峰顶，不是为了饱览风光，是为了寻找更高的山峰<br>日出东方，告别了昨天的荣耀，将光芒照向更远的地方<br>一路上，我们更在意如何积累和沉淀
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 text-icon text-center">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'blue'} %}
+{% include '../../../common/client/views/footer.client.view.html'  with footer only %}
+<!-- END   footer -->
+
+{% endblock %}

@@ -9,13 +9,16 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var path = require('path');
 var $ = require('gulp-load-plugins')();
-//var browserSync = require('browser-sync');
-var allAssets = require('./../allAssets');
+var plumber = require('gulp-plumber');
+var config = require('../config');
+var allAssets = config.getAllAssets();
+
 
 //编译sass
 gulp.task('sass', function () {
     del([_.replace(allAssets.assets.css, '.css', '')]);// 清空旧文件
     return gulp.src(allAssets.assets.sass)
+        .pipe(plumber())
         .pipe($.sass())
         .pipe($.rename(function (file) {
             file.dirname = file.dirname.replace(path.sep + 'scss', path.sep + 'css');
@@ -27,6 +30,7 @@ gulp.task('sass', function () {
 //CSS校验
 gulp.task('csslint', function (done) {
     return gulp.src(allAssets.assets.css)
+        .pipe(plumber())
         .pipe($.csslint('.csslintrc'))
         .pipe($.csslint.reporter())
         .pipe($.csslint.reporter(function (file) {
@@ -40,6 +44,7 @@ gulp.task('csslint', function (done) {
 gulp.task('css-min', function (done) {
     del(['public/dist/css/*']);// 清空旧文件
     return gulp.src(allAssets.assets.css)
+        .pipe(plumber())
         .pipe($.concat('all.css'))
         .pipe($.cssmin())
         .pipe($.rename({suffix: '.min'}))

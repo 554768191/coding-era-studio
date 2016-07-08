@@ -75,9 +75,9 @@ module.exports = {
 	},
 	codingera: {
 		//prod
-		apiURL: 'http://www.codingera.com:8080/api',
-		authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
-		tokenURL: 'http://www.codingera.com:8080/oauth/token',
+		apiURL: 'http://ws.codingera.com/api',
+		authorizationURL: 'http://ws.codingera.com/oauth/authorize',
+		tokenURL: 'http://ws.codingera.com/oauth/token',
 		clientID: 'api-client',
 		clientSecret: 'api',
 		callbackURL: "http://www.codingera.com:3000/auth/provider/callback",
@@ -93,6 +93,9 @@ module.exports = {
 		//callbackURL: "http://localhost:3000/auth/provider/callback",
 		//userInfoURL:"http://www.codingera.com:8080/api/me",
 		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://localhost:3000"
+		callbackURL: "http://admin.codingera.com/auth/provider/callback",
+		userInfoURL:"http://ws.codingera.com/api/me",
+		logoutURL:"http://ws.codingera.com/oauth/logout?next=http://admin.codingera.com"
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || '1132075350@qq.com',

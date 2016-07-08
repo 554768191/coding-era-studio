@@ -1,0 +1,61 @@
+{% extends '../../../common/client/views/common.client.view.html' %}
+{% block content %}
+
+<!-- START navi -->
+{% include '../../../common/client/views/header.client.view.html' with {clazz:'ce-navbar-gray',logo:'logo_dark_ts_64.png'} only %}
+<!-- END   navi -->
+
+<!-- START jumbotron -->
+{%set jumbotron ={title:'About',subtitle:'关于我们',category:'about'} %}
+{% include '../../../common/client/views/jumbotron.client.view.html' with jumbotron only %}
+<!-- END   jumbotron -->
+
+
+
+<!-- START background -->
+{%set background = {color:'gray',overlay:false} %}
+{% include '../../../common/client/views/background.client.view.html' with background only %}
+<!-- END   background -->
+
+
+
+<div class="container about-content">
+    <div class="row">
+
+        <div class="col-md-12 hidden-xs abount-padding">
+            {% if resultData.result == 'success' %}
+            <h3>
+                {{resultData.data.title}}
+            </h3>
+                {% autoescape %}
+                    {{resultData.data.htmlContent}}
+                {% endautoescape %}
+            {% endif %}
+
+            {% if resultData.result != 'success' %}
+                {{resultData.message}}
+            {% endif %}
+        </div>
+
+        <div class="col-xs-12 visible-xs">
+            {% if resultData.result == 'success' %}
+            {% autoescape %}
+            {{resultData.data.htmlContent}}
+            {% endautoescape %}
+            {% endif %}
+
+            {% if resultData.result != 'success' %}
+            {{resultData.message}}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+<!-- START footer -->
+{%set footer ={color:'gray'} %}
+{% include '../../../common/client/views/footer.client.view.html' with footer only %}
+<!-- END   footer -->
+
+{% endblock %}

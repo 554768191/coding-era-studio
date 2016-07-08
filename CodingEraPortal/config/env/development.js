@@ -5,13 +5,6 @@
 'use strict';
 
 module.exports = {
-    app: {
-        title: 'Coding Era - 编码时代工作室',
-        description: 'Coding Era工作室',
-        keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
-    },
-    port: 5000,
-    templateEngine: 'swig',
     apiURL:'http://localhost:8080/api/open',
     assets: {
         lib: {

@@ -37,6 +37,7 @@ public class UserOpenController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ActionResult getUserList(Pageable pr, @ModelAttribute UserQueryCriteria criteria) {
+		criteria.setDisplayPortal(true);//只获取门户展示用户
 		Page<User> pages = userService.findUsersByCriteria(pr, criteria);
 		return new ActionResult(ActionResult.RESULT_SUCCESS, pages);
 	}

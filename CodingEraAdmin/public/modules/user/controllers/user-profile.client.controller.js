@@ -5,6 +5,7 @@ angular.module('user').controller('UserProfileController', [
     function ($scope, $http, $window, $location, $stateParams, UserService, UserTagService , Authentication,ceUtil) {
 
         var that = $scope;
+        $scope.isGuest = Authentication.isGuest();
 
         that.loadData = function () {
             if ($stateParams.username) {

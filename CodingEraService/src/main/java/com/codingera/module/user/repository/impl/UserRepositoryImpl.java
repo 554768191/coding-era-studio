@@ -24,6 +24,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 	public Page<User> findByCriteria(Pageable pg, UserQueryCriteria criteria) {
 		JpaCriteria s = new JpaCriteria("User u");
 		s.add(new OrCriterion(CriterionUtils.contains("u.username", criteria.getKeyWord(), true)));
+		s.add(CriterionUtils.equals("u.displayPortal", criteria.getDisplayPortal(), true));
 		return JpaQueryUtils.query(em, s, pg);
 	}
 

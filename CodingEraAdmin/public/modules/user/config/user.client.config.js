@@ -5,7 +5,11 @@ angular.module('user').run([
     'Menus',
     function (Menus) {
         var userMenu = Menus.genMenu({
-            name:'管理', subTitle:'管理后台设置', icon:'cog', route: 'usersManage'
+            name:'管理',
+            subTitle:'管理后台设置',
+            icon:'cog',
+            route: 'usersManage',
+            secured:'hasPermission("user","read")'
         });
         userMenu.setOrder(99);
         Menus.addMenus(userMenu.getMenus());
@@ -19,7 +23,8 @@ angular.module('user').run([
             .state('usersManage', {
                 url: '/user',
                 templateUrl: 'modules/user/views/user-manage.client.view.html',
-                controller: 'usersManageCtrl'
+                controller: 'usersManageCtrl',
+                secured:'hasPermission("user","read")'
             })
             .state('usersManage.list', {
                 url: '/list?:status',

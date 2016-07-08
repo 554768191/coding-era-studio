@@ -4,7 +4,7 @@
 "use strict";
 
 var gulp = require('gulp');
-var allAssets = require('./../allAssets');
+var allAssets = require('./../env/allAssets');
 var chalk = require('chalk');
 var $ = require('gulp-load-plugins')();
 var _ = require('lodash');
@@ -18,7 +18,7 @@ gulp.task('server', function () {
     app.listen(allAssets.port);
 
     console.log('--');
-    console.log(chalk.green(allAssets.app.title + ' application started'));
+    console.log(chalk.green('application started'));
     console.log(chalk.green('Port:\t\t\t\t' + allAssets.port));
     console.log('--');
 });

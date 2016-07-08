@@ -10,7 +10,6 @@ var runSequence = require('run-sequence');
 gulp.task('dev', function (done) {
     process.env.NODE_ENV = 'development';
     runSequence('sass', 'csslint', 'jshint', ['server','watch'], done);
-    //runSequence('lint','server','watch', done);
 });
 
 //生产模式
