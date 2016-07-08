@@ -58,6 +58,9 @@ $case-color-border:rgba(44,151,232,.1);
         .subtitle{
           color:#888;
           padding:5px 0 10px 0;
+          overflow:hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
         }
       }
       .content{
@@ -197,7 +200,7 @@ $case-color-border:rgba(44,151,232,.1);
     }
 
     .detail-content{
-
+      line-height: 2.2em;
       img{
         width:100%;
         margin:10px 0;

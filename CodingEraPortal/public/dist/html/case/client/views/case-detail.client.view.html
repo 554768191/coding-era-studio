@@ -35,9 +35,9 @@
                     {% else %}
                         <div class="page-header detail-title">
                             <h2 class="hidden-xs">{{resultData.data.title}}</h2>
-                            <h5 class="visible-xs-block">{{resultData.data.title}}</h5>
+                            <h3 class="visible-xs-block">{{resultData.data.title}}</h3>
                             <div class="detail-subtitle">
-                                发布日期:{{resultData.data.createdTime | date('Y-m-d')}} 标签:
+                                <span class="hidden-xs">发布日期:{{resultData.data.createdTime | date('Y-m-d')}}</span> 标签:
                                 {% for tags in resultData.data.tags %}
                                 {{tags.name}} {% if !loop.last %},{% endif %}
                                 {% endfor %}

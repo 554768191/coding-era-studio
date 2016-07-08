@@ -17,7 +17,6 @@ var caseController = (function(){
                 type:'get',
                 dataType:'json',
                 success:function(res){
-                    console.log(res);
                     var node = '';
                     for(var i=0; i < res.data.content.length ; i++ ){
                         var data = res.data.content[i];
