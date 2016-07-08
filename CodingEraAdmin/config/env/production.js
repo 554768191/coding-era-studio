@@ -82,7 +82,7 @@ module.exports = {
 		clientSecret: 'api',
 		callbackURL: "http://www.codingera.com:3000/auth/provider/callback",
 		userInfoURL:"http://www.codingera.com:8080/api/me",
-		logoutURL:"http://www.codingera.com:8080/oauth/logout?next=www.codingera.com:3000"
+		logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://www.codingera.com:3000"
 
 		// test remote api
 		//apiURL: 'http://www.codingera.com:8080/api',
