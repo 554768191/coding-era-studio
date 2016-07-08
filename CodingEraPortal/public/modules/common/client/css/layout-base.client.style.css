@@ -18,7 +18,12 @@ body {
   left: 0;
   bottom: 0; }
   .ce-blue-background .overlay {
-    background: linear-gradient(to bottom, #fff, rgba(23, 158, 211, 0));
+    background: -webkit-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -moz-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -ms-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -o-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, rgba(230, 246, 255, 0.3)));
     height: 400px;
     width: 100%;
     position: absolute;
@@ -57,7 +62,12 @@ body {
   left: 0;
   bottom: 0; }
   .ce-blue2-background .overlay {
-    background: linear-gradient(to bottom, #fff, rgba(23, 158, 211, 0));
+    background: -webkit-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -moz-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -ms-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -o-linear-gradient(to bottom, #fff, #e6f6ff);
+    background: linear-gradient(to bottom, #fff, #e6f6ff);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, rgba(230, 246, 255, 0.3)));
     height: 400px;
     width: 100%;
     position: absolute;
@@ -96,7 +106,12 @@ body {
   left: 0;
   bottom: 0; }
   .ce-green-background .overlay {
-    background: linear-gradient(to bottom, #fff, rgba(23, 158, 211, 0));
+    background: -webkit-linear-gradient(to bottom, #fff, #e8fff6);
+    background: -moz-linear-gradient(to bottom, #fff, #e8fff6);
+    background: -ms-linear-gradient(to bottom, #fff, #e8fff6);
+    background: -o-linear-gradient(to bottom, #fff, #e8fff6);
+    background: linear-gradient(to bottom, #fff, #e8fff6);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, rgba(232, 255, 246, 0.3)));
     height: 400px;
     width: 100%;
     position: absolute;
@@ -135,7 +150,12 @@ body {
   left: 0;
   bottom: 0; }
   .ce-orange-background .overlay {
-    background: linear-gradient(to bottom, #fff, rgba(23, 158, 211, 0));
+    background: -webkit-linear-gradient(to bottom, #fff, #fffae8);
+    background: -moz-linear-gradient(to bottom, #fff, #fffae8);
+    background: -ms-linear-gradient(to bottom, #fff, #fffae8);
+    background: -o-linear-gradient(to bottom, #fff, #fffae8);
+    background: linear-gradient(to bottom, #fff, #fffae8);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, rgba(255, 250, 232, 0.3)));
     height: 400px;
     width: 100%;
     position: absolute;
@@ -174,7 +194,12 @@ body {
   left: 0;
   bottom: 0; }
   .ce-gray-background .overlay {
-    background: linear-gradient(to bottom, #fff, rgba(23, 158, 211, 0));
+    background: -webkit-linear-gradient(to bottom, #fff, #fff);
+    background: -moz-linear-gradient(to bottom, #fff, #fff);
+    background: -ms-linear-gradient(to bottom, #fff, #fff);
+    background: -o-linear-gradient(to bottom, #fff, #fff);
+    background: linear-gradient(to bottom, #fff, #fff);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, rgba(255, 255, 255, 0.3)));
     height: 400px;
     width: 100%;
     position: absolute;

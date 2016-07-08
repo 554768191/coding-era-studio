@@ -31,7 +31,6 @@
     text-align: center; }
 
 .section-team {
-  padding-top: 150px;
   color: #2c97e8; }
 
 .section-header-title {
@@ -40,6 +39,13 @@
   color: #2c97e8; }
   .section-header-title h1 {
     font-size: 450%; }
+
+.section-header-xs-title {
+  padding-top: 50px;
+  text-align: center;
+  color: #2c97e8; }
+  .section-header-xs-title h1 {
+    font-size: 300%; }
 
 .ce-section {
   padding: 80px 0; }
@@ -57,3 +63,5 @@
     line-height: 50px; }
   .ce-section .image-icon {
     max-width: 226px; }
+  .ce-section .xs-margin {
+    margin-bottom: 50px; }

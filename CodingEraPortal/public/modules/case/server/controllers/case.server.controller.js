@@ -29,9 +29,7 @@ exports.getCases = function(req, res, next) {
 
 exports.getCaseDetail = function(req, res, next) {
     var caseId = req.params.id;
-    console.log('caseId',caseId);
     request.get('/case/'+caseId, function (body) {
-        console.log('/case/:id,request',body);
         res.render('case/client/views/case-detail',{resultData:body});
     });
 

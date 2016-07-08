@@ -46,7 +46,6 @@
 
 
 .section-team{
-  padding-top:150px;
   color: $ce-color;
 }
 
@@ -57,6 +56,15 @@
   color:$ce-color;
   h1{
     font-size:450%;
+  }
+}
+
+.section-header-xs-title{
+  padding-top:50px;
+  text-align: center;
+  color:$ce-color;
+  h1{
+    font-size:300%;
   }
 }
 
@@ -83,6 +91,9 @@
   }
   .image-icon{
     max-width: 226px;
+  }
+  .xs-margin{
+    margin-bottom:50px;
   }
 }
 
