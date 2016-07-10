@@ -48,6 +48,8 @@
     ```
 
 ## 4.生产
+    执行命令 gulp prod 生成dist文件
+
     app目录:
     上传CodingEraAdmin/app所有
     config目录:
@@ -55,7 +57,7 @@
     不要CodingEraAdmin/config/gulp
     public目录:
     上传CodingEraAdmin/public/dist所有
-    创建空文件夹modules,被dist/html下全部文件移到modules下
+    创建空文件夹modules,将dist/html下全部文件移到modules下
     其他:
     不要test目录
     不要gulpfile.js
@@ -143,5 +145,7 @@
     用法:<button class="btn btn-default" type="button" ce-on-cancel-click>确定</button>
 
 ## 参考
+   [SlickGrid emo] https://github.com/mleibman/SlickGrid/wiki/Examples
+   [icons] http://fontawesome.io/icons/
 
 >END

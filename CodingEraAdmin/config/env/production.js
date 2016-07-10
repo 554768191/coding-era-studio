@@ -83,16 +83,6 @@ module.exports = {
 		callbackURL: "http://admin.codingera.com/auth/provider/callback",
 		userInfoURL:"http://ws.codingera.com/api/me",
 		logoutURL:"http://ws.codingera.com/oauth/logout?next=http://admin.codingera.com"
-
-		// test remote api
-		//apiURL: 'http://www.codingera.com:8080/api',
-		//authorizationURL: 'http://www.codingera.com:8080/oauth/authorize',
-		//tokenURL: 'http://www.codingera.com:8080/oauth/token',
-		//clientID: 'api-client',
-		//clientSecret: 'api',
-		//callbackURL: "http://localhost:3000/auth/provider/callback",
-		//userInfoURL:"http://www.codingera.com:8080/api/me",
-		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://localhost:3000"
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || '1132075350@qq.com',

@@ -47,8 +47,8 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addMapping("/api/**")
 				.allowedOrigins(CorsConfiguration.ALL)
 				.allowedMethods("*")
-//				.allowedHeaders("Authorization")
 				.allowedHeaders("Access-Control-Allow-Origin","Authorization", "Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers")
+//				.allowedHeaders("Origin, X-Requested-With, Content-Type, Accept, Key, Authorization")
 //				.exposedHeaders("Authorization", "Accept")
 				.allowCredentials(true).maxAge(3600);
 	}

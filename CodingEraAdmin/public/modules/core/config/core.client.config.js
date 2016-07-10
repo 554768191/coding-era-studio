@@ -55,8 +55,8 @@ angular.module('core').run([
                         switch (rejection.status) {
                             case -1:
                                 //$window.location.href = '/auth/provider/refreshToken';
-                                var Authentication = $injector.get('Authentication');
-                                Authentication.user = null;
+                                //var Authentication = $injector.get('Authentication');
+                                //Authentication.user = null;
                                 break;
                             case 401:
                                 // Deauthenticate the global user

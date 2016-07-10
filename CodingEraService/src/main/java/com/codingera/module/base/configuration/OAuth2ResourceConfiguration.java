@@ -41,7 +41,7 @@ public class OAuth2ResourceConfiguration extends ResourceServerConfigurerAdapter
 	private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 	@Autowired
 	private CustomPermissionEvaluator customPermissionEvaluator;
-	
+
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		super.configure(http);
