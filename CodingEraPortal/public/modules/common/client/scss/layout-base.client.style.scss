@@ -12,6 +12,7 @@ body{
 }
 $gear-color:#d9f0ff ;
 $gear-centent-color:#e6f6ff;
+:root {filter:none;}
 @mixin ce-background($name,$backgroundColor,$gear-color:darken($backgroundColor,5%)){
   .ce-#{$name}-background {
     background: $backgroundColor;
@@ -26,8 +27,10 @@ $gear-centent-color:#e6f6ff;
     .overlay{
       @include ce-common-value('background',linear-gradient(to bottom,#fff,$backgroundColor));
       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,rgba($backgroundColor,.3)));
+      filter: alpha(opacity=80),progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#{$backgroundColor});
+      //filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=.3);
       //background: linear-gradient(to bottom,#fff,rgba(23,158,211,0));
-      height: 400px;
+      height: 500px;
       width:100%;
       position: absolute;
       top:0;
@@ -213,6 +216,15 @@ $gear-centent-color:#e6f6ff;
   }
 }
 
+@keyframes clockwise {
+  0% {
+    @include ce-common('transform',rotate(0deg));
+  }
+
+  100% {
+    @include ce-common('transform',rotate(360deg));
+  }
+}
 
 @-webkit-keyframes clockwise {
   0% {
@@ -232,6 +244,18 @@ $gear-centent-color:#e6f6ff;
     @include ce-common('transform',rotate(360deg));
   }
 }
+
+
+@keyframes counter-clockwise {
+  0% {
+    @include ce-common('transform',rotate(0deg));
+  }
+
+  100% {
+    @include ce-common('transform',rotate(-360deg));
+  }
+}
+
 @-webkit-keyframes counter-clockwise {
   0% {
     @include ce-common('transform',rotate(0deg));

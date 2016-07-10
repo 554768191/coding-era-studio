@@ -34,3 +34,10 @@ exports.getCaseDetail = function(req, res, next) {
     });
 
 };
+
+exports.getTags = function(req, res, next) {
+    request.get('/tag', function (body) {
+        res.json(body);
+    });
+
+};

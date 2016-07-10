@@ -10,10 +10,17 @@ var caseController = (function(){
         //判断是否当前页面
         var container  = $('.case-content');
         var tagContainer = $('.tags ul');
-        if(container.length > 0){
 
+        if(container.length > 0){
+            getData();
+
+
+        }
+
+        function getData(){
+            //jQuery.support.cors = true;
             $.ajax({
-                url: window.apiURL + '/tag',
+                url: '/tag',
                 type:'get',
                 dataType:'json',
                 success:function(res){
@@ -25,11 +32,11 @@ var caseController = (function(){
                     }
                     tagContainer.append(node);
                 },
-                complete:function(){
+                complete:function(res){
+                    console.log(JSON.stringify(res));
                     $('.tag-loading').hide();
                 }
             });
-
         }
 
     };

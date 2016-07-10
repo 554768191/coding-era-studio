@@ -7,6 +7,7 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="keywords" content="{{keywords}}">
@@ -15,6 +16,7 @@
 
     <!-- Fav Icon -->
     <link href="/static/image/logo_blue_32X32.ico?v=1.2" rel="shortcut icon" type="image/x-icon">
+
 
     <!--Application CSS Files-->
     {% for cssFile in cssFiles %}
@@ -26,7 +28,15 @@
 </head>
 
 <body class="ce-wrapper-body">
-
+<!--[if lt IE 9]>
+<section class="browsehappy jumbotron hide ">
+    <h1 class="text-center">你好!</h1>
+    <p class="text-center">你正在使用一个比较旧的浏览器(IE9版本以下),为了WEB的长远发展,我们建议升级你的浏览器</p>
+    <p class="text-center">(本站使用当今比较流行框架,和CSS3,请多多支持)</p>
+    <p class="text-center">请 <a href="http://browsehappy.com/">点击这里</a> 升级你的浏览器后回来浏览本站</p>
+    <p class="text-center"><a href="http://browsehappy.com" class="btn btn-primary btn-lg" role="button">好的, 升级我的浏览器!</a></p>
+</section>
+<![endif]-->
 
 
 <!-- content -->

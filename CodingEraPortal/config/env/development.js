@@ -17,7 +17,8 @@ module.exports = {
                 //debug(生产时,记得换非debug的包)
                 'public/components/artTemplate/dist/template-native-debug.js',
                 //moment时间插件
-                'public/components/moment/min/moment.min.js'
+                'public/components/moment/min/moment.min.js',
+                'public/components/jquery-transport-xdr/dist/jquery.transport.xdr.min.js'
             ]
         },
         sass:['public/modules/**/client/scss/*.scss'],

@@ -10,4 +10,5 @@ module.exports = function(app) {
     var caseController = commonUtil.getControllerByName('case');
     app.route('/case').get(caseController.getCases);
     app.route('/case/:id').get(caseController.getCaseDetail);
+    app.route('/tag').get(caseController.getTags);
 };
