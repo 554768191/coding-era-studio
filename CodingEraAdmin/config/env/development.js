@@ -107,14 +107,14 @@ module.exports = {
 	},
 	codingera: {
 
-		apiURL: 'http://localhost:8080/api',
-		authorizationURL: 'http://localhost:8080/oauth/authorize',
-		tokenURL: 'http://localhost:8080/oauth/token',
+		apiURL: 'http://192.168.31.139:8080/api',
+		authorizationURL: 'http://192.168.31.139:8080/oauth/authorize',
+		tokenURL: 'http://192.168.31.139:8080/oauth/token',
 		clientID: 'api-client',
 		clientSecret: 'api',
-		callbackURL: "http://localhost:3000/auth/provider/callback",
-		userInfoURL:"http://localhost:8080/api/me",
-		logoutURL:"http://localhost:8080/oauth/logout?next=http://localhost:3000"
+		callbackURL: "http://192.168.31.139:3000/auth/provider/callback",
+		userInfoURL:"http://192.168.31.139:8080/api/me",
+		logoutURL:"http://192.168.31.139:8080/oauth/logout?next=http://192.168.31.139:3000"
 
 		//test remote api
 		//apiURL: 'http://www.codingera.com:8080/api',
@@ -122,9 +122,9 @@ module.exports = {
 		//tokenURL: 'http://www.codingera.com:8080/oauth/token',
 		//clientID: 'api-client',
 		//clientSecret: 'api',
-		//callbackURL: "http://localhost:3000/auth/provider/callback",
+		//callbackURL: "http://192.168.31.139:3000/auth/provider/callback",
 		//userInfoURL:"http://www.codingera.com:8080/api/me",
-		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://localhost:3000"
+		//logoutURL:"http://www.codingera.com:8080/oauth/logout?next=http://192.168.31.139:3000"
 
 		//test SSL
 		//apiURL: 'https://127.0.0.1:8443/api',
@@ -132,9 +132,9 @@ module.exports = {
 		//tokenURL: 'https://127.0.0.1:8443/oauth/token',
 		//clientID: 'api-client',
 		//clientSecret: 'api',
-		//callbackURL: "http://localhost:3000/auth/provider/callback",
+		//callbackURL: "http://192.168.31.139:3000/auth/provider/callback",
 		//userInfoURL:"https://127.0.0.1:8443/api/me",
-		//logoutURL:"https://127.0.0.1:8443/oauth/logout?next=http://localhost:3000"
+		//logoutURL:"https://127.0.0.1:8443/oauth/logout?next=http://192.168.31.139:3000"
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || '1132075350@qq.com',

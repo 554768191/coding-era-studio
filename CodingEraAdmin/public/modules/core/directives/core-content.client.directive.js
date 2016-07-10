@@ -13,7 +13,7 @@ angular.module('core')
                     '<div class="ce-content-head"  >',
                         '<div class="ce-side-head">',
                             '<div class="ce-logo " tooltip-placement="right"  uib-tooltip-template="\'logoText.html\'">',
-                            '<div class="animated" ng-class="{tada:onAnimated,swing:!onAnimated}" ng-click="onAnimated=!onAnimated">',
+                            '<div class="animated"  >',
                             '<img   src="/modules/core/img/logo_64X64_transparent.png">',
                             '</div>',
                             '</div>',

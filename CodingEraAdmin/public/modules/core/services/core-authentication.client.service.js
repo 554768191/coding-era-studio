@@ -18,7 +18,15 @@ angular.module('core').factory('Authentication', [
 
 		var auth = {
 			user: user,
+			accessToken:user.accessToken,
+			refreshToken:user.refreshToken,
 			apiURL: $window.apiURL,
+			updateUser:function(user){
+				user.accessToken = auth.accessToken;
+				user.refreshToken = auth.refreshToken;
+				auth.user = user;
+				$window.user = user;
+			},
 			setPermissions: function(permissions) {
 				permissionList = permissions;
 				$rootScope.$broadcast('permissionsChanged');

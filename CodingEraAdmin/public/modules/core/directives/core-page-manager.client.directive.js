@@ -161,10 +161,10 @@ angular.module('core')
             scope: {},
             template: [
             '<div class="row ce-page-header">',
-                '<div class="col-sm-8">',
+                '<div class="col-md-8">',
                 '</div>',
-                '<div class="col-sm-4 col-xs-12">',
-                    '<div class="ce-page-header-bar row" ng-transclude>',
+                '<div class="col-md-4 col-xs-12">',
+                    '<div class="ce-page-header-bar" ng-transclude>',
                     '</div>',
                 '</div>',
             '</div>',
@@ -181,7 +181,7 @@ angular.module('core')
             },
 
             template: [
-                '<div class="input-group">',
+                '<div class="input-group text-right">',
                     '<input type="text" class="form-control" ng-model="keyWord" placeholder="{{cePlaceholder}}">',
                         '<span class="input-group-btn">',
                         '<button class="btn btn-default" type="button" ng-click="ceClick({keyWord:keyWord})"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>',

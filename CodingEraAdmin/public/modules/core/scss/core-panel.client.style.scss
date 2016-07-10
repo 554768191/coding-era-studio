@@ -117,12 +117,14 @@ $border-color:#DEE5E7;
     color:#555;
   }
   .ce-page-header-bar{
-    line-height: $page-header-height;
+    //line-height: $page-header-height;
+    margin-top:15px;
+    margin-right:-15px;
     .input-group{
-      line-height: $page-header-height;
-      float: right;
+      //line-height: $page-header-height;
+      //float: right;
       .form-control{
-        float: none;
+        //float: none;
       }
     }
   }

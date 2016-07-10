@@ -40,6 +40,7 @@ angular.module('core')
         var httpHandler = function (promise,options){
 
             angular.extend(options,{url:Authentication.apiURL+options.url});
+            console.log('options',options);
             ceUtil.loading();
             $http(options).success(function(res){
                 //$log.debug('request api success return:', res);

@@ -51,7 +51,10 @@ angular.module('user').controller('UserProfileController', [
                 //Authentication.user = res.data;
                 that.readSaveAvatar = false;
                 ceUtil.toast('保存成功');
+                console.log(res.data);
+                Authentication.updateUser(res.data);
             };
+            console.log(that.isCreate);
             if(that.isCreate){
                 UserService.create(data).success(callback);
             }else{
