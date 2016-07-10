@@ -107,14 +107,23 @@ module.exports = {
 	},
 	codingera: {
 
-		apiURL: 'http://192.168.31.139:8080/api',
-		authorizationURL: 'http://192.168.31.139:8080/oauth/authorize',
-		tokenURL: 'http://192.168.31.139:8080/oauth/token',
+		//apiURL: 'http://192.168.31.139:8080/api',
+		//authorizationURL: 'http://192.168.31.139:8080/oauth/authorize',
+		//tokenURL: 'http://192.168.31.139:8080/oauth/token',
+		//clientID: 'api-client',
+		//clientSecret: 'api',
+		//callbackURL: "http://192.168.31.139:3000/auth/provider/callback",
+		//userInfoURL:"http://192.168.31.139:8080/api/me",
+		//logoutURL:"http://192.168.31.139:8080/oauth/logout?next=http://192.168.31.139:3000"
+
+		apiURL: 'http://ws.codingera.com/api',
+		authorizationURL: 'http://ws.codingera.com/oauth/authorize',
+		tokenURL: 'http://ws.codingera.com/oauth/token',
 		clientID: 'api-client',
 		clientSecret: 'api',
 		callbackURL: "http://192.168.31.139:3000/auth/provider/callback",
-		userInfoURL:"http://192.168.31.139:8080/api/me",
-		logoutURL:"http://192.168.31.139:8080/oauth/logout?next=http://192.168.31.139:3000"
+		userInfoURL:"http://ws.codingera.com/api/me",
+		logoutURL:"http://ws.codingera.com/oauth/logout?next=http://192.168.31.139:3000"
 
 		//test remote api
 		//apiURL: 'http://www.codingera.com:8080/api',

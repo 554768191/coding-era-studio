@@ -36,7 +36,12 @@ ceApp.run([
 		// Setting HTML5 Location Mode
 		$locationProvider.hashPrefix('!');
 
-
+		var form_encodes_support = ["post", "put"];
+		angular.forEach(form_encodes_support,
+				function(method) {
+					//$httpProvider.defaults.headers[method]["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8";
+					$httpProvider.defaults.headers[method]["Access-Control-Allow-Origin"] = "*";
+				});
 		// 关闭 angular-validation 校验成功提示 ( 成功还提示个毛啊? )
 		$validationProvider.showSuccessMessage = false;
 		//设置失败时返回 HTML 格式 ( 这里统一使用 bootstrap 的 text-danger 样式 )

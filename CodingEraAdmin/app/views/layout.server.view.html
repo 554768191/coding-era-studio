@@ -19,7 +19,7 @@
 
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/logo_32X32.ico" rel="shortcut icon" type="image/x-icon">
-	
+
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}
 		<link rel="stylesheet" href="{{cssFile}}">
@@ -30,9 +30,14 @@
 
 <body class="ng-cloak">
 
+
+
 	<!-- content -->
 	{% block content %}{% endblock %}
 
+	<!--[if IE 9]>
+	<script src="components/jpillora/xdomain/dist/xdomain.min.js" slave="http://ws.codingera.com/temp/proxy.html"></script>
+	<![endif]-->
 	<!-- 使用https://leancloud.cn的api -->
 	<script src="https://cdn1.lncld.net/static/js/av-mini-0.6.4.js"></script>
 	<!--Embedding The User Object-->
@@ -56,15 +61,8 @@
 	-->
 	{% endif %}
 
-	<!--[if lt IE 9]>
-	<section class="browsehappy jumbotron hide ">
-		<h1 class="text-center">你好!</h1>
-		<p class="text-center">你正在使用一个比较旧的浏览器(IE9版本以下),为了WEB的长远发展,我们建议升级你的浏览器</p>
-		<p class="text-center">(本站使用当今比较流行框架,和CSS3,请多多支持)</p>
-		<p class="text-center">请 <a href="http://browsehappy.com/">点击这里</a> 升级你的浏览器后回来浏览本站</p>
-		<p class="text-center"><a href="http://browsehappy.com" class="btn btn-primary btn-lg" role="button">好的, 升级我的浏览器!</a></p>
-	</section>
-	<![endif]-->
+
+
 
 
 </body>

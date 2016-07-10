@@ -20,7 +20,7 @@ angular.module('core').run([
             });
 
         // 将服务注册到拦截器链中
-        $httpProvider.interceptors.push('myHttpInterceptor');
+        //$httpProvider.interceptors.push('myHttpInterceptor');
         // 注册一个全局拦截器服务
         $provide.factory('myHttpInterceptor', [
             '$q', '$log','$injector',
@@ -32,6 +32,8 @@ angular.module('core').run([
 
                         //TODO Jason 还没有加弹性配置token
                         var Authentication = $injector.get('Authentication');
+                        $log.debug('config',JSON.stringify(config));
+                        $log.debug('Authentication',JSON.stringify(Authentication));
                         var token = Authentication.user.accessToken || "none";
                         config.headers.Authorization = 'Bearer ' + token;
                         return config;
@@ -47,6 +49,7 @@ angular.module('core').run([
                         return response || $q.when(response);
                     },
                     'responseError': function(rejection) {
+                        $log.debug('rejection123123',rejection);
                         $log.debug('responseError rejection.status', rejection.status);
                         // 返回失败的处理
                         //浏览器报 No 'Access-Control-Allow-Origin' header is present on the requested resource. 的时候获取不到status状态

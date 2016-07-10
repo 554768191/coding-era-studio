@@ -40,7 +40,6 @@ angular.module('core')
         var httpHandler = function (promise,options){
 
             angular.extend(options,{url:Authentication.apiURL+options.url});
-            console.log('options',options);
             ceUtil.loading();
             $http(options).success(function(res){
                 //$log.debug('request api success return:', res);
@@ -75,7 +74,7 @@ angular.module('core')
                 'method':'get',
                 'params':options.data || {}
             };
-            //angular.extend(getOptions.params, {access_token: token});
+            angular.extend(getOptions.params, {access_token: token});
             httpHandler(promise,getOptions);
             return promise;
         };
@@ -83,9 +82,9 @@ angular.module('core')
         ceHttpService.post = function(options){
             var promise = asyncService();
             angular.extend(options, {method:'post'});
-            //options.params = {
-            //    access_token: token
-            //};
+            options.params = {
+                access_token: token
+            };
             httpHandler(promise,options);
             return promise;
         };

@@ -19,11 +19,7 @@
 		</div>
 		<div class="collapse navbar-collapse" uib-dropdown-menu id="ce-navi-bar" aria-expanded="false">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">首页</a></li>
-				<li><a href="/case">作品</a></li>
-				<li><a href="/dynamic">动态</a></li>
-				<li><a href="/about">关于</a></li>
-				<li><a href="/contact">联系我们</a></li>
+				<li><a href="/#">菜单维护中</a></li>
 			</ul>
 		</div>
 	</div>
@@ -59,7 +55,17 @@
 					<div class="ce-slide-menu hidden-xs col-sm-1">
 						<ce-menu></ce-menu><!-- 菜单 -->
 					</div>
+				<!--[if lt IE 9]>
+				<section class="browsehappy jumbotron hide ">
+					<h1 class="text-center">你好!</h1>
+					<p class="text-center">你正在使用一个比较旧的浏览器(IE9版本以下),为了WEB的长远发展,我们建议升级你的浏览器</p>
+					<p class="text-center">请 <a href="http://browsehappy.com/">点击这里</a> 升级你的浏览器后回来浏览本站</p>
+					<p class="text-center"><a href="http://browsehappy.com" class="btn btn-primary btn-lg" role="button">好的, 升级我的浏览器!</a></p>
+				</section>
+				<![endif]-->
 					<div  ui-view  class="ce-content-view container-fluid"></div>
+
+
 			</div>
 
 		</div>
