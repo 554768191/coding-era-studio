@@ -20,7 +20,7 @@ angular.module('core').run([
             });
 
         // 将服务注册到拦截器链中
-        //$httpProvider.interceptors.push('myHttpInterceptor');
+        $httpProvider.interceptors.push('myHttpInterceptor');
         // 注册一个全局拦截器服务
         $provide.factory('myHttpInterceptor', [
             '$q', '$log','$injector',
@@ -32,8 +32,6 @@ angular.module('core').run([
 
                         //TODO Jason 还没有加弹性配置token
                         var Authentication = $injector.get('Authentication');
-                        $log.debug('config',JSON.stringify(config));
-                        $log.debug('Authentication',JSON.stringify(Authentication));
                         var token = Authentication.user.accessToken || "none";
                         config.headers.Authorization = 'Bearer ' + token;
                         return config;

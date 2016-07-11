@@ -196,12 +196,12 @@ url管理机制解析
 ## CORS
 	各种配置方式：
 	1.使用全局配置，
-	参考CorsConfiguration.java
+	参考CorsConfiguration.java ，目前就是使用这种方式！
 	2.application.properties
 	不能细化配置，暂时注释
 	3.注解
 	4.Filter
-	参考SimpleCORSFilter.java.java，目前就是使用这种方式！
+	参考SimpleCORSFilter.java
 	注意
 	Chrome浏览器在AJAX请求前，会发送OPTIONS请求测试服务器的CORS,如果不允许OPTIONS请求，就会报跨域错误，返回为空，前端不好处理！
 

@@ -74,7 +74,7 @@ angular.module('core')
                 'method':'get',
                 'params':options.data || {}
             };
-            angular.extend(getOptions.params, {access_token: token});
+            //angular.extend(getOptions.params, {access_token: token});
             httpHandler(promise,getOptions);
             return promise;
         };
@@ -82,9 +82,9 @@ angular.module('core')
         ceHttpService.post = function(options){
             var promise = asyncService();
             angular.extend(options, {method:'post'});
-            options.params = {
-                access_token: token
-            };
+            //options.params = {
+            //    access_token: token
+            //};
             httpHandler(promise,options);
             return promise;
         };
