@@ -8,6 +8,8 @@ public class CodingeraBootApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CodingeraBootApplication.class, args);
+		
+		SpringApplication a = new SpringApplication(CodingeraBootApplication.class);
 	}
 	
 }
