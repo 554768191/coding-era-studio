@@ -109,7 +109,7 @@
         }
         ])；
 
- ### 2. 路由上的权限访问控制
+### 2. 路由上的权限访问控制
         $stateProvider
         .state('usersManage', {
         url: '/user',
