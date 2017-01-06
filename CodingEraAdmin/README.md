@@ -13,7 +13,7 @@
 
 ## 初始化项目
 ## 1.安装NPM
-    ```
+    
     Mac
     nodejs版本管理器
     >brew install -g nvm
@@ -23,20 +23,20 @@
     >npm install -g nrm
     >nrm list
     >nrm use taobao
-    ```
+    
 
 ## 2.安装NPM所需的包
-    ```
+    
     $ cd /your/fucking/project
     $ npm install
-    ```
+    
 
 ## 3.运行项目
-    ```
+    
     $ cd /your/fucking/project
     $ gulp
     //如果执行gulp时sass报错:npm rebuild node-sass
-    ```
+    
 
 ## 4.生产
     执行命令 gulp prod 生成dist文件
@@ -74,7 +74,7 @@
     不解释
 
 ## npm脚本
-    ### npm scripts
+### npm scripts
     "scripts": {
         "start": "NODE_ENV=production node index.js &",
         "intall-prod":"echo \"npm install --production\"",
@@ -84,17 +84,17 @@
    如上面的"intall-prod"就是自定义的,使用自定义指令方法:# npm run intall-prod
    "start"是node默认就有的指令,当然也可以像上面一样覆盖,使用的时候简单的:# npm start 就行.
 
-   ### npm install
+### npm install
    生产上执行需要带上参数--production,如# npm install --production
    这样就下载package.json的全部依赖,只会下载dependencies的依赖
 
 ## ceAdmin权限指令
-    ### 1.UI控件显示控制
-    #### 1.1 指令控制
+### 1.UI控件显示控制
+#### 1.1 指令控制
         <li ce-secured="hasPermission('article','read')">1111</li>
         <li ce-secured="!hasPermission('article','read')">2222</li>
 
-    #### 1.2目录显示控制
+#### 1.2目录显示控制
         angular.module('demo')
         .run(['Menus',
         function(Menus) {
@@ -109,7 +109,7 @@
         }
         ])；
 
-    ### 2. 路由上的权限访问控制
+ ### 2. 路由上的权限访问控制
         $stateProvider
         .state('usersManage', {
         url: '/user',
@@ -120,7 +120,7 @@
 
 >参看：http://www.open-open.com/lib/view/open1408084201582.html
 
-    ### 3.代码判断
+### 3.代码判断
         var hasPermission = Authentication.checkPermission(expression);
         if(hasPermission){
             element.show();
@@ -130,7 +130,7 @@
         权限判断的代码都统一在core-authentication.client.service.js管理
 
 ## 指令
-    ### 返回按钮指令
+### 返回按钮指令
     如果是弹窗的会就会关闭弹窗
     如果是ui-view的话就是返回上一页
     用法:<button class="btn btn-default" type="button" ce-on-cancel-click>确定</button>
