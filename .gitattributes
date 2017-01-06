@@ -1,0 +1,4 @@
+*.js linguist-language=java javascript
+*.css linguist-language=java javascript
+*.html linguist-language=java javascript
+*.swift linguist-language=java javascript
